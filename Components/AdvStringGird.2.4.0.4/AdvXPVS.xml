@@ -1,0 +1,2465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="AdvXPVS">
+  <const name="WP_CAPTION" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="WP_SMALLCAPTION" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="WP_MINCAPTION" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="WP_SMALLMINCAPTION" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="WP_MAXCAPTION" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="WP_SMALLMAXCAPTION" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="WP_FRAMELEFT" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="WP_FRAMERIGHT" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="WP_FRAMEBOTTOM" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="WP_SMALLFRAMELEFT" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="WP_SMALLFRAMERIGHT" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="WP_SMALLFRAMEBOTTOM" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="WP_SYSBUTTON" type="Integer">
+    <value>
+      $D
+    </value>
+  </const>
+  <const name="WP_MDISYSBUTTON" type="Integer">
+    <value>
+      $E
+    </value>
+  </const>
+  <const name="WP_MINBUTTON" type="Integer">
+    <value>
+      $F
+    </value>
+  </const>
+  <const name="WP_MDIMINBUTTON" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="WP_MAXBUTTON" type="Integer">
+    <value>
+      $11
+    </value>
+  </const>
+  <const name="WP_CLOSEBUTTON" type="Integer">
+    <value>
+      $12
+    </value>
+  </const>
+  <const name="WP_SMALLCLOSEBUTTON" type="Integer">
+    <value>
+      $13
+    </value>
+  </const>
+  <const name="WP_MDICLOSEBUTTON" type="Integer">
+    <value>
+      $14
+    </value>
+  </const>
+  <const name="WP_RESTOREBUTTON" type="Integer">
+    <value>
+      $15
+    </value>
+  </const>
+  <const name="WP_MDIRESTOREBUTTON" type="Integer">
+    <value>
+      $16
+    </value>
+  </const>
+  <const name="WP_HELPBUTTON" type="Integer">
+    <value>
+      $17
+    </value>
+  </const>
+  <const name="WP_MDIHELPBUTTON" type="Integer">
+    <value>
+      $18
+    </value>
+  </const>
+  <const name="WP_HORZSCROLL" type="Integer">
+    <value>
+      $19
+    </value>
+  </const>
+  <const name="WP_HORZTHUMB" type="Integer">
+    <value>
+      $1A
+    </value>
+  </const>
+  <const name="WP_VERTSCROLL" type="Integer">
+    <value>
+      $1B
+    </value>
+  </const>
+  <const name="WP_VERTTHUMB" type="Integer">
+    <value>
+      $1C
+    </value>
+  </const>
+  <const name="WP_DIALOG" type="Integer">
+    <value>
+      $1D
+    </value>
+  </const>
+  <const name="WP_CAPTIONSIZINGTEMPLATE" type="Integer">
+    <value>
+      $1E
+    </value>
+  </const>
+  <const name="WP_SMALLCAPTIONSIZINGTEMPLATE" type="Integer">
+    <value>
+      $1F
+    </value>
+  </const>
+  <const name="WP_FRAMELEFTSIZINGTEMPLATE" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="WP_SMALLFRAMELEFTSIZINGTEMPLATE" type="Integer">
+    <value>
+      $21
+    </value>
+  </const>
+  <const name="WP_FRAMERIGHTSIZINGTEMPLATE" type="Integer">
+    <value>
+      $22
+    </value>
+  </const>
+  <const name="WP_SMALLFRAMERIGHTSIZINGTEMPLATE" type="Integer">
+    <value>
+      $23
+    </value>
+  </const>
+  <const name="WP_FRAMEBOTTOMSIZINGTEMPLATE" type="Integer">
+    <value>
+      $24
+    </value>
+  </const>
+  <const name="WP_SMALLFRAMEBOTTOMSIZINGTEMPLATE" type="Integer">
+    <value>
+      $25
+    </value>
+  </const>
+  <const name="FS_ACTIVE" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="FS_INACTIVE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="CS_ACTIVE" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="CS_INACTIVE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="CS_DISABLED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="MXCS_ACTIVE" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="MXCS_INACTIVE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="MXCS_DISABLED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="MNCS_ACTIVE" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="MNCS_INACTIVE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="MNCS_DISABLED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="HSS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="HSS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="HSS_PUSHED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="HSS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="HTS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="HTS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="HTS_PUSHED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="HTS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="VSS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="VSS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="VSS_PUSHED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="VSS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="VTS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="VTS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="VTS_PUSHED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="VTS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SBS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SBS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SBS_PUSHED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="SBS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="MINBS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="MINBS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="MINBS_PUSHED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="MINBS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="MAXBS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="MAXBS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="MAXBS_PUSHED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="MAXBS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="RBS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="RBS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="RBS_PUSHED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="RBS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="HBS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="HBS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="HBS_PUSHED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="HBS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="CBS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="CBS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="CBS_PUSHED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="CBS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="BP_PUSHBUTTON" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="BP_RADIOBUTTON" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="BP_CHECKBOX" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="BP_GROUPBOX" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="BP_USERBUTTON" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="PBS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="PBS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="PBS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="PBS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="PBS_DEFAULTED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="RBS_UNCHECKEDNORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="RBS_UNCHECKEDHOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="RBS_UNCHECKEDPRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="RBS_UNCHECKEDDISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="RBS_CHECKEDNORMAL" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="RBS_CHECKEDHOT" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="RBS_CHECKEDPRESSED" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="RBS_CHECKEDDISABLED" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="CBS_UNCHECKEDNORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="CBS_UNCHECKEDHOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="CBS_UNCHECKEDPRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="CBS_UNCHECKEDDISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="CBS_CHECKEDNORMAL" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="CBS_CHECKEDHOT" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="CBS_CHECKEDPRESSED" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="CBS_CHECKEDDISABLED" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="CBS_MIXEDNORMAL" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="CBS_MIXEDHOT" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="CBS_MIXEDPRESSED" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="CBS_MIXEDDISABLED" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="GBS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="GBS_DISABLED" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="RP_GRIPPER" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="RP_GRIPPERVERT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="RP_BAND" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="RP_CHEVRON" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="RP_CHEVRONVERT" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="CHEVS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="CHEVS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="CHEVS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TP_BUTTON" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TP_DROPDOWNBUTTON" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TP_SPLITBUTTON" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TP_SPLITBUTTONDROPDOWN" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TP_SEPARATOR" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TP_SEPARATORVERT" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="TS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TS_CHECKED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TS_HOTCHECKED" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="SP_PANE" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SP_GRIPPERPANE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SP_GRIPPER" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="MP_MENUITEM" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="MP_MENUDROPDOWN" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="MP_MENUBARITEM" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="MP_MENUBARDROPDOWN" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="MP_CHEVRON" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="MP_SEPARATOR" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="MS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="MS_SELECTED" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="MS_DEMOTED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="LVP_LISTITEM" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="LVP_LISTGROUP" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="LVP_LISTDETAIL" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="LVP_LISTSORTEDDETAIL" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="LVP_EMPTYTEXT" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="LIS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="LIS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="LIS_SELECTED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="LIS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="LIS_SELECTEDNOTFOCUS" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="HP_HEADERITEM" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="HP_HEADERITEMLEFT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="HP_HEADERITEMRIGHT" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="HP_HEADERSORTARROW" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="HIS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="HIS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="HIS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="HILS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="HILS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="HILS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="HIRS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="HIRS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="HIRS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="HSAS_SORTEDUP" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="HSAS_SORTEDDOWN" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="PP_BAR" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="PP_BARVERT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="PP_CHUNK" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="PP_CHUNKVERT" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TABP_TABITEM" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TABP_TABITEMLEFTEDGE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TABP_TABITEMRIGHTEDGE" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TABP_TABITEMBOTHEDGE" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TABP_TOPTABITEM" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TABP_TOPTABITEMLEFTEDGE" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="TABP_TOPTABITEMRIGHTEDGE" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="TABP_TOPTABITEMBOTHEDGE" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="TABP_PANE" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="TABP_BODY" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="TIS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TIS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TIS_SELECTED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TIS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TIS_FOCUSED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TILES_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TILES_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TILES_SELECTED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TILES_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TILES_FOCUSED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TIRES_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TIRES_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TIRES_SELECTED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TIRES_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TIRES_FOCUSED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TIBES_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TIBES_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TIBES_SELECTED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TIBES_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TIBES_FOCUSED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TTIS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TTIS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TTIS_SELECTED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TTIS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TTIS_FOCUSED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TTILES_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TTILES_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TTILES_SELECTED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TTILES_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TTILES_FOCUSED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TTIRES_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TTIRES_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TTIRES_SELECTED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TTIRES_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TTIRES_FOCUSED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TTIBES_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TTIBES_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TTIBES_SELECTED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TTIBES_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TTIBES_FOCUSED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TKP_TRACK" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TKP_TRACKVERT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TKP_THUMB" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TKP_THUMBBOTTOM" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TKP_THUMBTOP" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TKP_THUMBVERT" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="TKP_THUMBLEFT" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="TKP_THUMBRIGHT" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="TKP_TICS" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="TKP_TICSVERT" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="TKS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TRS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TRVS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TUS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TUS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TUS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TUS_FOCUSED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TUS_DISABLED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TUBS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TUBS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TUBS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TUBS_FOCUSED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TUBS_DISABLED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TUTS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TUTS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TUTS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TUTS_FOCUSED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TUTS_DISABLED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TUVS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TUVS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TUVS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TUVS_FOCUSED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TUVS_DISABLED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TUVLS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TUVLS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TUVLS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TUVLS_FOCUSED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TUVLS_DISABLED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TUVRS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TUVRS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TUVRS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TUVRS_FOCUSED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TUVRS_DISABLED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TSS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TSVS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TTP_STANDARD" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TTP_STANDARDTITLE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TTP_BALLOON" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TTP_BALLOONTITLE" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TTP_CLOSE" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TTCS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TTCS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TTCS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TTSS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TTSS_LINK" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TTBS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TTBS_LINK" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TVP_TREEITEM" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TVP_GLYPH" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TVP_BRANCH" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TREIS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TREIS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TREIS_SELECTED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TREIS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TREIS_SELECTEDNOTFOCUS" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="GLPS_CLOSED" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="GLPS_OPENED" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SPNP_UP" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SPNP_DOWN" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SPNP_UPHORZ" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="SPNP_DOWNHORZ" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="UPS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="UPS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="UPS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="UPS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="DNS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="DNS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="DNS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="DNS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="UPHZS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="UPHZS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="UPHZS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="UPHZS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="DNHZS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="DNHZS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="DNHZS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="DNHZS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="PGRP_UP" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="PGRP_DOWN" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="PGRP_UPHORZ" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="PGRP_DOWNHORZ" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SBP_ARROWBTN" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SBP_THUMBBTNHORZ" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SBP_THUMBBTNVERT" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="SBP_LOWERTRACKHORZ" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SBP_UPPERTRACKHORZ" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="SBP_LOWERTRACKVERT" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="SBP_UPPERTRACKVERT" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="SBP_GRIPPERHORZ" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="SBP_GRIPPERVERT" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="SBP_SIZEBOX" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="ABS_UPNORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="ABS_UPHOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="ABS_UPPRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="ABS_UPDISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="ABS_DOWNNORMAL" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="ABS_DOWNHOT" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="ABS_DOWNPRESSED" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="ABS_DOWNDISABLED" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="ABS_LEFTNORMAL" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="ABS_LEFTHOT" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="ABS_LEFTPRESSED" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="ABS_LEFTDISABLED" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="ABS_RIGHTNORMAL" type="Integer">
+    <value>
+      $D
+    </value>
+  </const>
+  <const name="ABS_RIGHTHOT" type="Integer">
+    <value>
+      $E
+    </value>
+  </const>
+  <const name="ABS_RIGHTPRESSED" type="Integer">
+    <value>
+      $F
+    </value>
+  </const>
+  <const name="ABS_RIGHTDISABLED" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="SCRBS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SCRBS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SCRBS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="SCRBS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SZB_RIGHTALIGN" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SZB_LEFTALIGN" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="EP_EDITTEXT" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="EP_CARET" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="ETS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="ETS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="ETS_SELECTED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="ETS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="ETS_FOCUSED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="ETS_READONLY" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="ETS_ASSIST" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="CP_DROPDOWNBUTTON" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="CBXS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="CBXS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="CBXS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="CBXS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="CLP_TIME" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="CLS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TNP_BACKGROUND" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TNP_ANIMBACKGROUND" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TBP_BACKGROUNDBOTTOM" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TBP_BACKGROUNDRIGHT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TBP_BACKGROUNDTOP" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="TBP_BACKGROUNDLEFT" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="TBP_SIZINGBARBOTTOM" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="TBP_SIZINGBARRIGHT" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="TBP_SIZINGBARTOP" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="TBP_SIZINGBARLEFT" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="TDP_GROUPCOUNT" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TDP_FLASHBUTTON" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TDP_FLASHBUTTONGROUPMENU" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="SPP_USERPANE" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SPP_MOREPROGRAMS" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SPP_MOREPROGRAMSARROW" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="SPP_PROGLIST" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SPP_PROGLISTSEPARATOR" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="SPP_PLACESLIST" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="SPP_PLACESLISTSEPARATOR" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="SPP_LOGOFF" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="SPP_LOGOFFBUTTONS" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="SPP_USERPICTURE" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="SPP_PREVIEW" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="SPS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SPS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SPS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="SPLS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SPLS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SPLS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="EBP_HEADERBACKGROUND" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="EBP_HEADERCLOSE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="EBP_HEADERPIN" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="EBP_IEBARMENU" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="EBP_NORMALGROUPBACKGROUND" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="EBP_NORMALGROUPCOLLAPSE" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="EBP_NORMALGROUPEXPAND" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="EBP_NORMALGROUPHEAD" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="EBP_SPECIALGROUPBACKGROUND" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="EBP_SPECIALGROUPCOLLAPSE" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="EBP_SPECIALGROUPEXPAND" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="EBP_SPECIALGROUPHEAD" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="EBHC_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="EBHC_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="EBHC_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="EBHP_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="EBHP_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="EBHP_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="EBHP_SELECTEDNORMAL" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="EBHP_SELECTEDHOT" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="EBHP_SELECTEDPRESSED" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="EBM_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="EBM_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="EBM_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="EBNGC_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="EBNGC_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="EBNGC_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="EBNGE_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="EBNGE_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="EBNGE_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="EBSGC_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="EBSGC_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="EBSGC_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="EBSGE_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="EBSGE_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="EBSGE_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="MDP_NEWAPPBUTTON" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="MDP_SEPERATOR" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="MDS_NORMAL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="MDS_HOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="MDS_PRESSED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="MDS_DISABLED" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="MDS_CHECKED" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="MDS_HOTCHECKED" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="DTT_GRAYED" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="HTTB_BACKGROUNDSEG" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="HTTB_FIXEDBORDER" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="HTTB_CAPTION" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="HTTB_RESIZINGBORDER_LEFT" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="HTTB_RESIZINGBORDER_TOP" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="HTTB_RESIZINGBORDER_RIGHT" type="Integer">
+    <value>
+      $40
+    </value>
+  </const>
+  <const name="HTTB_RESIZINGBORDER_BOTTOM" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <const name="HTTB_RESIZINGBORDER" type="Integer">
+    <value>
+      $30
+    </value>
+  </const>
+  <const name="HTTB_SIZINGTEMPLATE" type="Integer">
+    <value>
+      $100
+    </value>
+  </const>
+  <const name="HTTB_SYSTEMSIZINGMARGINS" type="Integer">
+    <value>
+      $200
+    </value>
+  </const>
+  <const name="MAX_INTLIST_COUNT" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="ETDT_DISABLE" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="ETDT_ENABLE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="ETDT_USETABTEXTURE" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="ETDT_ENABLETAB" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="STAP_ALLOW_NONCLIENT" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="STAP_ALLOW_CONTROLS" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="STAP_ALLOW_WEBCONTENT" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SZ_THDOCPROP_DISPLAYNAME" type="string">
+    <value>
+      DisplayName
+    </value>
+  </const>
+  <const name="SZ_THDOCPROP_CANONICALNAME" type="string">
+    <value>
+      ThemeName
+    </value>
+  </const>
+  <const name="SZ_THDOCPROP_TOOLTIP" type="string">
+    <value>
+      ToolTip
+    </value>
+  </const>
+  <const name="SZ_THDOCPROP_AUTHOR" type="string">
+    <value>
+      author
+    </value>
+  </const>
+  <const name="TS_MIN" type="THEMESIZE">
+    <value>
+      TS_MIN
+    </value>
+  </const>
+  <const name="TS_TRUE" type="THEMESIZE">
+    <value>
+      TS_TRUE
+    </value>
+  </const>
+  <const name="TS_DRAW" type="THEMESIZE">
+    <value>
+      TS_DRAW
+    </value>
+  </const>
+  <enum name="THEMESIZE">
+    <element name="TS_MIN" />
+    <element name="TS_TRUE" />
+    <element name="TS_DRAW" />
+  </enum>
+  <struct name="_MARGINS">
+    <field name="cxLeftWidth" type="Integer" visibility="public" />
+    <field name="cxRightWidth" type="Integer" visibility="public" />
+    <field name="cyTopHeight" type="Integer" visibility="public" />
+    <field name="cyBottomHeight" type="Integer" visibility="public" />
+  </struct>
+  <struct name="MARGINS" alias="_MARGINS" namespace="AdvXPVS">
+    <field name="cxLeftWidth" type="Integer" visibility="public" />
+    <field name="cxRightWidth" type="Integer" visibility="public" />
+    <field name="cyTopHeight" type="Integer" visibility="public" />
+    <field name="cyBottomHeight" type="Integer" visibility="public" />
+  </struct>
+  <pointer name="PMARGINS" type="_MARGINS" indircnt="1" />
+  <struct name="_INTLIST">
+    <field name="iValueCount" type="Integer" visibility="public" />
+    <field name="iValues" visibility="public">
+      <array name="iValues" low="0" high="9">
+        <element type="Integer" />
+      </array>
+    </field>
+  </struct>
+  <struct name="INTLIST" alias="_INTLIST" namespace="AdvXPVS">
+    <field name="iValueCount" type="Integer" visibility="public" />
+    <field name="iValues" visibility="public">
+      <array name="iValues" low="0" high="9">
+        <element type="Integer" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PINTLIST" type="_INTLIST" indircnt="1" />
+  <const name="PO_STATE" type="PROPERTYORIGIN">
+    <value>
+      PO_STATE
+    </value>
+  </const>
+  <const name="PO_PART" type="PROPERTYORIGIN">
+    <value>
+      PO_PART
+    </value>
+  </const>
+  <const name="PO_CLASS" type="PROPERTYORIGIN">
+    <value>
+      PO_CLASS
+    </value>
+  </const>
+  <const name="PO_GLOBAL" type="PROPERTYORIGIN">
+    <value>
+      PO_GLOBAL
+    </value>
+  </const>
+  <const name="PO_NOTFOUND" type="PROPERTYORIGIN">
+    <value>
+      PO_NOTFOUND
+    </value>
+  </const>
+  <enum name="PROPERTYORIGIN">
+    <element name="PO_STATE" />
+    <element name="PO_PART" />
+    <element name="PO_CLASS" />
+    <element name="PO_GLOBAL" />
+    <element name="PO_NOTFOUND" />
+  </enum>
+  <variable name="OpenThemeData" />
+  <variable name="CloseThemeData" />
+  <variable name="DrawThemeBackground" />
+  <variable name="DrawThemeText" />
+  <variable name="GetThemeBackgroundContentRect" />
+  <variable name="GetThemeBackgroundExtent" />
+  <variable name="GetThemeTextExtent" />
+  <variable name="GetThemeTextMetrics" />
+  <variable name="GetThemeBackgroundRegion" />
+  <variable name="HitTestThemeBackground" />
+  <variable name="DrawThemeEdge" />
+  <variable name="DrawThemeIcon" />
+  <variable name="IsThemePartDefined" />
+  <variable name="IsThemeBackGroundPartiallyTransparent" />
+  <variable name="GetThemeColor" />
+  <variable name="GetThemeMetric" />
+  <variable name="GetThemeString" />
+  <variable name="GetThemeBool" />
+  <variable name="GetThemeInt" />
+  <variable name="GetThemeEnumValue" />
+  <variable name="GetThemePosition" />
+  <variable name="GetThemeFont" />
+  <variable name="GetThemeRect" />
+  <variable name="GetThemeMargins" />
+  <variable name="GetThemeIntList" />
+  <variable name="SetWindowTheme" />
+  <variable name="GetThemeFilename" />
+  <variable name="GetThemeSysColor" />
+  <variable name="GetThemeSysColorBrush" />
+  <variable name="GetThemeSysBool" />
+  <variable name="GetThemeSysSize" />
+  <variable name="GetThemeSysFont" />
+  <variable name="GetThemeSysString" />
+  <variable name="GetThemeSysInt" />
+  <variable name="IsThemeActive" />
+  <variable name="IsAppThemed" />
+  <variable name="GetWindowTheme" />
+  <variable name="EnableThemeDialogTexture" />
+  <variable name="IsThemeDialogTextureEnabled" />
+  <variable name="GetThemeAppProperties" />
+  <variable name="SetThemeAppProperties" />
+  <variable name="GetCurrentThemeName" />
+  <variable name="GetThemeDocumentationProperty" />
+  <variable name="DrawThemeParentBackground" />
+  <variable name="EnableTheming" />
+</namespace>

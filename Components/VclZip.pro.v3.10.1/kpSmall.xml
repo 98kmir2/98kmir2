@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="KpSmall">
+  <function name="DirExists" visibility="public">
+    <parameters>
+      <parameter name="Dir" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <procedure name="ForceCreateDirectories" visibility="public">
+    <parameters>
+      <parameter name="Dir" type="string" />
+    </parameters>
+  </procedure>
+  <function name="PMsgDlg" visibility="public">
+    <parameters>
+      <parameter name="Msg" type="string" />
+      <parameter name="Caption" type="string" />
+      <parameter name="TextType" type="Word" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="StripBackSlash" visibility="public">
+    <parameters>
+      <parameter name="S" type="string" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="YieldProcess" visibility="public">
+    <parameters>
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+</namespace>

@@ -1,0 +1,51 @@
+package VCLZipD5_3;
+
+{$R *.RES}
+{$R 'kpSFXCfg.dcr'}
+{$R 'VCLUnZip.dcr'}
+{$R 'VCLZip.dcr'}
+{$ALIGN ON}
+{$ASSERTIONS OFF}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'VCLZip Pro'}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl50,
+  Vclx50;
+
+contains
+  kpSFXCfg in 'kpSFXCfg.pas',
+  VCLUnZip in 'VCLUnZip.pas',
+  VCLZip in 'VCLZip.pas',
+  kpCntn in 'kpCntn.pas',
+  KpLib in 'KPLib.pas',
+  kpMatch in 'kpMatch.pas',
+  kpSStrm in 'kpSStrm.pas',
+  kpZcnst in 'Kpzcnst.pas',
+  kpZipObj in 'kpZipObj.pas',
+  kphstrms in 'kphstrms.pas',
+  kpDiskIOs in 'kpDiskIOs.pas',
+  KpSmall in 'KpSmall.pas',
+  kpDiskIOWin9x in 'kpDiskIOWin9x.pas',
+  kpSHuge in 'kpSHuge.pas';
+
+end.

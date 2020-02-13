@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="kpDiskIOs">
+  <function name="GetClusterSize" visibility="public">
+    <parameters>
+      <parameter name="ARootFilename" type="string" paramflags="const" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+</namespace>

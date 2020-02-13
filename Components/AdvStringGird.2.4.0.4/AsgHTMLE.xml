@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="AsgHTMLE">
+  <variable name="IsWinXP" type="Boolean" />
+  <procedure name="PrintBitmap" visibility="public">
+    <parameters>
+      <parameter name="Canvas" type="TCanvas" />
+      <parameter name="DestRect" type="TRect" />
+      <parameter name="Bitmap" type="TBitmap" />
+    </parameters>
+  </procedure>
+  <function name="GetControlValue" visibility="public">
+    <parameters>
+      <parameter name="HTML" type="string" />
+      <parameter name="ControlID" type="string" />
+      <parameter name="ControlValue" type="string" paramflags="var" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="SetControlValue" visibility="public">
+    <parameters>
+      <parameter name="HTML" type="string" paramflags="var" />
+      <parameter name="ControlID" type="string" />
+      <parameter name="ControlValue" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="HTMLDrawEx" visibility="public">
+    <parameters>
+      <parameter name="Canvas" type="TCanvas" />
+      <parameter name="s" type="string" />
+      <parameter name="fr" type="TRect" />
+      <parameter name="FImages" type="TImageList" />
+      <parameter name="XPos" type="Integer" />
+      <parameter name="YPos" type="Integer" />
+      <parameter name="FocusLink" type="Integer" />
+      <parameter name="HoverLink" type="Integer" />
+      <parameter name="ShadowOffset" type="Integer" />
+      <parameter name="CheckHotSpot" type="Boolean" />
+      <parameter name="CheckHeight" type="Boolean" />
+      <parameter name="Print" type="Boolean" />
+      <parameter name="Selected" type="Boolean" />
+      <parameter name="Blink" type="Boolean" />
+      <parameter name="HoverStyle" type="Boolean" />
+      <parameter name="WordWrap" type="Boolean" />
+      <parameter name="Down" type="Boolean" />
+      <parameter name="ResFactor" type="Double" />
+      <parameter name="URLColor" type="TColor" />
+      <parameter name="HoverColor" type="TColor" />
+      <parameter name="HoverFontColor" type="TColor" />
+      <parameter name="ShadowColor" type="TColor" />
+      <parameter name="AnchorVal" type="string" paramflags="var" />
+      <parameter name="StripVal" type="string" paramflags="var" />
+      <parameter name="FocusAnchor" type="string" paramflags="var" />
+      <parameter name="XSize" type="Integer" paramflags="var" />
+      <parameter name="YSize" type="Integer" paramflags="var" />
+      <parameter name="HyperLinks" type="Integer" paramflags="var" />
+      <parameter name="MouseLink" type="Integer" paramflags="var" />
+      <parameter name="HoverRect" type="TRect" paramflags="var" />
+      <parameter name="ControlRect" type="TRect" paramflags="var" />
+      <parameter name="CID" type="string" paramflags="var" />
+      <parameter name="CV" type="string" paramflags="var" />
+      <parameter name="CT" type="string" paramflags="var" />
+      <parameter name="ic" type="THTMLPictureCache" />
+      <parameter name="pc" type="TPictureContainer" />
+      <parameter name="WinHandle" type="Cardinal" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="HTMLStrip" visibility="public">
+    <devnotes>
+                        cr.left := fr.left + Indent;
+    </devnotes>
+    <parameters>
+      <parameter name="s" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="HiLight" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <parameter name="h" type="string" />
+      <parameter name="tag" type="string" />
+      <parameter name="DoCase" type="Boolean" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="UnHiLight" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <parameter name="tag" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+</namespace>

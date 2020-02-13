@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="kpDiskIOWin9x">
+  <const name="VWIN32_DIOC_DOS_IOCTL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="VWIN32_DIOC_DOS_INT25" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="VWIN32_DIOC_DOS_INT26" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="VWIN32_DIOC_DOS_INT13" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="VWIN32_DIOC_DOS_DRIVEINFO" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <pointer name="PDEVIOCTL_REGISTERS" type="TDEVIOCTL_REGISTERS" indircnt="1" />
+  <struct name="TDEVIOCTL_REGISTERS" packed="true">
+    <field name="reg_EBX" type="Cardinal" visibility="public" />
+    <field name="reg_EDX" type="Cardinal" visibility="public" />
+    <field name="reg_ECX" type="Cardinal" visibility="public" />
+    <field name="reg_EAX" type="Cardinal" visibility="public" />
+    <field name="reg_EDI" type="Cardinal" visibility="public" />
+    <field name="reg_ESI" type="Cardinal" visibility="public" />
+    <field name="reg_Flags" type="Cardinal" visibility="public" />
+  </struct>
+  <pointer name="PMID" type="TMID" indircnt="1" />
+  <struct name="TMID" packed="true">
+    <field name="midInfoLevel" type="Word" visibility="public" />
+    <field name="midSerialNum" type="Cardinal" visibility="public" />
+    <field name="midVolLabel" visibility="public">
+      <array name="midVolLabel" low="0" high="10">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="midFileSysType" visibility="public">
+      <array name="midFileSysType" low="0" high="7">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PExtGetDskFreSpcStruc" type="TExtGetDskFreSpcStruc" indircnt="1" />
+  <struct name="TExtGetDskFreSpcStruc" packed="true">
+    <field name="ExtFree_Size" type="Word" visibility="public" />
+    <field name="ExtFree_Level" type="Word" visibility="public" />
+    <field name="ExtFree_SectorsPerCluster" type="Cardinal" visibility="public" />
+    <field name="ExtFree_BytesPerSector" type="Cardinal" visibility="public" />
+    <field name="ExtFree_AvailableClusters" type="Cardinal" visibility="public" />
+    <field name="ExtFree_TotalClusters" type="Cardinal" visibility="public" />
+    <field name="ExtFree_AvailablePhysSectors" type="Cardinal" visibility="public" />
+    <field name="ExtFree_TotalPhysSectors" type="Cardinal" visibility="public" />
+    <field name="ExtFree_AvailableAllocationUnits" type="Cardinal" visibility="public" />
+    <field name="ExtFree_TotalAllocationUnits" type="Cardinal" visibility="public" />
+    <field name="ExtFree_Rsvd" type="Cardinal" visibility="public" />
+    <field name="ExtFree_Rsvd2" type="Cardinal" visibility="public" />
+  </struct>
+  <pointer name="PDiskIO" type="TDiskIO" indircnt="1" />
+  <struct name="TDiskIO" packed="true">
+    <field name="diStartSector" type="Cardinal" visibility="public" />
+    <field name="diSectors" type="Word" visibility="public" />
+    <field name="diBuffer" type="Cardinal" visibility="public" />
+  </struct>
+  <const name="dioRead" type="TDiskIOAccessMode">
+    <value>
+      dioRead
+    </value>
+  </const>
+  <const name="dioWrite" type="TDiskIOAccessMode">
+    <value>
+      dioWrite
+    </value>
+  </const>
+  <enum name="TDiskIOAccessMode">
+    <element name="dioRead" />
+    <element name="dioWrite" />
+  </enum>
+  <const name="dioUnknown" type="TDiskIODataMode">
+    <value>
+      dioUnknown
+    </value>
+  </const>
+  <const name="dioFATData" type="TDiskIODataMode">
+    <value>
+      dioFATData
+    </value>
+  </const>
+  <const name="dioDirectoryData" type="TDiskIODataMode">
+    <value>
+      dioDirectoryData
+    </value>
+  </const>
+  <const name="dioFileData" type="TDiskIODataMode">
+    <value>
+      dioFileData
+    </value>
+  </const>
+  <enum name="TDiskIODataMode">
+    <element name="dioUnknown" />
+    <element name="dioFATData" />
+    <element name="dioDirectoryData" />
+    <element name="dioFileData" />
+  </enum>
+  <function name="IsWin95SR2orHigher" visibility="public">
+    <parameters>
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="DoIOCTL" visibility="public">
+    <parameters>
+      <parameter name="AReg" type="TDEVIOCTL_REGISTERS" paramflags="var" />
+      <parameter name="AIOControlCode" type="Cardinal" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="DoIOCTLWithDeviceCatFallBack" visibility="public">
+    <parameters>
+      <parameter name="AReg" type="TDEVIOCTL_REGISTERS" paramflags="var" />
+      <parameter name="AFunction" type="Integer" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <procedure name="ClearMID" visibility="public">
+    <parameters>
+      <parameter name="AMID" type="TMID" paramflags="var" />
+    </parameters>
+  </procedure>
+  <function name="GetMediaID" visibility="public">
+    <parameters>
+      <parameter name="ADrive" type="Cardinal" paramflags="const" />
+      <parameter name="AMID" type="TMID" paramflags="var" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="SetMediaID" visibility="public">
+    <parameters>
+      <parameter name="ADrive" type="Cardinal" paramflags="const" />
+      <parameter name="AMID" type="TMID" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="Get_ExtFreeSpace" visibility="public">
+    <parameters>
+      <parameter name="ARootFilename" type="string" paramflags="const" />
+      <parameter name="AStruc" type="TExtGetDskFreSpcStruc" paramflags="var" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="GetOpenFileList" visibility="public">
+    <parameters>
+      <parameter name="ADrive" type="Cardinal" paramflags="const" />
+      <parameter name="AList" type="TStrings" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="Ext_ABSDiskReadWrite" visibility="public">
+    <parameters>
+      <parameter name="DriveNum" type="Integer" />
+      <parameter name="DiskIO" type="TDiskIO" paramflags="const" />
+      <parameter name="AccessMode" type="TDiskIOAccessMode" />
+      <parameter name="DataMode" type="TDiskIODataMode" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+</namespace>

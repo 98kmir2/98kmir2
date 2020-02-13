@@ -1,0 +1,1141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="VCLZip">
+  <class name="EInvalidMatch">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <pointer name="ct_dataPtr" type="ct_data" indircnt="1" />
+  <struct name="ct_data" packed="true">
+    <field name="fc" type=":2" visibility="public" />
+    <field name="dl" type=":3" visibility="public" />
+  </struct>
+  <pointer name="ct_dataArrayPtr" type="ct_dataArray" indircnt="1" />
+  <array name="ct_dataArray" low="0" high="16382">
+    <element type="ct_data" />
+  </array>
+  <pointer name="static_ltreePtr" type="static_ltree_type" indircnt="1" />
+  <pointer name="static_dtreePtr" type="static_dtree_type" indircnt="1" />
+  <array name="static_ltree_type" low="0" high="287">
+    <element type="ct_data" />
+  </array>
+  <array name="static_dtree_type" low="0" high="29">
+    <element type="ct_data" />
+  </array>
+  <pointer name="windowtypePtr" type="windowtype" indircnt="1" />
+  <pointer name="prevtypePtr" type="prevtype" indircnt="1" />
+  <pointer name="headtypePtr" type="headtype" indircnt="1" />
+  <pointer name="l_buftypePtr" type="l_buftype" indircnt="1" />
+  <pointer name="d_buftypePtr" type="d_buftype" indircnt="1" />
+  <pointer name="flag_buftypePtr" type="flag_buftype" indircnt="1" />
+  <array name="windowtype" low="0" high="65535">
+    <element type="Byte" />
+  </array>
+  <array name="prevtype" low="0" high="32767">
+    <element type="Word" />
+  </array>
+  <array name="headtype" low="0" high="32767">
+    <element type="Word" />
+  </array>
+  <array name="l_buftype" low="0" high="32767">
+    <element type="Byte" />
+  </array>
+  <array name="d_buftype" low="0" high="32767">
+    <element type="Word" />
+  </array>
+  <array name="flag_buftype" low="0" high="4095">
+    <element type="Byte" />
+  </array>
+  <const name="zaUpdate" type="TZipAction">
+    <value>
+      zaUpdate
+    </value>
+  </const>
+  <const name="zaReplace" type="TZipAction">
+    <value>
+      zaReplace
+    </value>
+  </const>
+  <const name="zaFreshen" type="TZipAction">
+    <value>
+      zaFreshen
+    </value>
+  </const>
+  <enum name="TZipAction">
+    <element name="zaUpdate" />
+    <element name="zaReplace" />
+    <element name="zaFreshen" />
+  </enum>
+  <const name="uaReplacing" type="TUpdateAction">
+    <value>
+      uaReplacing
+    </value>
+  </const>
+  <const name="uaKeeping" type="TUpdateAction">
+    <value>
+      uaKeeping
+    </value>
+  </const>
+  <enum name="TUpdateAction">
+    <element name="uaReplacing" />
+    <element name="uaKeeping" />
+  </enum>
+  <class name="TMultiZipInfo">
+    <ancestor name="TPersistent" namespace="Classes">
+      <methodref name="AssignError" visibility="private">
+      </methodref>
+      <methodref name="AssignTo" visibility="public">
+      </methodref>
+      <methodref name="DefineProperties" visibility="public">
+      </methodref>
+      <methodref name="GetOwner" visibility="protected">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+      <methodref name="Assign" visibility="public">
+      </methodref>
+      <methodref name="GetNamePath" visibility="public">
+      </methodref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="FBlockSize" type="Int64" visibility="private" />
+      <field name="FFirstBlockSize" type="Int64" visibility="private" />
+      <field name="FSaveOnFirstDisk" type="Int64" visibility="private" />
+      <field name="FSaveZipInfo" type="Boolean" visibility="private" />
+      <field name="FMultiMode" type="TMultiMode" visibility="private" />
+      <field name="FCheckDiskLabels" type="Boolean" visibility="private" />
+      <field name="FWriteDiskLabels" type="Boolean" visibility="private" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <procedure name="Assign" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Source" type="TPersistent" />
+        </parameters>
+      </procedure>
+      <property name="BlockSize" visibility="published" read="FBlockSize" write="FBlockSize" type="Int64" default="1457600" />
+      <property name="FirstBlockSize" visibility="published" read="FFirstBlockSize" write="FFirstBlockSize" type="Int64" default="0" />
+      <property name="SaveOnFirstDisk" visibility="published" read="FSaveOnFirstDisk" write="FSaveOnFirstDisk" type="Int64" default="0" />
+      <property name="SaveZipInfoOnFirstDisk" visibility="published" read="FSaveZipInfo" write="FSaveZipInfo" type="Boolean" default="0" />
+      <property name="MultiMode" visibility="published" read="FMultiMode" write="FMultiMode" type="TMultiMode" default="0" />
+      <property name="CheckDiskLabels" visibility="published" read="FCheckDiskLabels" write="FCheckDiskLabels" type="Boolean" default="1" />
+      <property name="WriteDiskLabels" visibility="published" read="FWriteDiskLabels" write="FWriteDiskLabels" type="Boolean" default="1" />
+    </members>
+  </class>
+  <class name="TVCLZip">
+    <ancestor name="TVCLUnZip" namespace="VCLUnZip">
+      <methodref name="ProcessIntegrityCheck" visibility="private" />
+      <methodref name="OpenZip" visibility="protected" />
+      <methodref name="CloseZip" visibility="protected" />
+      <methodref name="GetCount" visibility="protected" />
+      <methodref name="GetFileInfo" visibility="protected" />
+      <methodref name="GetZipName" visibility="protected" />
+      <methodref name="SetZipName" visibility="public" />
+      <methodref name="SetArchiveStream" visibility="protected" />
+      <methodref name="GetDestDir" visibility="protected" />
+      <methodref name="SetDestDir" visibility="protected" />
+      <methodref name="SetRootDir" visibility="protected" />
+      <methodref name="StripRelativePath" visibility="protected" />
+      <methodref name="UnZipFiles" visibility="protected" />
+      <methodref name="UpdCRC" visibility="protected" />
+      <methodref name="SwapDisk" visibility="protected" />
+      <methodref name="SetFileComment" visibility="protected" />
+      <methodref name="SetZipComment" visibility="protected" />
+      <methodref name="WriteNumDisks" visibility="protected" />
+      <methodref name="NewDiskEvent" visibility="protected" />
+      <methodref name="SetThisVersion" visibility="protected" />
+      <methodref name="SetThisBuild" visibility="protected" />
+      <methodref name="GetCheckDiskLabels" visibility="public" />
+      <methodref name="SetCheckDiskLabels" visibility="public" />
+      <methodref name="CreateNewZipHeader" visibility="protected" />
+      <methodref name="SetBusy" visibility="protected" />
+      <methodref name="SetOperationMode" visibility="protected" />
+      <methodref name="GetMultiMode" visibility="public" />
+      <methodref name="SetMultiMode" visibility="public" />
+      <methodref name="SetFilesList" visibility="protected" />
+      <methodref name="GetFilename" visibility="protected" />
+      <methodref name="GetPathname" visibility="protected" />
+      <methodref name="GetFullname" visibility="protected" />
+      <methodref name="GetCompressMethod" visibility="protected" />
+      <methodref name="GetCompressMethodStr" visibility="protected" />
+      <methodref name="GetDateTime" visibility="protected" />
+      <methodref name="GetCrc" visibility="protected" />
+      <methodref name="GetCompressedSize" visibility="protected" />
+      <methodref name="GetUnCompressedSize" visibility="protected" />
+      <methodref name="GetExternalFileAttributes" visibility="protected" />
+      <methodref name="GetIsEncrypted" visibility="protected" />
+      <methodref name="GetHasComment" visibility="protected" />
+      <methodref name="GetFileComment" visibility="protected" />
+      <methodref name="GetFileIsOK" visibility="protected" />
+      <methodref name="GetDiskNo" visibility="protected" />
+      <methodref name="GetSelected" visibility="protected" />
+      <methodref name="SetSelected" visibility="protected" />
+      <methodref name="GetDecryptHeader" visibility="protected" />
+      <methodref name="GetZipHasComment" visibility="protected" />
+      <methodref name="GetZipComment" visibility="protected" />
+      <methodref name="GetZipSize" visibility="protected" />
+      <methodref name="GetIsZip64" visibility="protected" />
+      <methodref name="DecryptTheHeader" visibility="protected" />
+      <methodref name="update_keys" visibility="protected" />
+      <methodref name="decrypt_byte" visibility="protected" />
+      <methodref name="Init_Keys" visibility="protected" />
+      <methodref name="Update_CRC_buff" visibility="protected" />
+      <methodref name="DoFileNameForSplitPart" visibility="protected" />
+      <methodref name="DoGetNextDisk" visibility="protected" />
+      <methodref name="DoHandleMessage" visibility="protected" />
+      <methodref name="Loaded" visibility="public" />
+      <methodref name="DoPause" visibility="protected" />
+      <methodref name="Create" visibility="public" />
+      <methodref name="Destroy" visibility="public" />
+      <methodref name="Assign" visibility="public" />
+      <methodref name="ReadZip" visibility="public" />
+      <methodref name="UnZip" visibility="public" />
+      <methodref name="UnZipSelected" visibility="public" />
+      <methodref name="ClearSelected" visibility="public" />
+      <methodref name="ClearZip" visibility="public" />
+      <methodref name="FillList" visibility="public" />
+      <methodref name="Sort" visibility="public" />
+      <methodref name="CancelTheOperation" visibility="public" />
+      <methodref name="PauseTheOperation" visibility="public" />
+      <methodref name="RestartTheOperation" visibility="public" />
+      <methodref name="AskForNewDisk" visibility="public" />
+      <methodref name="DefaultGetNextDisk" visibility="public" />
+      <methodref name="DefaultFileNameForSplitPart" visibility="public" />
+      <methodref name="DefaultHandleMessage" visibility="public" />
+      <methodref name="UnZipToStream" visibility="public" />
+      <methodref name="UnZipToStreamByIndex" visibility="public" />
+      <methodref name="UnZipToBuffer" visibility="public" />
+      <methodref name="UnZipToBufferByIndex" visibility="public" />
+      <methodref name="ZLibDecompressStream" visibility="public" />
+      <methodref name="ZLibDecompressBuffer" visibility="public" />
+      <methodref name="ZLibDecompressString" visibility="public" />
+      <methodref name="ResetFileIsOK" visibility="public" />
+      <methodref name="CheckArchive" visibility="public" />
+      <methodref name="DecryptHeaderByte" visibility="public" />
+      <methodref name="decrypt_buff" visibility="public" />
+      <methodref name="GetDecryptHeaderPtr" visibility="public" />
+      <methodref name="DecryptHeaderByteByPtr" visibility="public" />
+      <propertyref name="ArchiveStream" visibility="public" />
+      <propertyref name="Count" visibility="public" />
+      <propertyref name="Filename" visibility="public" />
+      <propertyref name="Pathname" visibility="public" />
+      <propertyref name="FullName" visibility="public" />
+      <propertyref name="CompressMethod" visibility="public" />
+      <propertyref name="CompressMethodStr" visibility="public" />
+      <propertyref name="DateTime" visibility="public" />
+      <propertyref name="Crc" visibility="public" />
+      <propertyref name="CompressedSize" visibility="public" />
+      <propertyref name="UnCompressedSize" visibility="public" />
+      <propertyref name="ExternalFileAttributes" visibility="public" />
+      <propertyref name="IsEncrypted" visibility="public" />
+      <propertyref name="FileHasComment" visibility="public" />
+      <propertyref name="FileComment" visibility="public" />
+      <propertyref name="FileIsOK" visibility="public" />
+      <propertyref name="DiskNo" visibility="public" />
+      <propertyref name="Selected" visibility="public" />
+      <propertyref name="ZipComment" visibility="public" />
+      <propertyref name="Password" visibility="public" />
+      <propertyref name="ZipHasComment" visibility="public" />
+      <propertyref name="NumDisks" visibility="public" />
+      <propertyref name="ZipSize" visibility="public" />
+      <propertyref name="CheckDiskLabels" visibility="public" />
+      <propertyref name="MultiMode" visibility="public" />
+      <propertyref name="Busy" visibility="public" />
+      <propertyref name="DecryptHeader" visibility="public" />
+      <propertyref name="NumSelected" visibility="public" />
+      <propertyref name="BufferLength" visibility="public" />
+      <propertyref name="ImproperZip" visibility="public" />
+      <propertyref name="BufferedStreamSize" visibility="public" />
+      <propertyref name="EncryptBeforeCompress" visibility="public" />
+      <propertyref name="OperationMode" visibility="public" />
+      <propertyref name="isZip64" visibility="public" />
+      <propertyref name="ThisVersion" visibility="published" />
+      <propertyref name="ThisBuild" visibility="published" />
+      <propertyref name="ZipName" visibility="published" />
+      <propertyref name="DestDir" visibility="published" />
+      <propertyref name="RootDir" visibility="published" />
+      <propertyref name="RelativePathList" visibility="published" />
+      <propertyref name="SortMode" visibility="published" />
+      <propertyref name="RecreateDirs" visibility="published" />
+      <propertyref name="OverwriteMode" visibility="published" />
+      <propertyref name="FilesList" visibility="published" />
+      <propertyref name="DoAll" visibility="published" />
+      <propertyref name="IncompleteZipMode" visibility="published" />
+      <propertyref name="KeepZipOpen" visibility="published" />
+      <propertyref name="DoProcessMessages" visibility="published" />
+      <propertyref name="RetainAttributes" visibility="published" />
+      <propertyref name="ReplaceReadOnly" visibility="published" />
+      <propertyref name="FlushFilesOnClose" visibility="published" />
+      <propertyref name="BlockMode" visibility="published" />
+      <eventref name="OnStartUnZipInfo" visibility="published" />
+      <eventref name="OnFilePercentDone" visibility="published" />
+      <eventref name="OnTotalPercentDone" visibility="published" />
+      <eventref name="OnStartUnZip" visibility="published" />
+      <eventref name="OnEndUnZip" visibility="published" />
+      <eventref name="OnPromptForOverwrite" visibility="published" />
+      <eventref name="OnSkippingFile" visibility="published" />
+      <eventref name="OnBadPassword" visibility="published" />
+      <eventref name="OnBadCRC" visibility="published" />
+      <eventref name="OnInCompleteZip" visibility="published" />
+      <eventref name="OnGetNextDisk" visibility="published" />
+      <eventref name="OnUnZipComplete" visibility="published" />
+      <eventref name="OnGetNextBuffer" visibility="published" />
+      <eventref name="OnDecrypt" visibility="published" />
+      <propertyref name="OEMConvert" visibility="published" />
+      <eventref name="OnFileNameForSplitPart" visibility="published" />
+      <eventref name="OnHandleMessage" visibility="published" />
+      <ancestor name="TComponent" namespace="Classes">
+        <methodref name="GetComObject" visibility="private">
+        </methodref>
+        <methodref name="GetComponent" visibility="private">
+        </methodref>
+        <methodref name="GetComponentCount" visibility="private">
+        </methodref>
+        <methodref name="GetComponentIndex" visibility="private">
+        </methodref>
+        <methodref name="Insert" visibility="private">
+        </methodref>
+        <methodref name="ReadLeft" visibility="private">
+        </methodref>
+        <methodref name="ReadTop" visibility="private">
+        </methodref>
+        <methodref name="Remove" visibility="private">
+        </methodref>
+        <methodref name="RemoveNotification" visibility="private">
+        </methodref>
+        <methodref name="SetComponentIndex" visibility="private">
+        </methodref>
+        <methodref name="SetReference" visibility="private">
+        </methodref>
+        <methodref name="WriteLeft" visibility="private">
+        </methodref>
+        <methodref name="WriteTop" visibility="private">
+        </methodref>
+        <methodref name="IntfGetComponent" visibility="private">
+        </methodref>
+        <methodref name="ChangeName" visibility="protected">
+        </methodref>
+        <methodref name="DefineProperties" visibility="public">
+        </methodref>
+        <methodref name="GetChildren" visibility="protected">
+        </methodref>
+        <methodref name="GetChildOwner" visibility="protected">
+        </methodref>
+        <methodref name="GetChildParent" visibility="protected">
+        </methodref>
+        <methodref name="GetOwner" visibility="protected">
+        </methodref>
+        <methodref name="Loaded" visibility="public">
+        </methodref>
+        <methodref name="Notification" visibility="public">
+        </methodref>
+        <methodref name="PaletteCreated" visibility="protected">
+        </methodref>
+        <methodref name="ReadState" visibility="public">
+        </methodref>
+        <methodref name="SetAncestor" visibility="protected">
+        </methodref>
+        <methodref name="SetDesigning" visibility="protected">
+        </methodref>
+        <methodref name="SetInline" visibility="protected">
+        </methodref>
+        <methodref name="SetDesignInstance" visibility="protected">
+        </methodref>
+        <methodref name="SetName" visibility="public">
+        </methodref>
+        <methodref name="SetChildOrder" visibility="protected">
+        </methodref>
+        <methodref name="SetParentComponent" visibility="protected">
+        </methodref>
+        <methodref name="Updating" visibility="protected">
+        </methodref>
+        <methodref name="Updated" visibility="protected">
+        </methodref>
+        <methodref name="UpdateRegistry" visibility="public">
+        </methodref>
+        <methodref name="ValidateRename" visibility="public">
+        </methodref>
+        <methodref name="ValidateContainer" visibility="protected">
+        </methodref>
+        <methodref name="ValidateInsert" visibility="protected">
+        </methodref>
+        <methodref name="WriteState" visibility="public">
+        </methodref>
+        <methodref name="QueryInterface" visibility="public">
+        </methodref>
+        <methodref name="_AddRef" visibility="protected">
+        </methodref>
+        <methodref name="_Release" visibility="protected">
+        </methodref>
+        <methodref name="GetTypeInfoCount" visibility="protected">
+        </methodref>
+        <methodref name="GetTypeInfo" visibility="protected">
+        </methodref>
+        <methodref name="GetIDsOfNames" visibility="protected">
+        </methodref>
+        <methodref name="Invoke" visibility="protected">
+        </methodref>
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="DestroyComponents" visibility="public">
+        </methodref>
+        <methodref name="Destroying" visibility="public">
+        </methodref>
+        <methodref name="ExecuteAction" visibility="public">
+        </methodref>
+        <methodref name="FindComponent" visibility="public">
+        </methodref>
+        <methodref name="FreeNotification" visibility="public">
+        </methodref>
+        <methodref name="RemoveFreeNotification" visibility="public">
+        </methodref>
+        <methodref name="FreeOnRelease" visibility="public">
+        </methodref>
+        <methodref name="GetEnumerator" visibility="public">
+        </methodref>
+        <methodref name="GetParentComponent" visibility="public">
+        </methodref>
+        <methodref name="GetNamePath" visibility="public">
+        </methodref>
+        <methodref name="HasParent" visibility="public">
+        </methodref>
+        <methodref name="InsertComponent" visibility="public">
+        </methodref>
+        <methodref name="RemoveComponent" visibility="public">
+        </methodref>
+        <methodref name="SetSubComponent" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="UpdateAction" visibility="public">
+        </methodref>
+        <methodref name="IsImplementorOf" visibility="public">
+        </methodref>
+        <methodref name="ReferenceInterface" visibility="public">
+        </methodref>
+        <propertyref name="ComObject" visibility="public">
+        </propertyref>
+        <propertyref name="Components" visibility="public">
+        </propertyref>
+        <propertyref name="ComponentCount" visibility="public">
+        </propertyref>
+        <propertyref name="ComponentIndex" visibility="public">
+        </propertyref>
+        <propertyref name="ComponentState" visibility="public">
+        </propertyref>
+        <propertyref name="ComponentStyle" visibility="public">
+        </propertyref>
+        <propertyref name="DesignInfo" visibility="public">
+        </propertyref>
+        <propertyref name="Owner" visibility="public">
+        </propertyref>
+        <propertyref name="VCLComObject" visibility="public">
+        </propertyref>
+        <propertyref name="Name" visibility="published">
+        </propertyref>
+        <propertyref name="Tag" visibility="published">
+        </propertyref>
+        <ancestor name="TPersistent" namespace="Classes">
+          <methodref name="AssignError" visibility="private">
+          </methodref>
+          <methodref name="AssignTo" visibility="public">
+          </methodref>
+          <methodref name="DefineProperties" visibility="public">
+          </methodref>
+          <methodref name="GetOwner" visibility="protected">
+          </methodref>
+          <methodref name="Destroy" visibility="public">
+          </methodref>
+          <methodref name="Assign" visibility="public">
+          </methodref>
+          <methodref name="GetNamePath" visibility="public">
+          </methodref>
+          <ancestor name="TObject" namespace="System">
+            <methodref name="Create" visibility="public">
+            </methodref>
+            <methodref name="Free" visibility="public">
+            </methodref>
+            <methodref name="InitInstance" visibility="public">
+            </methodref>
+            <methodref name="CleanupInstance" visibility="public">
+            </methodref>
+            <methodref name="ClassType" visibility="public">
+            </methodref>
+            <methodref name="ClassName" visibility="public">
+            </methodref>
+            <methodref name="ClassNameIs" visibility="public">
+            </methodref>
+            <methodref name="ClassParent" visibility="public">
+            </methodref>
+            <methodref name="ClassInfo" visibility="public">
+            </methodref>
+            <methodref name="InstanceSize" visibility="public">
+            </methodref>
+            <methodref name="InheritsFrom" visibility="public">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public">
+            </methodref>
+            <methodref name="MethodName" visibility="public">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public">
+            </methodref>
+            <methodref name="GetInterface" visibility="public">
+            </methodref>
+            <methodref name="GetInterfaceEntry" visibility="public">
+            </methodref>
+            <methodref name="GetInterfaceTable" visibility="public">
+            </methodref>
+            <methodref name="SafeCallException" visibility="public">
+            </methodref>
+            <methodref name="AfterConstruction" visibility="public">
+            </methodref>
+            <methodref name="BeforeDestruction" visibility="public">
+            </methodref>
+            <methodref name="Dispatch" visibility="public">
+            </methodref>
+            <methodref name="DefaultHandler" visibility="public">
+            </methodref>
+            <methodref name="NewInstance" visibility="public">
+            </methodref>
+            <methodref name="FreeInstance" visibility="public">
+            </methodref>
+            <methodref name="Destroy" visibility="public">
+            </methodref>
+          </ancestor>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="FPackLevel" type="Integer" visibility="private" />
+      <field name="FRecurse" type="Boolean" visibility="private" />
+      <field name="FDispose" type="Boolean" visibility="private" />
+      <field name="FStorePaths" type="Boolean" visibility="private" />
+      <field name="FRelativePaths" type="Boolean" visibility="private" />
+      <field name="FStoreVolumes" type="Boolean" visibility="private" />
+      <field name="FZipAction" type="TZipAction" visibility="private" />
+      <field name="FBlockSize" type="Int64" visibility="private" />
+      <field name="FMultiZipInfo" type="TMultiZipInfo" visibility="private" />
+      <field name="FStore83Names" type="Boolean" visibility="private" />
+      <field name="FTempPath" type="string" visibility="private" />
+      <field name="FSkipIfArchiveBitNotSet" type="Boolean" visibility="private" />
+      <field name="FResetArchiveBitOnZip" type="Boolean" visibility="private" />
+      <field name="FExcludeList" type="TStrings" visibility="private" />
+      <field name="FNoCompressList" type="TStrings" visibility="private" />
+      <field name="FOnZipComplete" type="TZipComplete" visibility="private" />
+      <field name="FOnStartZipInfo" type="TStartZipInfo" visibility="private" />
+      <field name="FOnStartZip" type="TStartZipEvent" visibility="private" />
+      <field name="FOnDisposeFile" type="TDisposeEvent" visibility="private" />
+      <field name="FOnEndZip" type="TEndZipFileEvent" visibility="private" />
+      <field name="FOnDeleteEntry" type="TDeleteEvent" visibility="private" />
+      <field name="FOnNoSuchFile" type="TNoSuchFileEvent" visibility="private" />
+      <field name="FOnUpdate" type="TUpdateEvent" visibility="private" />
+      <field name="FOnPrepareNextDisk" type="TPrepareNextDisk" visibility="private" />
+      <field name="FOnRecursingFile" type="TOnRecursingFile" visibility="private" />
+      <field name="FOnEncrypt" type="TEncryptEvent" visibility="private" />
+      <field name="FOnStartSpanCopy" type="TOnStartSpanCopy" visibility="private" />
+      <field name="FOnGetNextStream" type="TOnGetNextStreamEvent" visibility="private" />
+      <field name="AmountWritten" type="Int64" visibility="private" />
+      <field name="AmountToWrite" type="Int64" visibility="private" />
+      <field name="FilenameSize" type="Int64" visibility="private" />
+      <field name="UsingTempFile" type="Boolean" visibility="private" />
+      <field name="CreatingSFX" type="Boolean" visibility="private" />
+      <field name="SFXStubFile" type="TLFNFileStream" visibility="private" />
+      <field name="FPreserveStubs" type="Boolean" visibility="private" />
+      <field name="FAddDirEntries" type="Boolean" visibility="private" />
+      <field name="FFileOpenMode" type="Word" visibility="private" />
+      <field name="FSearchAttribute" type="Integer" visibility="private" />
+      <field name="FFreeStream" type="Boolean" visibility="private" />
+      <field name="zfile" type="TStream" visibility="protected" />
+      <field name="IFile" type="TStream" visibility="protected" />
+      <field name="mfile" type="TStream" visibility="protected" />
+      <field name="IFileName" type="string" visibility="protected" />
+      <field name="isize" type="Integer" visibility="protected" />
+      <field name="tmpfiles" type="TSortedZip" visibility="protected" />
+      <field name="tmpfiles2" type="TSortedZip" visibility="protected" />
+      <field name="tmpecrec" type="TEndCentral" visibility="protected" />
+      <field name="tmpfile_info" type="TZipHeaderInfo" visibility="protected" />
+      <field name="tmpZipName" type="string" visibility="protected" />
+      <field name="mZipName" type="string" visibility="protected" />
+      <field name="Deleting" type="Boolean" visibility="protected" />
+      <field name="FileBytes" type="Int64" visibility="protected" />
+      <field name="SaveNewName" type="string" visibility="protected" />
+      <field name="static_ltree" type="static_ltree_type" visibility="protected" />
+      <field name="static_dtree" type="static_dtree_type" visibility="protected" />
+      <field name="bl_count" visibility="protected">
+        <array name="bl_count" low="0" high="15">
+          <element type="Word" />
+        </array>
+      </field>
+      <field name="base_dist" visibility="protected">
+        <array name="base_dist" low="0" high="29">
+          <element type="Integer" />
+        </array>
+      </field>
+      <field name="length_code" visibility="protected">
+        <array name="length_code" low="0" high="255">
+          <element type="Byte" />
+        </array>
+      </field>
+      <field name="dist_code" visibility="protected">
+        <array name="dist_code" low="0" high="511">
+          <element type="Byte" />
+        </array>
+      </field>
+      <field name="base_length" visibility="protected">
+        <array name="base_length" low="0" high="28">
+          <element type="Integer" />
+        </array>
+      </field>
+      <field name="TRInitialized" type="Boolean" visibility="protected" />
+      <field name="window" type="windowtypePtr" visibility="protected" />
+      <field name="prev" type="prevtypePtr" visibility="protected" />
+      <field name="head" type="headtypePtr" visibility="protected" />
+      <field name="l_buf" type="l_buftypePtr" visibility="protected" />
+      <field name="d_buf" type="d_buftypePtr" visibility="protected" />
+      <field name="flag_buf" type="flag_buftypePtr" visibility="protected" />
+      <function name="zfwrite" visibility="protected">
+        <parameters>
+          <parameter name="buf" type="PByte" />
+          <parameter name="item_size" type="Integer" />
+          <parameter name="nb" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="zencode" visibility="protected">
+        <parameters>
+          <parameter name="c" type="Byte" />
+          <retval type="Byte" />
+        </parameters>
+      </function>
+      <function name="file_read" visibility="protected">
+        <parameters>
+          <parameter name="w" type="PByte" />
+          <parameter name="size" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="CreateTempZip" visibility="protected">
+      </procedure>
+      <function name="kpDeflate" visibility="protected">
+        <parameters>
+          <parameter name="totalRead" type="Int64" paramflags="var" />
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <function name="ProcessFiles" visibility="protected">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="AddFileToZip" visibility="protected">
+        <parameters>
+          <parameter name="FName" type="string" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="MoveFile" visibility="protected">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="MoveTempFile" visibility="protected">
+      </procedure>
+      <procedure name="StaticInit" visibility="protected">
+      </procedure>
+      <procedure name="CryptHead" visibility="protected">
+        <parameters>
+          <parameter name="passwrd" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="SetZipName" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="ZName" type="string" />
+        </parameters>
+      </procedure>
+      <function name="GetIsModified" visibility="protected">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="SetMultiZipInfo" visibility="protected">
+        <parameters>
+          <parameter name="Value" type="TMultiZipInfo" />
+        </parameters>
+      </procedure>
+      <function name="GetCheckDiskLabels" visibility="public" procflags="override">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="SetStoreVolumes" visibility="protected">
+        <parameters>
+          <parameter name="Value" type="Boolean" />
+        </parameters>
+      </procedure>
+      <function name="GetMultiMode" visibility="public" procflags="override">
+        <parameters>
+          <retval type="TMultiMode" />
+        </parameters>
+      </function>
+      <procedure name="SetCheckDiskLabels" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Value" type="Boolean" />
+        </parameters>
+      </procedure>
+      <procedure name="SetMultiMode" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Value" type="TMultiMode" />
+        </parameters>
+      </procedure>
+      <procedure name="ResetArchiveBit" visibility="protected">
+        <parameters>
+          <parameter name="AFileName" type="string" />
+        </parameters>
+      </procedure>
+      <function name="DiskRoom" visibility="protected">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <function name="RoomLeft" visibility="protected">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="NextPart" visibility="protected">
+      </procedure>
+      <procedure name="LabelDisk" visibility="protected">
+      </procedure>
+      <procedure name="SaveZipInfoToFile" visibility="protected">
+        <parameters>
+          <parameter name="Filename" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="SetDateTime" visibility="protected">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <parameter name="DT" type="TDateTime" />
+        </parameters>
+      </procedure>
+      <procedure name="SetPathname" visibility="protected">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <parameter name="Value" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="SetFilename" visibility="protected">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <parameter name="Value" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="SetStorePaths" visibility="protected">
+        <parameters>
+          <parameter name="Value" type="Boolean" />
+        </parameters>
+      </procedure>
+      <procedure name="SetRelativePaths" visibility="protected">
+        <parameters>
+          <parameter name="Value" type="Boolean" />
+        </parameters>
+      </procedure>
+      <function name="TemporaryPath" visibility="protected">
+        <parameters>
+          <retval type="string" />
+        </parameters>
+      </function>
+      <procedure name="SetExcludeList" visibility="protected">
+        <parameters>
+          <parameter name="Value" type="TStrings" />
+        </parameters>
+      </procedure>
+      <procedure name="SetNoCompressList" visibility="protected">
+        <parameters>
+          <parameter name="Value" type="TStrings" />
+        </parameters>
+      </procedure>
+      <function name="IsInExcludeList" visibility="protected">
+        <parameters>
+          <parameter name="N" type="string" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsInNoCompressList" visibility="protected">
+        <parameters>
+          <parameter name="N" type="string" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetsaHidden" visibility="protected">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="SetsaHidden" visibility="protected">
+        <parameters>
+          <parameter name="value" type="Boolean" />
+        </parameters>
+      </procedure>
+      <function name="GetsaSysFile" visibility="protected">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="SetsaSysFile" visibility="protected">
+        <parameters>
+          <parameter name="value" type="Boolean" />
+        </parameters>
+      </procedure>
+      <function name="GetsaReadOnly" visibility="protected">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="SetsaReadOnly" visibility="protected">
+        <parameters>
+          <parameter name="value" type="Boolean" />
+        </parameters>
+      </procedure>
+      <function name="GetsaArchive" visibility="protected">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="SetsaArchive" visibility="protected">
+        <parameters>
+          <parameter name="value" type="Boolean" />
+        </parameters>
+      </procedure>
+      <procedure name="ExpandForWildCards" visibility="protected">
+      </procedure>
+      <function name="ComparePath" visibility="protected">
+        <parameters>
+          <parameter name="P" type="string" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <procedure name="Loaded" visibility="public" procflags="override">
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="AOwner" type="TComponent" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <procedure name="Assign" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Source" type="TPersistent" />
+        </parameters>
+      </procedure>
+      <function name="Zip" visibility="public">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="ExpandFilesList" visibility="public">
+        <parameters>
+          <parameter name="NumFiles" type="Integer" paramflags="var" />
+          <parameter name="TotalBytes" type="Comp" paramflags="var" />
+        </parameters>
+      </procedure>
+      <function name="DeleteEntries" visibility="public">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="SaveModifiedZipFile" visibility="public">
+      </procedure>
+      <function name="ZipFromStream" visibility="public" procflags="overload">
+        <parameters>
+          <parameter name="theStream" type="TStream" />
+          <parameter name="FName" type="string" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="ZipFromStream" visibility="public" procflags="overload">
+        <parameters>
+          <parameter name="theStream" type="TStream" />
+          <parameter name="FName" type="string" />
+          <parameter name="FreeStreamWhenDone" type="Boolean" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="FixZip" visibility="public">
+        <parameters>
+          <parameter name="InputFile" type="string" />
+          <parameter name="OutputFile" type="string" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="MakeSFX" visibility="public">
+        <parameters>
+          <parameter name="SFXStub" type="string" />
+          <parameter name="ModHeaders" type="Boolean" />
+        </parameters>
+      </procedure>
+      <function name="MakeNewSFX" visibility="public">
+        <parameters>
+          <parameter name="SFXStub" type="string" />
+          <parameter name="FName" type="string" />
+          <parameter name="Options" type="PAnsiChar" />
+          <parameter name="OptionsLen" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="ZipFromBuffer" visibility="public">
+        <parameters>
+          <parameter name="Buffer" type="PAnsiChar" />
+          <parameter name="Amount" type="Integer" />
+          <parameter name="FName" type="string" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="SFXToZip" visibility="public">
+        <parameters>
+          <parameter name="DeleteSFX" type="Boolean" />
+        </parameters>
+      </procedure>
+      <procedure name="encrypt_buff" visibility="public">
+        <parameters>
+          <parameter name="buff" type="PByte" />
+          <parameter name="length" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="Split" visibility="public">
+        <parameters>
+          <parameter name="DeleteOriginal" type="Boolean" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="ZLibCompressStream" visibility="public">
+        <parameters>
+          <parameter name="inStream" type="TStream" />
+          <parameter name="outStream" type="TStream" />
+          <parameter name="HttpCompression" type="Boolean">
+            <value>
+              False
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <procedure name="ZLibCompressBuffer" visibility="public">
+        <parameters>
+          <parameter name="inBuffer" type="Pointer" paramflags="const" />
+          <parameter name="inSize" type="Integer" />
+          <parameter name="outBuffer" type="Pointer" paramflags="out" />
+          <parameter name="outSize" type="Integer" paramflags="out" />
+          <parameter name="HttpCompression" type="Boolean">
+            <value>
+              False
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <function name="ZLibCompressStr" visibility="public">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <parameter name="HttpCompression" type="Boolean">
+            <value>
+              False
+            </value>
+          </parameter>
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="ZLibCompressString" visibility="public">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <parameter name="HttpCompression" type="Boolean">
+            <value>
+              False
+            </value>
+          </parameter>
+          <retval type="string" />
+        </parameters>
+      </function>
+      <property name="DateTime" visibility="public" read="GetDateTime" write="SetDateTime" type="TDateTime" />
+      <property name="FileComment" visibility="public" read="GetFileComment" write="SetFileComment" type="string" />
+      <property name="ZipComment" visibility="public" read="GetZipComment" write="SetZipComment" type="string" />
+      <property name="IsModified" visibility="public" read="GetIsModified" type="Boolean" />
+      <property name="CheckDiskLabels" visibility="public" read="GetCheckDiskLabels" write="SetCheckDiskLabels" type="Boolean" />
+      <property name="MultiMode" visibility="public" read="GetMultiMode" write="SetMultiMode" type="TMultiMode" />
+      <property name="Pathname" visibility="public" read="GetPathname" write="SetPathname" type="string" />
+      <property name="Filename" visibility="public" read="GetFilename" write="SetFilename" type="string" />
+      <property name="PreserveStubs" visibility="public" read="FPreserveStubs" write="FPreserveStubs" type="Boolean" default="0" />
+      <property name="FileOpenMode" visibility="public" read="FFileOpenMode" write="FFileOpenMode" type="Word" default="64" />
+      <property name="PackLevel" visibility="published" read="FPackLevel" write="FPackLevel" type="Integer" default="6" />
+      <property name="Recurse" visibility="published" read="FRecurse" write="FRecurse" type="Boolean" default="0" />
+      <property name="Dispose" visibility="published" read="FDispose" write="FDispose" type="Boolean" default="0" />
+      <property name="StorePaths" visibility="published" read="FStorePaths" write="SetStorePaths" type="Boolean" default="0" />
+      <property name="RelativePaths" visibility="published" read="FRelativePaths" write="SetRelativePaths" type="Boolean" default="0" />
+      <property name="StoreVolumes" visibility="published" read="FStoreVolumes" write="SetStoreVolumes" type="Boolean" default="0" />
+      <property name="ZipAction" visibility="published" read="FZipAction" write="FZipAction" type="TZipAction" default="0" />
+      <property name="MultiZipInfo" visibility="published" read="FMultiZipInfo" write="SetMultiZipInfo" type="TMultiZipInfo" />
+      <property name="Store83Names" visibility="published" read="FStore83Names" write="FStore83Names" type="Boolean" default="0" />
+      <property name="TempPath" visibility="published" read="FTempPath" write="FTempPath" type="string" />
+      <property name="SkipIfArchiveBitNotSet" visibility="published" read="FSkipIfArchiveBitNotSet" write="FSkipIfArchiveBitNotSet" type="Boolean" default="0" />
+      <property name="ResetArchiveBitOnZip" visibility="published" read="FResetArchiveBitOnZip" write="FResetArchiveBitOnZip" type="Boolean" default="0" />
+      <property name="ExcludeList" visibility="published" read="FExcludeList" write="SetExcludeList" type="TStrings" />
+      <property name="NoCompressList" visibility="published" read="FNoCompressList" write="SetNoCompressList" type="TStrings" />
+      <property name="AddDirEntriesOnRecurse" visibility="published" read="FAddDirEntries" write="FAddDirEntries" type="Boolean" default="0" />
+      <property name="IncludeHiddenFiles" visibility="published" read="GetsaHidden" write="SetsaHidden" type="Boolean" default="0" />
+      <property name="IncludeSysFiles" visibility="published" read="GetsaSysFile" write="SetsaSysFile" type="Boolean" default="0" />
+      <property name="IncludeReadOnlyFiles" visibility="published" read="GetsaReadOnly" write="SetsaReadOnly" type="Boolean" default="1" />
+      <property name="IncludeArchiveFiles" visibility="published" read="GetsaArchive" write="SetsaArchive" type="Boolean" default="1" />
+      <event name="OnStartZip" visibility="published" read="FOnStartZip" write="FOnStartZip" type="TStartZipEvent" />
+      <event name="OnStartZipInfo" visibility="published" read="FOnStartZipInfo" write="FOnStartZipInfo" type="TStartZipInfo" />
+      <event name="OnEndZip" visibility="published" read="FOnEndZip" write="FOnEndZip" type="TEndZipFileEvent" />
+      <event name="OnDisposeFile" visibility="published" read="FOnDisposeFile" write="FOnDisposeFile" type="TDisposeEvent" />
+      <event name="OnDeleteEntry" visibility="published" read="FOnDeleteEntry" write="FOnDeleteEntry" type="TDeleteEvent" />
+      <event name="OnNoSuchFile" visibility="published" read="FOnNoSuchFile" write="FOnNoSuchFile" type="TNoSuchFileEvent" />
+      <event name="OnZipComplete" visibility="published" read="FOnZipComplete" write="FOnZipComplete" type="TZipComplete" />
+      <event name="OnUpdate" visibility="published" read="FOnUpdate" write="FOnUpdate" type="TUpdateEvent" />
+      <event name="OnPrepareNextDisk" visibility="published" read="FOnPrepareNextDisk" write="FOnPrepareNextDisk" type="TPrepareNextDisk" />
+      <event name="OnRecursingFile" visibility="published" read="FOnRecursingFile" write="FOnRecursingFile" type="TOnRecursingFile" />
+      <event name="OnEncrypt" visibility="published" read="FOnEncrypt" write="FOnEncrypt" type="TEncryptEvent" />
+      <event name="OnStartSpanCopy" visibility="published" read="FOnStartSpanCopy" write="FOnStartSpanCopy" type="TOnStartSpanCopy" />
+      <event name="OnGetNextStream" visibility="published" read="FOnGetNextStream" write="FOnGetNextStream" type="TOnGetNextStreamEvent" />
+    </members>
+  </class>
+  <procedure name="Register" visibility="public">
+  </procedure>
+</namespace>

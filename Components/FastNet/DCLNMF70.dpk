@@ -1,0 +1,67 @@
+package DCLNMF70;
+
+{$R *.res}
+{$R 'NMReg.dcr'}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS OFF}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD OFF}
+{$DEFINE RELEASE}
+
+requires
+  rtl,
+  vcl,
+  designide,
+  vclactnband,
+  vclx;
+
+contains
+  NM64Decode in 'NM64Decode.pas',
+  NM64Encode in 'NM64Encode.pas',
+  NMConst in 'NMConst.pas',
+  NMDayTim in 'NMDayTim.pas',
+  NMEcho in 'NMEcho.pas',
+  nmextstr in 'nmextstr.pas',
+  NMFIFOBuffer in 'NMFIFOBuffer.pas',
+  NMFileBuffer in 'NMFileBuffer.pas',
+  NMFngr in 'NMFngr.pas',
+  NMFtp in 'NMFtp.pas',
+  Nmhtml in 'Nmhtml.pas',
+  NMHttp in 'NMHttp.pas',
+  NMICMP in 'NMICMP.pas',
+  NMMSG in 'NMMSG.pas',
+  NMNNTP in 'NMNNTP.pas',
+  NMpop3 in 'NMpop3.pas',
+  NMReg in 'NMReg.pas',
+  NMS_Huge in 'NMS_Huge.pas',
+  NMs_stream in 'NMs_stream.pas',
+  NMsmtp in 'NMsmtp.pas',
+  NMSTRM in 'NMSTRM.pas',
+  NMTime in 'NMTime.pas',
+  NMUDP in 'NMUDP.pas',
+  nmurl in 'nmurl.pas',
+  NMUUDecode in 'NMUUDecode.pas',
+  NMUUE in 'NMUUE.pas',
+  NMUUEncode in 'NMUUEncode.pas',
+  Psock in 'Psock.pas',
+  URLParse in 'URLParse.pas';
+
+end.

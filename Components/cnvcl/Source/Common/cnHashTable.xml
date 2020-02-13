@@ -1,0 +1,889 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="CnHashTable">
+  <const name="DefaultAutoRehashPoint" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <variable name="MaxBucketsCount" type="Integer" visibility="public" />
+  <variable name="MinBucketsCount" type="Integer" visibility="public" />
+  <class name="TCnBucket">
+    <ancestor name="TStringList" namespace="Classes">
+      <methodref name="ExchangeItems" visibility="private">
+      </methodref>
+      <methodref name="Grow" visibility="private">
+      </methodref>
+      <methodref name="QuickSort" visibility="private">
+      </methodref>
+      <methodref name="SetSorted" visibility="private">
+      </methodref>
+      <methodref name="SetCaseSensitive" visibility="private">
+      </methodref>
+      <methodref name="Changed" visibility="public">
+      </methodref>
+      <methodref name="Changing" visibility="public">
+      </methodref>
+      <methodref name="Get" visibility="public">
+      </methodref>
+      <methodref name="GetCapacity" visibility="public">
+      </methodref>
+      <methodref name="GetCount" visibility="public">
+      </methodref>
+      <methodref name="GetObject" visibility="public">
+      </methodref>
+      <methodref name="Put" visibility="public">
+      </methodref>
+      <methodref name="PutObject" visibility="public">
+      </methodref>
+      <methodref name="SetCapacity" visibility="public">
+      </methodref>
+      <methodref name="SetUpdateState" visibility="public">
+      </methodref>
+      <methodref name="CompareStrings" visibility="public">
+      </methodref>
+      <methodref name="InsertItem" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+      <methodref name="Add" visibility="public">
+      </methodref>
+      <methodref name="AddObject" visibility="public">
+      </methodref>
+      <methodref name="Clear" visibility="public">
+      </methodref>
+      <methodref name="Delete" visibility="public">
+      </methodref>
+      <methodref name="Exchange" visibility="public">
+      </methodref>
+      <methodref name="Find" visibility="public">
+      </methodref>
+      <methodref name="IndexOf" visibility="public">
+      </methodref>
+      <methodref name="Insert" visibility="public">
+      </methodref>
+      <methodref name="InsertObject" visibility="public">
+      </methodref>
+      <methodref name="Sort" visibility="public">
+      </methodref>
+      <methodref name="CustomSort" visibility="public">
+      </methodref>
+      <propertyref name="Duplicates" visibility="public">
+      </propertyref>
+      <propertyref name="Sorted" visibility="public">
+      </propertyref>
+      <propertyref name="CaseSensitive" visibility="public">
+      </propertyref>
+      <eventref name="OnChange" visibility="public">
+      </eventref>
+      <eventref name="OnChanging" visibility="public">
+      </eventref>
+      <ancestor name="TStrings" namespace="Classes">
+        <methodref name="GetCommaText" visibility="private">
+        </methodref>
+        <methodref name="GetDelimitedText" visibility="private">
+        </methodref>
+        <methodref name="GetName" visibility="private">
+        </methodref>
+        <methodref name="GetValue" visibility="private">
+        </methodref>
+        <methodref name="ReadData" visibility="private">
+        </methodref>
+        <methodref name="SetCommaText" visibility="private">
+        </methodref>
+        <methodref name="SetDelimitedText" visibility="private">
+        </methodref>
+        <methodref name="SetStringsAdapter" visibility="private">
+        </methodref>
+        <methodref name="SetValue" visibility="private">
+        </methodref>
+        <methodref name="WriteData" visibility="private">
+        </methodref>
+        <methodref name="GetDelimiter" visibility="private">
+        </methodref>
+        <methodref name="SetDelimiter" visibility="private">
+        </methodref>
+        <methodref name="GetLineBreak" visibility="private">
+        </methodref>
+        <methodref name="SetLineBreak" visibility="private">
+        </methodref>
+        <methodref name="GetQuoteChar" visibility="private">
+        </methodref>
+        <methodref name="SetQuoteChar" visibility="private">
+        </methodref>
+        <methodref name="GetNameValueSeparator" visibility="private">
+        </methodref>
+        <methodref name="SetNameValueSeparator" visibility="private">
+        </methodref>
+        <methodref name="GetStrictDelimiter" visibility="private">
+        </methodref>
+        <methodref name="SetStrictDelimiter" visibility="private">
+        </methodref>
+        <methodref name="GetValueFromIndex" visibility="private">
+        </methodref>
+        <methodref name="SetValueFromIndex" visibility="private">
+        </methodref>
+        <methodref name="DefineProperties" visibility="public">
+        </methodref>
+        <methodref name="Error" visibility="protected">
+        </methodref>
+        <methodref name="Error" visibility="protected">
+        </methodref>
+        <methodref name="ExtractName" visibility="protected">
+        </methodref>
+        <methodref name="Get" visibility="public">
+        </methodref>
+        <methodref name="GetCapacity" visibility="public">
+        </methodref>
+        <methodref name="GetCount" visibility="public">
+        </methodref>
+        <methodref name="GetObject" visibility="public">
+        </methodref>
+        <methodref name="GetTextStr" visibility="public">
+        </methodref>
+        <methodref name="Put" visibility="public">
+        </methodref>
+        <methodref name="PutObject" visibility="public">
+        </methodref>
+        <methodref name="SetCapacity" visibility="public">
+        </methodref>
+        <methodref name="SetTextStr" visibility="public">
+        </methodref>
+        <methodref name="SetUpdateState" visibility="public">
+        </methodref>
+        <propertyref name="UpdateCount" visibility="protected">
+        </propertyref>
+        <methodref name="CompareStrings" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+        <methodref name="Add" visibility="public">
+        </methodref>
+        <methodref name="AddObject" visibility="public">
+        </methodref>
+        <methodref name="Append" visibility="public">
+        </methodref>
+        <methodref name="AddStrings" visibility="public">
+        </methodref>
+        <methodref name="Assign" visibility="public">
+        </methodref>
+        <methodref name="BeginUpdate" visibility="public">
+        </methodref>
+        <methodref name="Clear" visibility="public">
+        </methodref>
+        <methodref name="Delete" visibility="public">
+        </methodref>
+        <methodref name="EndUpdate" visibility="public">
+        </methodref>
+        <methodref name="Equals" visibility="public">
+        </methodref>
+        <methodref name="Exchange" visibility="public">
+        </methodref>
+        <methodref name="GetEnumerator" visibility="public">
+        </methodref>
+        <methodref name="GetText" visibility="public">
+        </methodref>
+        <methodref name="IndexOf" visibility="public">
+        </methodref>
+        <methodref name="IndexOfName" visibility="public">
+        </methodref>
+        <methodref name="IndexOfObject" visibility="public">
+        </methodref>
+        <methodref name="Insert" visibility="public">
+        </methodref>
+        <methodref name="InsertObject" visibility="public">
+        </methodref>
+        <methodref name="LoadFromFile" visibility="public">
+        </methodref>
+        <methodref name="LoadFromStream" visibility="public">
+        </methodref>
+        <methodref name="Move" visibility="public">
+        </methodref>
+        <methodref name="SaveToFile" visibility="public">
+        </methodref>
+        <methodref name="SaveToStream" visibility="public">
+        </methodref>
+        <methodref name="SetText" visibility="public">
+        </methodref>
+        <propertyref name="Capacity" visibility="public">
+        </propertyref>
+        <propertyref name="CommaText" visibility="public">
+        </propertyref>
+        <propertyref name="Count" visibility="public">
+        </propertyref>
+        <propertyref name="Delimiter" visibility="public">
+        </propertyref>
+        <propertyref name="DelimitedText" visibility="public">
+        </propertyref>
+        <propertyref name="LineBreak" visibility="public">
+        </propertyref>
+        <propertyref name="Names" visibility="public">
+        </propertyref>
+        <propertyref name="Objects" visibility="public">
+        </propertyref>
+        <propertyref name="QuoteChar" visibility="public">
+        </propertyref>
+        <propertyref name="Values" visibility="public">
+        </propertyref>
+        <propertyref name="ValueFromIndex" visibility="public">
+        </propertyref>
+        <propertyref name="NameValueSeparator" visibility="public">
+        </propertyref>
+        <propertyref name="StrictDelimiter" visibility="public">
+        </propertyref>
+        <propertyref name="Strings" visibility="public">
+        </propertyref>
+        <propertyref name="Text" visibility="public">
+        </propertyref>
+        <propertyref name="StringsAdapter" visibility="public">
+        </propertyref>
+        <ancestor name="TPersistent" namespace="Classes">
+          <methodref name="AssignError" visibility="private">
+          </methodref>
+          <methodref name="AssignTo" visibility="public">
+          </methodref>
+          <methodref name="DefineProperties" visibility="public">
+          </methodref>
+          <methodref name="GetOwner" visibility="protected">
+          </methodref>
+          <methodref name="Destroy" visibility="public">
+          </methodref>
+          <methodref name="Assign" visibility="public">
+          </methodref>
+          <methodref name="GetNamePath" visibility="public">
+          </methodref>
+          <ancestor name="TObject" namespace="System">
+            <methodref name="Create" visibility="public">
+            </methodref>
+            <methodref name="Free" visibility="public">
+            </methodref>
+            <methodref name="InitInstance" visibility="public">
+            </methodref>
+            <methodref name="CleanupInstance" visibility="public">
+            </methodref>
+            <methodref name="ClassType" visibility="public">
+            </methodref>
+            <methodref name="ClassName" visibility="public">
+            </methodref>
+            <methodref name="ClassNameIs" visibility="public">
+            </methodref>
+            <methodref name="ClassParent" visibility="public">
+            </methodref>
+            <methodref name="ClassInfo" visibility="public">
+            </methodref>
+            <methodref name="InstanceSize" visibility="public">
+            </methodref>
+            <methodref name="InheritsFrom" visibility="public">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public">
+            </methodref>
+            <methodref name="MethodName" visibility="public">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public">
+            </methodref>
+            <methodref name="GetInterface" visibility="public">
+            </methodref>
+            <methodref name="GetInterfaceEntry" visibility="public">
+            </methodref>
+            <methodref name="GetInterfaceTable" visibility="public">
+            </methodref>
+            <methodref name="SafeCallException" visibility="public">
+            </methodref>
+            <methodref name="AfterConstruction" visibility="public">
+            </methodref>
+            <methodref name="BeforeDestruction" visibility="public">
+            </methodref>
+            <methodref name="Dispatch" visibility="public">
+            </methodref>
+            <methodref name="DefaultHandler" visibility="public">
+            </methodref>
+            <methodref name="NewInstance" visibility="public">
+            </methodref>
+            <methodref name="FreeInstance" visibility="public">
+            </methodref>
+            <methodref name="Destroy" visibility="public">
+            </methodref>
+          </ancestor>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <members>
+      <function name="CompareStrings" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="S1" type="string" paramflags="const" />
+          <parameter name="S2" type="string" paramflags="const" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="InitCapacity" type="Integer" paramflags="const" />
+        </parameters>
+      </constructor>
+      <function name="AddObject" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="S" type="string" paramflags="const" />
+          <parameter name="AObject" type="TObject" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="EnsureAddObject" visibility="public">
+        <parameters>
+          <parameter name="S" type="string" paramflags="const" />
+          <parameter name="AObject" type="TObject" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <array name="TCnBucketDynArray">
+    <element type="TCnBucket" />
+  </array>
+  <class name="TCnHashTable">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FUpdateCount" type="Integer" visibility="private" />
+      <field name="FCount" type="Integer" visibility="private" />
+      <field name="FBucketCounts" type=".3" visibility="private" />
+      <field name="FAutoRehashPoint" type="Integer" visibility="private" />
+      <field name="FSortedList" type="TCnBucket" visibility="private" />
+      <procedure name="DoRehash" visibility="private">
+        <parameters>
+          <parameter name="iCount" type="Integer" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="Rehash" visibility="private">
+      </procedure>
+      <procedure name="NeedRebuildBucketCounts" visibility="private">
+      </procedure>
+      <field name="FRehashCount" type="Integer" visibility="protected" />
+      <function name="GetCount" visibility="public" procflags="virtual">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetKeys" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="Index" type="Integer" paramflags="const" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="GetNewBucketCount" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="OldSize" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="Find" visibility="protected">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <retval type="TCnBucket" />
+        </parameters>
+      </function>
+      <function name="HashOf" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <function name="LimitBucketCount" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="i" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="BuildBucketCounts" visibility="protected">
+      </procedure>
+      <procedure name="RehashTo" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="NewSize" type="Integer" />
+          <parameter name="InitCapacity" type="Integer" paramflags="const">
+            <value>
+              $0
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <procedure name="SetUpdateState" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="Updating" type="Boolean" />
+        </parameters>
+      </procedure>
+      <property name="UpdateCount" visibility="protected" read="FUpdateCount" type="Integer" />
+      <field name="Buckets" type="TCnBucketDynArray" visibility="public" />
+      <field name="FBucketCount" type="Integer" visibility="public" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="BucketSize" type="Integer" paramflags="const">
+            <value>
+              $100
+            </value>
+          </parameter>
+          <parameter name="InitCapacity" type="Integer" paramflags="const">
+            <value>
+              $0
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <function name="Exists" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="ExistsPos" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetValues" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <retval type="TObject" />
+        </parameters>
+      </function>
+      <procedure name="SetValues" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <parameter name="Value" type="TObject" />
+        </parameters>
+      </procedure>
+      <function name="Info" visibility="public" procflags="virtual">
+        <parameters>
+          <retval type="string" />
+        </parameters>
+      </function>
+      <procedure name="BeginUpdate" visibility="public">
+      </procedure>
+      <procedure name="EndUpdate" visibility="public">
+      </procedure>
+      <procedure name="Add" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <parameter name="obj" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="Clear" visibility="public" procflags="virtual">
+      </procedure>
+      <procedure name="Delete" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="Put" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <parameter name="obj" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="BuildSortedList" visibility="public">
+      </procedure>
+      <property name="AutoRehashPoint" visibility="public" read="FAutoRehashPoint" write="FAutoRehashPoint" type="Integer" default="128" />
+      <property name="Count" visibility="public" read="GetCount" type="Integer" />
+      <property name="Keys" visibility="public" read="GetKeys" type="string" />
+      <property name="Values" visibility="public" read="GetValues" write="SetValues" type="TObject" />
+      <property name="SortedList" visibility="public" read="FSortedList" type="TCnBucket" />
+    </members>
+  </class>
+  <class name="TCnHashTableSmall">
+    <ancestor name="TCnHashTable" namespace="CnHashTable">
+      <methodref name="DoRehash" visibility="private" />
+      <methodref name="Rehash" visibility="private" />
+      <methodref name="NeedRebuildBucketCounts" visibility="private" />
+      <methodref name="GetCount" visibility="public" />
+      <methodref name="GetKeys" visibility="public" />
+      <methodref name="GetNewBucketCount" visibility="public" />
+      <methodref name="Find" visibility="protected" />
+      <methodref name="HashOf" visibility="public" />
+      <methodref name="LimitBucketCount" visibility="public" />
+      <methodref name="BuildBucketCounts" visibility="protected" />
+      <methodref name="RehashTo" visibility="public" />
+      <methodref name="SetUpdateState" visibility="public" />
+      <propertyref name="UpdateCount" visibility="protected" />
+      <methodref name="Create" visibility="public" />
+      <methodref name="Destroy" visibility="public" />
+      <methodref name="Exists" visibility="public" />
+      <methodref name="ExistsPos" visibility="public" />
+      <methodref name="GetValues" visibility="public" />
+      <methodref name="SetValues" visibility="public" />
+      <methodref name="Info" visibility="public" />
+      <methodref name="BeginUpdate" visibility="public" />
+      <methodref name="EndUpdate" visibility="public" />
+      <methodref name="Add" visibility="public" />
+      <methodref name="Clear" visibility="public" />
+      <methodref name="Delete" visibility="public" />
+      <methodref name="Put" visibility="public" />
+      <methodref name="BuildSortedList" visibility="public" />
+      <propertyref name="AutoRehashPoint" visibility="public" />
+      <propertyref name="Count" visibility="public" />
+      <propertyref name="Keys" visibility="public" />
+      <propertyref name="Values" visibility="public" />
+      <propertyref name="SortedList" visibility="public" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <function name="HashOf" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <procedure name="RehashTo" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="NewSize" type="Integer" />
+          <parameter name="InitCapacity" type="Integer" paramflags="const">
+            <value>
+              $0
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="InitCapacity" type="Integer" paramflags="const">
+            <value>
+              $0
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+  <class name="TCnHashTableMedium">
+    <ancestor name="TCnHashTable" namespace="CnHashTable">
+      <methodref name="DoRehash" visibility="private" />
+      <methodref name="Rehash" visibility="private" />
+      <methodref name="NeedRebuildBucketCounts" visibility="private" />
+      <methodref name="GetCount" visibility="public" />
+      <methodref name="GetKeys" visibility="public" />
+      <methodref name="GetNewBucketCount" visibility="public" />
+      <methodref name="Find" visibility="protected" />
+      <methodref name="HashOf" visibility="public" />
+      <methodref name="LimitBucketCount" visibility="public" />
+      <methodref name="BuildBucketCounts" visibility="protected" />
+      <methodref name="RehashTo" visibility="public" />
+      <methodref name="SetUpdateState" visibility="public" />
+      <propertyref name="UpdateCount" visibility="protected" />
+      <methodref name="Create" visibility="public" />
+      <methodref name="Destroy" visibility="public" />
+      <methodref name="Exists" visibility="public" />
+      <methodref name="ExistsPos" visibility="public" />
+      <methodref name="GetValues" visibility="public" />
+      <methodref name="SetValues" visibility="public" />
+      <methodref name="Info" visibility="public" />
+      <methodref name="BeginUpdate" visibility="public" />
+      <methodref name="EndUpdate" visibility="public" />
+      <methodref name="Add" visibility="public" />
+      <methodref name="Clear" visibility="public" />
+      <methodref name="Delete" visibility="public" />
+      <methodref name="Put" visibility="public" />
+      <methodref name="BuildSortedList" visibility="public" />
+      <propertyref name="AutoRehashPoint" visibility="public" />
+      <propertyref name="Count" visibility="public" />
+      <propertyref name="Keys" visibility="public" />
+      <propertyref name="Values" visibility="public" />
+      <propertyref name="SortedList" visibility="public" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <function name="HashOf" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <procedure name="RehashTo" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="NewSize" type="Integer" />
+          <parameter name="InitCapacity" type="Integer" paramflags="const">
+            <value>
+              $0
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="InitCapacity" type="Integer" paramflags="const">
+            <value>
+              $0
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+  <class name="TCnHashTableBig">
+    <ancestor name="TCnHashTable" namespace="CnHashTable">
+      <methodref name="DoRehash" visibility="private" />
+      <methodref name="Rehash" visibility="private" />
+      <methodref name="NeedRebuildBucketCounts" visibility="private" />
+      <methodref name="GetCount" visibility="public" />
+      <methodref name="GetKeys" visibility="public" />
+      <methodref name="GetNewBucketCount" visibility="public" />
+      <methodref name="Find" visibility="protected" />
+      <methodref name="HashOf" visibility="public" />
+      <methodref name="LimitBucketCount" visibility="public" />
+      <methodref name="BuildBucketCounts" visibility="protected" />
+      <methodref name="RehashTo" visibility="public" />
+      <methodref name="SetUpdateState" visibility="public" />
+      <propertyref name="UpdateCount" visibility="protected" />
+      <methodref name="Create" visibility="public" />
+      <methodref name="Destroy" visibility="public" />
+      <methodref name="Exists" visibility="public" />
+      <methodref name="ExistsPos" visibility="public" />
+      <methodref name="GetValues" visibility="public" />
+      <methodref name="SetValues" visibility="public" />
+      <methodref name="Info" visibility="public" />
+      <methodref name="BeginUpdate" visibility="public" />
+      <methodref name="EndUpdate" visibility="public" />
+      <methodref name="Add" visibility="public" />
+      <methodref name="Clear" visibility="public" />
+      <methodref name="Delete" visibility="public" />
+      <methodref name="Put" visibility="public" />
+      <methodref name="BuildSortedList" visibility="public" />
+      <propertyref name="AutoRehashPoint" visibility="public" />
+      <propertyref name="Count" visibility="public" />
+      <propertyref name="Keys" visibility="public" />
+      <propertyref name="Values" visibility="public" />
+      <propertyref name="SortedList" visibility="public" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <function name="HashOf" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="s" type="string" paramflags="const" />
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <procedure name="RehashTo" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="NewSize" type="Integer" />
+          <parameter name="InitCapacity" type="Integer" paramflags="const">
+            <value>
+              $0
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="InitCapacity" type="Integer" paramflags="const">
+            <value>
+              $10
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+</namespace>

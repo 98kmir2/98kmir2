@@ -1,0 +1,617 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="kpCntn">
+  <const name="cMaxList" type="Integer">
+    <value>
+      $1FFFFFFF
+    </value>
+  </const>
+  <pointer name="pObjects" type="TObjects" indircnt="1" />
+  <array name="TObjects" low="0" high="536870910">
+    <element type="Pointer" />
+  </array>
+  <class name="TObjectList">
+    <ancestor name="TPersistent" namespace="Classes">
+      <methodref name="AssignError" visibility="private">
+      </methodref>
+      <methodref name="AssignTo" visibility="public">
+      </methodref>
+      <methodref name="DefineProperties" visibility="public">
+      </methodref>
+      <methodref name="GetOwner" visibility="protected">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+      <methodref name="Assign" visibility="public">
+      </methodref>
+      <methodref name="GetNamePath" visibility="public">
+      </methodref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="FDestroy" type="Boolean" visibility="private" />
+      <field name="FList" type="pObjects" visibility="private" />
+      <field name="FCount" type="Integer" visibility="private" />
+      <field name="FCapacity" type="Integer" visibility="private" />
+      <procedure name="Error" visibility="public" procflags="virtual">
+      </procedure>
+      <procedure name="Grow" visibility="public" procflags="virtual">
+      </procedure>
+      <procedure name="Put" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <parameter name="Item" type="TObject" />
+        </parameters>
+      </procedure>
+      <function name="Get" visibility="protected">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <retval type="TObject" />
+        </parameters>
+      </function>
+      <procedure name="SetCapacity" visibility="protected">
+        <parameters>
+          <parameter name="NewCapacity" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="SetCount" visibility="protected">
+        <parameters>
+          <parameter name="NewCount" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="Allocate" visibility="protected">
+        <parameters>
+          <parameter name="Size" type="Integer" />
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <procedure name="FreeItem" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="AnItem" type="Pointer" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <constructor name="CreateWithOptions" visibility="public">
+        <parameters>
+          <parameter name="DestroyObjects" type="Boolean" />
+          <parameter name="InitialCapacity" type="Integer" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <function name="AddObject" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="Item" type="TObject" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="Clear" visibility="public" procflags="virtual">
+      </procedure>
+      <procedure name="Delete" visibility="public">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="DeleteAll" visibility="public">
+      </procedure>
+      <procedure name="FreeAll" visibility="public">
+      </procedure>
+      <procedure name="FreeAt" visibility="public">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="FreeObject" visibility="public">
+        <parameters>
+          <parameter name="Item" type="TObject" />
+        </parameters>
+      </procedure>
+      <function name="IndexOf" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="Item" type="TObject" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="Insert" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <parameter name="Item" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="Move" visibility="public">
+        <parameters>
+          <parameter name="CurIndex" type="Integer" />
+          <parameter name="NewIndex" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="Pack" visibility="public">
+      </procedure>
+      <constructor name="CreateFromStream" visibility="public">
+        <parameters>
+          <parameter name="FileName" type="string" paramflags="const" />
+        </parameters>
+      </constructor>
+      <procedure name="SaveToStream" visibility="public">
+        <parameters>
+          <parameter name="FileName" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="LoadFromStream" visibility="public">
+        <parameters>
+          <parameter name="FileName" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="ReadData" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="S" type="TStream" />
+        </parameters>
+      </procedure>
+      <procedure name="WriteData" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="S" type="TStream" />
+        </parameters>
+      </procedure>
+      <procedure name="DefineProperties" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Filer" type="TFiler" />
+        </parameters>
+      </procedure>
+      <function name="First" visibility="public" procflags="virtual">
+        <parameters>
+          <retval type="TObject" />
+        </parameters>
+      </function>
+      <function name="Last" visibility="public" procflags="virtual">
+        <parameters>
+          <retval type="TObject" />
+        </parameters>
+      </function>
+      <function name="Next" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="Item" type="TObject" />
+          <parameter name="Forward" type="Boolean" />
+          <retval type="TObject" />
+        </parameters>
+      </function>
+      <procedure name="ForEach" visibility="public">
+        <parameters>
+          <parameter name="Action" type="Pointer" />
+        </parameters>
+      </procedure>
+      <function name="LastThat" visibility="public">
+        <parameters>
+          <parameter name="Test" type="Pointer" />
+          <retval type="TObject" />
+        </parameters>
+      </function>
+      <function name="FirstThat" visibility="public">
+        <parameters>
+          <parameter name="Test" type="Pointer" />
+          <retval type="TObject" />
+        </parameters>
+      </function>
+      <property name="Capacity" visibility="public" read="FCapacity" write="SetCapacity" type="Integer" />
+      <property name="Items" visibility="public" read="Get" write="Put" type="TObject" />
+      <property name="Count" visibility="public" read="FCount" type="Integer" />
+      <property name="DestroyObjects" visibility="public" read="FDestroy" write="FDestroy" type="Boolean" />
+    </members>
+  </class>
+  <class name="TAbsMemStream">
+    <ancestor name="TStream" namespace="Classes">
+      <methodref name="GetPosition" visibility="private">
+      </methodref>
+      <methodref name="SetPosition" visibility="private">
+      </methodref>
+      <methodref name="SetSize64" visibility="private">
+      </methodref>
+      <methodref name="GetSize" visibility="public">
+      </methodref>
+      <methodref name="SetSize" visibility="public">
+      </methodref>
+      <methodref name="SetSize" visibility="public">
+      </methodref>
+      <methodref name="Read" visibility="public">
+      </methodref>
+      <methodref name="Write" visibility="public">
+      </methodref>
+      <methodref name="Seek" visibility="public">
+      </methodref>
+      <methodref name="Seek" visibility="public">
+      </methodref>
+      <methodref name="ReadBuffer" visibility="public">
+      </methodref>
+      <methodref name="WriteBuffer" visibility="public">
+      </methodref>
+      <methodref name="CopyFrom" visibility="public">
+      </methodref>
+      <methodref name="ReadComponent" visibility="public">
+      </methodref>
+      <methodref name="ReadComponentRes" visibility="public">
+      </methodref>
+      <methodref name="WriteComponent" visibility="public">
+      </methodref>
+      <methodref name="WriteComponentRes" visibility="public">
+      </methodref>
+      <methodref name="WriteDescendent" visibility="public">
+      </methodref>
+      <methodref name="WriteDescendentRes" visibility="public">
+      </methodref>
+      <methodref name="WriteResourceHeader" visibility="public">
+      </methodref>
+      <methodref name="FixupResourceHeader" visibility="public">
+      </methodref>
+      <methodref name="ReadResHeader" visibility="public">
+      </methodref>
+      <propertyref name="Position" visibility="public">
+      </propertyref>
+      <propertyref name="Size" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="FMemory" type="Pointer" visibility="private" />
+      <field name="FSize" type="Integer" visibility="private" />
+      <field name="FPosition" type="Integer" visibility="private" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="UseBuf" type="Pointer" />
+          <parameter name="MaxSize" type="Integer" />
+        </parameters>
+      </constructor>
+      <function name="Read" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Buffer" paramflags="var" />
+          <parameter name="Count" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="Write" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Buffer" paramflags="const" />
+          <parameter name="Count" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="Seek" visibility="public" procflags="overload override">
+        <parameters>
+          <parameter name="Offset" type="Integer" />
+          <parameter name="Origin" type="Word" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <property name="Position" visibility="public" read="FPosition" type="Integer" />
+      <property name="Memory" visibility="public" read="FMemory" type="Pointer" />
+      <property name="Size" visibility="public" read="FSize" type="Integer" />
+    </members>
+  </class>
+  <class name="TSortedObjectList">
+    <ancestor name="TObjectList" namespace="kpCntn">
+      <methodref name="Error" visibility="public" />
+      <methodref name="Grow" visibility="public" />
+      <methodref name="Put" visibility="public" />
+      <methodref name="Get" visibility="protected" />
+      <methodref name="SetCapacity" visibility="protected" />
+      <methodref name="SetCount" visibility="protected" />
+      <methodref name="Allocate" visibility="protected" />
+      <methodref name="FreeItem" visibility="public" />
+      <methodref name="Create" visibility="public" />
+      <methodref name="CreateWithOptions" visibility="public" />
+      <methodref name="Destroy" visibility="public" />
+      <methodref name="AddObject" visibility="public" />
+      <methodref name="Clear" visibility="public" />
+      <methodref name="Delete" visibility="public" />
+      <methodref name="DeleteAll" visibility="public" />
+      <methodref name="FreeAll" visibility="public" />
+      <methodref name="FreeAt" visibility="public" />
+      <methodref name="FreeObject" visibility="public" />
+      <methodref name="IndexOf" visibility="public" />
+      <methodref name="Insert" visibility="public" />
+      <methodref name="Move" visibility="public" />
+      <methodref name="Pack" visibility="public" />
+      <methodref name="CreateFromStream" visibility="public" />
+      <methodref name="SaveToStream" visibility="public" />
+      <methodref name="LoadFromStream" visibility="public" />
+      <methodref name="ReadData" visibility="public" />
+      <methodref name="WriteData" visibility="public" />
+      <methodref name="DefineProperties" visibility="public" />
+      <methodref name="First" visibility="public" />
+      <methodref name="Last" visibility="public" />
+      <methodref name="Next" visibility="public" />
+      <methodref name="ForEach" visibility="public" />
+      <methodref name="LastThat" visibility="public" />
+      <methodref name="FirstThat" visibility="public" />
+      <propertyref name="Capacity" visibility="public" />
+      <propertyref name="Items" visibility="public" />
+      <propertyref name="Count" visibility="public" />
+      <propertyref name="DestroyObjects" visibility="public" />
+      <ancestor name="TPersistent" namespace="Classes">
+        <methodref name="AssignError" visibility="private">
+        </methodref>
+        <methodref name="AssignTo" visibility="public">
+        </methodref>
+        <methodref name="DefineProperties" visibility="public">
+        </methodref>
+        <methodref name="GetOwner" visibility="protected">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+        <methodref name="Assign" visibility="public">
+        </methodref>
+        <methodref name="GetNamePath" visibility="public">
+        </methodref>
+        <ancestor name="TObject" namespace="System">
+          <methodref name="Create" visibility="public">
+          </methodref>
+          <methodref name="Free" visibility="public">
+          </methodref>
+          <methodref name="InitInstance" visibility="public">
+          </methodref>
+          <methodref name="CleanupInstance" visibility="public">
+          </methodref>
+          <methodref name="ClassType" visibility="public">
+          </methodref>
+          <methodref name="ClassName" visibility="public">
+          </methodref>
+          <methodref name="ClassNameIs" visibility="public">
+          </methodref>
+          <methodref name="ClassParent" visibility="public">
+          </methodref>
+          <methodref name="ClassInfo" visibility="public">
+          </methodref>
+          <methodref name="InstanceSize" visibility="public">
+          </methodref>
+          <methodref name="InheritsFrom" visibility="public">
+          </methodref>
+          <methodref name="MethodAddress" visibility="public">
+          </methodref>
+          <methodref name="MethodName" visibility="public">
+          </methodref>
+          <methodref name="FieldAddress" visibility="public">
+          </methodref>
+          <methodref name="GetInterface" visibility="public">
+          </methodref>
+          <methodref name="GetInterfaceEntry" visibility="public">
+          </methodref>
+          <methodref name="GetInterfaceTable" visibility="public">
+          </methodref>
+          <methodref name="SafeCallException" visibility="public">
+          </methodref>
+          <methodref name="AfterConstruction" visibility="public">
+          </methodref>
+          <methodref name="BeforeDestruction" visibility="public">
+          </methodref>
+          <methodref name="Dispatch" visibility="public">
+          </methodref>
+          <methodref name="DefaultHandler" visibility="public">
+          </methodref>
+          <methodref name="NewInstance" visibility="public">
+          </methodref>
+          <methodref name="FreeInstance" visibility="public">
+          </methodref>
+          <methodref name="Destroy" visibility="public">
+          </methodref>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="FDuplicates" type="TDuplicates" visibility="private" />
+      <function name="KeyOf" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="Item" type="TObject" />
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <procedure name="Put" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <parameter name="Item" type="TObject" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="WithDuplicates" type="TDuplicates" />
+        </parameters>
+      </constructor>
+      <procedure name="ReadData" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="S" type="TStream" />
+        </parameters>
+      </procedure>
+      <procedure name="WriteData" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="S" type="TStream" />
+        </parameters>
+      </procedure>
+      <function name="Compare" visibility="public" procflags="abstract virtual">
+        <parameters>
+          <parameter name="Key1" type="Pointer" />
+          <parameter name="Key2" type="Pointer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="AddObject" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Item" type="TObject" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="Search" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="Key" type="Pointer" />
+          <parameter name="Index" type="Integer" paramflags="var" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="Insert" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <parameter name="Item" type="TObject" />
+        </parameters>
+      </procedure>
+      <function name="IndexOf" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Item" type="TObject" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <property name="Items" visibility="public" read="Get" type="TObject" />
+      <property name="Duplicates" visibility="public" read="FDuplicates" type="TDuplicates" />
+    </members>
+  </class>
+  <procedure name="DoRegisterClass" visibility="public">
+    <parameters>
+      <parameter name="LoadProc" type="Pointer" paramflags="const" />
+      <parameter name="StoreProc" type="Pointer" paramflags="const" />
+      <parameter name="Sender" type="TClass" />
+    </parameters>
+  </procedure>
+  <function name="IsRegistered" visibility="public">
+    <parameters>
+      <parameter name="AClass" type="TClass" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="CopyOf" visibility="public">
+    <parameters>
+      <parameter name="Source" type="TObject" />
+      <retval type="TObject" />
+    </parameters>
+  </function>
+  <function name="ReadObjectFromStream" visibility="public">
+    <parameters>
+      <parameter name="S" type="TStream" />
+      <retval type="TObject" />
+    </parameters>
+  </function>
+  <procedure name="WriteObjectToStream" visibility="public">
+    <parameters>
+      <parameter name="Source" type="TObject" />
+      <parameter name="S" type="TStream" />
+    </parameters>
+  </procedure>
+  <function name="RegisterClipBoardType" visibility="public">
+    <parameters>
+      <parameter name="TypeName" type="string" paramflags="const" />
+      <retval type="Word" />
+    </parameters>
+  </function>
+  <function name="CopyObjectToClipboard" visibility="public">
+    <parameters>
+      <parameter name="ClipType" type="Word" />
+      <parameter name="Source" type="TObject" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="PasteObjectFromClipboard" visibility="public">
+    <parameters>
+      <parameter name="ClipType" type="Word" />
+      <retval type="TObject" />
+    </parameters>
+  </function>
+</namespace>

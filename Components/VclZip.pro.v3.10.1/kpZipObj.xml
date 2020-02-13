@@ -1,0 +1,1892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="kpZipObj">
+  <array name="cpltype" low="0" high="30">
+    <element type="Word" />
+  </array>
+  <array name="cpdtype" low="0" high="29">
+    <element type="Word" />
+  </array>
+  <const name="PATH_LEN" type="Integer">
+    <value>
+      $104
+    </value>
+  </const>
+  <const name="FILENAME_LEN" type="Integer">
+    <value>
+      $100
+    </value>
+  </const>
+  <const name="MAX_USHORT" type="Integer">
+    <value>
+      $FFFF
+    </value>
+  </const>
+  <const name="MAX_SHORT" type="Integer">
+    <value>
+      $7FFF
+    </value>
+  </const>
+  <const name="icUNDEFINED" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="icFILEOK" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="icFILEBAD" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="STORED" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="SHRUNK" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="REDUCED1" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="REDUCED2" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="REDUCED3" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="REDUCED4" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="IMPLODED" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="TOKENIZED" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="DEFLATED" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="comp_method" type="Array" visibility="public" />
+  <const name="mask_bits" type="Array" visibility="public" />
+  <const name="border" type="Array" visibility="public" />
+  <const name="cplens" type="cpltype" visibility="public" />
+  <const name="cplext" type="cpltype" visibility="public" />
+  <const name="cpdist" type="cpdtype" visibility="public" />
+  <const name="cpdext" type="cpdtype" visibility="public" />
+  <const name="cplen2" type="Array" visibility="public" />
+  <const name="cplen3" type="Array" visibility="public" />
+  <const name="extra" type="Array" visibility="public" />
+  <const name="cpdist4" type="Array" visibility="public" />
+  <const name="cpdist8" type="Array" visibility="public" />
+  <const name="L_table" type="Array" visibility="public" />
+  <const name="D_shift" type="Array" visibility="public" />
+  <const name="D_mask" type="Array" visibility="public" />
+  <const name="B_table" type="Array" visibility="public" />
+  <const name="CRC_32_TAB" type="Array" visibility="public" />
+  <const name="DEF_CENTSIG" type="Integer">
+    <value>
+      $2014B50
+    </value>
+  </const>
+  <const name="DEF_LOCSIG" type="Integer">
+    <value>
+      $4034B50
+    </value>
+  </const>
+  <const name="DEF_ENDSIG" type="Integer">
+    <value>
+      $6054B50
+    </value>
+  </const>
+  <const name="DEF_ZIP64ENDSIG" type="Integer">
+    <value>
+      $6064B50
+    </value>
+  </const>
+  <const name="DEF_ZIP64LOCATOR" type="Integer">
+    <value>
+      $7064B50
+    </value>
+  </const>
+  <const name="INBUFSIZ" type="Integer">
+    <value>
+      $8000
+    </value>
+  </const>
+  <const name="OUTBUFSIZ" type="Integer">
+    <value>
+      $8000
+    </value>
+  </const>
+  <const name="BMAX" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="N_MAX" type="Integer">
+    <value>
+      $120
+    </value>
+  </const>
+  <const name="MAX_BITS" type="Integer">
+    <value>
+      $D
+    </value>
+  </const>
+  <const name="HSIZE" type="Integer">
+    <value>
+      $2000
+    </value>
+  </const>
+  <const name="WSIZE" type="Integer">
+    <value>
+      $8000
+    </value>
+  </const>
+  <const name="ZWSIZE" type="Integer">
+    <value>
+      $8000
+    </value>
+  </const>
+  <const name="UNKNOWN" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="BINARY" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="ASCII" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="MIN_MATCH" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="MAX_MATCH" type="Integer">
+    <value>
+      $102
+    </value>
+  </const>
+  <const name="MAX_ZBITS" type="Integer">
+    <value>
+      $F
+    </value>
+  </const>
+  <const name="LENGTH_CODES" type="Integer">
+    <value>
+      $1D
+    </value>
+  </const>
+  <const name="LITERALS" type="Integer">
+    <value>
+      $100
+    </value>
+  </const>
+  <const name="L_CODES" type="Integer">
+    <value>
+      $11E
+    </value>
+  </const>
+  <const name="D_CODES" type="Integer">
+    <value>
+      $1E
+    </value>
+  </const>
+  <const name="HASH_BITS" type="Integer">
+    <value>
+      $F
+    </value>
+  </const>
+  <const name="MIN_LOOKAHEAD" type="Integer">
+    <value>
+      $106
+    </value>
+  </const>
+  <const name="MAX_DIST" type="Integer">
+    <value>
+      $7EFA
+    </value>
+  </const>
+  <const name="HASH_SIZE" type="Integer">
+    <value>
+      $8000
+    </value>
+  </const>
+  <const name="HASH_MASK" type="Integer">
+    <value>
+      $7FFF
+    </value>
+  </const>
+  <const name="WMASK" type="Integer">
+    <value>
+      $7FFF
+    </value>
+  </const>
+  <const name="FAST" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SLOW" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TOO_FAR" type="Integer">
+    <value>
+      $1000
+    </value>
+  </const>
+  <const name="H_SHIFT" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="EQUAL" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="EOFile" type="Integer">
+    <value>
+      $FFFFFFFF
+    </value>
+  </const>
+  <const name="MAX_BL_BITS" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="END_BLOCK" type="Integer">
+    <value>
+      $100
+    </value>
+  </const>
+  <const name="BL_CODES" type="Integer">
+    <value>
+      $13
+    </value>
+  </const>
+  <const name="STORED_BLOCK" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="STATIC_TREES" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="DYN_TREES" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="LIT_BUFSIZE" type="Integer">
+    <value>
+      $8000
+    </value>
+  </const>
+  <const name="DIST_BUFSIZE" type="Integer">
+    <value>
+      $8000
+    </value>
+  </const>
+  <const name="REP_3_6" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="REPZ_3_10" type="Integer">
+    <value>
+      $11
+    </value>
+  </const>
+  <const name="REPZ_11_138" type="Integer">
+    <value>
+      $12
+    </value>
+  </const>
+  <const name="HEAP_SIZE" type="Integer">
+    <value>
+      $23D
+    </value>
+  </const>
+  <const name="SMALLEST" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="STORE" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="DEFLATEIT" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="Buf_size" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="INIT_BITS" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="FIRST_ENT" type="Integer">
+    <value>
+      $101
+    </value>
+  </const>
+  <const name="CLEAR" type="Integer">
+    <value>
+      $100
+    </value>
+  </const>
+  <const name="DLE" type="Integer">
+    <value>
+      $90
+    </value>
+  </const>
+  <class name="TkpStream" alias="TStream" namespace="Classes">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <function name="GetPosition" visibility="private">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="SetPosition" visibility="private">
+        <parameters>
+          <parameter name="Pos" type="Int64" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetSize64" visibility="private">
+        <parameters>
+          <parameter name="NewSize" type="Int64" paramflags="const" />
+        </parameters>
+      </procedure>
+      <function name="GetSize" visibility="public" procflags="virtual">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="SetSize" visibility="public" procflags="overload virtual">
+        <parameters>
+          <parameter name="NewSize" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="SetSize" visibility="public" procflags="overload virtual">
+        <parameters>
+          <parameter name="NewSize" type="Int64" paramflags="const" />
+        </parameters>
+      </procedure>
+      <function name="Read" visibility="public" procflags="abstract virtual">
+        <parameters>
+          <parameter name="Buffer" paramflags="var" />
+          <parameter name="Count" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="Write" visibility="public" procflags="abstract virtual">
+        <parameters>
+          <parameter name="Buffer" paramflags="const" />
+          <parameter name="Count" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="Seek" visibility="public" procflags="overload virtual">
+        <parameters>
+          <parameter name="Offset" type="Integer" />
+          <parameter name="Origin" type="Word" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="Seek" visibility="public" procflags="overload virtual">
+        <parameters>
+          <parameter name="Offset" type="Int64" paramflags="const" />
+          <parameter name="Origin" type="TSeekOrigin" />
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="ReadBuffer" visibility="public">
+        <parameters>
+          <parameter name="Buffer" paramflags="var" />
+          <parameter name="Count" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="WriteBuffer" visibility="public">
+        <parameters>
+          <parameter name="Buffer" paramflags="const" />
+          <parameter name="Count" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="CopyFrom" visibility="public">
+        <parameters>
+          <parameter name="Source" type="TStream" />
+          <parameter name="Count" type="Int64" />
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <function name="ReadComponent" visibility="public">
+        <parameters>
+          <parameter name="Instance" type="TComponent" />
+          <retval type="TComponent" />
+        </parameters>
+      </function>
+      <function name="ReadComponentRes" visibility="public">
+        <parameters>
+          <parameter name="Instance" type="TComponent" />
+          <retval type="TComponent" />
+        </parameters>
+      </function>
+      <procedure name="WriteComponent" visibility="public">
+        <parameters>
+          <parameter name="Instance" type="TComponent" />
+        </parameters>
+      </procedure>
+      <procedure name="WriteComponentRes" visibility="public">
+        <parameters>
+          <parameter name="ResName" type="string" paramflags="const" />
+          <parameter name="Instance" type="TComponent" />
+        </parameters>
+      </procedure>
+      <procedure name="WriteDescendent" visibility="public">
+        <parameters>
+          <parameter name="Instance" type="TComponent" />
+          <parameter name="Ancestor" type="TComponent" />
+        </parameters>
+      </procedure>
+      <procedure name="WriteDescendentRes" visibility="public">
+        <parameters>
+          <parameter name="ResName" type="string" paramflags="const" />
+          <parameter name="Instance" type="TComponent" />
+          <parameter name="Ancestor" type="TComponent" />
+        </parameters>
+      </procedure>
+      <procedure name="WriteResourceHeader" visibility="public">
+        <parameters>
+          <parameter name="ResName" type="string" paramflags="const" />
+          <parameter name="FixupInfo" type="Integer" paramflags="out" />
+        </parameters>
+      </procedure>
+      <procedure name="FixupResourceHeader" visibility="public">
+        <parameters>
+          <parameter name="FixupInfo" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="ReadResHeader" visibility="public">
+      </procedure>
+      <property name="Position" visibility="public" read="GetPosition" write="SetPosition" type="Int64">
+      </property>
+      <property name="Size" visibility="public" read="GetSize" write="SetSize64" type="Int64">
+      </property>
+    </members>
+  </class>
+  <class name="TkpFileStream" alias="TFileStream" namespace="Classes">
+    <ancestor name="THandleStream" namespace="Classes">
+      <methodref name="SetSize" visibility="public">
+      </methodref>
+      <methodref name="SetSize" visibility="public">
+      </methodref>
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Read" visibility="public">
+      </methodref>
+      <methodref name="Write" visibility="public">
+      </methodref>
+      <methodref name="Seek" visibility="public">
+      </methodref>
+      <propertyref name="Handle" visibility="public">
+      </propertyref>
+      <ancestor name="TStream" namespace="Classes">
+        <methodref name="GetPosition" visibility="private">
+        </methodref>
+        <methodref name="SetPosition" visibility="private">
+        </methodref>
+        <methodref name="SetSize64" visibility="private">
+        </methodref>
+        <methodref name="GetSize" visibility="public">
+        </methodref>
+        <methodref name="SetSize" visibility="public">
+        </methodref>
+        <methodref name="SetSize" visibility="public">
+        </methodref>
+        <methodref name="Read" visibility="public">
+        </methodref>
+        <methodref name="Write" visibility="public">
+        </methodref>
+        <methodref name="Seek" visibility="public">
+        </methodref>
+        <methodref name="Seek" visibility="public">
+        </methodref>
+        <methodref name="ReadBuffer" visibility="public">
+        </methodref>
+        <methodref name="WriteBuffer" visibility="public">
+        </methodref>
+        <methodref name="CopyFrom" visibility="public">
+        </methodref>
+        <methodref name="ReadComponent" visibility="public">
+        </methodref>
+        <methodref name="ReadComponentRes" visibility="public">
+        </methodref>
+        <methodref name="WriteComponent" visibility="public">
+        </methodref>
+        <methodref name="WriteComponentRes" visibility="public">
+        </methodref>
+        <methodref name="WriteDescendent" visibility="public">
+        </methodref>
+        <methodref name="WriteDescendentRes" visibility="public">
+        </methodref>
+        <methodref name="WriteResourceHeader" visibility="public">
+        </methodref>
+        <methodref name="FixupResourceHeader" visibility="public">
+        </methodref>
+        <methodref name="ReadResHeader" visibility="public">
+        </methodref>
+        <propertyref name="Position" visibility="public">
+        </propertyref>
+        <propertyref name="Size" visibility="public">
+        </propertyref>
+        <ancestor name="TObject" namespace="System">
+          <methodref name="Create" visibility="public">
+          </methodref>
+          <methodref name="Free" visibility="public">
+          </methodref>
+          <methodref name="InitInstance" visibility="public">
+          </methodref>
+          <methodref name="CleanupInstance" visibility="public">
+          </methodref>
+          <methodref name="ClassType" visibility="public">
+          </methodref>
+          <methodref name="ClassName" visibility="public">
+          </methodref>
+          <methodref name="ClassNameIs" visibility="public">
+          </methodref>
+          <methodref name="ClassParent" visibility="public">
+          </methodref>
+          <methodref name="ClassInfo" visibility="public">
+          </methodref>
+          <methodref name="InstanceSize" visibility="public">
+          </methodref>
+          <methodref name="InheritsFrom" visibility="public">
+          </methodref>
+          <methodref name="MethodAddress" visibility="public">
+          </methodref>
+          <methodref name="MethodName" visibility="public">
+          </methodref>
+          <methodref name="FieldAddress" visibility="public">
+          </methodref>
+          <methodref name="GetInterface" visibility="public">
+          </methodref>
+          <methodref name="GetInterfaceEntry" visibility="public">
+          </methodref>
+          <methodref name="GetInterfaceTable" visibility="public">
+          </methodref>
+          <methodref name="SafeCallException" visibility="public">
+          </methodref>
+          <methodref name="AfterConstruction" visibility="public">
+          </methodref>
+          <methodref name="BeforeDestruction" visibility="public">
+          </methodref>
+          <methodref name="Dispatch" visibility="public">
+          </methodref>
+          <methodref name="DefaultHandler" visibility="public">
+          </methodref>
+          <methodref name="NewInstance" visibility="public">
+          </methodref>
+          <methodref name="FreeInstance" visibility="public">
+          </methodref>
+          <methodref name="Destroy" visibility="public">
+          </methodref>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="FFileName" type="string" visibility="class private">
+      </field>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="AFileName" type="string" paramflags="const" />
+          <parameter name="Mode" type="Word" />
+        </parameters>
+      </constructor>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="AFileName" type="string" paramflags="const" />
+          <parameter name="Mode" type="Word" />
+          <parameter name="Rights" type="Cardinal" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <property name="FileName" visibility="public" read="FFileName" type="string">
+      </property>
+    </members>
+  </class>
+  <class name="TkpMemoryStream" alias="TMemoryStream" namespace="Classes">
+    <ancestor name="TCustomMemoryStream" namespace="Classes">
+      <methodref name="SetPointer" visibility="protected">
+      </methodref>
+      <methodref name="Read" visibility="public">
+      </methodref>
+      <methodref name="Seek" visibility="public">
+      </methodref>
+      <methodref name="SaveToStream" visibility="public">
+      </methodref>
+      <methodref name="SaveToFile" visibility="public">
+      </methodref>
+      <propertyref name="Memory" visibility="public">
+      </propertyref>
+      <ancestor name="TStream" namespace="Classes">
+        <methodref name="GetPosition" visibility="private">
+        </methodref>
+        <methodref name="SetPosition" visibility="private">
+        </methodref>
+        <methodref name="SetSize64" visibility="private">
+        </methodref>
+        <methodref name="GetSize" visibility="public">
+        </methodref>
+        <methodref name="SetSize" visibility="public">
+        </methodref>
+        <methodref name="SetSize" visibility="public">
+        </methodref>
+        <methodref name="Read" visibility="public">
+        </methodref>
+        <methodref name="Write" visibility="public">
+        </methodref>
+        <methodref name="Seek" visibility="public">
+        </methodref>
+        <methodref name="Seek" visibility="public">
+        </methodref>
+        <methodref name="ReadBuffer" visibility="public">
+        </methodref>
+        <methodref name="WriteBuffer" visibility="public">
+        </methodref>
+        <methodref name="CopyFrom" visibility="public">
+        </methodref>
+        <methodref name="ReadComponent" visibility="public">
+        </methodref>
+        <methodref name="ReadComponentRes" visibility="public">
+        </methodref>
+        <methodref name="WriteComponent" visibility="public">
+        </methodref>
+        <methodref name="WriteComponentRes" visibility="public">
+        </methodref>
+        <methodref name="WriteDescendent" visibility="public">
+        </methodref>
+        <methodref name="WriteDescendentRes" visibility="public">
+        </methodref>
+        <methodref name="WriteResourceHeader" visibility="public">
+        </methodref>
+        <methodref name="FixupResourceHeader" visibility="public">
+        </methodref>
+        <methodref name="ReadResHeader" visibility="public">
+        </methodref>
+        <propertyref name="Position" visibility="public">
+        </propertyref>
+        <propertyref name="Size" visibility="public">
+        </propertyref>
+        <ancestor name="TObject" namespace="System">
+          <methodref name="Create" visibility="public">
+          </methodref>
+          <methodref name="Free" visibility="public">
+          </methodref>
+          <methodref name="InitInstance" visibility="public">
+          </methodref>
+          <methodref name="CleanupInstance" visibility="public">
+          </methodref>
+          <methodref name="ClassType" visibility="public">
+          </methodref>
+          <methodref name="ClassName" visibility="public">
+          </methodref>
+          <methodref name="ClassNameIs" visibility="public">
+          </methodref>
+          <methodref name="ClassParent" visibility="public">
+          </methodref>
+          <methodref name="ClassInfo" visibility="public">
+          </methodref>
+          <methodref name="InstanceSize" visibility="public">
+          </methodref>
+          <methodref name="InheritsFrom" visibility="public">
+          </methodref>
+          <methodref name="MethodAddress" visibility="public">
+          </methodref>
+          <methodref name="MethodName" visibility="public">
+          </methodref>
+          <methodref name="FieldAddress" visibility="public">
+          </methodref>
+          <methodref name="GetInterface" visibility="public">
+          </methodref>
+          <methodref name="GetInterfaceEntry" visibility="public">
+          </methodref>
+          <methodref name="GetInterfaceTable" visibility="public">
+          </methodref>
+          <methodref name="SafeCallException" visibility="public">
+          </methodref>
+          <methodref name="AfterConstruction" visibility="public">
+          </methodref>
+          <methodref name="BeforeDestruction" visibility="public">
+          </methodref>
+          <methodref name="Dispatch" visibility="public">
+          </methodref>
+          <methodref name="DefaultHandler" visibility="public">
+          </methodref>
+          <methodref name="NewInstance" visibility="public">
+          </methodref>
+          <methodref name="FreeInstance" visibility="public">
+          </methodref>
+          <methodref name="Destroy" visibility="public">
+          </methodref>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="FCapacity" type="Integer" visibility="private">
+      </field>
+      <procedure name="SetCapacity" visibility="private">
+        <parameters>
+          <parameter name="NewCapacity" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="Realloc" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="NewCapacity" type="Integer" paramflags="var" />
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <property name="Capacity" visibility="protected" read="FCapacity" write="SetCapacity" type="Integer">
+      </property>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <procedure name="Clear" visibility="public">
+      </procedure>
+      <procedure name="LoadFromStream" visibility="public">
+        <parameters>
+          <parameter name="Stream" type="TStream" />
+        </parameters>
+      </procedure>
+      <procedure name="LoadFromFile" visibility="public">
+        <parameters>
+          <parameter name="FileName" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetSize" visibility="public" procflags="overload override">
+        <parameters>
+          <parameter name="NewSize" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="Write" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Buffer" paramflags="const" />
+          <parameter name="Count" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <type name="BIGINT" type="Int64" />
+  <pointer name="CharArrayPtr" type="CharArray" indircnt="1" />
+  <array name="CharArray" low="0" high="2147483646">
+    <element type="Char" />
+  </array>
+  <pointer name="ByteArrayPtr" type="ByteArray" indircnt="1" />
+  <array name="ByteArray" low="0" high="2147483646">
+    <element type="Byte" />
+  </array>
+  <pointer name="IntegerArrayPtr" type="IntegerArray" indircnt="1" />
+  <array name="IntegerArray" low="0" high="32766">
+    <element type="Integer" />
+  </array>
+  <pointer name="IntPtr" type="Integer" indircnt="1" />
+  <pointer name="BYTEPTR" alias="PByte" namespace="System" type="Byte" indircnt="1" />
+  <pointer name="WORDPTR" type="Word" indircnt="1" />
+  <struct name="shrinktype" packed="true">
+    <field name="Prefix_of" visibility="public">
+      <array name="Prefix_of" low="0" high="8194">
+        <element type="Smallint" />
+      </array>
+    </field>
+    <field name="Suffix_of" visibility="public">
+      <array name="Suffix_of" low="0" high="8194">
+        <element type="Byte" />
+      </array>
+    </field>
+    <field name="Stack" visibility="public">
+      <array name="Stack" low="0" high="8194">
+        <element type="Byte" />
+      </array>
+    </field>
+  </struct>
+  <struct name="DataDescriptorType" packed="true">
+    <field name="Sig" type="Integer" visibility="public" />
+    <field name="crc32" type="Integer" visibility="public" />
+    <field name="compressed_size" type="Cardinal" visibility="public" />
+    <field name="uncompressed_size" type="Cardinal" visibility="public" />
+  </struct>
+  <array name="f_array" low="0" high="255">
+    <array name="f_array" low="0" high="63">
+      <element type="Byte" />
+    </array>
+  </array>
+  <pointer name="f_arrayPtr" type="f_array" indircnt="1" />
+  <pointer name="huftptr" type="huft" indircnt="1" />
+  <pointer name="huftptrptr" type="huftptr" indircnt="1" />
+  <pointer name="huftarrayptr" type="huftarray" indircnt="1" />
+  <struct name="huft" packed="true">
+    <field name="e" type="Byte" visibility="public" />
+    <field name="b" type="Byte" visibility="public" />
+    <field name="v" type=":1" visibility="public" />
+  </struct>
+  <array name="huftarray" low="-1" high="1000">
+    <element type="huft" />
+  </array>
+  <pointer name="llarrayptr" type="llarraytype" indircnt="1" />
+  <array name="llarraytype" low="0" high="315">
+    <element type="Word" />
+  </array>
+  <array name="slidearray" low="0" high="32767">
+    <element type="Byte" />
+  </array>
+  <pointer name="slidearrayptr" type="slidearray" indircnt="1" />
+  <struct name="work" packed="true">
+  </struct>
+  <pointer name="pString" type="string" indircnt="1" />
+  <pointer name="ppString" type="pString" indircnt="1" />
+  <type name="TZipFilename" type="AnsiString" />
+  <type name="TZipPathname" type="AnsiString" />
+  <variable name="CENTSIG" type="Integer" />
+  <variable name="LOCSIG" type="Integer" />
+  <variable name="ENDSIG" type="Integer" />
+  <variable name="ZIP64EOC" type="Integer" />
+  <variable name="ZIP64EOCL" type="Integer" />
+  <variable name="LOC4" type="Byte" />
+  <variable name="LOC3" type="Byte" />
+  <variable name="LOC2" type="Byte" />
+  <variable name="LOC1" type="Byte" />
+  <variable name="END4" type="Byte" />
+  <const name="htLocal" type="THeaderType">
+    <value>
+      htLocal
+    </value>
+  </const>
+  <const name="htCentral" type="THeaderType">
+    <value>
+      htCentral
+    </value>
+  </const>
+  <enum name="THeaderType">
+    <element name="htLocal" />
+    <element name="htCentral" />
+  </enum>
+  <const name="oemAlways" type="TOEMConvert">
+    <value>
+      oemAlways
+    </value>
+  </const>
+  <const name="oemNever" type="TOEMConvert">
+    <value>
+      oemNever
+    </value>
+  </const>
+  <const name="oemFlexible" type="TOEMConvert">
+    <value>
+      oemFlexible
+    </value>
+  </const>
+  <enum name="TOEMConvert">
+    <element name="oemAlways" />
+    <element name="oemNever" />
+    <element name="oemFlexible" />
+  </enum>
+  <struct name="SignatureType" packed="true">
+  </struct>
+  <struct name="local_file_header" packed="true">
+    <field name="Signature" type="SignatureType" visibility="public" />
+    <field name="version_needed_to_extract" type="Word" visibility="public" />
+    <field name="general_purpose_bit_flag" type="Word" visibility="public" />
+    <field name="compression_method" type="Word" visibility="public" />
+    <field name="last_mod_file_date_time" type="Cardinal" visibility="public" />
+    <field name="crc32" type="Cardinal" visibility="public" />
+    <field name="compressed_size" type="Cardinal" visibility="public" />
+    <field name="uncompressed_size" type="Cardinal" visibility="public" />
+    <field name="filename_length" type="Word" visibility="public" />
+    <field name="extra_field_length" type="Word" visibility="public" />
+  </struct>
+  <pointer name="localPtr" type="local_file_header" indircnt="1" />
+  <struct name="central_file_header" packed="true">
+    <field name="Signature" type="SignatureType" visibility="public" />
+    <field name="version_made_by" type="Word" visibility="public" />
+    <field name="version_needed_to_extract" type="Word" visibility="public" />
+    <field name="general_purpose_bit_flag" type="Word" visibility="public" />
+    <field name="compression_method" type="Word" visibility="public" />
+    <field name="last_mod_file_date_time" type="Cardinal" visibility="public" />
+    <field name="crc32" type="Cardinal" visibility="public" />
+    <field name="compressed_size" type="Cardinal" visibility="public" />
+    <field name="uncompressed_size" type="Cardinal" visibility="public" />
+    <field name="filename_length" type="Word" visibility="public" />
+    <field name="extra_field_length" type="Word" visibility="public" />
+    <field name="file_comment_length" type="Word" visibility="public" />
+    <field name="disk_number_start" type="Word" visibility="public" />
+    <field name="internal_file_attributes" type="Word" visibility="public" />
+    <field name="external_file_attributes" type="Cardinal" visibility="public" />
+    <field name="relative_offset" type="Cardinal" visibility="public" />
+  </struct>
+  <pointer name="centralPtr" type="central_file_header" indircnt="1" />
+  <struct name="zip64_Extra_Field" packed="true">
+    <field name="Tag" type="Word" visibility="public" />
+    <field name="Size" type="Word" visibility="public" />
+    <field name="Uncompressed_Size" type="Int64" visibility="public" />
+    <field name="Compressed_Size" type="Int64" visibility="public" />
+    <field name="Relative_Offset" type="Int64" visibility="public" />
+    <field name="DiskStart" type="Cardinal" visibility="public" />
+  </struct>
+  <pointer name="zip64_Extra_FieldPtr" type="zip64_Extra_Field" indircnt="1" />
+  <struct name="data_descriptor_20" packed="true">
+    <field name="crc32" type="Cardinal" visibility="public" />
+    <field name="compressed_size" type="Cardinal" visibility="public" />
+    <field name="uncompressed_size" type="Cardinal" visibility="public" />
+  </struct>
+  <struct name="data_descriptor_zip64" packed="true">
+    <field name="crc32" type="Cardinal" visibility="public" />
+    <field name="compressed_size" type="Int64" visibility="public" />
+    <field name="uncompressed_size" type="Int64" visibility="public" />
+  </struct>
+  <struct name="NTFS_extra_field" packed="true">
+    <field name="Tag" type="Word" visibility="public" />
+    <field name="Size" type="Word" visibility="public" />
+    <field name="Reserved" type="Cardinal" visibility="public" />
+    <field name="Tag1" type="Word" visibility="public" />
+    <field name="Size1" type="Word" visibility="public" />
+    <field name="Mtime" type="Int64" visibility="public" />
+    <field name="Atime" type="Int64" visibility="public" />
+    <field name="Ctime" type="Int64" visibility="public" />
+  </struct>
+  <pointer name="NTFS_extra_fieldPtr" type="NTFS_extra_field" indircnt="1" />
+  <class name="TZipHeaderInfo">
+    <ancestor name="TPersistent" namespace="Classes">
+      <methodref name="AssignError" visibility="private">
+      </methodref>
+      <methodref name="AssignTo" visibility="public">
+      </methodref>
+      <methodref name="DefineProperties" visibility="public">
+      </methodref>
+      <methodref name="GetOwner" visibility="protected">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+      <methodref name="Assign" visibility="public">
+      </methodref>
+      <methodref name="GetNamePath" visibility="public">
+      </methodref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="Fversion_made_by" type="Word" visibility="private" />
+      <field name="Fversion_needed_to_extract" type="Word" visibility="private" />
+      <field name="Fgeneral_purpose_bit_flag" type="Word" visibility="private" />
+      <field name="Fcompression_method" type="Word" visibility="private" />
+      <field name="Flast_mod_file_date_time" type="Cardinal" visibility="private" />
+      <field name="Fcrc32" type="Cardinal" visibility="private" />
+      <field name="Fcompressed_size" type="Cardinal" visibility="private" />
+      <field name="Funcompressed_size" type="Cardinal" visibility="private" />
+      <field name="Ffilename_length" type="Word" visibility="private" />
+      <field name="FCextra_field_length" type="Word" visibility="private" />
+      <field name="FLextra_field_length" type="Word" visibility="private" />
+      <field name="Ffile_comment_length" type="Word" visibility="private" />
+      <field name="Fdisk_number_start" type="Word" visibility="private" />
+      <field name="Finternal_file_attributes" type="Word" visibility="private" />
+      <field name="Fexternal_file_attributes" type="Cardinal" visibility="private" />
+      <field name="Frelative_offset" type="Cardinal" visibility="private" />
+      <field name="Fcentral_offset" type="Int64" visibility="private" />
+      <field name="Ffilename" type="string" visibility="private" />
+      <field name="Fdirectory" type="string" visibility="private" />
+      <field name="FZip64_Extended" type="zip64_Extra_FieldPtr" visibility="private" />
+      <field name="Ffilecomment" type="PAnsiChar" visibility="private" />
+      <field name="FMatchFlag" type="Boolean" visibility="private" />
+      <field name="FFileIsOK" type="Byte" visibility="private" />
+      <field name="FSelected" type="Boolean" visibility="private" />
+      <field name="FOEMConvert" type="TOEMConvert" visibility="private" />
+      <field name="FOriginalExtraOffset" type="Int64" visibility="private" />
+      <field name="FOriginalCExtra_field_length" type="Word" visibility="private" />
+      <field name="FOriginalZip64_Extra_length" type="Word" visibility="private" />
+      <function name="GetHasComment" visibility="protected">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetIsEncrypted" visibility="protected">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetHasDescriptor" visibility="protected">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Getfilecomment" visibility="protected">
+        <parameters>
+          <parameter name="S" type="TStream" />
+          <retval type="PAnsiChar" />
+        </parameters>
+      </function>
+      <function name="GetLocalSize" visibility="protected">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetCentralSize" visibility="protected">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="Setfilename" visibility="protected">
+        <parameters>
+          <parameter name="FName" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="Setdirectory" visibility="protected">
+        <parameters>
+          <parameter name="Directory" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="SetFileComment" visibility="protected">
+        <parameters>
+          <parameter name="FComment" type="PAnsiChar" />
+        </parameters>
+      </procedure>
+      <function name="GetCompressedSize" visibility="protected">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="SetCompressedSize" visibility="protected">
+        <parameters>
+          <parameter name="size" type="Int64" />
+        </parameters>
+      </procedure>
+      <function name="GetUnCompressedSize" visibility="protected">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="SetUnCompressedSize" visibility="protected">
+        <parameters>
+          <parameter name="size" type="Int64" />
+        </parameters>
+      </procedure>
+      <function name="GetNewZip64Extended" visibility="protected">
+        <parameters>
+          <retval type="zip64_Extra_FieldPtr" />
+        </parameters>
+      </function>
+      <function name="FZip64_Extended_Instance" visibility="protected">
+        <parameters>
+          <retval type="zip64_Extra_FieldPtr" />
+        </parameters>
+      </function>
+      <procedure name="GetExtraFields" visibility="protected">
+        <parameters>
+          <parameter name="S" type="TStream" />
+        </parameters>
+      </procedure>
+      <function name="GetRelativeOffset" visibility="protected">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="SetRelativeOffset" visibility="protected">
+        <parameters>
+          <parameter name="offset" type="Int64" />
+        </parameters>
+      </procedure>
+      <function name="GetDisk_number_start" visibility="protected">
+        <parameters>
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <procedure name="SetDisk_number_start" visibility="protected">
+        <parameters>
+          <parameter name="disk" type="Cardinal" />
+        </parameters>
+      </procedure>
+      <function name="Zip64ExtraSize" visibility="protected">
+        <parameters>
+          <parameter name="ht" type="THeaderType" />
+          <retval type="Word" />
+        </parameters>
+      </function>
+      <procedure name="WriteZip64Extra" visibility="protected">
+        <parameters>
+          <parameter name="S" type="TStream" />
+          <parameter name="ht" type="THeaderType" />
+        </parameters>
+      </procedure>
+      <procedure name="ToOEM" visibility="protected">
+        <parameters>
+          <parameter name="fname" type="string" paramflags="var" />
+        </parameters>
+      </procedure>
+      <procedure name="FromOEM" visibility="protected">
+        <parameters>
+          <parameter name="fname" type="string" paramflags="var" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <constructor name="InitWithCentral" visibility="public">
+        <parameters>
+          <parameter name="crec" type="centralPtr" />
+          <parameter name="FName" type="string" />
+        </parameters>
+      </constructor>
+      <constructor name="InitWithLocal" visibility="public">
+        <parameters>
+          <parameter name="lrec" type="localPtr" />
+          <parameter name="FName" type="string" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <procedure name="Assign" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Source" type="TPersistent" />
+        </parameters>
+      </procedure>
+      <procedure name="AssignTo" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Dest" type="TPersistent" />
+        </parameters>
+      </procedure>
+      <procedure name="SetFromCentral" visibility="public">
+        <parameters>
+          <parameter name="crec" type="centralPtr" />
+          <parameter name="FName" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="SetFromLocal" visibility="public">
+        <parameters>
+          <parameter name="lrec" type="localPtr" />
+          <parameter name="FName" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="Clear" visibility="public">
+      </procedure>
+      <procedure name="SaveCentralToStream" visibility="public">
+        <parameters>
+          <parameter name="S" type="TStream" />
+          <parameter name="TempFile" type="TStream" />
+          <parameter name="UsingTemp" type="Boolean" />
+        </parameters>
+      </procedure>
+      <procedure name="SaveLocalToStream" visibility="public">
+        <parameters>
+          <parameter name="S" type="TStream" />
+        </parameters>
+      </procedure>
+      <function name="WriteDataDescriptor" visibility="public">
+        <parameters>
+          <parameter name="S" type="TStream" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="ReadCentralFromStream" visibility="public">
+        <parameters>
+          <parameter name="S" type="TStream" paramflags="var" />
+          <parameter name="NewDiskEvent" type="TNewDiskEvent" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="ReadLocalFromStream" visibility="public">
+        <parameters>
+          <parameter name="S" type="TStream" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="SetDateTime" visibility="public">
+        <parameters>
+          <parameter name="DateTime" type="TDateTime" />
+        </parameters>
+      </procedure>
+      <procedure name="SetNewFileComment" visibility="public">
+        <parameters>
+          <parameter name="NewComment" type="string" />
+        </parameters>
+      </procedure>
+      <property name="version_made_by" visibility="public" read="Fversion_made_by" write="Fversion_made_by" type="Word" />
+      <property name="version_needed_to_extract" visibility="public" read="Fversion_needed_to_extract" write="Fversion_needed_to_extract" type="Word" />
+      <property name="general_purpose_bit_flag" visibility="public" read="Fgeneral_purpose_bit_flag" write="Fgeneral_purpose_bit_flag" type="Word" />
+      <property name="compression_method" visibility="public" read="Fcompression_method" write="Fcompression_method" type="Word" />
+      <property name="last_mod_file_date_time" visibility="public" read="Flast_mod_file_date_time" write="Flast_mod_file_date_time" type="Cardinal" />
+      <property name="crc32" visibility="public" read="Fcrc32" write="Fcrc32" type="Cardinal" />
+      <property name="compressed_size" visibility="public" read="GetCompressedSize" write="SetCompressedSize" type="Int64" />
+      <property name="uncompressed_size" visibility="public" read="GetUnCompressedSize" write="SetUnCompressedSize" type="Int64" />
+      <property name="filename_length" visibility="public" read="Ffilename_length" write="Ffilename_length" type="Word" />
+      <property name="Cextra_field_length" visibility="public" read="FCextra_field_length" write="FCextra_field_length" type="Word" />
+      <property name="Lextra_field_length" visibility="public" read="FLextra_field_length" write="FLextra_field_length" type="Word" />
+      <property name="file_comment_length" visibility="public" read="Ffile_comment_length" write="Ffile_comment_length" type="Word" />
+      <property name="disk_number_start" visibility="public" read="GetDisk_number_start" write="SetDisk_number_start" type="Cardinal" />
+      <property name="internal_file_attributes" visibility="public" read="Finternal_file_attributes" write="Finternal_file_attributes" type="Word" />
+      <property name="external_file_attributes" visibility="public" read="Fexternal_file_attributes" write="Fexternal_file_attributes" type="Cardinal" />
+      <property name="relative_offset" visibility="public" read="GetRelativeOffset" write="SetRelativeOffset" type="Int64" />
+      <property name="central_offset" visibility="public" read="Fcentral_offset" write="Fcentral_offset" type="Int64" />
+      <property name="filename" visibility="public" read="Ffilename" write="Setfilename" type="string" />
+      <property name="directory" visibility="public" read="Fdirectory" write="Setdirectory" type="string" />
+      <property name="MatchFlag" visibility="public" read="FMatchFlag" write="FMatchFlag" type="Boolean" />
+      <property name="HasComment" visibility="public" read="GetHasComment" type="Boolean" />
+      <property name="Encrypted" visibility="public" read="GetIsEncrypted" type="Boolean" />
+      <property name="HasDescriptor" visibility="public" read="GetHasDescriptor" type="Boolean" />
+      <property name="filecomment" visibility="public" read="Ffilecomment" write="SetFileComment" type="PAnsiChar" />
+      <property name="LocalSize" visibility="public" read="GetLocalSize" type="Integer" />
+      <property name="CentralSize" visibility="public" read="GetCentralSize" type="Integer" />
+      <property name="FileIsOK" visibility="public" read="FFileIsOK" write="FFileIsOK" type="Byte" />
+      <property name="Selected" visibility="public" read="FSelected" write="FSelected" type="Boolean" />
+      <property name="OEMConvert" visibility="public" read="FOEMConvert" write="FOEMConvert" type="TOEMConvert" />
+    </members>
+  </class>
+  <struct name="zip64_end_of_central" packed="true">
+    <field name="ID" type="Integer" visibility="public" />
+    <field name="size" type="Int64" visibility="public" />
+    <field name="version_made_by" type="Word" visibility="public" />
+    <field name="version_needed" type="Word" visibility="public" />
+    <field name="this_disk" type="Cardinal" visibility="public" />
+    <field name="start_central_disk" type="Cardinal" visibility="public" />
+    <field name="num_entries_this_disk" type="Int64" visibility="public" />
+    <field name="num_entries" type="Int64" visibility="public" />
+    <field name="size_central" type="Int64" visibility="public" />
+    <field name="offset_central" type="Int64" visibility="public" />
+  </struct>
+  <pointer name="zip64_end_of_centralPtr" type="zip64_end_of_central" indircnt="1" />
+  <struct name="zip64_end_of_central_locator" packed="true">
+    <field name="ID" type="Integer" visibility="public" />
+    <field name="num_disk_start_zip64_end_central" type="Cardinal" visibility="public" />
+    <field name="offset_zip64_end_central" type="Int64" visibility="public" />
+    <field name="num_disks" type="Cardinal" visibility="public" />
+  </struct>
+  <pointer name="zip64_end_of_central_locatorPtr" type="zip64_end_of_central_locator" indircnt="1" />
+  <struct name="end_of_central" packed="true">
+    <field name="ID" type="Integer" visibility="public" />
+    <field name="this_disk" type="Word" visibility="public" />
+    <field name="start_central_disk" type="Word" visibility="public" />
+    <field name="num_entries_this_disk" type="Word" visibility="public" />
+    <field name="num_entries" type="Word" visibility="public" />
+    <field name="size_central" type="Cardinal" visibility="public" />
+    <field name="offset_central" type="Cardinal" visibility="public" />
+    <field name="zip_comment_length" type="Word" visibility="public" />
+  </struct>
+  <pointer name="end_of_centralPtr" type="end_of_central" indircnt="1" />
+  <class name="TEndCentral">
+    <ancestor name="TPersistent" namespace="Classes">
+      <methodref name="AssignError" visibility="private">
+      </methodref>
+      <methodref name="AssignTo" visibility="public">
+      </methodref>
+      <methodref name="DefineProperties" visibility="public">
+      </methodref>
+      <methodref name="GetOwner" visibility="protected">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+      <methodref name="Assign" visibility="public">
+      </methodref>
+      <methodref name="GetNamePath" visibility="public">
+      </methodref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="Fecrec" type="end_of_central" visibility="private" />
+      <field name="FZipComment" type="PAnsiChar" visibility="private" />
+      <field name="FZipCommentPos" type="Int64" visibility="private" />
+      <field name="FModified" type="Boolean" visibility="private" />
+      <field name="FZip64EOC" type="zip64_end_of_centralPtr" visibility="private" />
+      <field name="FZip64EOCL" type="zip64_end_of_central_locatorPtr" visibility="private" />
+      <function name="GetZipHasComment" visibility="protected">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetZipComment" visibility="protected">
+        <parameters>
+          <parameter name="S" type="TStream" />
+          <retval type="PAnsiChar" />
+        </parameters>
+      </function>
+      <function name="GetEndCentralSize" visibility="protected">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetThis_Disk" visibility="protected">
+        <parameters>
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <procedure name="SetThis_Disk" visibility="protected">
+        <parameters>
+          <parameter name="disk" type="Cardinal" />
+        </parameters>
+      </procedure>
+      <function name="GetStart_Central_Disk" visibility="protected">
+        <parameters>
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <procedure name="SetStart_Central_Disk" visibility="protected">
+        <parameters>
+          <parameter name="disk" type="Cardinal" />
+        </parameters>
+      </procedure>
+      <function name="GetNum_Entries_This_Disk" visibility="protected">
+        <parameters>
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <procedure name="SetNum_Entries_This_Disk" visibility="protected">
+        <parameters>
+          <parameter name="entries" type="Cardinal" />
+        </parameters>
+      </procedure>
+      <function name="GetNum_Entries" visibility="protected">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="SetNum_Entries" visibility="protected">
+        <parameters>
+          <parameter name="entries" type="Int64" />
+        </parameters>
+      </procedure>
+      <function name="GetSize_Central" visibility="protected">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="SetSize_Central" visibility="protected">
+        <parameters>
+          <parameter name="size" type="Int64" />
+        </parameters>
+      </procedure>
+      <function name="GetOffset_Central" visibility="protected">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="SetOffset_Central" visibility="protected">
+        <parameters>
+          <parameter name="offset" type="Int64" />
+        </parameters>
+      </procedure>
+      <function name="Getnum_disk_start_zip64_end_central" visibility="protected">
+        <parameters>
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <procedure name="Setnum_disk_start_zip64_end_central" visibility="protected">
+        <parameters>
+          <parameter name="numDisk" type="Cardinal" />
+        </parameters>
+      </procedure>
+      <function name="Getoffset_zip64_end_central" visibility="protected">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="Setoffset_zip64_end_central" visibility="protected">
+        <parameters>
+          <parameter name="offset" type="Int64" />
+        </parameters>
+      </procedure>
+      <function name="Getnum_disks" visibility="protected">
+        <parameters>
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <procedure name="Setnum_disks" visibility="protected">
+        <parameters>
+          <parameter name="numDisks" type="Cardinal" />
+        </parameters>
+      </procedure>
+      <function name="GetNewFZip64EOC" visibility="protected">
+        <parameters>
+          <retval type="zip64_end_of_centralPtr" />
+        </parameters>
+      </function>
+      <function name="GetNewFZip64EOCL" visibility="protected">
+        <parameters>
+          <retval type="zip64_end_of_central_locatorPtr" />
+        </parameters>
+      </function>
+      <function name="FZip64EOC_Instance" visibility="protected">
+        <parameters>
+          <retval type="zip64_end_of_centralPtr" />
+        </parameters>
+      </function>
+      <function name="FZip64EOCL_Instance" visibility="protected">
+        <parameters>
+          <retval type="zip64_end_of_central_locatorPtr" />
+        </parameters>
+      </function>
+      <property name="ecrec" visibility="protected" read="Fecrec" write="Fecrec" type="end_of_central" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <procedure name="SetNewZipComment" visibility="public">
+        <parameters>
+          <parameter name="NewComment" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="Assign" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Source" type="TPersistent" />
+        </parameters>
+      </procedure>
+      <procedure name="AssignTo" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Dest" type="TPersistent" />
+        </parameters>
+      </procedure>
+      <procedure name="SetFromEndCentral" visibility="public">
+        <parameters>
+          <parameter name="crec" type="end_of_centralPtr" />
+        </parameters>
+      </procedure>
+      <procedure name="Clear" visibility="public">
+      </procedure>
+      <procedure name="SaveToStream" visibility="public">
+        <parameters>
+          <parameter name="S" type="TStream" />
+        </parameters>
+      </procedure>
+      <function name="ReadFromStream" visibility="public">
+        <parameters>
+          <parameter name="S" type="TStream" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <field type="Integer" visibility="private" />
+      <field type="Integer" visibility="private" />
+      <property name="ID" visibility="public" type="Integer" />
+      <property name="this_disk" visibility="public" read="GetThis_Disk" write="SetThis_Disk" type="Cardinal" />
+      <property name="start_central_disk" visibility="public" read="GetStart_Central_Disk" write="SetStart_Central_Disk" type="Cardinal" />
+      <property name="num_entries_this_disk" visibility="public" read="GetNum_Entries_This_Disk" write="SetNum_Entries_This_Disk" type="Cardinal" />
+      <property name="num_entries" visibility="public" read="GetNum_Entries" write="SetNum_Entries" type="Int64" />
+      <property name="size_central" visibility="public" read="GetSize_Central" write="SetSize_Central" type="Int64" />
+      <property name="offset_central" visibility="public" read="GetOffset_Central" write="SetOffset_Central" type="Int64" />
+      <field type="Word" visibility="private" />
+      <field type="Word" visibility="private" />
+      <property name="zip_comment_length" visibility="public" type="Word" />
+      <property name="ZipHasComment" visibility="public" read="GetZipHasComment" type="Boolean" />
+      <property name="ZipCommentPos" visibility="public" read="FZipCommentPos" write="FZipCommentPos" type="Int64" />
+      <property name="ZipComment" visibility="public" read="FZipComment" write="FZipComment" type="PAnsiChar" />
+      <property name="Modified" visibility="public" read="FModified" write="FModified" type="Boolean" default="0" />
+      <property name="EndCentralSize" visibility="public" read="GetEndCentralSize" type="Integer" />
+      <property name="num_disk_start_zip64_end_central" visibility="public" read="Getnum_disk_start_zip64_end_central" write="Setnum_disk_start_zip64_end_central" type="Cardinal" />
+      <property name="offset_zip64_end_central" visibility="public" read="Getoffset_zip64_end_central" write="Setoffset_zip64_end_central" type="Int64" />
+      <property name="num_disks" visibility="public" read="Getnum_disks" write="Setnum_disks" type="Cardinal" />
+    </members>
+  </class>
+  <const name="ByName" type="TZipSortMode">
+    <value>
+      ByName
+    </value>
+  </const>
+  <const name="ByFileName" type="TZipSortMode">
+    <value>
+      ByFileName
+    </value>
+  </const>
+  <const name="ByDirectoryName" type="TZipSortMode">
+    <value>
+      ByDirectoryName
+    </value>
+  </const>
+  <const name="ByDate" type="TZipSortMode">
+    <value>
+      ByDate
+    </value>
+  </const>
+  <const name="ByCompressedSize" type="TZipSortMode">
+    <value>
+      ByCompressedSize
+    </value>
+  </const>
+  <const name="ByUnCompressedSize" type="TZipSortMode">
+    <value>
+      ByUnCompressedSize
+    </value>
+  </const>
+  <const name="ByRate" type="TZipSortMode">
+    <value>
+      ByRate
+    </value>
+  </const>
+  <const name="ByNone" type="TZipSortMode">
+    <value>
+      ByNone
+    </value>
+  </const>
+  <enum name="TZipSortMode">
+    <element name="ByName" />
+    <element name="ByFileName" />
+    <element name="ByDirectoryName" />
+    <element name="ByDate" />
+    <element name="ByCompressedSize" />
+    <element name="ByUnCompressedSize" />
+    <element name="ByRate" />
+    <element name="ByNone" />
+  </enum>
+  <class name="TSortedZip">
+    <ancestor name="TSortedObjectList" namespace="kpCntn">
+      <methodref name="KeyOf" visibility="public" />
+      <methodref name="Put" visibility="public" />
+      <methodref name="Create" visibility="public" />
+      <methodref name="ReadData" visibility="public" />
+      <methodref name="WriteData" visibility="public" />
+      <methodref name="Compare" visibility="public" />
+      <methodref name="AddObject" visibility="public" />
+      <methodref name="Search" visibility="public" />
+      <methodref name="Insert" visibility="public" />
+      <methodref name="IndexOf" visibility="public" />
+      <propertyref name="Items" visibility="public" />
+      <propertyref name="Duplicates" visibility="public" />
+      <ancestor name="TObjectList" namespace="kpCntn">
+        <methodref name="Error" visibility="public" />
+        <methodref name="Grow" visibility="public" />
+        <methodref name="Put" visibility="public" />
+        <methodref name="Get" visibility="protected" />
+        <methodref name="SetCapacity" visibility="protected" />
+        <methodref name="SetCount" visibility="protected" />
+        <methodref name="Allocate" visibility="protected" />
+        <methodref name="FreeItem" visibility="public" />
+        <methodref name="Create" visibility="public" />
+        <methodref name="CreateWithOptions" visibility="public" />
+        <methodref name="Destroy" visibility="public" />
+        <methodref name="AddObject" visibility="public" />
+        <methodref name="Clear" visibility="public" />
+        <methodref name="Delete" visibility="public" />
+        <methodref name="DeleteAll" visibility="public" />
+        <methodref name="FreeAll" visibility="public" />
+        <methodref name="FreeAt" visibility="public" />
+        <methodref name="FreeObject" visibility="public" />
+        <methodref name="IndexOf" visibility="public" />
+        <methodref name="Insert" visibility="public" />
+        <methodref name="Move" visibility="public" />
+        <methodref name="Pack" visibility="public" />
+        <methodref name="CreateFromStream" visibility="public" />
+        <methodref name="SaveToStream" visibility="public" />
+        <methodref name="LoadFromStream" visibility="public" />
+        <methodref name="ReadData" visibility="public" />
+        <methodref name="WriteData" visibility="public" />
+        <methodref name="DefineProperties" visibility="public" />
+        <methodref name="First" visibility="public" />
+        <methodref name="Last" visibility="public" />
+        <methodref name="Next" visibility="public" />
+        <methodref name="ForEach" visibility="public" />
+        <methodref name="LastThat" visibility="public" />
+        <methodref name="FirstThat" visibility="public" />
+        <propertyref name="Capacity" visibility="public" />
+        <propertyref name="Items" visibility="public" />
+        <propertyref name="Count" visibility="public" />
+        <propertyref name="DestroyObjects" visibility="public" />
+        <ancestor name="TPersistent" namespace="Classes">
+          <methodref name="AssignError" visibility="private">
+          </methodref>
+          <methodref name="AssignTo" visibility="public">
+          </methodref>
+          <methodref name="DefineProperties" visibility="public">
+          </methodref>
+          <methodref name="GetOwner" visibility="protected">
+          </methodref>
+          <methodref name="Destroy" visibility="public">
+          </methodref>
+          <methodref name="Assign" visibility="public">
+          </methodref>
+          <methodref name="GetNamePath" visibility="public">
+          </methodref>
+          <ancestor name="TObject" namespace="System">
+            <methodref name="Create" visibility="public">
+            </methodref>
+            <methodref name="Free" visibility="public">
+            </methodref>
+            <methodref name="InitInstance" visibility="public">
+            </methodref>
+            <methodref name="CleanupInstance" visibility="public">
+            </methodref>
+            <methodref name="ClassType" visibility="public">
+            </methodref>
+            <methodref name="ClassName" visibility="public">
+            </methodref>
+            <methodref name="ClassNameIs" visibility="public">
+            </methodref>
+            <methodref name="ClassParent" visibility="public">
+            </methodref>
+            <methodref name="ClassInfo" visibility="public">
+            </methodref>
+            <methodref name="InstanceSize" visibility="public">
+            </methodref>
+            <methodref name="InheritsFrom" visibility="public">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public">
+            </methodref>
+            <methodref name="MethodName" visibility="public">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public">
+            </methodref>
+            <methodref name="GetInterface" visibility="public">
+            </methodref>
+            <methodref name="GetInterfaceEntry" visibility="public">
+            </methodref>
+            <methodref name="GetInterfaceTable" visibility="public">
+            </methodref>
+            <methodref name="SafeCallException" visibility="public">
+            </methodref>
+            <methodref name="AfterConstruction" visibility="public">
+            </methodref>
+            <methodref name="BeforeDestruction" visibility="public">
+            </methodref>
+            <methodref name="Dispatch" visibility="public">
+            </methodref>
+            <methodref name="DefaultHandler" visibility="public">
+            </methodref>
+            <methodref name="NewInstance" visibility="public">
+            </methodref>
+            <methodref name="FreeInstance" visibility="public">
+            </methodref>
+            <methodref name="Destroy" visibility="public">
+            </methodref>
+          </ancestor>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="FSortMode" type="TZipSortMode" visibility="private" />
+      <field name="FFilesDate" type="TDateTime" visibility="private" />
+      <field name="FIsZip64" type="Boolean" visibility="private" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="WithDuplicates" type="TDuplicates" />
+        </parameters>
+      </constructor>
+      <function name="AddObject" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Item" type="TObject" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="Compare" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Key1" type="Pointer" />
+          <parameter name="Key2" type="Pointer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <property name="SortMode" visibility="public" read="FSortMode" write="FSortMode" type="TZipSortMode" default="7" />
+      <property name="filesdate" visibility="public" read="FFilesDate" write="FFilesDate" type="TDateTime" />
+      <property name="isZip64" visibility="public" read="FIsZip64" type="Boolean" />
+    </members>
+  </class>
+  <procedure name="setZipSignatures" visibility="public">
+    <parameters>
+      <parameter name="csig" type="Integer" />
+      <parameter name="lsig" type="Integer" />
+      <parameter name="esig" type="Integer" />
+    </parameters>
+  </procedure>
+</namespace>

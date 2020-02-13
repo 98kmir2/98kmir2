@@ -1,0 +1,72 @@
+package asgd5;
+
+{$R *.RES}
+{$R 'asgreg.dcr'}
+{$R 'asghtmlr.dcr'}
+{$R 'asgprvr.dcr'}
+{$R 'asgprnr.dcr'}
+{$R 'asgfindr.dcr'}
+{$R 'PictureContainerReg.dcr'}
+{$R 'asgreplacer.dcr'}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'TMS software TAdvStringGrid'}
+{$IMPLICITBUILD OFF}
+
+requires
+  vcl50;
+
+contains
+  asgreg in 'asgreg.pas',
+  asghtmlr in 'asghtmlr.pas',
+  asgprvr in 'asgprvr.pas',
+  asgprnr in 'asgprnr.pas',
+  advspin in 'advspin.pas',
+  AdvUtil in 'advutil.pas',
+  AdvObj in 'advobj.pas',
+  asgspin in 'asgspin.pas',
+  ASGEdit in 'asgedit.pas',
+  AdvGrid in 'advgrid.pas',
+  asgde in 'asgde.pas',
+  asgprint in 'asgprint.pas' {AdvGridPrintSettingsForm},
+  AsgHTML in 'AsgHTML.pas' {AdvGridHTMLSettingsForm},
+  asgprev in 'asgprev.pas' {AdvPreviewForm},
+  asgcombo in 'asgcombo.pas',
+  asgdd in 'asgdd.pas',
+  asgfindr in 'asgfindr.pas',
+  AsgFindDialog in 'AsgFindDialog.pas' {AsgFindDlg},
+  asgcheck in 'asgcheck.pas',
+  PictureContainer in 'PictureContainer.pas',
+  PictureContainerDE in 'PictureContainerDE.pas',
+  PictureContainerProp in 'PictureContainerProp.pas' {ContainerEditor},
+  PictureContainerReg in 'PictureContainerReg.pas',
+  HTMListB in 'HTMListb.pas',
+  BaseGrid in 'BaseGrid.pas',
+  AdvXPVS in 'AdvXPVS.pas',
+  AsgHTMLE in 'AsgHTMLE.pas',
+  AsgMemo in 'AsgMemo.pas',
+  asgreplacer in 'asgreplacer.pas',
+  AsgReplaceDialog in 'AsgReplaceDialog.pas' {AsgReplaceDialog},
+  ASXPVS in 'ASXPVS.pas',
+  AsgUni in 'AsgUni.pas';
+
+end.

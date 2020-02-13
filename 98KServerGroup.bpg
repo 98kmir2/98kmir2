@@ -1,0 +1,42 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = GameCenter.exe LoginGate.exe LoginSrv.exe SelGate.exe DBServer.exe \
+  RunGate.exe M2Server.exe LogDataServer.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+M2Server.exe: M2Server\M2Server.dpr
+  $(DCC)
+
+DBServer.exe: DBServer\DBServer.dpr
+  $(DCC)
+
+LoginGate.exe: LoginGate\LoginGate.dpr
+  $(DCC)
+
+LoginSrv.exe: LoginSrv\LoginSrv.dpr
+  $(DCC)
+
+SelGate.exe: SelGate\SelGate.dpr
+  $(DCC)
+
+RunGate.exe: RunGate\RunGate.dpr
+  $(DCC)
+
+LogDataServer.exe: LogDataServer\LogDataServer.dpr
+  $(DCC)
+
+GameCenter.exe: GameCenter\GameCenter.dpr
+  $(DCC)
+
+

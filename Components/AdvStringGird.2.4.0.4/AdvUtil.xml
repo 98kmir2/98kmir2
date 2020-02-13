@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="AdvUtil">
+  <const name="atNumeric" type="TAutoType">
+    <value>
+      atNumeric
+    </value>
+  </const>
+  <const name="atFloat" type="TAutoType">
+    <value>
+      atFloat
+    </value>
+  </const>
+  <const name="atString" type="TAutoType">
+    <value>
+      atString
+    </value>
+  </const>
+  <const name="atDate" type="TAutoType">
+    <value>
+      atDate
+    </value>
+  </const>
+  <const name="atTime" type="TAutoType">
+    <value>
+      atTime
+    </value>
+  </const>
+  <enum name="TAutoType">
+    <element name="atNumeric" />
+    <element name="atFloat" />
+    <element name="atString" />
+    <element name="atDate" />
+    <element name="atTime" />
+  </enum>
+  <const name="ttText" type="TTextType">
+    <value>
+      ttText
+    </value>
+  </const>
+  <const name="ttHTML" type="TTextType">
+    <value>
+      ttHTML
+    </value>
+  </const>
+  <const name="ttRTF" type="TTextType">
+    <value>
+      ttRTF
+    </value>
+  </const>
+  <const name="ttFormula" type="TTextType">
+    <value>
+      ttFormula
+    </value>
+  </const>
+  <const name="ttURL" type="TTextType">
+    <value>
+      ttURL
+    </value>
+  </const>
+  <const name="ttUnicode" type="TTextType">
+    <value>
+      ttUnicode
+    </value>
+  </const>
+  <enum name="TTextType">
+    <element name="ttText" />
+    <element name="ttHTML" />
+    <element name="ttRTF" />
+    <element name="ttFormula" />
+    <element name="ttURL" />
+    <element name="ttUnicode" />
+  </enum>
+  <set name="TCharSet" type="Char" />
+  <function name="CSVQuotes" visibility="public">
+    <parameters>
+      <parameter name="S" type="string" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="CheckLimits" visibility="public">
+    <parameters>
+      <parameter name="Value" type="Integer" />
+      <parameter name="LowLimit" type="Integer" />
+      <parameter name="UpLimit" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="DarkenColor" visibility="public">
+    <parameters>
+      <parameter name="Color" type="TColor" />
+      <retval type="TColor" />
+    </parameters>
+  </function>
+  <function name="FIPos" visibility="public">
+    <parameters>
+      <parameter name="su" type="string" />
+      <parameter name="s" type="string" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="VarCharPos" visibility="public">
+    <parameters>
+      <parameter name="ch" type="Char" />
+      <parameter name="s" type="string" paramflags="const" />
+      <parameter name="Res" type="Integer" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="VarCharPosNC" visibility="public">
+    <parameters>
+      <parameter name="ch" type="Char" />
+      <parameter name="s" type="string" paramflags="const" />
+      <parameter name="Res" type="Integer" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="CharPos" visibility="public">
+    <parameters>
+      <parameter name="ch" type="Char" />
+      <parameter name="s" type="string" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="IsInGridRect" visibility="public">
+    <parameters>
+      <parameter name="rc" type="TGridRect" />
+      <parameter name="c" type="Integer" />
+      <parameter name="r" type="Integer" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="GetToken" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" paramflags="var" />
+      <parameter name="separator" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="Max" visibility="public">
+    <parameters>
+      <parameter name="i1" type="Integer" />
+      <parameter name="i2" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="Min" visibility="public">
+    <parameters>
+      <parameter name="i1" type="Integer" />
+      <parameter name="i2" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="StringListToText" visibility="public">
+    <parameters>
+      <parameter name="st" type="TStringList" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="VarPos" visibility="public">
+    <parameters>
+      <parameter name="su" type="string" />
+      <parameter name="s" type="string" />
+      <parameter name="respos" type="Integer" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="FirstChar" visibility="public">
+    <parameters>
+      <parameter name="charset" type="TCharSet" />
+      <parameter name="s" type="string" />
+      <retval type="Char" />
+    </parameters>
+  </function>
+  <function name="NameToCell" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <parameter name="cell" type="TPoint" paramflags="var" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="IsURL" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <procedure name="StripURLProtocol" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" paramflags="var" />
+    </parameters>
+  </procedure>
+  <function name="TextType" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <parameter name="allowhtml" type="Boolean" />
+      <retval type="TTextType" />
+    </parameters>
+  </function>
+  <function name="RemoveSeps" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="HTMLLineBreaks" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="HTMLColor" visibility="public">
+    <parameters>
+      <parameter name="l" type="Cardinal" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="IsType" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <retval type="TAutoType" />
+    </parameters>
+  </function>
+  <function name="CLFToLF" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="LFToCLF" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <procedure name="StringToPassword" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" paramflags="var" />
+      <parameter name="passwordchar" type="Char" />
+    </parameters>
+  </procedure>
+  <procedure name="StringToOem" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" paramflags="var" />
+    </parameters>
+  </procedure>
+  <procedure name="OemToString" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" paramflags="var" />
+    </parameters>
+  </procedure>
+  <function name="DoubleToSingleChar" visibility="public">
+    <parameters>
+      <parameter name="ch" type="Char" />
+      <parameter name="s" type="string" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <procedure name="LineFeedsToCSV" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" paramflags="var" />
+    </parameters>
+  </procedure>
+  <procedure name="CSVToLineFeeds" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" paramflags="var" />
+    </parameters>
+  </procedure>
+  <procedure name="LineFeedsToJava" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" paramflags="var" />
+    </parameters>
+  </procedure>
+  <procedure name="JavaToLineFeeds" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" paramflags="var" />
+    </parameters>
+  </procedure>
+  <function name="MatchStrEx" visibility="public">
+    <parameters>
+      <parameter name="s1" type="string" />
+      <parameter name="s2" type="string" />
+      <parameter name="DoCase" type="Boolean" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="MatchStr" visibility="public">
+    <parameters>
+      <parameter name="s1" type="string" />
+      <parameter name="s2" type="string" />
+      <parameter name="DoCase" type="Boolean" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="Matches" visibility="public">
+    <parameters>
+      <parameter name="s0a" type="PAnsiChar" />
+      <parameter name="s1a" type="PAnsiChar" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="LfToFile" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="FileToLf" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <parameter name="multiline" type="Boolean" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="GetNextLine" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" paramflags="var" />
+      <parameter name="multiline" type="Boolean" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="LinesInText" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <parameter name="multiline" type="Boolean" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="RectString" visibility="public">
+    <parameters>
+      <parameter name="r" type="TRect" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="FixDecimalSeparator" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="GetNextDate" visibility="public">
+    <parameters>
+      <parameter name="d" type="TDateTime" />
+      <parameter name="dye" type="Word" />
+      <parameter name="dmo" type="Word" />
+      <parameter name="dda" type="Word" />
+      <parameter name="dtv" type="TDateTime" />
+      <retval type="TDateTime" />
+    </parameters>
+  </function>
+  <procedure name="DrawBitmapResourceTransp" visibility="public">
+    <parameters>
+      <parameter name="Canvas" type="TCanvas" />
+      <parameter name="bkColor" type="TColor" />
+      <parameter name="r" type="TRect" />
+      <parameter name="ResName" type="string" />
+    </parameters>
+  </procedure>
+  <procedure name="DrawBitmapTransp" visibility="public">
+    <parameters>
+      <parameter name="Canvas" type="TCanvas" />
+      <parameter name="bmp" type="TBitmap" />
+      <parameter name="bkcolor" type="TColor" />
+      <parameter name="r" type="TRect" />
+    </parameters>
+  </procedure>
+  <function name="SinglePos" visibility="public">
+    <parameters>
+      <parameter name="p" type="Char" />
+      <parameter name="s" type="string" />
+      <parameter name="sp" type="Integer" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="NumSingleChar" visibility="public">
+    <parameters>
+      <parameter name="p" type="Char" />
+      <parameter name="s" type="string" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="NumChar" visibility="public">
+    <parameters>
+      <parameter name="p" type="Char" />
+      <parameter name="s" type="string" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="NumCharInStr" visibility="public">
+    <parameters>
+      <parameter name="p" type="Char" />
+      <parameter name="s" type="string" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="LineFeedsToXLS" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="ShiftCase" visibility="public">
+    <parameters>
+      <parameter name="Name" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="StrToShortdateUS" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <retval type="TDateTime" />
+    </parameters>
+  </function>
+  <function name="StrToShortDateEU" visibility="public">
+    <parameters>
+      <parameter name="s" type="string" />
+      <retval type="TDateTime" />
+    </parameters>
+  </function>
+  <procedure name="DrawErrorLines" visibility="public">
+    <parameters>
+      <parameter name="Parent" type="TWinControl" />
+      <parameter name="Canvas" type="TCanvas" />
+      <parameter name="TmpStr" type="string" />
+      <parameter name="Rect" type="TRect" />
+      <parameter name="Height" type="Integer" />
+      <parameter name="ErrPos" type="Integer" />
+      <parameter name="ErrLen" type="Integer" />
+    </parameters>
+  </procedure>
+  <procedure name="DrawProgress" visibility="public">
+    <parameters>
+      <parameter name="Canvas" type="TCanvas" />
+      <parameter name="r" type="TRect" />
+      <parameter name="Color" type="TColor" />
+      <parameter name="p" type="Integer" />
+    </parameters>
+  </procedure>
+</namespace>

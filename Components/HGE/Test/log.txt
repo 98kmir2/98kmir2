@@ -1,0 +1,149 @@
+System Started...
+================================================================================
+DateTime: 10. 4.2012,  2:37:14
+OS: Windows 5.1.2600
+Memory: 2047M total, 2047M free
+D3D Driver: ati2dvag.dll
+Description: ATI Mobility Radeon HD 3400 Series  
+Version: 10.7119.6.14
+Can't find appropriate full screen video mode
+Mode: 800 x 600 x UNKNOWN
+AvailableTextureMemory: 493M
+System Initiated
+HGE_WINDOWED
+HGE_WINDOWED
+HGE_WINDOWED
+HGE_WINDOWED
+
+
+
+System Started...
+================================================================================
+DateTime: 10. 4.2012,  2:38:29
+OS: Windows 5.1.2600
+Memory: 2047M total, 2047M free
+D3D Driver: ati2dvag.dll
+Description: ATI Mobility Radeon HD 3400 Series  
+Version: 10.7119.6.14
+Can't find appropriate full screen video mode
+Mode: 800 x 600 x UNKNOWN
+AvailableTextureMemory: 493M
+System Initiated
+1
+2
+3
+
+
+
+System Started...
+================================================================================
+DateTime: 10. 4.2012,  2:38:58
+OS: Windows 5.1.2600
+Memory: 2047M total, 2047M free
+D3D Driver: ati2dvag.dll
+Description: ATI Mobility Radeon HD 3400 Series  
+Version: 10.7119.6.14
+Mode: 800 x 600 x X8R8G8B8
+AvailableTextureMemory: 493M
+System Initiated
+1
+2
+3
+4
+5
+6
+7
+1
+2
+3
+4
+5
+6
+7
+1
+2
+3
+4
+5
+6
+7
+1
+2
+3
+4
+5
+6
+7
+
+
+
+System Started...
+================================================================================
+DateTime: 10. 4.2012,  2:40:43
+OS: Windows 5.1.2600
+Memory: 2047M total, 2047M free
+D3D Driver: ati2dvag.dll
+Description: ATI Mobility Radeon HD 3400 Series  
+Version: 10.7119.6.14
+Mode: 800 x 600 x X8R8G8B8
+AvailableTextureMemory: 493M
+System Initiated
+
+
+
+System Started...
+================================================================================
+DateTime: 10. 4.2012,  2:41:35
+OS: Windows 5.1.2600
+Memory: 2047M total, 2047M free
+D3D Driver: ati2dvag.dll
+Description: ATI Mobility Radeon HD 3400 Series  
+Version: 10.7119.6.14
+Mode: 800 x 600 x X8R8G8B8
+AvailableTextureMemory: 493M
+System Initiated
+
+
+
+System Started...
+================================================================================
+DateTime: 21. 4.2012, 15:11: 6
+OS: Windows 6.1.7601
+Memory: 4095M total, 4095M free
+D3D Driver: nvd3dum.dll
+Description: NVIDIA Quadro 1000M
+Version: 12.7593.8.17
+Mode: 800 x 600 x X8R8G8B8
+AvailableTextureMemory: 1733M
+System Initiated
+
+
+
+System Started...
+================================================================================
+DateTime: 21. 5.2014, 13:16:15
+OS: Windows 6.2.9200
+Memory: 4095M total, 4095M free
+D3D Driver: nvumdshim.dll
+Description: Intel(R) HD Graphics 4000
+Version: 13.2702.9.18
+Mode: 800 x 600 x X8R8G8B8
+AvailableTextureMemory: 1790M
+System Initiated
+
+
+
+System Started...
+================================================================================
+DateTime:  4. 7.2014, 17:48:43
+OS: Windows 6.2.9200
+Memory: 4095M total, 4095M free
+D3D Driver: nvd3dum.dll
+Description: NVIDIA Quadro K1000M
+Version: 13.2768.9.18
+Mode: 800 x 600 x X8R8G8B8
+AvailableTextureMemory: 4094M
+System Initiated
+
+
+

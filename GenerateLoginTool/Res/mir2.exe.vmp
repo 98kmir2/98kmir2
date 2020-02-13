@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Document Version="2">
+    <Protection InputFileName="mir2.exe" Options="786632">
+        <Messages />
+        <Folders />
+        <Procedures>
+            <Procedure MapAddress='string &quot;\\.\PhysicalDrive0&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;\\.\SMARTVSD&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;WbemScripting.SWbemLocator&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;localhost&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;root\WMI&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;SELECT * FROM MSSmBios_RawSMBiosTables&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;WQL&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;sListSite&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker1" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker2" Options="0" CompilationType="1" />
+            <Procedure MapAddress='string &quot;legendsoft&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker3" Options="0" CompilationType="2" />
+            <Procedure MapAddress='string &quot;WS2_32.dll&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;send&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;mir2&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;sWebSite&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;Purple&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker4" Options="0" />
+            <Procedure MapAddress='string &quot;PatchHost&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;Setup&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;WzOnly&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker5" Options="0" />
+            <Procedure MapAddress="VMProtectMarker6" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker7" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker8" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker9" IncludedInCompilation="0" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker10" Options="0" />
+            <Procedure MapAddress="VMProtectMarker11" Options="0" />
+            <Procedure MapAddress="VMProtectMarker12" Options="0" />
+            <Procedure MapAddress="VMProtectMarker13" Options="0" />
+            <Procedure MapAddress="VMProtectMarker14" Options="0" />
+            <Procedure MapAddress='string &quot;**%s/%s/%d/%d/%d/%s&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker15" Options="0" />
+            <Procedure MapAddress="VMProtectMarker16" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker17" Options="0" />
+            <Procedure MapAddress="VMProtectMarker18" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker19" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker20" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker21" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker22" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker23" Options="0" CompilationType="2" />
+            <Procedure MapAddress="VMProtectMarker24" Options="0" />
+            <Procedure MapAddress="VMProtectMarker25" Options="0" />
+            <Procedure MapAddress="VMProtectMarker26" Options="0" />
+            <Procedure MapAddress="VMProtectMarker27" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker28" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker29" Options="0" />
+            <Procedure MapAddress="VMProtectMarker30" Options="0" />
+        </Procedures>
+        <Objects />
+    </Protection>
+    <DLLBox>
+        <Folders />
+    </DLLBox>
+    <Script />
+    <LicenseManager />
+</Document>

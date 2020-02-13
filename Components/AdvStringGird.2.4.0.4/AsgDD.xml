@@ -1,0 +1,852 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="asgdd">
+  <const name="deNone" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="deMove" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="deCopy" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="deLink" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="deScroll" type="Integer">
+    <value>
+      $80000000
+    </value>
+  </const>
+  <const name="ddGet" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="ddSet" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="tsGlobal" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="tsFile" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="tsStream" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="tsStorage" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="tsGDI" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="tsMetafilePict" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="tsEnhMetafile" type="Integer">
+    <value>
+      $40
+    </value>
+  </const>
+  <const name="tsNull" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <class name="TEnumFormats">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FDataObject" type="IDataObject" visibility="private" />
+      <field name="FEnumerator" type="IEnumFORMATETC" visibility="private" />
+      <field name="FFormatEtc" type="tagFORMATETC" visibility="private" />
+      <field name="FValid" type="Boolean" visibility="private" />
+      <field name="FCount" type="Integer" visibility="private" />
+      <field name="FFiles" type="TStringList" visibility="private" />
+      <procedure name="SetDataObject" visibility="private">
+        <parameters>
+          <parameter name="Value" type="IDataObject" />
+        </parameters>
+      </procedure>
+      <function name="SomeInt" visibility="private">
+        <parameters>
+          <parameter name="Format" type="Word" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="SomeText" visibility="private">
+        <parameters>
+          <parameter name="Format" type="Word" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="SomeFiles" visibility="private">
+        <parameters>
+          <parameter name="Files" type="TStringList" paramflags="var" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetAspect" visibility="private">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="SetAspect" visibility="private">
+        <parameters>
+          <parameter name="value" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="GetcfFormat" visibility="private">
+        <parameters>
+          <retval type="Word" />
+        </parameters>
+      </function>
+      <procedure name="SetcfFormat" visibility="private">
+        <parameters>
+          <parameter name="value" type="Word" />
+        </parameters>
+      </procedure>
+      <function name="GetlIndex" visibility="private">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="SetlIndex" visibility="private">
+        <parameters>
+          <parameter name="value" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="GetTymed" visibility="private">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="SetTymed" visibility="private">
+        <parameters>
+          <parameter name="value" type="Integer" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="DataObject" type="IDataObject" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <function name="Reset" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Next" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="HasFormat" visibility="public">
+        <parameters>
+          <parameter name="ClipFormat" type="Word" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Handle" visibility="public">
+        <parameters>
+          <parameter name="Tymed" type="Integer" />
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <function name="GlobalHandle" visibility="public">
+        <parameters>
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <function name="HasText" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="HasFile" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="HasRTF" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="HasCol" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Text" visibility="public">
+        <parameters>
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="RTF" visibility="public">
+        <parameters>
+          <retval type="string" />
+        </parameters>
+      </function>
+      <function name="Col" visibility="public">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <property name="Count" visibility="public" read="FCount" type="Integer" />
+      <property name="DataObject" visibility="public" read="FDataObject" write="SetDataObject" type="IDataObject" />
+      <property name="Valid" visibility="public" read="FValid" type="Boolean" />
+      <property name="FormatEtc" visibility="public" read="FFormatEtc" type="tagFORMATETC" />
+      <property name="Aspect" visibility="public" read="GetAspect" write="SetAspect" type="Integer" />
+      <property name="Format" visibility="public" read="GetcfFormat" write="SetcfFormat" type="Word" />
+      <property name="Index" visibility="public" read="GetlIndex" write="SetlIndex" type="Integer" />
+      <property name="Medium" visibility="public" read="GetTymed" write="SetTymed" type="Integer" />
+    </members>
+  </class>
+  <const name="dfText" type="TDropFormat">
+    <value>
+      dfText
+    </value>
+  </const>
+  <const name="dfFile" type="TDropFormat">
+    <value>
+      dfFile
+    </value>
+  </const>
+  <const name="dfCol" type="TDropFormat">
+    <value>
+      dfCol
+    </value>
+  </const>
+  <const name="dfRTF" type="TDropFormat">
+    <value>
+      dfRTF
+    </value>
+  </const>
+  <enum name="TDropFormat">
+    <element name="dfText" />
+    <element name="dfFile" />
+    <element name="dfCol" />
+    <element name="dfRTF" />
+  </enum>
+  <set name="TDropFormats" type="TDropFormat">
+    <element name="dfText" />
+    <element name="dfFile" />
+    <element name="dfCol" />
+    <element name="dfRTF" />
+  </set>
+  <class name="TASGDropTarget">
+    <ancestor name="TInterfacedObject" namespace="System">
+      <methodref name="QueryInterface" visibility="protected">
+      </methodref>
+      <methodref name="_AddRef" visibility="protected">
+      </methodref>
+      <methodref name="_Release" visibility="protected">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <propertyref name="RefCount" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <interfaces>
+      <implements name="IDropTarget" />
+    </interfaces>
+    <members>
+      <function name="DragEnter" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="DataObj" type="IDataObject" paramflags="const" />
+          <parameter name="grfKeyState" type="Integer" />
+          <parameter name="pt" type="TPoint" />
+          <parameter name="dwEffect" type="Integer" paramflags="var" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="DragOver" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="grfKeyState" type="Integer" />
+          <parameter name="pt" type="TPoint" />
+          <parameter name="dwEffect" type="Integer" paramflags="var" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="DragLeave" visibility="public" callconv="stdcall">
+        <parameters>
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="Drop" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="DataObj" type="IDataObject" paramflags="const" />
+          <parameter name="grfKeyState" type="Integer" />
+          <parameter name="pt" type="TPoint" />
+          <parameter name="dwEffect" type="Integer" paramflags="var" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <field name="FOk" type="Boolean" visibility="private" />
+      <field name="FAcceptText" type="Boolean" visibility="private" />
+      <field name="FAcceptFiles" type="Boolean" visibility="private" />
+      <field name="FAcceptCols" type="Boolean" visibility="private" />
+      <field name="FDropFormats" type="TDropFormats" visibility="private" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <procedure name="DropText" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="pt" type="TPoint" />
+          <parameter name="s" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="DropCol" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="pt" type="TPoint" />
+          <parameter name="col" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="DropRTF" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="pt" type="TPoint" />
+          <parameter name="s" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="DropFiles" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="pt" type="TPoint" />
+          <parameter name="files" type="TStrings" />
+        </parameters>
+      </procedure>
+      <procedure name="DragMouseMove" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="pt" type="TPoint" />
+          <parameter name="Allow" type="Boolean" paramflags="var" />
+          <parameter name="DropFormats" type="TDropFormats" />
+        </parameters>
+      </procedure>
+      <procedure name="DragMouseEnter" visibility="public" procflags="virtual">
+      </procedure>
+      <procedure name="DragMouseLeave" visibility="public" procflags="virtual">
+      </procedure>
+      <property name="AcceptText" visibility="published" read="FAcceptText" write="FAcceptText" type="Boolean" />
+      <property name="AcceptFiles" visibility="published" read="FAcceptFiles" write="FAcceptFiles" type="Boolean" />
+      <property name="AcceptCols" visibility="published" read="FAcceptCols" write="FAcceptCols" type="Boolean" />
+      <property name="DropFormats" visibility="published" read="FDropFormats" type="TDropFormats" />
+    </members>
+  </class>
+  <class name="TASGDropSource">
+    <ancestor name="TInterfacedObject" namespace="System">
+      <methodref name="QueryInterface" visibility="protected">
+      </methodref>
+      <methodref name="_AddRef" visibility="protected">
+      </methodref>
+      <methodref name="_Release" visibility="protected">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <propertyref name="RefCount" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <interfaces>
+      <implements name="IDropSource" />
+    </interfaces>
+    <members>
+      <field name="fNoAccept" type="Boolean" visibility="private" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <function name="QueryContinueDrag" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="fEscapePressed" type="LongBool" />
+          <parameter name="grfKeyState" type="Integer" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="GiveFeedback" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="dwEffect" type="Integer" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <procedure name="CurrentEffect" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="dwEffect" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="QueryDrag" visibility="public" procflags="virtual">
+      </procedure>
+    </members>
+  </class>
+  <class name="TSourceDataObject">
+    <ancestor name="TInterfacedObject" namespace="System">
+      <methodref name="QueryInterface" visibility="protected">
+      </methodref>
+      <methodref name="_AddRef" visibility="protected">
+      </methodref>
+      <methodref name="_Release" visibility="protected">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <propertyref name="RefCount" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <interfaces>
+      <implements name="IDataObject" />
+    </interfaces>
+    <members>
+      <field name="textdata" type="string" visibility="private" />
+      <field name="rtfdata" type="string" visibility="private" />
+      <field name="scolidx" type="Integer" visibility="private" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="stxt" type="string" paramflags="const" />
+          <parameter name="srtf" type="string" paramflags="const" />
+          <parameter name="sidx" type="Integer" />
+        </parameters>
+      </constructor>
+      <function name="GetData" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="formatetc" type="tagFORMATETC" paramflags="const" />
+          <parameter name="medium" type="tagSTGMEDIUM" paramflags="out" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="GetDataHere" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="formatetc" type="tagFORMATETC" paramflags="const" />
+          <parameter name="medium" type="tagSTGMEDIUM" paramflags="out" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="QueryGetData" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="formatetc" type="tagFORMATETC" paramflags="const" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="SetData" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="formatetc" type="tagFORMATETC" paramflags="const" />
+          <parameter name="medium" type="tagSTGMEDIUM" paramflags="var" />
+          <parameter name="fRelease" type="LongBool" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="GetCanonicalFormatEtc" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="formatetcIn" type="tagFORMATETC" paramflags="const" />
+          <parameter name="formatetcOut" type="tagFORMATETC" paramflags="out" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="EnumFormatEtc" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="dwDirection" type="Integer" />
+          <parameter name="enumFormatEtc" type="IEnumFORMATETC" paramflags="out" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="DAdvise" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="formatetc" type="tagFORMATETC" paramflags="const" />
+          <parameter name="advf" type="Integer" />
+          <parameter name="advSink" type="IAdviseSink" paramflags="const" />
+          <parameter name="dwConnection" type="Integer" paramflags="out" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="DUnadvise" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="dwConnection" type="Integer" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="EnumDAdvise" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="enumAdvise" type="IEnumSTATDATA" paramflags="out" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="TSourceEnumFormatEtc">
+    <ancestor name="TInterfacedObject" namespace="System">
+      <methodref name="QueryInterface" visibility="protected">
+      </methodref>
+      <methodref name="_AddRef" visibility="protected">
+      </methodref>
+      <methodref name="_Release" visibility="protected">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <propertyref name="RefCount" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <interfaces>
+      <implements name="IEnumFORMATETC" />
+    </interfaces>
+    <members>
+      <field name="FIndex" type="Integer" visibility="protected" />
+      <field name="FHasCol" type="Boolean" visibility="protected" />
+      <function name="Next" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="CountRequested" type="Integer" />
+          <parameter name="FormatEtcArray" paramflags="out" />
+          <parameter name="PCountFetched" type="PLongint" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="Skip" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="count" type="Integer" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="Reset" visibility="public" callconv="stdcall">
+        <parameters>
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+      <function name="Clone" visibility="public" callconv="stdcall">
+        <parameters>
+          <parameter name="enumFmt" type="IEnumFORMATETC" paramflags="out" />
+          <retval type="HRESULT" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <array name="TFormatEtcArray" low="0" high="19">
+    <element type="tagFORMATETC" />
+  </array>
+  <pointer name="PFormatEtcArray" type="TFormatEtcArray" indircnt="1" />
+  <procedure name="SetRTFAware" visibility="public">
+    <parameters>
+      <parameter name="value" type="Boolean" />
+    </parameters>
+  </procedure>
+  <function name="StandardEffect" visibility="public">
+    <parameters>
+      <parameter name="Keys" type="TShiftState" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="StartTextDoDragDrop" visibility="public">
+    <parameters>
+      <parameter name="DropSource" type="TASGDropSource" />
+      <parameter name="stxt" type="string" />
+      <parameter name="srtf" type="string" />
+      <parameter name="dwOKEffects" type="Integer" />
+      <parameter name="dwEffect" type="Integer" paramflags="var" />
+      <retval type="HRESULT" />
+    </parameters>
+  </function>
+  <function name="StartColDoDragDrop" visibility="public">
+    <parameters>
+      <parameter name="DropSource" type="TASGDropSource" />
+      <parameter name="column" type="Integer" />
+      <parameter name="dwOKEffects" type="Integer" />
+      <parameter name="dwEffect" type="Integer" paramflags="var" />
+      <retval type="HRESULT" />
+    </parameters>
+  </function>
+</namespace>

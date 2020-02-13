@@ -1,0 +1,26 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = SocketD7.bpl DCLNMF70.bpl DelphiX70.bpl
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+SocketD7.bpl: Components\ScktComp\SocketD7.dpk
+  $(DCC)
+
+DCLNMF70.bpl: Components\FastNet\DCLNMF70.dpk
+  $(DCC)
+
+DelphiX70.bpl: Components\DelphiX\DelphiX70.dpk
+  $(DCC)
+
+

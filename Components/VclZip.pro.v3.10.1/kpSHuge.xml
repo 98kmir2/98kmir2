@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="kpSHuge">
+  <procedure name="HugeInc" visibility="public">
+    <parameters>
+      <parameter name="HugePtr" type="Pointer" paramflags="var" />
+      <parameter name="Amount" type="Integer" />
+    </parameters>
+  </procedure>
+  <procedure name="HugeDec" visibility="public">
+    <parameters>
+      <parameter name="HugePtr" type="Pointer" paramflags="var" />
+      <parameter name="Amount" type="Integer" />
+    </parameters>
+  </procedure>
+  <function name="HugeOffset" visibility="public">
+    <parameters>
+      <parameter name="HugePtr" type="Pointer" />
+      <parameter name="Amount" type="Integer" />
+      <retval type="Pointer" />
+    </parameters>
+  </function>
+  <procedure name="HMemCpy" visibility="public">
+    <parameters>
+      <parameter name="DstPtr" type="Pointer" />
+      <parameter name="SrcPtr" type="Pointer" />
+      <parameter name="Amount" type="Integer" />
+    </parameters>
+  </procedure>
+</namespace>

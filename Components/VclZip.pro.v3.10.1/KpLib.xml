@@ -1,0 +1,566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="KpLib">
+  <const name="WILDCARD_RECURSE" type="Char">
+    <value>
+      $3E
+    </value>
+  </const>
+  <const name="WILDCARD_NORECURSE" type="Char">
+    <value>
+      $7C
+    </value>
+  </const>
+  <pointer name="BYTEPTR" type="Byte" indircnt="1" />
+  <pointer name="PSearchRec" type="TSearchRec" indircnt="1" />
+  <class name="TLFNFileStream">
+    <ancestor name="TS_BufferStream" namespace="kpSStrm">
+      <methodref name="GetBufPosition" visibility="private" />
+      <methodref name="FillBuffer" visibility="public" />
+      <methodref name="FlushBuffer" visibility="public" />
+      <methodref name="PutBack" visibility="public" />
+      <methodref name="AfterFillBuffer" visibility="public" />
+      <methodref name="AfterFlushBuffer" visibility="public" />
+      <propertyref name="Buffer" visibility="protected" />
+      <propertyref name="BufPtr" visibility="protected" />
+      <propertyref name="BufSize" visibility="protected" />
+      <propertyref name="BufEnd" visibility="protected" />
+      <propertyref name="BufPosition" visibility="protected" />
+      <propertyref name="State" visibility="protected" />
+      <propertyref name="Stream" visibility="protected" />
+      <methodref name="Create" visibility="public" />
+      <methodref name="Destroy" visibility="public" />
+      <methodref name="Read" visibility="public" />
+      <methodref name="Write" visibility="public" />
+      <methodref name="Seek" visibility="public" />
+      <methodref name="IsEof" visibility="public" />
+      <propertyref name="FlushOnDestroy" visibility="public" />
+      <eventref name="OnFillBuffer" visibility="public" />
+      <eventref name="OnFlushBuffer" visibility="public" />
+      <ancestor name="TStream" namespace="Classes">
+        <methodref name="GetPosition" visibility="private">
+        </methodref>
+        <methodref name="SetPosition" visibility="private">
+        </methodref>
+        <methodref name="SetSize64" visibility="private">
+        </methodref>
+        <methodref name="GetSize" visibility="public">
+        </methodref>
+        <methodref name="SetSize" visibility="public">
+        </methodref>
+        <methodref name="SetSize" visibility="public">
+        </methodref>
+        <methodref name="Read" visibility="public">
+        </methodref>
+        <methodref name="Write" visibility="public">
+        </methodref>
+        <methodref name="Seek" visibility="public">
+        </methodref>
+        <methodref name="Seek" visibility="public">
+        </methodref>
+        <methodref name="ReadBuffer" visibility="public">
+        </methodref>
+        <methodref name="WriteBuffer" visibility="public">
+        </methodref>
+        <methodref name="CopyFrom" visibility="public">
+        </methodref>
+        <methodref name="ReadComponent" visibility="public">
+        </methodref>
+        <methodref name="ReadComponentRes" visibility="public">
+        </methodref>
+        <methodref name="WriteComponent" visibility="public">
+        </methodref>
+        <methodref name="WriteComponentRes" visibility="public">
+        </methodref>
+        <methodref name="WriteDescendent" visibility="public">
+        </methodref>
+        <methodref name="WriteDescendentRes" visibility="public">
+        </methodref>
+        <methodref name="WriteResourceHeader" visibility="public">
+        </methodref>
+        <methodref name="FixupResourceHeader" visibility="public">
+        </methodref>
+        <methodref name="ReadResHeader" visibility="public">
+        </methodref>
+        <propertyref name="Position" visibility="public">
+        </propertyref>
+        <propertyref name="Size" visibility="public">
+        </propertyref>
+        <ancestor name="TObject" namespace="System">
+          <methodref name="Create" visibility="public">
+          </methodref>
+          <methodref name="Free" visibility="public">
+          </methodref>
+          <methodref name="InitInstance" visibility="public">
+          </methodref>
+          <methodref name="CleanupInstance" visibility="public">
+          </methodref>
+          <methodref name="ClassType" visibility="public">
+          </methodref>
+          <methodref name="ClassName" visibility="public">
+          </methodref>
+          <methodref name="ClassNameIs" visibility="public">
+          </methodref>
+          <methodref name="ClassParent" visibility="public">
+          </methodref>
+          <methodref name="ClassInfo" visibility="public">
+          </methodref>
+          <methodref name="InstanceSize" visibility="public">
+          </methodref>
+          <methodref name="InheritsFrom" visibility="public">
+          </methodref>
+          <methodref name="MethodAddress" visibility="public">
+          </methodref>
+          <methodref name="MethodName" visibility="public">
+          </methodref>
+          <methodref name="FieldAddress" visibility="public">
+          </methodref>
+          <methodref name="GetInterface" visibility="public">
+          </methodref>
+          <methodref name="GetInterfaceEntry" visibility="public">
+          </methodref>
+          <methodref name="GetInterfaceTable" visibility="public">
+          </methodref>
+          <methodref name="SafeCallException" visibility="public">
+          </methodref>
+          <methodref name="AfterConstruction" visibility="public">
+          </methodref>
+          <methodref name="BeforeDestruction" visibility="public">
+          </methodref>
+          <methodref name="Dispatch" visibility="public">
+          </methodref>
+          <methodref name="DefaultHandler" visibility="public">
+          </methodref>
+          <methodref name="NewInstance" visibility="public">
+          </methodref>
+          <methodref name="FreeInstance" visibility="public">
+          </methodref>
+          <methodref name="Destroy" visibility="public">
+          </methodref>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="theFile" type="TFileStream" visibility="public" />
+      <function name="GetHandle" visibility="public">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetSize" visibility="public">
+        <parameters>
+          <retval type="Int64" />
+        </parameters>
+      </function>
+      <procedure name="SetSizeInt64" visibility="protected">
+        <parameters>
+          <parameter name="NewSize" type="Int64" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetSize" visibility="public" procflags="overload override">
+        <parameters>
+          <parameter name="NewSize" type="Int64" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetSize" visibility="protected" procflags="overload">
+        <parameters>
+          <parameter name="NewSize" type="Integer" paramflags="const" />
+        </parameters>
+      </procedure>
+      <constructor name="CreateFile" visibility="public">
+        <parameters>
+          <parameter name="FileName" type="string" paramflags="const" />
+          <parameter name="Mode" type="Word" />
+          <parameter name="FlushOut" type="Boolean" />
+          <parameter name="BufSize" type="Integer" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <property name="Size" visibility="public" read="GetSize" write="SetSizeInt64" type="Int64" />
+      <property name="Handle" visibility="public" read="GetHandle" type="Integer" />
+    </members>
+  </class>
+  <const name="SHORTEN" type="TConversionOperation">
+    <value>
+      SHORTEN
+    </value>
+  </const>
+  <const name="LENGTHEN" type="TConversionOperation">
+    <value>
+      LENGTHEN
+    </value>
+  </const>
+  <enum name="TConversionOperation">
+    <element name="SHORTEN" />
+    <element name="LENGTHEN" />
+  </enum>
+  <class name="TSearchData">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="Directory" type="string" visibility="public" />
+      <field name="Pattern" type="string" visibility="public" />
+      <field name="SearchResult" type="Integer" visibility="public" />
+      <field name="SearchRec" type="TSearchRec" visibility="public" />
+      <field name="NoFiles" type="Boolean" visibility="public" />
+      <procedure name="Next" visibility="public">
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="Path" type="string" />
+          <parameter name="MatchPattern" type="string" />
+          <parameter name="SearchAttr" type="Integer" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <class name="TDirSearch">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FDirStack" visibility="private">
+        <array name="FDirStack" low="0" high="20">
+          <element type="TSearchData" />
+        </array>
+      </field>
+      <field name="FCurrentLevel" type="Integer" visibility="private" />
+      <field name="FPattern" type="string" visibility="private" />
+      <field name="FRecurse" type="Boolean" visibility="private" />
+      <field name="FWildDirStack" type="TStrings" visibility="private" />
+      <field name="FNumWildDirs" type="Integer" visibility="private" />
+      <field name="FWildDirID" type="Integer" visibility="private" />
+      <field name="FSearchAttr" type="Integer" visibility="private" />
+      <function name="IsChildDir" visibility="private">
+        <parameters>
+          <parameter name="SR" type="TSearchRec" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsDir" visibility="private">
+        <parameters>
+          <parameter name="SR" type="TSearchRec" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="StartingDir" type="string" paramflags="const" />
+          <parameter name="Pattern" type="string" paramflags="const" />
+          <parameter name="RecurseDirs" type="Boolean" />
+          <parameter name="SearchAttr" type="Integer" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <function name="NextFile" visibility="public">
+        <parameters>
+          <parameter name="SR" type="TSearchRec" paramflags="var" />
+          <retval type="string" />
+        </parameters>
+      </function>
+      <property name="Recurse" visibility="public" read="FRecurse" write="FRecurse" type="Boolean" default="0" />
+    </members>
+  </class>
+  <function name="GetFileSize" visibility="public">
+    <parameters>
+      <parameter name="SearchRec" type="TSearchRec" paramflags="const" />
+      <retval type="Int64" />
+    </parameters>
+  </function>
+  <function name="kpmin" visibility="public">
+    <parameters>
+      <parameter name="a" type="Int64" />
+      <parameter name="b" type="Int64" />
+      <retval type="Int64" />
+    </parameters>
+  </function>
+  <function name="kpmax" visibility="public">
+    <parameters>
+      <parameter name="a" type="Int64" />
+      <parameter name="b" type="Int64" />
+      <retval type="Int64" />
+    </parameters>
+  </function>
+  <function name="CRate" visibility="public">
+    <parameters>
+      <parameter name="uc" type="Int64" />
+      <parameter name="c" type="Int64" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="CBigRate" visibility="public">
+    <parameters>
+      <parameter name="uc" type="Comp" />
+      <parameter name="c" type="Comp" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="DOSToUnixFilename" visibility="public">
+    <parameters>
+      <parameter name="fn" type="PAnsiChar" />
+      <retval type="PAnsiChar" />
+    </parameters>
+  </function>
+  <function name="UnixToDOSFilename" visibility="public">
+    <parameters>
+      <parameter name="fn" type="PAnsiChar" />
+      <retval type="PAnsiChar" />
+    </parameters>
+  </function>
+  <function name="RightStr" visibility="public">
+    <parameters>
+      <parameter name="str" type="string" />
+      <parameter name="count" type="Integer" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="LeftStr" visibility="public">
+    <parameters>
+      <parameter name="str" type="string" />
+      <parameter name="count" type="Integer" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="IsWildCard" visibility="public">
+    <parameters>
+      <parameter name="fname" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="GoodTimeStamp" visibility="public">
+    <parameters>
+      <parameter name="theTimeStamp" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="FileDate" visibility="public">
+    <parameters>
+      <parameter name="fname" type="string" />
+      <retval type="TDateTime" />
+    </parameters>
+  </function>
+  <function name="kpFileAge" visibility="public">
+    <parameters>
+      <parameter name="PathName" type="string" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <procedure name="ForceDirs" visibility="public">
+    <parameters>
+      <parameter name="Dir" type="string" />
+    </parameters>
+  </procedure>
+  <function name="File_Exists" visibility="public">
+    <parameters>
+      <parameter name="FileName" type="string" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="DirExists" visibility="public">
+    <parameters>
+      <parameter name="Dir" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <procedure name="GetDirectory" visibility="public">
+    <parameters>
+      <parameter name="D" type="Byte" />
+      <parameter name="S" type="string" paramflags="var" />
+    </parameters>
+  </procedure>
+  <procedure name="ChDirectory" visibility="public">
+    <parameters>
+      <parameter name="S" type="string" paramflags="const" />
+    </parameters>
+  </procedure>
+  <function name="DoRenameCopy" visibility="public">
+    <parameters>
+      <parameter name="FromFile" type="string" paramflags="const" />
+      <parameter name="ToFile" type="string" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <procedure name="FileCopy" visibility="public">
+    <parameters>
+      <parameter name="FromFile" type="string" paramflags="const" />
+      <parameter name="ToFile" type="string" paramflags="const" />
+    </parameters>
+  </procedure>
+  <function name="PCharToStr" visibility="public">
+    <parameters>
+      <parameter name="CStr" type="PAnsiChar" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="StrToPChar" visibility="public">
+    <parameters>
+      <parameter name="Str" type="string" />
+      <retval type="PAnsiChar" />
+    </parameters>
+  </function>
+  <function name="SetVolLabel" visibility="public">
+    <parameters>
+      <parameter name="Disk" type="string" />
+      <parameter name="NewLabel" type="string" />
+      <retval type="LongBool" />
+    </parameters>
+  </function>
+  <function name="isDriveRemovable" visibility="public">
+    <parameters>
+      <parameter name="Drive" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="GetVolumeLabel" visibility="public">
+    <parameters>
+      <parameter name="Disk" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="TempFileName" visibility="public">
+    <parameters>
+      <parameter name="Pathname" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <procedure name="OemFilter" visibility="public">
+    <parameters>
+      <parameter name="fname" type="string" paramflags="var" />
+    </parameters>
+  </procedure>
+  <procedure name="Assert" visibility="public">
+    <parameters>
+      <parameter name="Value" type="Boolean" />
+      <parameter name="Msg" type="string" />
+    </parameters>
+  </procedure>
+  <function name="BlockCompare" visibility="public">
+    <parameters>
+      <parameter name="Buf1" paramflags="const" />
+      <parameter name="Buf2" paramflags="const" />
+      <parameter name="Count" type="Integer" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="StringAsPChar" visibility="public">
+    <parameters>
+      <parameter name="S" type="string" paramflags="var" />
+      <retval type="PAnsiChar" />
+    </parameters>
+  </function>
+  <function name="LFN_ConvertLFName" visibility="public">
+    <parameters>
+      <parameter name="LName" type="string" />
+      <parameter name="ConvertOperation" type="TConversionOperation" />
+      <retval type="string" />
+    </parameters>
+  </function>
+</namespace>

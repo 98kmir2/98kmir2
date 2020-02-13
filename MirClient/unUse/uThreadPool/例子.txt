@@ -1,0 +1,57 @@
+谢谢作者提供的代码；
+
+修正代码有严重的错误：
+
+错误一：工作者线程的继承销毁必须在临界区销毁以前；为什么？因为你手动销毁工作者线程会先销毁临界区变量；遇到空指针错误；
+
+错误二：销毁工作者线程没有设置FreeOnTerminate会WaitFor;
+代码：
+SetLength(Handles, FThreads.Count);
+n := 0;
+for i := 0 to FThreads.Count - 1 do
+if FThreads[i] <> nil then
+begin
+Handles[n] := TProcessorThread(FThreads[i]).Handle;
+TProcessorThread(FThreads[i]).Terminate;
+Inc(n);
+end;
+WaitForMultipleObjects(n, @Handles[0], True, 30000);
+
+是在做无用功；等同于：
+TProcessorThread(FThreads[i]).Free;
+同时：WaitForMultipleObjects最大只能等待64个句柄；
+
+错误三：在主线程进入临界区是非常危险的；
+代码：for i := 0 to FThreads.Count - 1 do
+TProcessorThread(FThreads[i]).Free;
+改为：
+For i:=FThreads.Count-1 Downto 0 Do Begin
+If Assigned(FThreads[i]) Then TProcessorThread(FThreads[i]).Free;
+End;
+
+
+
+取自卢伟的专栏DELPHI 线程池代码(http://blog.csdn.net/babyvspp/archive/2008/01/01/2008234.aspx)，封装的十分完美，用法也非常简单，可以根据使用者设定的初始工作线程数和最大线程数以及线程执行时间自动增加工作线程。
+
+此发布修改了原作者在线程池Free时的一点问题：“不能结束工作中的工作者线程（资源死锁）”。
+
+用法：
+
+// 创建线程池
+FThreadPool := TThreadsPool.Create(Self); // 创建线程池
+FThreadPool.ThreadsMin := 5; // 初始工作线程数
+FThreadPool.ThreadsMax := 50; // 最大允许工作线程数
+FThreadPool.OnProcessRequest := DealwithCommRecvData; // 线程工作函数(DealwithCommRecvData在工作者线程的Execute方法中被调用)
+
+
+// 使用线程池
+var
+　AWorkItem: TRecvCommDataWorkItem; // 继承自TWorkItem
+begin
+　AWorkItem := TRecvCommDataWorkItem.Create;
+　Move(PData[0], AWorkItem.FRecvData[0], PDataLen);
+　AWorkItem.FRecvDataLen := PDataLen;
+　FThreadPool.AddRequest(AWorkItem); // 向线程池分配一个任务
+end;
+
+

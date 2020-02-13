@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="kpMatch">
+  <const name="MATCH_PATTERN" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="MATCH_LITERAL" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="MATCH_RANGE" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="MATCH_ABORT" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="MATCH_END" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="MATCH_VALID" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="PATTERN_VALID" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="PATTERN_ESC" type="Integer">
+    <value>
+      $FFFFFFFF
+    </value>
+  </const>
+  <const name="PATTERN_RANGE" type="Integer">
+    <value>
+      $FFFFFFFE
+    </value>
+  </const>
+  <const name="PATTERN_CLOSE" type="Integer">
+    <value>
+      $FFFFFFFD
+    </value>
+  </const>
+  <const name="PATTERN_EMPTY" type="Integer">
+    <value>
+      $FFFFFFFC
+    </value>
+  </const>
+  <const name="MATCH_CHAR_SINGLE" type="Char">
+    <value>
+      $3F
+    </value>
+  </const>
+  <const name="MATCH_CHAR_KLEENE_CLOSURE" type="Char">
+    <value>
+      $2A
+    </value>
+  </const>
+  <const name="MATCH_CHAR_RANGE_OPEN" type="Char">
+    <value>
+      $3C
+    </value>
+  </const>
+  <const name="MATCH_CHAR_RANGE" type="Char">
+    <value>
+      $2D
+    </value>
+  </const>
+  <const name="MATCH_CHAR_RANGE_CLOSE" type="Char">
+    <value>
+      $3E
+    </value>
+  </const>
+  <const name="MATCH_CHAR_CARAT_NEGATE" type="Char">
+    <value>
+      $5E
+    </value>
+  </const>
+  <const name="MATCH_CHAR_EXCLAMATION_NEGATE" type="Char">
+    <value>
+      $21
+    </value>
+  </const>
+  <set name="TCharSet" type="Char" />
+  <function name="IsMatch" visibility="public">
+    <parameters>
+      <parameter name="pattern" type="string" />
+      <parameter name="text" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="matche" visibility="public">
+    <parameters>
+      <parameter name="pattern" type="string" />
+      <parameter name="text" type="string" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="match_after_star" visibility="public">
+    <parameters>
+      <parameter name="pattern" type="string" />
+      <parameter name="text" type="string" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="is_pattern" visibility="public">
+    <parameters>
+      <parameter name="pattern" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="is_valid_pattern" visibility="public">
+    <parameters>
+      <parameter name="pattern" type="string" />
+      <parameter name="error_type" type="Integer" paramflags="var" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+</namespace>

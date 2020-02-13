@@ -1,0 +1,310 @@
+DEdChat
+DBelt1~DBelt6
+DBRefuseSay~~~5
+
+
+
+
+procedure DrawBlend_Mix2(
+  dSuf: TDirectDrawSurface;             //eax
+  X,                                    //edx
+  Y: Integer;                           //ecx
+  sSuf: TDirectDrawSurface;             //[ebp+$1C]
+  sSufLeft,                             //[ebp+$18]
+  sSufTop,                              //[ebp+$14]
+  sSufWidth,                            //[ebp+$10]
+  sSufHeight,                           //[ebp+$0C]
+  BlendMode: Integer);                  //[ebp+$08]
+var
+  SrcLeft, SrcTop           : Integer;
+  SrcWidth, SrcBottom       : Integer;
+  srclen, destLen           : Integer;
+  sDdsd, dDdsd              : TDDSurfaceDesc;
+  sptr, dptr, pmix          : PByte;
+  cr, cg, cb, lw, hw, bRGB  : byte;
+  n, M, l, i, sbit, dbit    : Integer;
+  pal1, pal2                : Pointer;
+  bOddWidth                 : Boolean;
+begin
+  if (dSuf = nil) or (sSuf = nil) then Exit;
+
+  if X >= dSuf.Width then Exit;
+  if Y >= dSuf.Height then Exit;
+
+  if X < 0 then begin
+    SrcLeft := -X;
+    SrcWidth := sSufWidth + X;
+    X := 0;
+  end else begin
+    SrcLeft := sSufLeft;
+    SrcWidth := sSufWidth;
+  end;
+
+  if Y < 0 then begin
+    SrcTop := -Y;
+    SrcBottom := sSufHeight;
+    Y := 0;
+  end else begin
+    SrcTop := sSufTop;
+    SrcBottom := sSufHeight;
+  end;
+
+  if SrcLeft + SrcWidth > sSuf.Width then
+    SrcWidth := sSuf.Width - SrcLeft;
+
+  if SrcTop + SrcBottom > sSuf.Height then
+    SrcBottom := sSuf.Height - SrcTop;
+
+  if X + SrcWidth > dSuf.Width then
+    SrcWidth := dSuf.Width - X;
+
+  if Y + SrcBottom > dSuf.Height then
+    SrcBottom := dSuf.Height - Y;
+
+  if (SrcWidth <= 0) or (SrcBottom <= 0) or (SrcLeft >= sSuf.Width) or (SrcTop >= sSuf.Height) then Exit;
+
+  sSuf.Lock(sDdsd);
+  dSuf.Lock(dDdsd);
+  try
+    sptr := PByte(Integer(sDdsd.lpSurface) + sDdsd.lPitch * SrcTop + SrcLeft * 2);
+    dptr := PByte(Integer(dDdsd.lpSurface) + dDdsd.lPitch * Y + X * 2);
+    srclen := sDdsd.lPitch - SrcWidth * 2;
+    destLen := dDdsd.lPitch - SrcWidth * 2;
+
+        {// If the width is odd ...
+        if ( SrcWidth and $01 ) = 1 then
+        begin
+          // ... set the flag ...
+          gOddWidth := true;
+          // ... and calculate the width.
+          SrcWidth := ( SrcWidth - 1 ) div 2;
+        end
+          // If the width is even ...
+        else
+        begin
+          // ... clear the flag ...
+          gOddWidth := false;
+          // ... and calculate the width.
+          iWidth := SrcWidth div 2;
+        end;}
+
+    n := SrcWidth mod 2;
+    bOddWidth := n - 1 = 0;
+    for i := 0 to SrcBottom - 1 do begin
+      for n := 0 to (SrcWidth shr 1) - 1 do begin
+        sbit := PInteger(sptr)^;        //ecx
+        dbit := PInteger(dptr)^;
+        if sbit <> 0 then begin
+          if sbit and $FFFF0000 = 0 then sbit := sbit or (dbit and $FFFF0000);
+          if sbit and $0000FFFF = 0 then sbit := sbit or (dbit and $0000FFFF);
+          PInteger(dptr)^ := ((sbit and $F7DEF7DE) shr 1) + ((dbit and $F7DEF7DE) shr 1);
+        end;
+        Inc(PInteger(sptr));
+        Inc(PInteger(dptr));
+      end;
+      if bOddWidth then begin
+        if PWord(sptr)^ <> 0 then
+          PWord(dptr)^ := ((PWord(sptr)^ and $0000F7DE) shr 1) + ((PWord(dptr)^ and $0000F7DE) shr 1);
+        Inc(PWord(sptr));
+        Inc(PWord(dptr));
+      end;
+      Inc(sptr, srclen);
+      Inc(dptr, destLen);
+    end;
+  finally
+    sSuf.UnLock();
+    dSuf.UnLock();
+  end;
+end;
+
+procedure DrawBlend_Mix3(
+  dSuf: TDirectDrawSurface;             //eax
+  X,                                    //edx
+  Y: Integer;                           //ecx
+  sSuf: TDirectDrawSurface;             //[ebp+$1C]
+  sSufLeft,                             //[ebp+$18]
+  sSufTop,                              //[ebp+$14]
+  sSufWidth,                            //[ebp+$10]
+  sSufHeight,                           //[ebp+$0C]
+  BlendMode: Integer);                  //[ebp+$08]
+type
+  Tdd = record
+    d1, d2: Integer;
+  end;
+var
+  SrcLeft, SrcTop           : Integer;
+  SrcWidth                  : Integer;
+  SrcBottom                 : Integer;
+  srclen, destLen           : Integer;
+  sDdsd, dDdsd              : TDDSurfaceDesc;
+  sptr, dptr, pmix          : PByte;
+  cr, cg, cb, lw, hw, bRGB  : byte;
+  n, M, l, i                : Integer;
+  //fDd                       : Tdd;
+  pal1, pal2                : Pointer;
+  bsmall                    : Boolean;
+begin
+  SrcWidth := sSufWidth;
+  
+  if (dSuf = nil) or (sSuf = nil) then Exit;
+
+  if X >= dSuf.Width then Exit;
+  if Y >= dSuf.Height then Exit;
+
+  if X < 0 then begin
+    SrcLeft := -X;
+    SrcWidth := sSufWidth + X;
+    X := 0;
+  end else begin
+    SrcLeft := sSufLeft;
+    SrcWidth := sSufWidth;
+  end;
+
+  if Y < 0 then begin
+    SrcTop := -Y;
+    SrcBottom := sSufHeight + Y;        //
+    Y := 0;
+  end else begin
+    SrcTop := sSufTop;
+    SrcBottom := sSufHeight;
+  end;
+
+  if SrcLeft + SrcWidth > sSuf.Width then
+    SrcWidth := sSuf.Width - SrcLeft;
+
+  if SrcTop + SrcBottom > sSuf.Height then
+    SrcBottom := sSuf.Height - SrcTop;
+
+  if X + SrcWidth > dSuf.Width then
+    SrcWidth := dSuf.Width - X;
+
+  if Y + SrcBottom > dSuf.Height then
+    SrcBottom := dSuf.Height - Y;
+
+  if (SrcWidth <= 0) or (SrcBottom <= 0) or (SrcLeft >= sSuf.Width) or (SrcTop >= sSuf.Height) then Exit;
+
+  sSuf.Lock(sDdsd);
+  dSuf.Lock(dDdsd);
+  try
+    sptr := PByte(Integer(sDdsd.lpSurface) + sDdsd.lPitch * SrcTop + SrcLeft * 2); //18
+    dptr := PByte(Integer(dDdsd.lpSurface) + dDdsd.lPitch * Y + X * 2); //14
+    srclen := sDdsd.lPitch - SrcWidth * 2; //28
+    destLen := dDdsd.lPitch - SrcWidth * 2; //2c
+
+    l := SrcWidth div 8;
+    n := SrcWidth mod 8 div 4;
+    M := SrcWidth mod 4;
+
+    //fDd.d1 := $F7DEF7DE;
+    //fDd.d2 := $F7DEF7DE;
+
+    asm
+      pushad
+      mov ebx, SrcBottom
+      cmp  ebx, 0
+      je @exit
+      repz movd dword ptr [g_palarr2], mm7
+      repz movd dword ptr [g_palarr2], mm6
+
+      db $66 psllq mm7, $08
+      db $66 por   mm7, mm6
+      //mov  eax, sSufTop
+      //movq  mm7, qword ptr [eax]
+      db $0F, $6F, $7D, $EC
+      mov   edi, dptr
+      mov   esi, sptr
+
+@loop:
+      mov ecx, l
+      cmp ecx, 00000000
+      je @cp8
+
+@loop16:
+      repz movq  mm1, qword ptr [edi]
+      repz movq  mm2, qword ptr [esi]  //0F6F16
+      db $66 movq  mm3, mm1   //660F6FD9
+      db $66 movq  mm4, mm2  //660F6FE2
+      db $66 pand  mm3, mm7  //660FDBDF
+      db $66 psrlw mm3, 01   //660F71D301
+      db $66 pand  mm4, mm7  //660FDBE7
+      db $66 psrlw mm4, 01   //660F71D401
+      db $66 paddw  mm3, mm4 //660FFDDC
+      db $66 pxor  mm0, mm0  //660FEFC0
+      db $66 pcmpeqw  mm0, mm2 //660F75C2
+      db $66 pand  mm1, mm0   //660FDBC8
+      db $66 pandn  mm0, mm3   //660FDFC3
+      db $66 por  mm1, mm0   //660FEBC8
+      db $F3
+      movq  qword ptr [edi], mm1   //0F7F0F
+      add edi, $00000010
+      add esi, $00000010
+      dec ecx
+      jne @loop16
+
+@cp8:
+      mov ecx, n
+      cmp ecx, 00000000
+      je @cp2
+
+@loop8:
+      movq  mm1, qword ptr [edi]
+      movq  mm2, qword ptr [esi]
+      movq  mm3, mm1
+      movq  mm4, mm2
+      pand  mm3, mm7
+      psrlw mm3, 01
+      pand  mm4, mm7
+      psrlw mm4, 01
+      paddw  mm3, mm4
+      pxor  mm0, mm0
+      pcmpeqw  mm0, mm2
+      pand  mm1, mm0
+      pandn  mm0, mm3
+      por  mm1, mm0
+      movq  qword ptr [edi], mm1
+      add edi, $00000008
+      add esi, $00000008
+      dec ecx
+      jne @loop8
+
+@cp2:
+      mov ecx, m
+      cmp ecx, 00000000
+      je @con
+
+@loop2:
+      xor eax, eax
+      mov ax, word ptr [esi]
+      test eax, eax
+      je @con2
+      and eax, $0000F7DE
+      shr eax, 1
+      mov dx, word ptr [edi]
+      and edx, $0000F7DE
+      shr edx, 1
+      add edx, eax
+      mov word ptr [edi], dx
+
+@con2:
+      add esi, 00000002
+      add edi, 00000002
+      dec ecx
+      jne @loop2
+
+@con:
+      add esi, srclen
+      add edi, destLen
+      dec ebx
+      jne @loop
+
+
+
+@exit:
+      db $0F,$77
+      popad
+    end;
+  finally
+    sSuf.UnLock();
+    dSuf.UnLock();
+  end;
+end;

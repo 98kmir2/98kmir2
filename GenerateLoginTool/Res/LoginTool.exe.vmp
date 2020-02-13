@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Document Version="2">
+    <Protection InputFileName="LoginTool.exe" Options="786632">
+        <Messages />
+        <Folders />
+        <Procedures>
+            <Procedure MapAddress='string &quot;ntdll.dll&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;ZwUnmapViewOfSection&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker1" Options="0" />
+            <Procedure MapAddress="VMProtectMarker2" Options="0" CompilationType="2" />
+            <Procedure MapAddress='string &quot;sWebSite&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;错误&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;登录器程序只允许一个,本程序将退出！&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;A&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;C&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;核心特征码被非法篡改！&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker3" Options="0" />
+            <Procedure MapAddress='string &quot;LoginDLL.dll&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;LoginPro&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker4" Options="0" />
+            <Procedure MapAddress='string &quot;GameList2&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker5" Options="0" />
+            <Procedure MapAddress='string &quot;sWebLink&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;legendsoft&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker6" Options="0" />
+            <Procedure MapAddress='string &quot;LoginHost&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;WzOnly&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;PatchHost&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker7" Options="0" />
+            <Procedure MapAddress="VMProtectMarker8" Options="0" />
+            <Procedure MapAddress="VMProtectMarker9" Options="0" />
+            <Procedure MapAddress="VMProtectMarker10" Options="0" />
+            <Procedure MapAddress="VMProtectMarker11" Options="0" />
+            <Procedure MapAddress='string &quot;GameList&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;sLuiName2&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker12" Options="0" />
+            <Procedure MapAddress='string &quot;blue dlg config&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker13" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker14" Options="0" CompilationType="1" />
+            <Procedure MapAddress="VMProtectMarker15" Options="0" />
+            <Procedure MapAddress="VMProtectMarker16" Options="0" />
+            <Procedure MapAddress='string &quot;http://bluedlq.oss-cn-hangzhou.aliyuncs.com/MD5.txt&quot;' Options="0" />
+            <Procedure MapAddress='string &quot;http://bluedlq.oss-cn-hangzhou.aliyuncs.com/gamemodule.dll&quot;' Options="0" />
+            <Procedure MapAddress="VMProtectMarker17" Options="0" CompilationType="1" />
+        </Procedures>
+        <Objects />
+    </Protection>
+    <DLLBox>
+        <Folders />
+    </DLLBox>
+    <Script />
+    <LicenseManager />
+</Document>

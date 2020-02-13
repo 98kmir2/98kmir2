@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="kpZcnst">
+  <const name="IDS_OPENZIP" type="Integer">
+    <value>
+      $B0
+    </value>
+  </const>
+  <const name="IDS_ZIPNAMEFILTER" type="Integer">
+    <value>
+      $B1
+    </value>
+  </const>
+  <const name="IDS_CANCELDESTDIR" type="Integer">
+    <value>
+      $B2
+    </value>
+  </const>
+  <const name="IDS_INDEXOUTOFRANGE" type="Integer">
+    <value>
+      $B3
+    </value>
+  </const>
+  <const name="IDS_CANCELLOADDISK" type="Integer">
+    <value>
+      $B4
+    </value>
+  </const>
+  <const name="IDS_CANCELOPERATION" type="Integer">
+    <value>
+      $B5
+    </value>
+  </const>
+  <const name="IDS_INCOMPLETEZIP" type="Integer">
+    <value>
+      $B6
+    </value>
+  </const>
+  <const name="IDS_INVALIDZIP" type="Integer">
+    <value>
+      $B7
+    </value>
+  </const>
+  <const name="IDS_INSERTDISK" type="Integer">
+    <value>
+      $B8
+    </value>
+  </const>
+  <const name="IDS_OFMULTISET" type="Integer">
+    <value>
+      $B9
+    </value>
+  </const>
+  <const name="IDS_CANCELZIPNAME" type="Integer">
+    <value>
+      $BA
+    </value>
+  </const>
+  <const name="IDS_CANCELZIPOPERATION" type="Integer">
+    <value>
+      $BB
+    </value>
+  </const>
+  <const name="IDS_NEWFIXEDNAME" type="Integer">
+    <value>
+      $BC
+    </value>
+  </const>
+  <const name="IDS_ZIPFILESFILTER" type="Integer">
+    <value>
+      $BD
+    </value>
+  </const>
+  <const name="IDS_SEEKERROR" type="Integer">
+    <value>
+      $BE
+    </value>
+  </const>
+  <const name="IDS_SEEKORIGINERROR" type="Integer">
+    <value>
+      $BF
+    </value>
+  </const>
+  <const name="IDS_PUTBACKOVERFLOW" type="Integer">
+    <value>
+      $C0
+    </value>
+  </const>
+  <const name="IDS_LOWMEM" type="Integer">
+    <value>
+      $C1
+    </value>
+  </const>
+  <const name="IDS_PREMEND" type="Integer">
+    <value>
+      $C2
+    </value>
+  </const>
+  <const name="IDS_REPLACEFILE" type="Integer">
+    <value>
+      $C3
+    </value>
+  </const>
+  <const name="IDS_FILEXISTALERT" type="Integer">
+    <value>
+      $C4
+    </value>
+  </const>
+  <const name="IDS_UNKNOWNMETH" type="Integer">
+    <value>
+      $C5
+    </value>
+  </const>
+  <const name="IDS_ZIPERROR" type="Integer">
+    <value>
+      $C6
+    </value>
+  </const>
+  <const name="IDS_OUTPUTTOLARGE" type="Integer">
+    <value>
+      $C7
+    </value>
+  </const>
+  <const name="IDS_NOTREGISTERED" type="Integer">
+    <value>
+      $C8
+    </value>
+  </const>
+  <const name="IDS_WARNING" type="Integer">
+    <value>
+      $C9
+    </value>
+  </const>
+  <const name="IDS_NOCOPY" type="Integer">
+    <value>
+      $CA
+    </value>
+  </const>
+  <const name="IDS_ERROR" type="Integer">
+    <value>
+      $CB
+    </value>
+  </const>
+  <const name="IDS_NOTENOUGHROOM" type="Integer">
+    <value>
+      $CC
+    </value>
+  </const>
+  <const name="IDS_CANTCREATEZCF" type="Integer">
+    <value>
+      $CD
+    </value>
+  </const>
+  <const name="IDS_CANTWRITEZCF" type="Integer">
+    <value>
+      $CE
+    </value>
+  </const>
+  <const name="IDS_CANTWRITEUCF" type="Integer">
+    <value>
+      $CF
+    </value>
+  </const>
+  <const name="IDS_BAD_UNCOMPRESSED_SIZE" type="Integer">
+    <value>
+      $D0
+    </value>
+  </const>
+</namespace>

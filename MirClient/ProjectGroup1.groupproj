@@ -1,0 +1,103 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{f73f4828-80e0-4847-b255-92aff0981e5b}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup />
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+  <BorlandProject xmlns=""> <Default.Personality> </Default.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="DelphiX">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX.dproj" Targets="" />
+  </Target>
+  <Target Name="DelphiX:Clean">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="DelphiX:Make">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX.dproj" Targets="Make" />
+  </Target>
+  <Target Name="DelphiX30">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX30.dproj" Targets="" />
+  </Target>
+  <Target Name="DelphiX30:Clean">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX30.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="DelphiX30:Make">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX30.dproj" Targets="Make" />
+  </Target>
+  <Target Name="DelphiX40">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX40.dproj" Targets="" />
+  </Target>
+  <Target Name="DelphiX40:Clean">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX40.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="DelphiX40:Make">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX40.dproj" Targets="Make" />
+  </Target>
+  <Target Name="DelphiX50">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX50.dproj" Targets="" />
+  </Target>
+  <Target Name="DelphiX50:Clean">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX50.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="DelphiX50:Make">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX50.dproj" Targets="Make" />
+  </Target>
+  <Target Name="DelphiX60">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX60.dproj" Targets="" />
+  </Target>
+  <Target Name="DelphiX60:Clean">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX60.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="DelphiX60:Make">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX60.dproj" Targets="Make" />
+  </Target>
+  <Target Name="DelphiX70">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX70.dproj" Targets="" />
+  </Target>
+  <Target Name="DelphiX70:Clean">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX70.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="DelphiX70:Make">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX70.dproj" Targets="Make" />
+  </Target>
+  <Target Name="DelphiX90">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX90.dproj" Targets="" />
+  </Target>
+  <Target Name="DelphiX90:Clean">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX90.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="DelphiX90:Make">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX90.dproj" Targets="Make" />
+  </Target>
+  <Target Name="DelphiX100">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX100.dproj" Targets="" />
+  </Target>
+  <Target Name="DelphiX100:Clean">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX100.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="DelphiX100:Make">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX100.dproj" Targets="Make" />
+  </Target>
+  <Target Name="DelphiX110">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX110.dproj" Targets="" />
+  </Target>
+  <Target Name="DelphiX110:Clean">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX110.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="DelphiX110:Make">
+    <MSBuild Projects="F:\blueOld\Components\DelphiX\DelphiX110.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="DelphiX;DelphiX30;DelphiX40;DelphiX50;DelphiX60;DelphiX70;DelphiX90;DelphiX100;DelphiX110" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="DelphiX:Clean;DelphiX30:Clean;DelphiX40:Clean;DelphiX50:Clean;DelphiX60:Clean;DelphiX70:Clean;DelphiX90:Clean;DelphiX100:Clean;DelphiX110:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="DelphiX:Make;DelphiX30:Make;DelphiX40:Make;DelphiX50:Make;DelphiX60:Make;DelphiX70:Make;DelphiX90:Make;DelphiX100:Make;DelphiX110:Make" />
+  </Target>
+</Project>
