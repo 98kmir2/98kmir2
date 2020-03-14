@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="SendQueue">
+  <const name="SEND_BUFFER_LEN" type="Integer">
+    <value>
+      $C000
+    </value>
+  </const>
+  <const name="SEND_BLOCK_LEN" type="Integer">
+    <value>
+      $2000
+    </value>
+  </const>
+  <const name="ADD_BUFFER_TO_QUEUE_OK" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="ADD_BUFFER_TO_QUEUE_DEATH_USER" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="ADD_BUFFER_TO_QUEUE_FULL_BUFFRE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="ADD_BUFFER_TO_QUEUE_OTHER_ERROR" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="ADD_BUFFER_TO_QUEUE_SEND_ERROR" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <struct name="TDynPacket">
+    <field name="Pos" type="Integer" visibility="public" />
+    <field name="Len" type="Integer" visibility="public" />
+    <field name="Buf" type="PAnsiChar" visibility="public" />
+  </struct>
+  <pointer name="pTDynPacket" type="TDynPacket" indircnt="1" />
+  <pointer name="PSendQueueNode" type="_tagSendQueueNode" indircnt="1" />
+  <struct name="_tagSendQueueNode">
+    <field name="CommObj" type="_tagIOCPCommObj" visibility="public" />
+    <field name="QueueLock" type="_RTL_CRITICAL_SECTION" visibility="public" />
+    <field name="InSend" type="LongBool" visibility="public" />
+    <field name="MemPoolID" type="Integer" visibility="public" />
+    <field name="BufLPos" type="Integer" visibility="public" />
+    <field name="BufRPos" type="Integer" visibility="public" />
+    <field name="LeftLen" type="Integer" visibility="public" />
+    <field name="RightLen" type="Integer" visibility="public" />
+    <field name="SendLen" type="Integer" visibility="public" />
+    <field name="DPBuffer" type="PAnsiChar" visibility="public" />
+    <field name="SPBuffer" type="PAnsiChar" visibility="public" />
+    <field name="BPBuffer" type="PAnsiChar" visibility="public" />
+    <field name="Buffer" visibility="public">
+      <array name="Buffer" low="0" high="49215">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="DynSendList" type="TList" visibility="public" />
+  </struct>
+  <struct name="TSendQueueNode" alias="_tagSendQueueNode" namespace="SendQueue">
+    <field name="CommObj" type="_tagIOCPCommObj" visibility="public" />
+    <field name="QueueLock" type="_RTL_CRITICAL_SECTION" visibility="public" />
+    <field name="InSend" type="LongBool" visibility="public" />
+    <field name="MemPoolID" type="Integer" visibility="public" />
+    <field name="BufLPos" type="Integer" visibility="public" />
+    <field name="BufRPos" type="Integer" visibility="public" />
+    <field name="LeftLen" type="Integer" visibility="public" />
+    <field name="RightLen" type="Integer" visibility="public" />
+    <field name="SendLen" type="Integer" visibility="public" />
+    <field name="DPBuffer" type="PAnsiChar" visibility="public" />
+    <field name="SPBuffer" type="PAnsiChar" visibility="public" />
+    <field name="BPBuffer" type="PAnsiChar" visibility="public" />
+    <field name="Buffer" visibility="public">
+      <array name="Buffer" low="0" high="49215">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="DynSendList" type="TList" visibility="public" />
+  </struct>
+  <class name="ESendQueue">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <class name="TSendQueue">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FSendPool" type="TMemPool" visibility="private" />
+      <field name="FMaxUser" type="Integer" visibility="private" />
+      <procedure name="InitMemPool" visibility="protected">
+      </procedure>
+      <procedure name="FreeMemPoolRecvObj" visibility="protected">
+        <parameters>
+          <parameter name="MemID" type="Cardinal" paramflags="const" />
+          <parameter name="MemBuffer" type="PAnsiChar" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="CleanupMemPool" visibility="protected">
+      </procedure>
+      <property name="MemPool" visibility="public" read="FSendPool" type="TMemPool" />
+      <procedure name="FreeSocket" visibility="public">
+        <parameters>
+          <parameter name="ComOBJ" type="PIOCPCommObj" />
+        </parameters>
+      </procedure>
+      <function name="GetSendQueue" visibility="public">
+        <parameters>
+          <parameter name="InCommObj" type="PIOCPCommObj" />
+          <retval type="PIOCPCommObj" />
+        </parameters>
+      </function>
+      <function name="FreeSendQueue" visibility="public">
+        <parameters>
+          <parameter name="ComOBJ" type="PIOCPCommObj" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetBuffer" visibility="public">
+        <parameters>
+          <parameter name="ComOBJ" type="PIOCPCommObj" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="AddBuffer" visibility="public">
+        <parameters>
+          <parameter name="ComOBJ" type="PIOCPCommObj" />
+          <parameter name="pInBuffer" type="PAnsiChar" paramflags="const" />
+          <parameter name="nSize" type="Integer" paramflags="const" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="AddBuffer2" visibility="public">
+        <parameters>
+          <parameter name="ComOBJ" type="PIOCPCommObj" />
+          <parameter name="pInBuffer" type="PAnsiChar" paramflags="const" />
+          <parameter name="nSize" type="Integer" paramflags="const" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetDynPacket" visibility="public">
+        <parameters>
+          <parameter name="ComOBJ" type="PIOCPCommObj" />
+          <retval type="pTDynPacket" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="MaxUser" type="Integer" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+</namespace>

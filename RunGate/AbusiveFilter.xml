@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="AbusiveFilter">
+  <variable name="g_AbuseList" type="TStringList" />
+  <procedure name="LoadChatFilterList" visibility="public">
+  </procedure>
+  <function name="CheckChatFilter" visibility="public">
+    <parameters>
+      <parameter name="szChat" type="string" paramflags="var" />
+      <parameter name="fKick" type="LongBool" paramflags="var" />
+      <retval type="Byte" />
+    </parameters>
+  </function>
+</namespace>

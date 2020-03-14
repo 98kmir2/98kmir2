@@ -1,0 +1,381 @@
+ï»¿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="Protocol">
+  <const name="_STR_GRID_INDEX" type="string">
+    <value>
+      Íø¹Ø
+    </value>
+  </const>
+  <const name="_STR_GRID_IP" type="string">
+    <value>
+      Íø¹ØµØÖ·
+    </value>
+  </const>
+  <const name="_STR_GRID_PORT" type="string">
+    <value>
+      ¶Ë¿Ú
+    </value>
+  </const>
+  <const name="_STR_GRID_CONNECT_STATUS" type="string">
+    <value>
+      Á¬½Ó×´Ì¬
+    </value>
+  </const>
+  <const name="_STR_GRID_IO_SEND_BYTES" type="string">
+    <value>
+      ·¢ËÍ
+    </value>
+  </const>
+  <const name="_STR_GRID_IO_RECV_BYTES" type="string">
+    <value>
+      ½ÓÊÕ
+    </value>
+  </const>
+  <const name="_STR_KEEP_ALIVE" type="string">
+    <value>
+      **
+    </value>
+  </const>
+  <const name="_STR_CMD_FILTER" type="string">
+    <value>
+      %%s ´ËÃüÁî½ûÖ¹Ê¹ÓÃ£¡
+    </value>
+  </const>
+  <const name="_STR_LIB_MMSYSTEM" type="string">
+    <value>
+      winmm.dll
+    </value>
+  </const>
+  <const name="_STR_LIB_KERNEL32" type="string">
+    <value>
+      kernel32.dll
+    </value>
+  </const>
+  <const name="_STR_CONFIG_FILE" type="string">
+    <value>
+      .\Config.ini
+    </value>
+  </const>
+  <const name="_STR_BLOCK_FILE" type="string">
+    <value>
+      .\BlockIPList.txt
+    </value>
+  </const>
+  <const name="_STR_BLOCK_AREA_FILE" type="string">
+    <value>
+      .\BlockIPAreaList.txt
+    </value>
+  </const>
+  <const name="_STR_CHAT_FILTER_FILE" type="string">
+    <value>
+      .\ChatFilter.txt
+    </value>
+  </const>
+  <const name="_STR_CHAT_CMD_FILTER_FILE" type="string">
+    <value>
+      .\CharCmdFilter.txt
+    </value>
+  </const>
+  <const name="_STR_PUNISH_USER_FILE" type="string">
+    <value>
+      .\PunishList.txt
+    </value>
+  </const>
+  <const name="_IDM_SERVERSOCK_MSG" type="Integer">
+    <value>
+      $7E8
+    </value>
+  </const>
+  <const name="_IDM_TIMER_STARTSERVICE" type="Integer">
+    <value>
+      $7E9
+    </value>
+  </const>
+  <const name="_IDM_TIMER_STOPSERVICE" type="Integer">
+    <value>
+      $7EA
+    </value>
+  </const>
+  <const name="_IDM_TIMER_KEEP_ALIVE" type="Integer">
+    <value>
+      $7EB
+    </value>
+  </const>
+  <const name="_IDM_TIMER_THREAD_INFO" type="Integer">
+    <value>
+      $7EC
+    </value>
+  </const>
+  <const name="_IDM_TIMER_BROADCAST_USER_ITEM_SPEED" type="Integer">
+    <value>
+      $7ED
+    </value>
+  </const>
+  <const name="_IDM_TIMER_BROADCAST_CLIENT_ACTION_SPEED" type="Integer">
+    <value>
+      $7EE
+    </value>
+  </const>
+  <const name="_IDM_TIMER_OPERATE_DELAY_MSG" type="Integer">
+    <value>
+      $7EF
+    </value>
+  </const>
+  <const name="RUNGATECODE" type="Integer">
+    <value>
+      $AA9AAA9A
+    </value>
+  </const>
+  <const name="FIRST_PAKCET_MAX_LEN" type="Integer">
+    <value>
+      $FE
+    </value>
+  </const>
+  <const name="MAGIC_NUM" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <const name="DELAY_BUFFER_LEN" type="Integer">
+    <value>
+      $400
+    </value>
+  </const>
+  <struct name="TCmdPack" packed="true">
+    <field name="UID" type="Integer" visibility="public" />
+    <field name="Cmd" type="Word" visibility="public" />
+    <field name="X" type="Word" visibility="public" />
+    <field name="Y" type="Word" visibility="public" />
+    <field name="Direct" type="Word" visibility="public" />
+    <field name="ID1" type="Integer" visibility="public" />
+    <field name="Cmd1" type="Word" visibility="public" />
+    <field name="ID2" type="Integer" visibility="public" />
+    <field name="PosX" type="Word" visibility="public" />
+    <field name="PosY" type="Word" visibility="public" />
+    <field name="Cmd2" type="Word" visibility="public" />
+    <field name="IDLo" type="Word" visibility="public" />
+    <field name="Magic" type="Word" visibility="public" />
+    <field name="IDHi" type="Word" visibility="public" />
+    <field name="UID1" type="Integer" visibility="public" />
+    <field name="Cmd3" type="Word" visibility="public" />
+    <field name="b1" type="Byte" visibility="public" />
+    <field name="b2" type="Byte" visibility="public" />
+    <field name="b3" type="Byte" visibility="public" />
+    <field name="b4" type="Byte" visibility="public" />
+    <field name="NID" type="Integer" visibility="public" />
+    <field name="Command" type="Word" visibility="public" />
+    <field name="Pos" type="Word" visibility="public" />
+    <field name="Dir" type="Word" visibility="public" />
+    <field name="WID" type="Word" visibility="public" />
+    <field name="Head" type="Cardinal" visibility="public" />
+    <field name="Cmd4" type="Word" visibility="public" />
+    <field name="Zero1" type="Word" visibility="public" />
+  </struct>
+  <pointer name="PCmdPack" type="TCmdPack" indircnt="1" />
+  <pointer name="PTCmdPack" alias="PCmdPack" namespace="Protocol" type="TCmdPack" indircnt="1" />
+  <struct name="TDefaultMessage" alias="TCmdPack" namespace="Protocol" packed="true">
+    <field name="UID" type="Integer" visibility="public" />
+    <field name="Cmd" type="Word" visibility="public" />
+    <field name="X" type="Word" visibility="public" />
+    <field name="Y" type="Word" visibility="public" />
+    <field name="Direct" type="Word" visibility="public" />
+    <field name="ID1" type="Integer" visibility="public" />
+    <field name="Cmd1" type="Word" visibility="public" />
+    <field name="ID2" type="Integer" visibility="public" />
+    <field name="PosX" type="Word" visibility="public" />
+    <field name="PosY" type="Word" visibility="public" />
+    <field name="Cmd2" type="Word" visibility="public" />
+    <field name="IDLo" type="Word" visibility="public" />
+    <field name="Magic" type="Word" visibility="public" />
+    <field name="IDHi" type="Word" visibility="public" />
+    <field name="UID1" type="Integer" visibility="public" />
+    <field name="Cmd3" type="Word" visibility="public" />
+    <field name="b1" type="Byte" visibility="public" />
+    <field name="b2" type="Byte" visibility="public" />
+    <field name="b3" type="Byte" visibility="public" />
+    <field name="b4" type="Byte" visibility="public" />
+    <field name="NID" type="Integer" visibility="public" />
+    <field name="Command" type="Word" visibility="public" />
+    <field name="Pos" type="Word" visibility="public" />
+    <field name="Dir" type="Word" visibility="public" />
+    <field name="WID" type="Word" visibility="public" />
+    <field name="Head" type="Cardinal" visibility="public" />
+    <field name="Cmd4" type="Word" visibility="public" />
+    <field name="Zero1" type="Word" visibility="public" />
+  </struct>
+  <pointer name="pTDefaultMessage" type="TCmdPack" indircnt="1" />
+  <struct name="TSvrCmdPack" packed="true">
+    <field name="Flag" type="Cardinal" visibility="public" />
+    <field name="SockID" type="Cardinal" visibility="public" />
+    <field name="Seq" type="Word" visibility="public" />
+    <field name="Cmd" type="Word" visibility="public" />
+    <field name="GGSock" type="Integer" visibility="public" />
+    <field name="DataLen" type="Integer" visibility="public" />
+  </struct>
+  <pointer name="PSvrcmdPack" type="TSvrCmdPack" indircnt="1" />
+  <pointer name="PCmdHeader" type="_tagCmdHeader" indircnt="1" />
+  <struct name="_tagCmdHeader" packed="true">
+    <field name="Header" type="Cardinal" visibility="public" />
+    <field name="Cmd" type="Word" visibility="public" />
+    <field name="Cmd1" type="Word" visibility="public" />
+    <field name="Tail" type="Cardinal" visibility="public" />
+  </struct>
+  <struct name="TCmdHeader" alias="_tagCmdHeader" namespace="Protocol" packed="true">
+    <field name="Header" type="Cardinal" visibility="public" />
+    <field name="Cmd" type="Word" visibility="public" />
+    <field name="Cmd1" type="Word" visibility="public" />
+    <field name="Tail" type="Cardinal" visibility="public" />
+  </struct>
+  <struct name="TMagic" packed="true">
+    <field name="Reserved1" visibility="public">
+      <array name="Reserved1" low="0" high="7">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="MagicID" type="Word" visibility="public" />
+    <field name="Reserved2" visibility="public">
+      <array name="Reserved2" low="0" high="45">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="Delay" type="Word" visibility="public" />
+    <field name="Reserved3" visibility="public">
+      <array name="Reserved3" low="0" high="25">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PMagic" type="TMagic" indircnt="1" />
+  <struct name="TEnDeInfo" packed="true">
+    <field name="Head" type="Cardinal" visibility="public" />
+    <field name="Cmd" type="Word" visibility="public" />
+    <field name="Cmd1" type="Word" visibility="public" />
+    <field name="Tail" type="Cardinal" visibility="public" />
+  </struct>
+  <pointer name="PEnDeInfo" type="TEnDeInfo" indircnt="1" />
+  <const name="mDisconnect" type="TBlockIPMethod">
+    <value>
+      mDisconnect
+    </value>
+  </const>
+  <const name="mBlock" type="TBlockIPMethod">
+    <value>
+      mBlock
+    </value>
+  </const>
+  <const name="mBlockList" type="TBlockIPMethod">
+    <value>
+      mBlockList
+    </value>
+  </const>
+  <enum name="TBlockIPMethod">
+    <element name="mDisconnect" />
+    <element name="mBlock" />
+    <element name="mBlockList" />
+  </enum>
+  <const name="ptTurnPack" type="TPunishMethod">
+    <value>
+      ptTurnPack
+    </value>
+  </const>
+  <const name="ptDropPack" type="TPunishMethod">
+    <value>
+      ptDropPack
+    </value>
+  </const>
+  <const name="ptNullPack" type="TPunishMethod">
+    <value>
+      ptNullPack
+    </value>
+  </const>
+  <const name="ptDelaySend" type="TPunishMethod">
+    <value>
+      ptDelaySend
+    </value>
+  </const>
+  <enum name="TPunishMethod">
+    <element name="ptTurnPack" />
+    <element name="ptDropPack" />
+    <element name="ptNullPack" />
+    <element name="ptDelaySend" />
+  </enum>
+  <const name="ctReplaceAll" type="TChatFilterMethod">
+    <value>
+      ctReplaceAll
+    </value>
+  </const>
+  <const name="ctReplaceOne" type="TChatFilterMethod">
+    <value>
+      ctReplaceOne
+    </value>
+  </const>
+  <const name="ctDropconnect" type="TChatFilterMethod">
+    <value>
+      ctDropconnect
+    </value>
+  </const>
+  <enum name="TChatFilterMethod">
+    <element name="ctReplaceAll" />
+    <element name="ctReplaceOne" />
+    <element name="ctDropconnect" />
+  </enum>
+  <const name="ptSysmsg" type="TOverSpeedMsgMethod">
+    <value>
+      ptSysmsg
+    </value>
+  </const>
+  <const name="ptMenuOK" type="TOverSpeedMsgMethod">
+    <value>
+      ptMenuOK
+    </value>
+  </const>
+  <enum name="TOverSpeedMsgMethod">
+    <element name="ptSysmsg" />
+    <element name="ptMenuOK" />
+  </enum>
+  <const name="stConnecting" type="TSockThreadStutas">
+    <value>
+      stConnecting
+    </value>
+  </const>
+  <const name="stConnected" type="TSockThreadStutas">
+    <value>
+      stConnected
+    </value>
+  </const>
+  <const name="stTimeOut" type="TSockThreadStutas">
+    <value>
+      stTimeOut
+    </value>
+  </const>
+  <enum name="TSockThreadStutas">
+    <element name="stConnecting" />
+    <element name="stConnected" />
+    <element name="stTimeOut" />
+  </enum>
+  <struct name="TDelayMsg">
+    <field name="dwDelayTime" type="Cardinal" visibility="public" />
+    <field name="nMag" type="Integer" visibility="public" />
+    <field name="nCmd" type="Integer" visibility="public" />
+    <field name="nDir" type="Integer" visibility="public" />
+    <field name="nBufLen" type="Integer" visibility="public" />
+    <field name="pBuffer" visibility="public">
+      <array name="pBuffer" low="0" high="1023">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="pTDelayMsg" type="TDelayMsg" indircnt="1" />
+  <struct name="TPerIPAddr">
+    <field name="IPaddr" type="Integer" visibility="public" />
+    <field name="Count" type="Integer" visibility="public" />
+  </struct>
+  <pointer name="pTPerIPAddr" type="TPerIPAddr" indircnt="1" />
+  <struct name="TIPArea">
+    <field name="Low" type="Cardinal" visibility="public" />
+    <field name="High" type="Cardinal" visibility="public" />
+  </struct>
+  <pointer name="pTIPArea" type="TIPArea" indircnt="1" />
+  <variable name="g_hMainWnd" type="HWND" />
+  <variable name="g_hStatusBar" type="HWND" />
+  <variable name="g_fServiceStarted" type="Boolean" visibility="public" />
+</namespace>

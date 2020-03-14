@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="SHSocket">
+  <const name="RCVALL_OFF" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="RCVALL_ON" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="RCVALL_SOCKETLEVELONLY" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="BUFFER_FULL_COUNT" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <const name="WRITE_BUF_LOCK_TIMEOUT" type="Integer">
+    <value>
+      $14
+    </value>
+  </const>
+  <const name="SLEEP_WAIT_FACTIVE" type="Integer">
+    <value>
+      $1388
+    </value>
+  </const>
+  <const name="IOC_VENDOR" type="Integer">
+    <value>
+      $18000000
+    </value>
+  </const>
+  <const name="SIO_KEEPALIVE_VALS" type="Integer">
+    <value>
+      $98000004
+    </value>
+  </const>
+  <const name="LISTEN_MAX_USER_COUNT" type="Integer">
+    <value>
+      $C8
+    </value>
+  </const>
+  <const name="IPTOS_THROUGHPUT" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <pointer name="PTCP_KEEPALIVE" type="_tcp_keepalive" indircnt="1" />
+  <struct name="_tcp_keepalive">
+    <field name="OnOff" type="Cardinal" visibility="public" />
+    <field name="KeepAliveTime" type="Cardinal" visibility="public" />
+    <field name="KeepAliveInterval" type="Cardinal" visibility="public" />
+  </struct>
+  <struct name="TCP_KEEPALIVE" alias="_tcp_keepalive" namespace="SHSocket">
+    <field name="OnOff" type="Cardinal" visibility="public" />
+    <field name="KeepAliveTime" type="Cardinal" visibility="public" />
+    <field name="KeepAliveInterval" type="Cardinal" visibility="public" />
+  </struct>
+  <pointer name="LPTRANSMIT_FILE_BUFFERS" type="_TRANSMIT_FILE_BUFFERS" indircnt="1" />
+  <struct name="_TRANSMIT_FILE_BUFFERS">
+    <field name="Head" type="Pointer" visibility="public" />
+    <field name="HeadLength" type="Cardinal" visibility="public" />
+    <field name="Tail" type="Pointer" visibility="public" />
+    <field name="TailLength" type="Cardinal" visibility="public" />
+  </struct>
+  <struct name="TRANSMIT_FILE_BUFFERS" alias="_TRANSMIT_FILE_BUFFERS" namespace="SHSocket">
+    <field name="Head" type="Pointer" visibility="public" />
+    <field name="HeadLength" type="Cardinal" visibility="public" />
+    <field name="Tail" type="Pointer" visibility="public" />
+    <field name="TailLength" type="Cardinal" visibility="public" />
+  </struct>
+  <function name="TransmitFile" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="hSocket" type="Cardinal" />
+      <parameter name="hFile" type="Cardinal" />
+      <parameter name="nNumberOfBytesToWrite" type="Cardinal" />
+      <parameter name="nNumberOfBytesPerSend" type="Cardinal" />
+      <parameter name="lpOverlapped" type="PWSAOverlapped" />
+      <parameter name="lpTransmitBuffers" type="LPTRANSMIT_FILE_BUFFERS" />
+      <parameter name="dwReserved" type="Cardinal" />
+      <retval type="LongBool" />
+    </parameters>
+  </function>
+  <function name="AcceptEx" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="sListenSocket" type="Cardinal" />
+      <parameter name="sAcceptSocket" type="Cardinal" />
+      <parameter name="lpOutputBuffer" type="Pointer" />
+      <parameter name="dwReceiveDataLength" type="Cardinal" />
+      <parameter name="dwLocalAddressLength" type="Cardinal" />
+      <parameter name="dwRemoteAddressLength" type="Cardinal" />
+      <parameter name="lpdwBytesReceived" type="Cardinal" paramflags="var" />
+      <parameter name="lpOverlapped" type="PWSAOverlapped" />
+      <retval type="LongBool" />
+    </parameters>
+  </function>
+  <procedure name="GetAcceptExSockaddrs" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpOutputBuffer" type="Pointer" />
+      <parameter name="dwReceiveDataLength" type="Cardinal" />
+      <parameter name="dwLocalAddressLength" type="Cardinal" />
+      <parameter name="dwRemoteAddressLength" type="Cardinal" />
+      <parameter name="LocalSockaddr" type="PSockAddr" paramflags="var" />
+      <parameter name="LocalSockAddrLength" type="Integer" paramflags="var" />
+      <parameter name="RemoteSockaddr" type="PSockAddr" paramflags="var" />
+      <parameter name="RemoteSockaddrLength" type="Integer" paramflags="var" />
+    </parameters>
+  </procedure>
+  <variable name="WSAID_TRANSMITFILE" type="TGUID" visibility="public" />
+  <variable name="WSAID_ACCEPTEX" type="TGUID" visibility="public" />
+  <variable name="WSAID_GETACCEPTEXSOCKADDRS" type="TGUID" visibility="public" />
+  <const name="SO_CONNDATA" type="Integer">
+    <value>
+      $7000
+    </value>
+  </const>
+  <const name="SO_CONNOPT" type="Integer">
+    <value>
+      $7001
+    </value>
+  </const>
+  <const name="SO_DISCDATA" type="Integer">
+    <value>
+      $7002
+    </value>
+  </const>
+  <const name="SO_DISCOPT" type="Integer">
+    <value>
+      $7003
+    </value>
+  </const>
+  <const name="SO_CONNDATALEN" type="Integer">
+    <value>
+      $7004
+    </value>
+  </const>
+  <const name="SO_CONNOPTLEN" type="Integer">
+    <value>
+      $7005
+    </value>
+  </const>
+  <const name="SO_DISCDATALEN" type="Integer">
+    <value>
+      $7006
+    </value>
+  </const>
+  <const name="SO_DISCOPTLEN" type="Integer">
+    <value>
+      $7007
+    </value>
+  </const>
+  <const name="SO_OPENTYPE" type="Integer">
+    <value>
+      $7008
+    </value>
+  </const>
+  <const name="SO_SYNCHRONOUS_ALERT" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="SO_SYNCHRONOUS_NONALERT" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="SO_MAXDG" type="Integer">
+    <value>
+      $7009
+    </value>
+  </const>
+  <const name="SO_MAXPATHDG" type="Integer">
+    <value>
+      $700A
+    </value>
+  </const>
+  <const name="SO_UPDATE_ACCEPT_CONTEXT" type="Integer">
+    <value>
+      $700B
+    </value>
+  </const>
+  <const name="SO_CONNECT_TIME" type="Integer">
+    <value>
+      $700C
+    </value>
+  </const>
+  <const name="SO_UPDATE_CONNECT_CONTEXT" type="Integer">
+    <value>
+      $7010
+    </value>
+  </const>
+  <const name="TCP_BSDURGENT" type="Integer">
+    <value>
+      $7000
+    </value>
+  </const>
+  <procedure name="SafeSleep" visibility="public">
+    <parameters>
+      <parameter name="TimeSleep" type="Cardinal" />
+    </parameters>
+  </procedure>
+  <function name="SafeSend" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" />
+      <parameter name="Buffer" paramflags="var" />
+      <parameter name="BufferSize" type="Integer" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="SetNoNagle" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" />
+      <parameter name="IsDisable" type="LongBool">
+        <value>
+          True
+        </value>
+      </parameter>
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="GetIPFromName" visibility="public">
+    <parameters>
+      <parameter name="HostName" type="string" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="SetBroadCast" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" paramflags="const" />
+      <parameter name="IsBroadcast" type="Boolean" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="SetSendTimeOut" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" />
+      <parameter name="timeout" type="Integer" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="SetRecvTimeOut" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" />
+      <parameter name="timeout" type="Integer" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="SetSendBufSize" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" />
+      <parameter name="BufSize" type="Integer" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="GetSendBufSize" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="GetRecvBufSize" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SetRecvBufSize" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" />
+      <parameter name="BufSize" type="Integer" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <procedure name="FreeSocket" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" paramflags="var" />
+    </parameters>
+  </procedure>
+  <function name="InitUDPSocket" visibility="public">
+    <parameters>
+      <parameter name="Port" type="Integer">
+        <value>
+          $0
+        </value>
+      </parameter>
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="InitTCPClient" visibility="public">
+    <parameters>
+      <parameter name="Port" type="Integer">
+        <value>
+          $0
+        </value>
+      </parameter>
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="InitTCPServer" visibility="public">
+    <parameters>
+      <parameter name="Port" type="Integer" />
+      <parameter name="IsReBind" type="LongBool">
+        <value>
+          False
+        </value>
+      </parameter>
+      <parameter name="IsWin2kup" type="Boolean">
+        <value>
+          True
+        </value>
+      </parameter>
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="SetNoDelay" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="SetKeepALive" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" />
+      <parameter name="timeout" type="Cardinal" />
+      <parameter name="TimePos" type="Cardinal" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="CheckSum" visibility="public">
+    <parameters>
+      <parameter name="Buffer" type="PWORD" />
+      <parameter name="size" type="Integer" />
+      <retval type="Word" />
+    </parameters>
+  </function>
+</namespace>

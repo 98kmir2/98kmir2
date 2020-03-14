@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="MemPool">
+  <pointer name="PMemNode" type="_tagMemNode" indircnt="1" />
+  <struct name="_tagMemNode">
+    <field name="InUse" type="LongBool" visibility="public" />
+    <field name="PriorNode" type="PMemNode" visibility="public" />
+    <field name="NextNode" type="PMemNode" visibility="public" />
+    <field name="MemBuffer" type="PAnsiChar" visibility="public" />
+  </struct>
+  <struct name="TMemNode" alias="_tagMemNode" namespace="MemPool">
+    <field name="InUse" type="LongBool" visibility="public" />
+    <field name="PriorNode" type="PMemNode" visibility="public" />
+    <field name="NextNode" type="PMemNode" visibility="public" />
+    <field name="MemBuffer" type="PAnsiChar" visibility="public" />
+  </struct>
+  <class name="EMemPool">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <class name="TMemPool">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FOnDestroyEvent" type="TFreeMemEvent" visibility="private" />
+      <field name="FMemRealHeader" type="PMemNode" visibility="private" />
+      <field name="FMemLocalHeader" type="PMemNode" visibility="private" />
+      <field name="FTailMemNode" type="PMemNode" visibility="private" />
+      <field name="FFreeMemNode" type="PMemNode" visibility="private" />
+      <field name="FPollMemNode" type="PMemNode" visibility="private" />
+      <field name="FMaxPosition" type="Integer" visibility="private" />
+      <field name="FMinPosition" type="Integer" visibility="private" />
+      <field name="FMemory" type="PAnsiChar" visibility="private" />
+      <field name="FRealBlockCount" type="Integer" visibility="private" />
+      <field name="FBlockSize" type="Integer" visibility="private" />
+      <field name="FBlockCount" type="Integer" visibility="private" />
+      <field name="FInUseBlock" type="Integer" visibility="private" />
+      <function name="GetFreeBlock" visibility="private">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="BuilderMemoryList" visibility="protected">
+      </procedure>
+      <procedure name="DisposeMemItem" visibility="protected">
+      </procedure>
+      <field name="FMemLock" type="_RTL_CRITICAL_SECTION" visibility="public" />
+      <property name="MemoryIDHeader" visibility="public" read="FMemRealHeader" type="PMemNode" />
+      <property name="MemoryLocalHeader" visibility="public" read="FMemLocalHeader" type="PMemNode" />
+      <property name="RealBlockCount" visibility="public" read="FRealBlockCount" type="Integer" />
+      <property name="MemoryBlockCount" visibility="public" read="FBlockCount" type="Integer" />
+      <property name="MemoryBlockSize" visibility="public" read="FBlockSize" type="Integer" />
+      <property name="InUseBlock" visibility="public" read="FInUseBlock" type="Integer" />
+      <property name="FreeBlock" visibility="public" read="GetFreeBlock" type="Integer" />
+      <event name="OnDestroyEvent" visibility="public" read="FOnDestroyEvent" write="FOnDestroyEvent" type="TFreeMemEvent" />
+      <procedure name="LockMemPool" visibility="public">
+      </procedure>
+      <procedure name="UnLockMemPool" visibility="public">
+      </procedure>
+      <procedure name="FirstMemory" visibility="public">
+      </procedure>
+      <procedure name="NextMemory" visibility="public">
+      </procedure>
+      <function name="MemoryItem" visibility="public">
+        <parameters>
+          <retval type="PAnsiChar" />
+        </parameters>
+      </function>
+      <function name="MemoryIDItem" visibility="public">
+        <parameters>
+          <retval type="PMemNode" />
+        </parameters>
+      </function>
+      <function name="IsEnd" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetMemory" visibility="public">
+        <parameters>
+          <parameter name="MemID" type="Cardinal" paramflags="var" />
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <function name="FreeMemory" visibility="public">
+        <parameters>
+          <parameter name="MemID" type="Cardinal" paramflags="const" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsRightKey" visibility="public">
+        <parameters>
+          <parameter name="KeyID" type="Integer" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="ClearMemPool" visibility="public">
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="MemoryBlockCount" type="Integer" />
+          <parameter name="MemoryBlockSize" type="Integer" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+</namespace>

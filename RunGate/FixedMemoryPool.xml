@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="FixedMemoryPool">
+  <const name="DEFAULT_MEMORY_COUNT" type="Integer">
+    <value>
+      $400
+    </value>
+  </const>
+  <const name="MAX_REALLOC_COUNT" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <pointer name="PMemPos" type="_tagMemPos" indircnt="1" />
+  <struct name="_tagMemPos">
+    <field name="HPos" type="Integer" visibility="public" />
+    <field name="LPos" type="Integer" visibility="public" />
+    <field name="MaxIndex" type="Integer" visibility="public" />
+    <field name="MinIndex" type="Integer" visibility="public" />
+    <field name="HMPos" type="Integer" visibility="public" />
+    <field name="LMPos" type="Integer" visibility="public" />
+  </struct>
+  <struct name="TMemPos" alias="_tagMemPos" namespace="FixedMemoryPool">
+    <field name="HPos" type="Integer" visibility="public" />
+    <field name="LPos" type="Integer" visibility="public" />
+    <field name="MaxIndex" type="Integer" visibility="public" />
+    <field name="MinIndex" type="Integer" visibility="public" />
+    <field name="HMPos" type="Integer" visibility="public" />
+    <field name="LMPos" type="Integer" visibility="public" />
+  </struct>
+  <pointer name="PXMemItem" type="_tagMemItem" indircnt="1" />
+  <pointer name="PXMemNode" type="_tagMemNode" indircnt="1" />
+  <struct name="_tagMemNode">
+    <field name="InUse" type="LongBool" visibility="public" />
+    <field name="PriorNode" type="PXMemNode" visibility="public" />
+    <field name="NextNode" type="PXMemNode" visibility="public" />
+    <field name="MemItem" type="PXMemItem" visibility="public" />
+    <field name="Index" type="Integer" visibility="public" />
+  </struct>
+  <struct name="TXMemNode" alias="_tagMemNode" namespace="FixedMemoryPool">
+    <field name="InUse" type="LongBool" visibility="public" />
+    <field name="PriorNode" type="PXMemNode" visibility="public" />
+    <field name="NextNode" type="PXMemNode" visibility="public" />
+    <field name="MemItem" type="PXMemItem" visibility="public" />
+    <field name="Index" type="Integer" visibility="public" />
+  </struct>
+  <struct name="_tagMemItem">
+    <field name="MemNode" type="PXMemNode" visibility="public" />
+    <field name="MemBuffer" type="PAnsiChar" visibility="public" />
+  </struct>
+  <struct name="TXMemItem" alias="_tagMemItem" namespace="FixedMemoryPool">
+    <field name="MemNode" type="PXMemNode" visibility="public" />
+    <field name="MemBuffer" type="PAnsiChar" visibility="public" />
+  </struct>
+  <class name="EFixedMemoryPool">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <class name="TFixedMemoryPool">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FReAllocCount" type="Integer" visibility="private" />
+      <field name="FReAllocMemCount" type="Integer" visibility="private" />
+      <field name="FReMemPosArray" visibility="private">
+        <array name="FReMemPosArray" low="0" high="127">
+          <element type="_tagMemPos" />
+        </array>
+      </field>
+      <field name="FMemLock" type="_RTL_CRITICAL_SECTION" visibility="private" />
+      <field name="FOnDestroyEvent" type="TFreeMemEvent" visibility="private" />
+      <field name="FMemRealHeader" type="PXMemNode" visibility="private" />
+      <field name="FMemLocalHeader" type="PXMemNode" visibility="private" />
+      <field name="FTailMemNode" type="PXMemNode" visibility="private" />
+      <field name="FFreeMemNode" type="PXMemNode" visibility="private" />
+      <field name="FPollMemNode" type="PXMemNode" visibility="private" />
+      <field name="FMemory" type="PXMemItem" visibility="private" />
+      <field name="FBlockSize" type="Integer" visibility="private" />
+      <field name="FBlockCount" type="Integer" visibility="private" />
+      <field name="FInUseBlock" type="Integer" visibility="private" />
+      <field name="FMaxInUseBlock" type="Integer" visibility="private" />
+      <function name="GetFreeBlock" visibility="private">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="ReAllocMemory" visibility="protected">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="BuilderMemoryList" visibility="protected">
+        <parameters>
+          <parameter name="BaseMemoryNode" type="PXMemNode" />
+          <parameter name="BaseMemory" type="PXMemItem" />
+          <parameter name="MemoryIndex" type="Integer" />
+          <parameter name="BaseBlockCount" type="Integer">
+            <value>
+              $400
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <procedure name="DisposeMemItem" visibility="protected">
+      </procedure>
+      <procedure name="FreeAllMemory" visibility="protected">
+      </procedure>
+      <property name="MemoryIDHeader" visibility="public" read="FMemRealHeader" type="PXMemNode" />
+      <property name="MemoryLocalHeader" visibility="public" read="FMemLocalHeader" type="PXMemNode" />
+      <property name="MemoryBlockCount" visibility="public" read="FBlockCount" type="Integer" />
+      <property name="MemoryBlockSize" visibility="public" read="FBlockSize" type="Integer" />
+      <property name="InUseBlock" visibility="public" read="FInUseBlock" type="Integer" />
+      <property name="MaxInUseBlock" visibility="public" read="FMaxInUseBlock" type="Integer" />
+      <property name="FreeBlock" visibility="public" read="GetFreeBlock" type="Integer" />
+      <event name="OnDestroyEvent" visibility="public" read="FOnDestroyEvent" write="FOnDestroyEvent" type="TFreeMemEvent" />
+      <procedure name="LockMemPool" visibility="public">
+      </procedure>
+      <procedure name="UnLockMemPool" visibility="public">
+      </procedure>
+      <procedure name="FirstMemory" visibility="public">
+      </procedure>
+      <procedure name="NextMemory" visibility="public">
+      </procedure>
+      <function name="MemoryItem" visibility="public">
+        <parameters>
+          <retval type="PAnsiChar" />
+        </parameters>
+      </function>
+      <function name="MemoryIDItem" visibility="public">
+        <parameters>
+          <retval type="PXMemNode" />
+        </parameters>
+      </function>
+      <function name="IsEnd" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetMemory" visibility="public">
+        <parameters>
+          <parameter name="ID" type="Cardinal" paramflags="var" />
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <function name="FreeMemory" visibility="public">
+        <parameters>
+          <parameter name="Memory" type="Pointer" paramflags="const" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetMemoryFromID" visibility="public">
+        <parameters>
+          <parameter name="ID" type="Cardinal" />
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <function name="IsUserMemory" visibility="public">
+        <parameters>
+          <parameter name="Memory" type="Pointer" paramflags="const" />
+          <retval type="PXMemItem" />
+        </parameters>
+      </function>
+      <procedure name="ClearMemPool" visibility="public">
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="MemoryBlockSize" type="Integer" />
+          <parameter name="MemoryBlockCount" type="Integer">
+            <value>
+              $400
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+</namespace>

@@ -1,0 +1,4299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="WinSock2">
+  <const name="WINSOCK_VERSION" type="Integer">
+    <value>
+      $202
+    </value>
+  </const>
+  <const name="WINSOCK2_DLL" type="string">
+    <value>
+      ws2_32.dll
+    </value>
+  </const>
+  <pointer name="PWSAEVENT" type="Cardinal" indircnt="1" />
+  <pointer name="LPWSAEVENT" alias="PWSAEVENT" namespace="WinSock2" type="Cardinal" indircnt="1" />
+  <pointer name="PMBChar" alias="PAnsiChar" namespace="System" type="Char" indircnt="1" />
+  <const name="FD_SETSIZE" type="Integer">
+    <value>
+      $40
+    </value>
+  </const>
+  <pointer name="PFDSet" type="TFDSet" indircnt="1" />
+  <struct name="TFDSet" packed="true">
+    <field name="fd_count" type="Cardinal" visibility="public" />
+    <field name="fd_array" visibility="public">
+      <array name="fd_array" low="0" high="63">
+        <element type="Cardinal" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PTimeVal" type="TTimeVal" indircnt="1" />
+  <struct name="TTimeVal" packed="true">
+    <field name="tv_sec" type="Integer" visibility="public" />
+    <field name="tv_usec" type="Integer" visibility="public" />
+  </struct>
+  <const name="IOCPARM_MASK" type="Integer">
+    <value>
+      $7F
+    </value>
+  </const>
+  <const name="IOC_VOID" type="Integer">
+    <value>
+      $20000000
+    </value>
+  </const>
+  <const name="IOC_OUT" type="Integer">
+    <value>
+      $40000000
+    </value>
+  </const>
+  <const name="IOC_IN" type="Integer">
+    <value>
+      $80000000
+    </value>
+  </const>
+  <const name="IOC_INOUT" type="Integer">
+    <value>
+      $C0000000
+    </value>
+  </const>
+  <const name="FIONREAD" type="Integer">
+    <value>
+      $4004667F
+    </value>
+  </const>
+  <const name="FIONBIO" type="Integer">
+    <value>
+      $8004667E
+    </value>
+  </const>
+  <const name="FIOASYNC" type="Integer">
+    <value>
+      $8004667D
+    </value>
+  </const>
+  <const name="SIOCSHIWAT" type="Integer">
+    <value>
+      $80047300
+    </value>
+  </const>
+  <const name="SIOCGHIWAT" type="Integer">
+    <value>
+      $40047301
+    </value>
+  </const>
+  <const name="SIOCSLOWAT" type="Integer">
+    <value>
+      $80047302
+    </value>
+  </const>
+  <const name="SIOCGLOWAT" type="Integer">
+    <value>
+      $40047303
+    </value>
+  </const>
+  <const name="SIOCATMARK" type="Integer">
+    <value>
+      $40047307
+    </value>
+  </const>
+  <pointer name="PHostEnt" type="THostEnt" indircnt="1" />
+  <struct name="THostEnt" packed="true">
+    <field name="h_name" type="PAnsiChar" visibility="public" />
+    <field name="h_aliases" visibility="public">
+      <pointer name="h_aliases" type="PAnsiChar" indircnt="1" />
+    </field>
+    <field name="h_addrtype" type="Smallint" visibility="public" />
+    <field name="h_length" type="Smallint" visibility="public" />
+  </struct>
+  <pointer name="PNetEnt" type="TNetEnt" indircnt="1" />
+  <struct name="TNetEnt" packed="true">
+    <field name="n_name" type="PAnsiChar" visibility="public" />
+    <field name="n_aliases" visibility="public">
+      <pointer name="n_aliases" type="PAnsiChar" indircnt="1" />
+    </field>
+    <field name="n_addrtype" type="Smallint" visibility="public" />
+    <field name="n_net" type="Cardinal" visibility="public" />
+  </struct>
+  <pointer name="PServEnt" type="TServEnt" indircnt="1" />
+  <struct name="TServEnt" packed="true">
+    <field name="s_name" type="PAnsiChar" visibility="public" />
+    <field name="s_aliases" visibility="public">
+      <pointer name="s_aliases" type="PAnsiChar" indircnt="1" />
+    </field>
+    <field name="s_port" type="Smallint" visibility="public" />
+    <field name="s_proto" type="PAnsiChar" visibility="public" />
+  </struct>
+  <pointer name="PProtoEnt" type="TProtoEnt" indircnt="1" />
+  <struct name="TProtoEnt" packed="true">
+    <field name="p_name" type="PAnsiChar" visibility="public" />
+    <field name="p_aliases" visibility="public">
+      <pointer name="p_aliases" type="PAnsiChar" indircnt="1" />
+    </field>
+    <field name="p_proto" type="Smallint" visibility="public" />
+  </struct>
+  <const name="IPPROTO_IP" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="IPPROTO_ICMP" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="IPPROTO_IGMP" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="IPPROTO_GGP" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="IPPROTO_TCP" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="IPPROTO_PUP" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="IPPROTO_UDP" type="Integer">
+    <value>
+      $11
+    </value>
+  </const>
+  <const name="IPPROTO_IDP" type="Integer">
+    <value>
+      $16
+    </value>
+  </const>
+  <const name="IPPROTO_ND" type="Integer">
+    <value>
+      $4D
+    </value>
+  </const>
+  <const name="IPPROTO_RAW" type="Integer">
+    <value>
+      $FF
+    </value>
+  </const>
+  <const name="IPPROTO_MAX" type="Integer">
+    <value>
+      $100
+    </value>
+  </const>
+  <const name="IPPORT_ECHO" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="IPPORT_DISCARD" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="IPPORT_SYSTAT" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="IPPORT_DAYTIME" type="Integer">
+    <value>
+      $D
+    </value>
+  </const>
+  <const name="IPPORT_NETSTAT" type="Integer">
+    <value>
+      $F
+    </value>
+  </const>
+  <const name="IPPORT_FTP" type="Integer">
+    <value>
+      $15
+    </value>
+  </const>
+  <const name="IPPORT_TELNET" type="Integer">
+    <value>
+      $17
+    </value>
+  </const>
+  <const name="IPPORT_SMTP" type="Integer">
+    <value>
+      $19
+    </value>
+  </const>
+  <const name="IPPORT_TIMESERVER" type="Integer">
+    <value>
+      $25
+    </value>
+  </const>
+  <const name="IPPORT_NAMESERVER" type="Integer">
+    <value>
+      $2A
+    </value>
+  </const>
+  <const name="IPPORT_WHOIS" type="Integer">
+    <value>
+      $2B
+    </value>
+  </const>
+  <const name="IPPORT_MTP" type="Integer">
+    <value>
+      $39
+    </value>
+  </const>
+  <const name="IPPORT_TFTP" type="Integer">
+    <value>
+      $45
+    </value>
+  </const>
+  <const name="IPPORT_RJE" type="Integer">
+    <value>
+      $4D
+    </value>
+  </const>
+  <const name="IPPORT_FINGER" type="Integer">
+    <value>
+      $4F
+    </value>
+  </const>
+  <const name="IPPORT_TTYLINK" type="Integer">
+    <value>
+      $57
+    </value>
+  </const>
+  <const name="IPPORT_SUPDUP" type="Integer">
+    <value>
+      $5F
+    </value>
+  </const>
+  <const name="IPPORT_EXECSERVER" type="Integer">
+    <value>
+      $200
+    </value>
+  </const>
+  <const name="IPPORT_LOGINSERVER" type="Integer">
+    <value>
+      $201
+    </value>
+  </const>
+  <const name="IPPORT_CMDSERVER" type="Integer">
+    <value>
+      $202
+    </value>
+  </const>
+  <const name="IPPORT_EFSSERVER" type="Integer">
+    <value>
+      $208
+    </value>
+  </const>
+  <const name="IPPORT_BIFFUDP" type="Integer">
+    <value>
+      $200
+    </value>
+  </const>
+  <const name="IPPORT_WHOSERVER" type="Integer">
+    <value>
+      $201
+    </value>
+  </const>
+  <const name="IPPORT_ROUTESERVER" type="Integer">
+    <value>
+      $208
+    </value>
+  </const>
+  <const name="IPPORT_RESERVED" type="Integer">
+    <value>
+      $400
+    </value>
+  </const>
+  <const name="IMPLINK_IP" type="Integer">
+    <value>
+      $9B
+    </value>
+  </const>
+  <const name="IMPLINK_LOWEXPER" type="Integer">
+    <value>
+      $9C
+    </value>
+  </const>
+  <const name="IMPLINK_HIGHEXPER" type="Integer">
+    <value>
+      $9E
+    </value>
+  </const>
+  <const name="TF_DISCONNECT" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TF_REUSE_SOCKET" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="TF_WRITE_BEHIND" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="INVALID_SOCKET" type="Cardinal">
+    <value>
+      $FFFFFFFF
+    </value>
+  </const>
+  <const name="SOCKET_ERROR" type="Integer">
+    <value>
+      $FFFFFFFF
+    </value>
+  </const>
+  <const name="FROM_PROTOCOL_INFO" type="Integer">
+    <value>
+      $FFFFFFFF
+    </value>
+  </const>
+  <const name="SOCK_STREAM" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SOCK_DGRAM" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SOCK_RAW" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="SOCK_RDM" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SOCK_SEQPACKET" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="SO_DEBUG" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SO_ACCEPTCONN" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SO_REUSEADDR" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SO_KEEPALIVE" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="SO_DONTROUTE" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="SO_BROADCAST" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="SO_USELOOPBACK" type="Integer">
+    <value>
+      $40
+    </value>
+  </const>
+  <const name="SO_LINGER" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <const name="SO_OOBINLINE" type="Integer">
+    <value>
+      $100
+    </value>
+  </const>
+  <const name="SO_DONTLINGER" type="Integer">
+    <value>
+      $FFFFFF7F
+    </value>
+  </const>
+  <const name="SO_EXCLUSIVEADDRUSE" type="Integer">
+    <value>
+      $FFFFFFFB
+    </value>
+  </const>
+  <const name="SO_SNDBUF" type="Integer">
+    <value>
+      $1001
+    </value>
+  </const>
+  <const name="SO_RCVBUF" type="Integer">
+    <value>
+      $1002
+    </value>
+  </const>
+  <const name="SO_SNDLOWAT" type="Integer">
+    <value>
+      $1003
+    </value>
+  </const>
+  <const name="SO_RCVLOWAT" type="Integer">
+    <value>
+      $1004
+    </value>
+  </const>
+  <const name="SO_SNDTIMEO" type="Integer">
+    <value>
+      $1005
+    </value>
+  </const>
+  <const name="SO_RCVTIMEO" type="Integer">
+    <value>
+      $1006
+    </value>
+  </const>
+  <const name="SO_ERROR" type="Integer">
+    <value>
+      $1007
+    </value>
+  </const>
+  <const name="SO_TYPE" type="Integer">
+    <value>
+      $1008
+    </value>
+  </const>
+  <const name="SO_CONNDATA" type="Integer">
+    <value>
+      $7000
+    </value>
+  </const>
+  <const name="SO_CONNOPT" type="Integer">
+    <value>
+      $7001
+    </value>
+  </const>
+  <const name="SO_DISCDATA" type="Integer">
+    <value>
+      $7002
+    </value>
+  </const>
+  <const name="SO_DISCOPT" type="Integer">
+    <value>
+      $7003
+    </value>
+  </const>
+  <const name="SO_CONNDATALEN" type="Integer">
+    <value>
+      $7004
+    </value>
+  </const>
+  <const name="SO_CONNOPTLEN" type="Integer">
+    <value>
+      $7005
+    </value>
+  </const>
+  <const name="SO_DISCDATALEN" type="Integer">
+    <value>
+      $7006
+    </value>
+  </const>
+  <const name="SO_DISCOPTLEN" type="Integer">
+    <value>
+      $7007
+    </value>
+  </const>
+  <const name="SO_OPENTYPE" type="Integer">
+    <value>
+      $7008
+    </value>
+  </const>
+  <const name="SO_SYNCHRONOUS_ALERT" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="SO_SYNCHRONOUS_NONALERT" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="SO_MAXDG" type="Integer">
+    <value>
+      $7009
+    </value>
+  </const>
+  <const name="SO_MAXPATHDG" type="Integer">
+    <value>
+      $700A
+    </value>
+  </const>
+  <const name="SO_UPDATE_ACCEPT_CONTEXT" type="Integer">
+    <value>
+      $700B
+    </value>
+  </const>
+  <const name="SO_CONNECT_TIME" type="Integer">
+    <value>
+      $700C
+    </value>
+  </const>
+  <const name="TCP_NODELAY" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TCP_BSDURGENT" type="Integer">
+    <value>
+      $7000
+    </value>
+  </const>
+  <const name="SO_GROUP_ID" type="Integer">
+    <value>
+      $2001
+    </value>
+  </const>
+  <const name="SO_GROUP_PRIORITY" type="Integer">
+    <value>
+      $2002
+    </value>
+  </const>
+  <const name="SO_MAX_MSG_SIZE" type="Integer">
+    <value>
+      $2003
+    </value>
+  </const>
+  <const name="SO_Protocol_InfoA" type="Integer">
+    <value>
+      $2004
+    </value>
+  </const>
+  <const name="SO_Protocol_InfoW" type="Integer">
+    <value>
+      $2005
+    </value>
+  </const>
+  <const name="SO_Protocol_Info" type="Integer">
+    <value>
+      $2004
+    </value>
+  </const>
+  <const name="PVD_CONFIG" type="Integer">
+    <value>
+      $3001
+    </value>
+  </const>
+  <const name="SO_CONDITIONAL_ACCEPT" type="Integer">
+    <value>
+      $3002
+    </value>
+  </const>
+  <const name="AF_UNSPEC" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="AF_UNIX" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="AF_INET" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="AF_IMPLINK" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="AF_PUP" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="AF_CHAOS" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="AF_IPX" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="AF_NS" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="AF_ISO" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="AF_OSI" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="AF_ECMA" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="AF_DATAKIT" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="AF_CCITT" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="AF_SNA" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="AF_DECnet" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="AF_DLI" type="Integer">
+    <value>
+      $D
+    </value>
+  </const>
+  <const name="AF_LAT" type="Integer">
+    <value>
+      $E
+    </value>
+  </const>
+  <const name="AF_HYLINK" type="Integer">
+    <value>
+      $F
+    </value>
+  </const>
+  <const name="AF_APPLETALK" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="AF_NETBIOS" type="Integer">
+    <value>
+      $11
+    </value>
+  </const>
+  <const name="AF_VOICEVIEW" type="Integer">
+    <value>
+      $12
+    </value>
+  </const>
+  <const name="AF_FIREFOX" type="Integer">
+    <value>
+      $13
+    </value>
+  </const>
+  <const name="AF_UNKNOWN1" type="Integer">
+    <value>
+      $14
+    </value>
+  </const>
+  <const name="AF_BAN" type="Integer">
+    <value>
+      $15
+    </value>
+  </const>
+  <const name="AF_ATM" type="Integer">
+    <value>
+      $16
+    </value>
+  </const>
+  <const name="AF_INET6" type="Integer">
+    <value>
+      $17
+    </value>
+  </const>
+  <const name="AF_CLUSTER" type="Integer">
+    <value>
+      $18
+    </value>
+  </const>
+  <const name="AF_12844" type="Integer">
+    <value>
+      $19
+    </value>
+  </const>
+  <const name="AF_IRDA" type="Integer">
+    <value>
+      $1A
+    </value>
+  </const>
+  <const name="AF_NETDES" type="Integer">
+    <value>
+      $1C
+    </value>
+  </const>
+  <const name="AF_MAX" type="Integer">
+    <value>
+      $1D
+    </value>
+  </const>
+  <const name="PF_UNSPEC" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="PF_UNIX" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="PF_INET" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="PF_IMPLINK" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="PF_PUP" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="PF_CHAOS" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="PF_NS" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="PF_IPX" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="PF_ISO" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="PF_OSI" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="PF_ECMA" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="PF_DATAKIT" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="PF_CCITT" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="PF_SNA" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="PF_DECnet" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="PF_DLI" type="Integer">
+    <value>
+      $D
+    </value>
+  </const>
+  <const name="PF_LAT" type="Integer">
+    <value>
+      $E
+    </value>
+  </const>
+  <const name="PF_HYLINK" type="Integer">
+    <value>
+      $F
+    </value>
+  </const>
+  <const name="PF_APPLETALK" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="PF_VOICEVIEW" type="Integer">
+    <value>
+      $12
+    </value>
+  </const>
+  <const name="PF_FIREFOX" type="Integer">
+    <value>
+      $13
+    </value>
+  </const>
+  <const name="PF_UNKNOWN1" type="Integer">
+    <value>
+      $14
+    </value>
+  </const>
+  <const name="PF_BAN" type="Integer">
+    <value>
+      $15
+    </value>
+  </const>
+  <const name="PF_ATM" type="Integer">
+    <value>
+      $16
+    </value>
+  </const>
+  <const name="PF_INET6" type="Integer">
+    <value>
+      $17
+    </value>
+  </const>
+  <const name="PF_MAX" type="Integer">
+    <value>
+      $1D
+    </value>
+  </const>
+  <struct name="SunB" packed="true">
+    <field name="s_b1" type="Byte" visibility="public" />
+    <field name="s_b2" type="Byte" visibility="public" />
+    <field name="s_b3" type="Byte" visibility="public" />
+    <field name="s_b4" type="Byte" visibility="public" />
+  </struct>
+  <struct name="SunW" packed="true">
+    <field name="s_w1" type="Word" visibility="public" />
+    <field name="s_w2" type="Word" visibility="public" />
+  </struct>
+  <struct name="TInAddr" packed="true">
+    <field name="S_un_b" type="SunB" visibility="public" />
+  </struct>
+  <pointer name="PInAddr" type="TInAddr" indircnt="1" />
+  <struct name="TSockAddrIn" packed="true">
+    <field name="sin_family" type="Word" visibility="public" />
+    <field name="sin_port" type="Word" visibility="public" />
+    <field name="sin_addr" type="TInAddr" visibility="public" />
+  </struct>
+  <pointer name="PSockAddrIn" type="TSockAddrIn" indircnt="1" />
+  <struct name="TSockAddr" alias="TSockAddrIn" namespace="WinSock2" packed="true">
+    <field name="sin_family" type="Word" visibility="public" />
+    <field name="sin_port" type="Word" visibility="public" />
+    <field name="sin_addr" type="TInAddr" visibility="public" />
+  </struct>
+  <pointer name="PSockAddr" type="TSockAddrIn" indircnt="1" />
+  <struct name="SOCKADDR" alias="TSockAddrIn" namespace="WinSock2" packed="true">
+    <field name="sin_family" type="Word" visibility="public" />
+    <field name="sin_port" type="Word" visibility="public" />
+    <field name="sin_addr" type="TInAddr" visibility="public" />
+  </struct>
+  <struct name="SOCKADDR_IN" alias="TSockAddrIn" namespace="WinSock2" packed="true">
+    <field name="sin_family" type="Word" visibility="public" />
+    <field name="sin_port" type="Word" visibility="public" />
+    <field name="sin_addr" type="TInAddr" visibility="public" />
+  </struct>
+  <pointer name="PSockProto" type="TSockProto" indircnt="1" />
+  <struct name="TSockProto" packed="true">
+    <field name="sp_family" type="Word" visibility="public" />
+    <field name="sp_protocol" type="Word" visibility="public" />
+  </struct>
+  <pointer name="PLinger" type="TLinger" indircnt="1" />
+  <struct name="TLinger" packed="true">
+    <field name="l_onoff" type="Word" visibility="public" />
+    <field name="l_linger" type="Word" visibility="public" />
+  </struct>
+  <const name="INADDR_ANY" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="INADDR_LOOPBACK" type="Integer">
+    <value>
+      $7F000001
+    </value>
+  </const>
+  <const name="INADDR_BROADCAST" type="Integer">
+    <value>
+      $FFFFFFFF
+    </value>
+  </const>
+  <const name="INADDR_NONE" type="Integer">
+    <value>
+      $FFFFFFFF
+    </value>
+  </const>
+  <const name="ADDR_ANY" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="SOL_SOCKET" type="Integer">
+    <value>
+      $FFFF
+    </value>
+  </const>
+  <const name="MSG_OOB" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="MSG_PEEK" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="MSG_DONTROUTE" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="MSG_PARTIAL" type="Integer">
+    <value>
+      $8000
+    </value>
+  </const>
+  <const name="MSG_INTERRUPT" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="MSG_MAXIOVLEN" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="MAXGETHOSTSTRUCT" type="Integer">
+    <value>
+      $400
+    </value>
+  </const>
+  <const name="SOMAXCONN" type="Integer">
+    <value>
+      $7FFFFFFF
+    </value>
+  </const>
+  <const name="FD_READ_BIT" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="FD_WRITE_BIT" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="FD_OOB_BIT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="FD_ACCEPT_BIT" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="FD_CONNECT_BIT" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="FD_CLOSE_BIT" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="FD_QOS_BIT" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="FD_GROUP_QOS_BIT" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="FD_MAX_EVENTS" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="FD_READ" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="FD_WRITE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="FD_OOB" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="FD_ACCEPT" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="FD_CONNECT" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="FD_CLOSE" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="FD_QOS" type="Integer">
+    <value>
+      $40
+    </value>
+  </const>
+  <const name="FD_GROUP_QOS" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <const name="FD_ALL_EVENTS" type="Integer">
+    <value>
+      $FF
+    </value>
+  </const>
+  <const name="WSABASEERR" type="Integer">
+    <value>
+      $2710
+    </value>
+  </const>
+  <const name="WSAEINTR" type="Integer">
+    <value>
+      $2714
+    </value>
+  </const>
+  <const name="WSAEBADF" type="Integer">
+    <value>
+      $2719
+    </value>
+  </const>
+  <const name="WSAEACCES" type="Integer">
+    <value>
+      $271D
+    </value>
+  </const>
+  <const name="WSAEFAULT" type="Integer">
+    <value>
+      $271E
+    </value>
+  </const>
+  <const name="WSAEINVAL" type="Integer">
+    <value>
+      $2726
+    </value>
+  </const>
+  <const name="WSAEMFILE" type="Integer">
+    <value>
+      $2728
+    </value>
+  </const>
+  <const name="WSAEWOULDBLOCK" type="Integer">
+    <value>
+      $2733
+    </value>
+  </const>
+  <const name="WSAEINPROGRESS" type="Integer">
+    <value>
+      $2734
+    </value>
+  </const>
+  <const name="WSAEALREADY" type="Integer">
+    <value>
+      $2735
+    </value>
+  </const>
+  <const name="WSAENOTSOCK" type="Integer">
+    <value>
+      $2736
+    </value>
+  </const>
+  <const name="WSAEDESTADDRREQ" type="Integer">
+    <value>
+      $2737
+    </value>
+  </const>
+  <const name="WSAEMSGSIZE" type="Integer">
+    <value>
+      $2738
+    </value>
+  </const>
+  <const name="WSAEPROTOTYPE" type="Integer">
+    <value>
+      $2739
+    </value>
+  </const>
+  <const name="WSAENOPROTOOPT" type="Integer">
+    <value>
+      $273A
+    </value>
+  </const>
+  <const name="WSAEPROTONOSUPPORT" type="Integer">
+    <value>
+      $273B
+    </value>
+  </const>
+  <const name="WSAESOCKTNOSUPPORT" type="Integer">
+    <value>
+      $273C
+    </value>
+  </const>
+  <const name="WSAEOPNOTSUPP" type="Integer">
+    <value>
+      $273D
+    </value>
+  </const>
+  <const name="WSAEPFNOSUPPORT" type="Integer">
+    <value>
+      $273E
+    </value>
+  </const>
+  <const name="WSAEAFNOSUPPORT" type="Integer">
+    <value>
+      $273F
+    </value>
+  </const>
+  <const name="WSAEADDRINUSE" type="Integer">
+    <value>
+      $2740
+    </value>
+  </const>
+  <const name="WSAEADDRNOTAVAIL" type="Integer">
+    <value>
+      $2741
+    </value>
+  </const>
+  <const name="WSAENETDOWN" type="Integer">
+    <value>
+      $2742
+    </value>
+  </const>
+  <const name="WSAENETUNREACH" type="Integer">
+    <value>
+      $2743
+    </value>
+  </const>
+  <const name="WSAENETRESET" type="Integer">
+    <value>
+      $2744
+    </value>
+  </const>
+  <const name="WSAECONNABORTED" type="Integer">
+    <value>
+      $2745
+    </value>
+  </const>
+  <const name="WSAECONNRESET" type="Integer">
+    <value>
+      $2746
+    </value>
+  </const>
+  <const name="WSAENOBUFS" type="Integer">
+    <value>
+      $2747
+    </value>
+  </const>
+  <const name="WSAEISCONN" type="Integer">
+    <value>
+      $2748
+    </value>
+  </const>
+  <const name="WSAENOTCONN" type="Integer">
+    <value>
+      $2749
+    </value>
+  </const>
+  <const name="WSAESHUTDOWN" type="Integer">
+    <value>
+      $274A
+    </value>
+  </const>
+  <const name="WSAETOOMANYREFS" type="Integer">
+    <value>
+      $274B
+    </value>
+  </const>
+  <const name="WSAETIMEDOUT" type="Integer">
+    <value>
+      $274C
+    </value>
+  </const>
+  <const name="WSAECONNREFUSED" type="Integer">
+    <value>
+      $274D
+    </value>
+  </const>
+  <const name="WSAELOOP" type="Integer">
+    <value>
+      $274E
+    </value>
+  </const>
+  <const name="WSAENAMETOOLONG" type="Integer">
+    <value>
+      $274F
+    </value>
+  </const>
+  <const name="WSAEHOSTDOWN" type="Integer">
+    <value>
+      $2750
+    </value>
+  </const>
+  <const name="WSAEHOSTUNREACH" type="Integer">
+    <value>
+      $2751
+    </value>
+  </const>
+  <const name="WSAENOTEMPTY" type="Integer">
+    <value>
+      $2752
+    </value>
+  </const>
+  <const name="WSAEPROCLIM" type="Integer">
+    <value>
+      $2753
+    </value>
+  </const>
+  <const name="WSAEUSERS" type="Integer">
+    <value>
+      $2754
+    </value>
+  </const>
+  <const name="WSAEDQUOT" type="Integer">
+    <value>
+      $2755
+    </value>
+  </const>
+  <const name="WSAESTALE" type="Integer">
+    <value>
+      $2756
+    </value>
+  </const>
+  <const name="WSAEREMOTE" type="Integer">
+    <value>
+      $2757
+    </value>
+  </const>
+  <const name="WSASYSNOTREADY" type="Integer">
+    <value>
+      $276B
+    </value>
+  </const>
+  <const name="WSAVERNOTSUPPORTED" type="Integer">
+    <value>
+      $276C
+    </value>
+  </const>
+  <const name="WSANOTINITIALISED" type="Integer">
+    <value>
+      $276D
+    </value>
+  </const>
+  <const name="WSAEDISCON" type="Integer">
+    <value>
+      $2775
+    </value>
+  </const>
+  <const name="WSAENOMORE" type="Integer">
+    <value>
+      $2776
+    </value>
+  </const>
+  <const name="WSAECANCELLED" type="Integer">
+    <value>
+      $2777
+    </value>
+  </const>
+  <const name="WSAEINVALIDPROCTABLE" type="Integer">
+    <value>
+      $2778
+    </value>
+  </const>
+  <const name="WSAEINVALIDPROVIDER" type="Integer">
+    <value>
+      $2779
+    </value>
+  </const>
+  <const name="WSAEPROVIDERFAILEDINIT" type="Integer">
+    <value>
+      $277A
+    </value>
+  </const>
+  <const name="WSASYSCALLFAILURE" type="Integer">
+    <value>
+      $277B
+    </value>
+  </const>
+  <const name="WSASERVICE_NOT_FOUND" type="Integer">
+    <value>
+      $277C
+    </value>
+  </const>
+  <const name="WSATYPE_NOT_FOUND" type="Integer">
+    <value>
+      $277D
+    </value>
+  </const>
+  <const name="WSA_E_NO_MORE" type="Integer">
+    <value>
+      $277E
+    </value>
+  </const>
+  <const name="WSA_E_CANCELLED" type="Integer">
+    <value>
+      $277F
+    </value>
+  </const>
+  <const name="WSAEREFUSED" type="Integer">
+    <value>
+      $2780
+    </value>
+  </const>
+  <const name="WSAHOST_NOT_FOUND" type="Integer">
+    <value>
+      $2AF9
+    </value>
+  </const>
+  <const name="HOST_NOT_FOUND" type="Integer">
+    <value>
+      $2AF9
+    </value>
+  </const>
+  <const name="WSATRY_AGAIN" type="Integer">
+    <value>
+      $2AFA
+    </value>
+  </const>
+  <const name="TRY_AGAIN" type="Integer">
+    <value>
+      $2AFA
+    </value>
+  </const>
+  <const name="WSANO_RECOVERY" type="Integer">
+    <value>
+      $2AFB
+    </value>
+  </const>
+  <const name="NO_RECOVERY" type="Integer">
+    <value>
+      $2AFB
+    </value>
+  </const>
+  <const name="WSANO_DATA" type="Integer">
+    <value>
+      $2AFC
+    </value>
+  </const>
+  <const name="NO_DATA" type="Integer">
+    <value>
+      $2AFC
+    </value>
+  </const>
+  <const name="WSANO_ADDRESS" type="Integer">
+    <value>
+      $2AFC
+    </value>
+  </const>
+  <const name="NO_ADDRESS" type="Integer">
+    <value>
+      $2AFC
+    </value>
+  </const>
+  <const name="WSA_QOS_RECEIVERS" type="Integer">
+    <value>
+      $2AFD
+    </value>
+  </const>
+  <const name="WSA_QOS_SENDERS" type="Integer">
+    <value>
+      $2AFE
+    </value>
+  </const>
+  <const name="WSA_QOS_NO_SENDERS" type="Integer">
+    <value>
+      $2AFF
+    </value>
+  </const>
+  <const name="WSA_QOS_NO_RECEIVERS" type="Integer">
+    <value>
+      $2B00
+    </value>
+  </const>
+  <const name="WSA_QOS_REQUEST_CONFIRMED" type="Integer">
+    <value>
+      $2B01
+    </value>
+  </const>
+  <const name="WSA_QOS_ADMISSION_FAILURE" type="Integer">
+    <value>
+      $2B02
+    </value>
+  </const>
+  <const name="WSA_QOS_POLICY_FAILURE" type="Integer">
+    <value>
+      $2B03
+    </value>
+  </const>
+  <const name="WSA_QOS_BAD_STYLE" type="Integer">
+    <value>
+      $2B04
+    </value>
+  </const>
+  <const name="WSA_QOS_BAD_OBJECT" type="Integer">
+    <value>
+      $2B05
+    </value>
+  </const>
+  <const name="WSA_QOS_TRAFFIC_CTRL_ERROR" type="Integer">
+    <value>
+      $2B06
+    </value>
+  </const>
+  <const name="WSA_QOS_GENERIC_ERROR" type="Integer">
+    <value>
+      $2B07
+    </value>
+  </const>
+  <const name="WSA_QOS_ESERVICETYPE" type="Integer">
+    <value>
+      $2B08
+    </value>
+  </const>
+  <const name="WSA_QOS_EFLOWSPEC" type="Integer">
+    <value>
+      $2B09
+    </value>
+  </const>
+  <const name="WSA_QOS_EPROVSPECBUF" type="Integer">
+    <value>
+      $2B0A
+    </value>
+  </const>
+  <const name="WSA_QOS_EFILTERSTYLE" type="Integer">
+    <value>
+      $2B0B
+    </value>
+  </const>
+  <const name="WSA_QOS_EFILTERTYPE" type="Integer">
+    <value>
+      $2B0C
+    </value>
+  </const>
+  <const name="WSA_QOS_EFILTERCOUNT" type="Integer">
+    <value>
+      $2B0D
+    </value>
+  </const>
+  <const name="WSA_QOS_EOBJLENGTH" type="Integer">
+    <value>
+      $2B0E
+    </value>
+  </const>
+  <const name="WSA_QOS_EFLOWCOUNT" type="Integer">
+    <value>
+      $2B0F
+    </value>
+  </const>
+  <const name="WSA_QOS_EUNKOWNPSOBJ" type="Integer">
+    <value>
+      $2B10
+    </value>
+  </const>
+  <const name="WSA_QOS_EPOLICYOBJ" type="Integer">
+    <value>
+      $2B11
+    </value>
+  </const>
+  <const name="WSA_QOS_EFLOWDESC" type="Integer">
+    <value>
+      $2B12
+    </value>
+  </const>
+  <const name="WSA_QOS_EPSFLOWSPEC" type="Integer">
+    <value>
+      $2B13
+    </value>
+  </const>
+  <const name="WSA_QOS_EPSFILTERSPEC" type="Integer">
+    <value>
+      $2B14
+    </value>
+  </const>
+  <const name="WSA_QOS_ESDMODEOBJ" type="Integer">
+    <value>
+      $2B15
+    </value>
+  </const>
+  <const name="WSA_QOS_ESHAPERATEOBJ" type="Integer">
+    <value>
+      $2B16
+    </value>
+  </const>
+  <const name="WSA_QOS_RESERVED_PETYPE" type="Integer">
+    <value>
+      $2B17
+    </value>
+  </const>
+  <const name="WSA_IO_PENDING" type="Integer">
+    <value>
+      $3E5
+    </value>
+  </const>
+  <const name="WSA_IO_INCOMPLETE" type="Integer">
+    <value>
+      $3E4
+    </value>
+  </const>
+  <const name="WSA_INVALID_HANDLE" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="WSA_INVALID_PARAMETER" type="Integer">
+    <value>
+      $57
+    </value>
+  </const>
+  <const name="WSA_NOT_ENOUGH_MEMORY" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="WSA_OPERATION_ABORTED" type="Integer">
+    <value>
+      $3E3
+    </value>
+  </const>
+  <const name="WSA_INVALID_EVENT" type="Cardinal">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="WSA_MAXIMUM_WAIT_EVENTS" type="Integer">
+    <value>
+      $40
+    </value>
+  </const>
+  <const name="WSA_WAIT_FAILED" type="Integer">
+    <value>
+      $FFFFFFFF
+    </value>
+  </const>
+  <const name="WSA_WAIT_EVENT_0" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="WSA_WAIT_IO_COMPLETION" type="Integer">
+    <value>
+      $C0
+    </value>
+  </const>
+  <const name="WSA_WAIT_TIMEOUT" type="Integer">
+    <value>
+      $102
+    </value>
+  </const>
+  <const name="WSA_INFINITE" type="Integer">
+    <value>
+      $FFFFFFFF
+    </value>
+  </const>
+  <const name="EWOULDBLOCK" type="Integer">
+    <value>
+      $2733
+    </value>
+  </const>
+  <const name="EINPROGRESS" type="Integer">
+    <value>
+      $2734
+    </value>
+  </const>
+  <const name="EALREADY" type="Integer">
+    <value>
+      $2735
+    </value>
+  </const>
+  <const name="ENOTSOCK" type="Integer">
+    <value>
+      $2736
+    </value>
+  </const>
+  <const name="EDESTADDRREQ" type="Integer">
+    <value>
+      $2737
+    </value>
+  </const>
+  <const name="EMSGSIZE" type="Integer">
+    <value>
+      $2738
+    </value>
+  </const>
+  <const name="EPROTOTYPE" type="Integer">
+    <value>
+      $2739
+    </value>
+  </const>
+  <const name="ENOPROTOOPT" type="Integer">
+    <value>
+      $273A
+    </value>
+  </const>
+  <const name="EPROTONOSUPPORT" type="Integer">
+    <value>
+      $273B
+    </value>
+  </const>
+  <const name="ESOCKTNOSUPPORT" type="Integer">
+    <value>
+      $273C
+    </value>
+  </const>
+  <const name="EOPNOTSUPP" type="Integer">
+    <value>
+      $273D
+    </value>
+  </const>
+  <const name="EPFNOSUPPORT" type="Integer">
+    <value>
+      $273E
+    </value>
+  </const>
+  <const name="EAFNOSUPPORT" type="Integer">
+    <value>
+      $273F
+    </value>
+  </const>
+  <const name="EADDRINUSE" type="Integer">
+    <value>
+      $2740
+    </value>
+  </const>
+  <const name="EADDRNOTAVAIL" type="Integer">
+    <value>
+      $2741
+    </value>
+  </const>
+  <const name="ENETDOWN" type="Integer">
+    <value>
+      $2742
+    </value>
+  </const>
+  <const name="ENETUNREACH" type="Integer">
+    <value>
+      $2743
+    </value>
+  </const>
+  <const name="ENETRESET" type="Integer">
+    <value>
+      $2744
+    </value>
+  </const>
+  <const name="ECONNABORTED" type="Integer">
+    <value>
+      $2745
+    </value>
+  </const>
+  <const name="ECONNRESET" type="Integer">
+    <value>
+      $2746
+    </value>
+  </const>
+  <const name="ENOBUFS" type="Integer">
+    <value>
+      $2747
+    </value>
+  </const>
+  <const name="EISCONN" type="Integer">
+    <value>
+      $2748
+    </value>
+  </const>
+  <const name="ENOTCONN" type="Integer">
+    <value>
+      $2749
+    </value>
+  </const>
+  <const name="ESHUTDOWN" type="Integer">
+    <value>
+      $274A
+    </value>
+  </const>
+  <const name="ETOOMANYREFS" type="Integer">
+    <value>
+      $274B
+    </value>
+  </const>
+  <const name="ETIMEDOUT" type="Integer">
+    <value>
+      $274C
+    </value>
+  </const>
+  <const name="ECONNREFUSED" type="Integer">
+    <value>
+      $274D
+    </value>
+  </const>
+  <const name="ELOOP" type="Integer">
+    <value>
+      $274E
+    </value>
+  </const>
+  <const name="ENAMETOOLONG" type="Integer">
+    <value>
+      $274F
+    </value>
+  </const>
+  <const name="EHOSTDOWN" type="Integer">
+    <value>
+      $2750
+    </value>
+  </const>
+  <const name="EHOSTUNREACH" type="Integer">
+    <value>
+      $2751
+    </value>
+  </const>
+  <const name="ENOTEMPTY" type="Integer">
+    <value>
+      $2752
+    </value>
+  </const>
+  <const name="EPROCLIM" type="Integer">
+    <value>
+      $2753
+    </value>
+  </const>
+  <const name="EUSERS" type="Integer">
+    <value>
+      $2754
+    </value>
+  </const>
+  <const name="EDQUOT" type="Integer">
+    <value>
+      $2755
+    </value>
+  </const>
+  <const name="ESTALE" type="Integer">
+    <value>
+      $2756
+    </value>
+  </const>
+  <const name="EREMOTE" type="Integer">
+    <value>
+      $2757
+    </value>
+  </const>
+  <const name="WSADESCRIPTION_LEN" type="Integer">
+    <value>
+      $100
+    </value>
+  </const>
+  <const name="WSASYS_STATUS_LEN" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <pointer name="PWSAData" type="TWSAData" indircnt="1" />
+  <struct name="TWSAData" packed="true">
+    <field name="wVersion" type="Word" visibility="public" />
+    <field name="wHighVersion" type="Word" visibility="public" />
+    <field name="szDescription" visibility="public">
+      <array name="szDescription" low="0" high="256">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="szSystemStatus" visibility="public">
+      <array name="szSystemStatus" low="0" high="128">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="iMaxSockets" type="Word" visibility="public" />
+    <field name="iMaxUdpDg" type="Word" visibility="public" />
+    <field name="lpVendorInfo" type="PAnsiChar" visibility="public" />
+  </struct>
+  <struct name="WSAOVERLAPPED" alias="_OVERLAPPED" namespace="Windows">
+    <field name="Internal" type="Cardinal" visibility="public">
+    </field>
+    <field name="InternalHigh" type="Cardinal" visibility="public">
+    </field>
+    <field name="Offset" type="Cardinal" visibility="public">
+    </field>
+    <field name="OffsetHigh" type="Cardinal" visibility="public">
+    </field>
+    <field name="hEvent" type="Cardinal" visibility="public">
+    </field>
+  </struct>
+  <struct name="TWSAOverlapped" alias="_OVERLAPPED" namespace="Windows">
+    <field name="Internal" type="Cardinal" visibility="public">
+    </field>
+    <field name="InternalHigh" type="Cardinal" visibility="public">
+    </field>
+    <field name="Offset" type="Cardinal" visibility="public">
+    </field>
+    <field name="OffsetHigh" type="Cardinal" visibility="public">
+    </field>
+    <field name="hEvent" type="Cardinal" visibility="public">
+    </field>
+  </struct>
+  <pointer name="PWSAOverlapped" type="_OVERLAPPED" indircnt="1" />
+  <pointer name="LPWSAOVERLAPPED" alias="PWSAOverlapped" namespace="WinSock2" type="_OVERLAPPED" indircnt="1" />
+  <struct name="WSABUF" packed="true">
+    <field name="Len" type="Cardinal" visibility="public" />
+    <field name="Buf" type="PAnsiChar" visibility="public" />
+  </struct>
+  <struct name="TWSABUF" alias="WSABUF" namespace="WinSock2" packed="true">
+    <field name="Len" type="Cardinal" visibility="public" />
+    <field name="Buf" type="PAnsiChar" visibility="public" />
+  </struct>
+  <pointer name="PWSABUF" type="WSABUF" indircnt="1" />
+  <pointer name="LPWSABUF" alias="PWSABUF" namespace="WinSock2" type="WSABUF" indircnt="1" />
+  <struct name="TFlowSpec" packed="true">
+    <field name="TokenRate" type="Integer" visibility="public" />
+    <field name="TokenBucketSize" type="Integer" visibility="public" />
+    <field name="PeakBandwidth" type="Integer" visibility="public" />
+    <field name="Latency" type="Integer" visibility="public" />
+    <field name="DelayVariation" type="Integer" visibility="public" />
+    <field name="ServiceType" type="Integer" visibility="public" />
+    <field name="MaxSduSize" type="Integer" visibility="public" />
+    <field name="MinimumPolicedSize" type="Integer" visibility="public" />
+  </struct>
+  <pointer name="PFlowSpec" type="TFlowSpec" indircnt="1" />
+  <struct name="QOS" packed="true">
+    <field name="SendingFlowspec" type="TFlowSpec" visibility="public" />
+    <field name="ReceivingFlowspec" type="TFlowSpec" visibility="public" />
+    <field name="ProviderSpecific" type="WSABUF" visibility="public" />
+  </struct>
+  <struct name="TQualityOfService" alias="QOS" namespace="WinSock2" packed="true">
+    <field name="SendingFlowspec" type="TFlowSpec" visibility="public" />
+    <field name="ReceivingFlowspec" type="TFlowSpec" visibility="public" />
+    <field name="ProviderSpecific" type="WSABUF" visibility="public" />
+  </struct>
+  <pointer name="PQOS" type="QOS" indircnt="1" />
+  <pointer name="LPQOS" alias="PQOS" namespace="WinSock2" type="QOS" indircnt="1" />
+  <const name="SERVICETYPE_NOTRAFFIC" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="SERVICETYPE_BESTEFFORT" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SERVICETYPE_CONTROLLEDLOAD" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SERVICETYPE_GUARANTEED" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="SERVICETYPE_NETWORK_UNAVAILABLE" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SERVICETYPE_GENERAL_INFORMATION" type="Integer">
+    <value>
+      $5
+    </value>
+  </const>
+  <const name="SERVICETYPE_NOCHANGE" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="SERVICE_IMMEDIATE_TRAFFIC_CONTROL" type="Integer">
+    <value>
+      $80000000
+    </value>
+  </const>
+  <const name="CF_ACCEPT" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="CF_REJECT" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="CF_DEFER" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SD_RECEIVE" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="SD_SEND" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SD_BOTH" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SG_UNCONSTRAINED_GROUP" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SG_CONSTRAINED_GROUP" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <struct name="TWSANETWORKEVENTS" packed="true">
+    <field name="lNetworkEvents" type="Integer" visibility="public" />
+    <field name="iErrorCode" visibility="public">
+      <array name="iErrorCode" low="0" high="7">
+        <element type="Integer" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PWSANetworkEvents" type="TWSANETWORKEVENTS" indircnt="1" />
+  <pointer name="LPWSANetworkEvents" alias="PWSANetworkEvents" namespace="WinSock2" type="TWSANETWORKEVENTS" indircnt="1" />
+  <const name="MAX_PROTOCOL_CHAIN" type="Integer">
+    <value>
+      $7
+    </value>
+  </const>
+  <const name="BASE_PROTOCOL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="LAYERED_PROTOCOL" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="WSAPROTOCOL_LEN" type="Integer">
+    <value>
+      $FF
+    </value>
+  </const>
+  <struct name="TWSAProtocolChain" packed="true">
+    <field name="ChainLen" type="Integer" visibility="public" />
+    <field name="ChainEntries" visibility="public">
+      <array name="ChainEntries" low="0" high="6">
+        <element type="Integer" />
+      </array>
+    </field>
+  </struct>
+  <struct name="TWSAProtocol_InfoA" packed="true">
+    <field name="dwServiceFlags1" type="Integer" visibility="public" />
+    <field name="dwServiceFlags2" type="Integer" visibility="public" />
+    <field name="dwServiceFlags3" type="Integer" visibility="public" />
+    <field name="dwServiceFlags4" type="Integer" visibility="public" />
+    <field name="dwProviderFlags" type="Integer" visibility="public" />
+    <field name="ProviderId" type="TGUID" visibility="public" />
+    <field name="dwCatalogEntryId" type="Integer" visibility="public" />
+    <field name="ProtocolChain" type="TWSAProtocolChain" visibility="public" />
+    <field name="iVersion" type="Integer" visibility="public" />
+    <field name="iAddressFamily" type="Integer" visibility="public" />
+    <field name="iMaxSockAddr" type="Integer" visibility="public" />
+    <field name="iMinSockAddr" type="Integer" visibility="public" />
+    <field name="iSocketType" type="Integer" visibility="public" />
+    <field name="iProtocol" type="Integer" visibility="public" />
+    <field name="iProtocolMaxOffset" type="Integer" visibility="public" />
+    <field name="iNetworkByteOrder" type="Integer" visibility="public" />
+    <field name="iSecurityScheme" type="Integer" visibility="public" />
+    <field name="dwMessageSize" type="Integer" visibility="public" />
+    <field name="dwProviderReserved" type="Integer" visibility="public" />
+    <field name="szProtocol" visibility="public">
+      <array name="szProtocol" low="0" high="255">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PWSAProtocol_InfoA" type="TWSAProtocol_InfoA" indircnt="1" />
+  <pointer name="LPWSAProtocol_InfoA" alias="PWSAProtocol_InfoA" namespace="WinSock2" type="TWSAProtocol_InfoA" indircnt="1" />
+  <struct name="TWSAProtocol_InfoW" packed="true">
+    <field name="dwServiceFlags1" type="Integer" visibility="public" />
+    <field name="dwServiceFlags2" type="Integer" visibility="public" />
+    <field name="dwServiceFlags3" type="Integer" visibility="public" />
+    <field name="dwServiceFlags4" type="Integer" visibility="public" />
+    <field name="dwProviderFlags" type="Integer" visibility="public" />
+    <field name="ProviderId" type="TGUID" visibility="public" />
+    <field name="dwCatalogEntryId" type="Integer" visibility="public" />
+    <field name="ProtocolChain" type="TWSAProtocolChain" visibility="public" />
+    <field name="iVersion" type="Integer" visibility="public" />
+    <field name="iAddressFamily" type="Integer" visibility="public" />
+    <field name="iMaxSockAddr" type="Integer" visibility="public" />
+    <field name="iMinSockAddr" type="Integer" visibility="public" />
+    <field name="iSocketType" type="Integer" visibility="public" />
+    <field name="iProtocol" type="Integer" visibility="public" />
+    <field name="iProtocolMaxOffset" type="Integer" visibility="public" />
+    <field name="iNetworkByteOrder" type="Integer" visibility="public" />
+    <field name="iSecurityScheme" type="Integer" visibility="public" />
+    <field name="dwMessageSize" type="Integer" visibility="public" />
+    <field name="dwProviderReserved" type="Integer" visibility="public" />
+    <field name="szProtocol" visibility="public">
+      <array name="szProtocol" low="0" high="255">
+        <element type="WideChar" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PWSAProtocol_InfoW" type="TWSAProtocol_InfoW" indircnt="1" />
+  <pointer name="LPWSAProtocol_InfoW" alias="PWSAProtocol_InfoW" namespace="WinSock2" type="TWSAProtocol_InfoW" indircnt="1" />
+  <struct name="WSAProtocol_Info" alias="TWSAProtocol_InfoA" namespace="WinSock2" packed="true">
+    <field name="dwServiceFlags1" type="Integer" visibility="public" />
+    <field name="dwServiceFlags2" type="Integer" visibility="public" />
+    <field name="dwServiceFlags3" type="Integer" visibility="public" />
+    <field name="dwServiceFlags4" type="Integer" visibility="public" />
+    <field name="dwProviderFlags" type="Integer" visibility="public" />
+    <field name="ProviderId" type="TGUID" visibility="public" />
+    <field name="dwCatalogEntryId" type="Integer" visibility="public" />
+    <field name="ProtocolChain" type="TWSAProtocolChain" visibility="public" />
+    <field name="iVersion" type="Integer" visibility="public" />
+    <field name="iAddressFamily" type="Integer" visibility="public" />
+    <field name="iMaxSockAddr" type="Integer" visibility="public" />
+    <field name="iMinSockAddr" type="Integer" visibility="public" />
+    <field name="iSocketType" type="Integer" visibility="public" />
+    <field name="iProtocol" type="Integer" visibility="public" />
+    <field name="iProtocolMaxOffset" type="Integer" visibility="public" />
+    <field name="iNetworkByteOrder" type="Integer" visibility="public" />
+    <field name="iSecurityScheme" type="Integer" visibility="public" />
+    <field name="dwMessageSize" type="Integer" visibility="public" />
+    <field name="dwProviderReserved" type="Integer" visibility="public" />
+    <field name="szProtocol" visibility="public">
+      <array name="szProtocol" low="0" high="255">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <struct name="TWSAProtocol_Info" alias="TWSAProtocol_InfoA" namespace="WinSock2" packed="true">
+    <field name="dwServiceFlags1" type="Integer" visibility="public" />
+    <field name="dwServiceFlags2" type="Integer" visibility="public" />
+    <field name="dwServiceFlags3" type="Integer" visibility="public" />
+    <field name="dwServiceFlags4" type="Integer" visibility="public" />
+    <field name="dwProviderFlags" type="Integer" visibility="public" />
+    <field name="ProviderId" type="TGUID" visibility="public" />
+    <field name="dwCatalogEntryId" type="Integer" visibility="public" />
+    <field name="ProtocolChain" type="TWSAProtocolChain" visibility="public" />
+    <field name="iVersion" type="Integer" visibility="public" />
+    <field name="iAddressFamily" type="Integer" visibility="public" />
+    <field name="iMaxSockAddr" type="Integer" visibility="public" />
+    <field name="iMinSockAddr" type="Integer" visibility="public" />
+    <field name="iSocketType" type="Integer" visibility="public" />
+    <field name="iProtocol" type="Integer" visibility="public" />
+    <field name="iProtocolMaxOffset" type="Integer" visibility="public" />
+    <field name="iNetworkByteOrder" type="Integer" visibility="public" />
+    <field name="iSecurityScheme" type="Integer" visibility="public" />
+    <field name="dwMessageSize" type="Integer" visibility="public" />
+    <field name="dwProviderReserved" type="Integer" visibility="public" />
+    <field name="szProtocol" visibility="public">
+      <array name="szProtocol" low="0" high="255">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PWSAProtocol_Info" alias="PWSAProtocol_InfoA" namespace="WinSock2" type="TWSAProtocol_InfoA" indircnt="1" />
+  <pointer name="LPWSAProtocol_Info" alias="PWSAProtocol_InfoA" namespace="WinSock2" type="TWSAProtocol_InfoA" indircnt="1" />
+  <const name="PFL_MULTIPLE_PROTO_ENTRIES" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="PFL_RECOMMENDED_PROTO_ENTRY" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="PFL_HIDDEN" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="PFL_MATCHES_PROTOCOL_ZERO" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="XP1_CONNECTIONLESS" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="XP1_GUARANTEED_DELIVERY" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="XP1_GUARANTEED_ORDER" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="XP1_MESSAGE_ORIENTED" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="XP1_PSEUDO_STREAM" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="XP1_GRACEFUL_CLOSE" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="XP1_EXPEDITED_DATA" type="Integer">
+    <value>
+      $40
+    </value>
+  </const>
+  <const name="XP1_CONNECT_DATA" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <const name="XP1_DISCONNECT_DATA" type="Integer">
+    <value>
+      $100
+    </value>
+  </const>
+  <const name="XP1_SUPPORT_BROADCAST" type="Integer">
+    <value>
+      $200
+    </value>
+  </const>
+  <const name="XP1_SUPPORT_MULTIPOINT" type="Integer">
+    <value>
+      $400
+    </value>
+  </const>
+  <const name="XP1_MULTIPOINT_CONTROL_PLANE" type="Integer">
+    <value>
+      $800
+    </value>
+  </const>
+  <const name="XP1_MULTIPOINT_DATA_PLANE" type="Integer">
+    <value>
+      $1000
+    </value>
+  </const>
+  <const name="XP1_QOS_SUPPORTED" type="Integer">
+    <value>
+      $2000
+    </value>
+  </const>
+  <const name="XP1_INTERRUPT" type="Integer">
+    <value>
+      $4000
+    </value>
+  </const>
+  <const name="XP1_UNI_SEND" type="Integer">
+    <value>
+      $8000
+    </value>
+  </const>
+  <const name="XP1_UNI_RECV" type="Integer">
+    <value>
+      $10000
+    </value>
+  </const>
+  <const name="XP1_IFS_HANDLES" type="Integer">
+    <value>
+      $20000
+    </value>
+  </const>
+  <const name="XP1_PARTIAL_MESSAGE" type="Integer">
+    <value>
+      $40000
+    </value>
+  </const>
+  <const name="BIGENDIAN" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="LITTLEENDIAN" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SECURITY_PROTOCOL_NONE" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="JL_SENDER_ONLY" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="JL_RECEIVER_ONLY" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="JL_BOTH" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="WSA_FLAG_OVERLAPPED" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="WSA_FLAG_MULTIPOINT_C_ROOT" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="WSA_FLAG_MULTIPOINT_C_LEAF" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="WSA_FLAG_MULTIPOINT_D_ROOT" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="WSA_FLAG_MULTIPOINT_D_LEAF" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="IOC_UNIX" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="IOC_WS2" type="Integer">
+    <value>
+      $8000000
+    </value>
+  </const>
+  <const name="IOC_PROTOCOL" type="Integer">
+    <value>
+      $10000000
+    </value>
+  </const>
+  <const name="IOC_VENDOR" type="Integer">
+    <value>
+      $18000000
+    </value>
+  </const>
+  <const name="SIO_ASSOCIATE_HANDLE" type="Integer">
+    <value>
+      $88000001
+    </value>
+  </const>
+  <const name="SIO_ENABLE_CIRCULAR_QUEUEING" type="Integer">
+    <value>
+      $8000002
+    </value>
+  </const>
+  <const name="SIO_FIND_ROUTE" type="Integer">
+    <value>
+      $48000003
+    </value>
+  </const>
+  <const name="SIO_FLUSH" type="Integer">
+    <value>
+      $8000004
+    </value>
+  </const>
+  <const name="SIO_GET_BROADCAST_ADDRESS" type="Integer">
+    <value>
+      $48000005
+    </value>
+  </const>
+  <const name="SIO_GET_EXTENSION_FUNCTION_POINTER" type="Integer">
+    <value>
+      $C8000006
+    </value>
+  </const>
+  <const name="SIO_GET_QOS" type="Integer">
+    <value>
+      $C8000007
+    </value>
+  </const>
+  <const name="SIO_GET_GROUP_QOS" type="Integer">
+    <value>
+      $C8000008
+    </value>
+  </const>
+  <const name="SIO_MULTIPOINT_LOOPBACK" type="Integer">
+    <value>
+      $88000009
+    </value>
+  </const>
+  <const name="SIO_MULTICAST_SCOPE" type="Integer">
+    <value>
+      $8800000A
+    </value>
+  </const>
+  <const name="SIO_SET_QOS" type="Integer">
+    <value>
+      $8800000B
+    </value>
+  </const>
+  <const name="SIO_SET_GROUP_QOS" type="Integer">
+    <value>
+      $8800000C
+    </value>
+  </const>
+  <const name="SIO_TRANSLATE_HANDLE" type="Integer">
+    <value>
+      $C800000D
+    </value>
+  </const>
+  <const name="SIO_ROUTING_INTERFACE_QUERY" type="Integer">
+    <value>
+      $C8000014
+    </value>
+  </const>
+  <const name="SIO_ROUTING_INTERFACE_CHANGE" type="Integer">
+    <value>
+      $88000015
+    </value>
+  </const>
+  <const name="SIO_ADDRESS_LIST_QUERY" type="Integer">
+    <value>
+      $48000016
+    </value>
+  </const>
+  <const name="SIO_ADDRESS_LIST_CHANGE" type="Integer">
+    <value>
+      $8000017
+    </value>
+  </const>
+  <const name="SIO_QUERY_TARGET_PNP_HANDLE" type="Integer">
+    <value>
+      $48000018
+    </value>
+  </const>
+  <const name="TH_NETDEV" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TH_TAPI" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <struct name="TBLOB" packed="true">
+    <field name="cbSize" type="Cardinal" visibility="public" />
+    <field name="pBlobData" type="PByte" visibility="public" />
+  </struct>
+  <pointer name="PBLOB" type="TBLOB" indircnt="1" />
+  <const name="SERVICE_MULTIPLE" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="NS_ALL" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="NS_SAP" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="NS_NDS" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="NS_PEER_BROWSE" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="NS_TCPIP_LOCAL" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="NS_TCPIP_HOSTS" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="NS_DNS" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="NS_NETBT" type="Integer">
+    <value>
+      $D
+    </value>
+  </const>
+  <const name="NS_WINS" type="Integer">
+    <value>
+      $E
+    </value>
+  </const>
+  <const name="NS_NBP" type="Integer">
+    <value>
+      $14
+    </value>
+  </const>
+  <const name="NS_MS" type="Integer">
+    <value>
+      $1E
+    </value>
+  </const>
+  <const name="NS_STDA" type="Integer">
+    <value>
+      $1F
+    </value>
+  </const>
+  <const name="NS_NTDS" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="NS_X500" type="Integer">
+    <value>
+      $28
+    </value>
+  </const>
+  <const name="NS_NIS" type="Integer">
+    <value>
+      $29
+    </value>
+  </const>
+  <const name="NS_NISPLUS" type="Integer">
+    <value>
+      $2A
+    </value>
+  </const>
+  <const name="NS_WRQ" type="Integer">
+    <value>
+      $32
+    </value>
+  </const>
+  <const name="NS_NETDES" type="Integer">
+    <value>
+      $3C
+    </value>
+  </const>
+  <const name="RES_UNUSED_1" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="RES_FLUSH_CACHE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="RES_SERVICE" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="SERVICE_TYPE_VALUE_IPXPORTA" type="string">
+    <value>
+      IpxSocket
+    </value>
+  </const>
+  <const name="SERVICE_TYPE_VALUE_IPXPORTW" type="PWideChar" visibility="public" />
+  <const name="SERVICE_TYPE_VALUE_SAPIDA" type="string">
+    <value>
+      SapId
+    </value>
+  </const>
+  <const name="SERVICE_TYPE_VALUE_SAPIDW" type="PWideChar" visibility="public" />
+  <const name="SERVICE_TYPE_VALUE_TCPPORTA" type="string">
+    <value>
+      TcpPort
+    </value>
+  </const>
+  <const name="SERVICE_TYPE_VALUE_TCPPORTW" type="PWideChar" visibility="public" />
+  <const name="SERVICE_TYPE_VALUE_UDPPORTA" type="string">
+    <value>
+      UdpPort
+    </value>
+  </const>
+  <const name="SERVICE_TYPE_VALUE_UDPPORTW" type="PWideChar" visibility="public" />
+  <const name="SERVICE_TYPE_VALUE_OBJECTIDA" type="string">
+    <value>
+      ObjectId
+    </value>
+  </const>
+  <const name="SERVICE_TYPE_VALUE_OBJECTIDW" type="PWideChar" visibility="public" />
+  <const name="SERVICE_TYPE_VALUE_SAPID" type="string">
+    <value>
+      SapId
+    </value>
+  </const>
+  <const name="SERVICE_TYPE_VALUE_TCPPORT" type="string">
+    <value>
+      TcpPort
+    </value>
+  </const>
+  <const name="SERVICE_TYPE_VALUE_UDPPORT" type="string">
+    <value>
+      UdpPort
+    </value>
+  </const>
+  <const name="SERVICE_TYPE_VALUE_OBJECTID" type="string">
+    <value>
+      ObjectId
+    </value>
+  </const>
+  <struct name="SOCKET_ADDRESS" packed="true">
+    <field name="lpSockaddr" type="PSockAddr" visibility="public" />
+    <field name="iSockaddrLength" type="Integer" visibility="public" />
+  </struct>
+  <pointer name="PSOCKET_ADDRESS" type="SOCKET_ADDRESS" indircnt="1" />
+  <struct name="CSADDR_INFO" packed="true">
+    <field name="LocalAddr" type="SOCKET_ADDRESS" visibility="public" />
+    <field name="RemoteAddr" type="SOCKET_ADDRESS" visibility="public" />
+    <field name="iSocketType" type="Integer" visibility="public" />
+    <field name="iProtocol" type="Integer" visibility="public" />
+  </struct>
+  <pointer name="PCSADDR_INFO" type="CSADDR_INFO" indircnt="1" />
+  <pointer name="LPCSADDR_INFO" type="CSADDR_INFO" indircnt="1" />
+  <struct name="SOCKET_ADDRESS_LIST" packed="true">
+    <field name="iAddressCount" type="Integer" visibility="public" />
+    <field name="Address" visibility="public">
+      <array name="Address" low="0" high="0">
+        <element type="SOCKET_ADDRESS" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="LPSOCKET_ADDRESS_LIST" type="SOCKET_ADDRESS_LIST" indircnt="1" />
+  <struct name="AFProtocols" packed="true">
+    <field name="iAddressFamily" type="Integer" visibility="public" />
+    <field name="iProtocol" type="Integer" visibility="public" />
+  </struct>
+  <struct name="TAFProtocols" alias="AFProtocols" namespace="WinSock2" packed="true">
+    <field name="iAddressFamily" type="Integer" visibility="public" />
+    <field name="iProtocol" type="Integer" visibility="public" />
+  </struct>
+  <pointer name="PAFProtocols" type="AFProtocols" indircnt="1" />
+  <const name="COMP_EQUAL" type="TWSAEComparator">
+    <value>
+      COMP_EQUAL
+    </value>
+  </const>
+  <const name="COMP_NOTLESS" type="TWSAEComparator">
+    <value>
+      COMP_NOTLESS
+    </value>
+  </const>
+  <enum name="TWSAEComparator">
+    <element name="COMP_EQUAL" />
+    <element name="COMP_NOTLESS" />
+  </enum>
+  <struct name="TWSAVersion" packed="true">
+    <field name="dwVersion" type="Cardinal" visibility="public" />
+    <field name="ecHow" type="TWSAEComparator" visibility="public" />
+  </struct>
+  <pointer name="PWSAVersion" type="TWSAVersion" indircnt="1" />
+  <struct name="TWSAQuerySetA" packed="true">
+    <field name="dwSize" type="Cardinal" visibility="public" />
+    <field name="lpszServiceInstanceName" type="PAnsiChar" visibility="public" />
+    <field name="lpServiceClassId" type="PGUID" visibility="public" />
+    <field name="lpVersion" type="PWSAVersion" visibility="public" />
+    <field name="lpszComment" type="PAnsiChar" visibility="public" />
+    <field name="dwNameSpace" type="Cardinal" visibility="public" />
+    <field name="lpNSProviderId" type="PGUID" visibility="public" />
+    <field name="lpszContext" type="PAnsiChar" visibility="public" />
+    <field name="dwNumberOfProtocols" type="Cardinal" visibility="public" />
+    <field name="lpafpProtocols" type="PAFProtocols" visibility="public" />
+    <field name="lpszQueryString" type="PAnsiChar" visibility="public" />
+    <field name="dwNumberOfCsAddrs" type="Cardinal" visibility="public" />
+    <field name="lpcsaBuffer" type="PCSADDR_INFO" visibility="public" />
+    <field name="dwOutputFlags" type="Cardinal" visibility="public" />
+    <field name="lpBlob" type="PBLOB" visibility="public" />
+  </struct>
+  <pointer name="PWSAQuerySetA" type="TWSAQuerySetA" indircnt="1" />
+  <pointer name="LPWSAQuerySetA" alias="PWSAQuerySetA" namespace="WinSock2" type="TWSAQuerySetA" indircnt="1" />
+  <struct name="TWSAQuerySetW" packed="true">
+    <field name="dwSize" type="Cardinal" visibility="public" />
+    <field name="lpszServiceInstanceName" type="PWideChar" visibility="public" />
+    <field name="lpServiceClassId" type="PGUID" visibility="public" />
+    <field name="lpVersion" type="PWSAVersion" visibility="public" />
+    <field name="lpszComment" type="PWideChar" visibility="public" />
+    <field name="dwNameSpace" type="Cardinal" visibility="public" />
+    <field name="lpNSProviderId" type="PGUID" visibility="public" />
+    <field name="lpszContext" type="PWideChar" visibility="public" />
+    <field name="dwNumberOfProtocols" type="Cardinal" visibility="public" />
+    <field name="lpafpProtocols" type="PAFProtocols" visibility="public" />
+    <field name="lpszQueryString" type="PWideChar" visibility="public" />
+    <field name="dwNumberOfCsAddrs" type="Cardinal" visibility="public" />
+    <field name="lpcsaBuffer" type="PCSADDR_INFO" visibility="public" />
+    <field name="dwOutputFlags" type="Cardinal" visibility="public" />
+    <field name="lpBlob" type="PBLOB" visibility="public" />
+  </struct>
+  <pointer name="PWSAQuerySetW" type="TWSAQuerySetW" indircnt="1" />
+  <pointer name="LPWSAQuerySetW" alias="PWSAQuerySetW" namespace="WinSock2" type="TWSAQuerySetW" indircnt="1" />
+  <struct name="TWSAQuerySet" alias="TWSAQuerySetA" namespace="WinSock2" packed="true">
+    <field name="dwSize" type="Cardinal" visibility="public" />
+    <field name="lpszServiceInstanceName" type="PAnsiChar" visibility="public" />
+    <field name="lpServiceClassId" type="PGUID" visibility="public" />
+    <field name="lpVersion" type="PWSAVersion" visibility="public" />
+    <field name="lpszComment" type="PAnsiChar" visibility="public" />
+    <field name="dwNameSpace" type="Cardinal" visibility="public" />
+    <field name="lpNSProviderId" type="PGUID" visibility="public" />
+    <field name="lpszContext" type="PAnsiChar" visibility="public" />
+    <field name="dwNumberOfProtocols" type="Cardinal" visibility="public" />
+    <field name="lpafpProtocols" type="PAFProtocols" visibility="public" />
+    <field name="lpszQueryString" type="PAnsiChar" visibility="public" />
+    <field name="dwNumberOfCsAddrs" type="Cardinal" visibility="public" />
+    <field name="lpcsaBuffer" type="PCSADDR_INFO" visibility="public" />
+    <field name="dwOutputFlags" type="Cardinal" visibility="public" />
+    <field name="lpBlob" type="PBLOB" visibility="public" />
+  </struct>
+  <pointer name="PWSAQuerySet" alias="PWSAQuerySetA" namespace="WinSock2" type="TWSAQuerySetA" indircnt="1" />
+  <pointer name="LPWSAQuerySet" alias="PWSAQuerySetA" namespace="WinSock2" type="TWSAQuerySetA" indircnt="1" />
+  <const name="LUP_DEEP" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="LUP_CONTAINERS" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="LUP_NOCONTAINERS" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="LUP_NEAREST" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="LUP_RETURN_NAME" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="LUP_RETURN_TYPE" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="LUP_RETURN_VERSION" type="Integer">
+    <value>
+      $40
+    </value>
+  </const>
+  <const name="LUP_RETURN_COMMENT" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <const name="LUP_RETURN_ADDR" type="Integer">
+    <value>
+      $100
+    </value>
+  </const>
+  <const name="LUP_RETURN_BLOB" type="Integer">
+    <value>
+      $200
+    </value>
+  </const>
+  <const name="LUP_RETURN_ALIASES" type="Integer">
+    <value>
+      $400
+    </value>
+  </const>
+  <const name="LUP_RETURN_QUERY_STRING" type="Integer">
+    <value>
+      $800
+    </value>
+  </const>
+  <const name="LUP_RETURN_ALL" type="Integer">
+    <value>
+      $FF0
+    </value>
+  </const>
+  <const name="LUP_RES_SERVICE" type="Integer">
+    <value>
+      $8000
+    </value>
+  </const>
+  <const name="LUP_FLUSHCACHE" type="Integer">
+    <value>
+      $1000
+    </value>
+  </const>
+  <const name="LUP_FLUSHPREVIOUS" type="Integer">
+    <value>
+      $2000
+    </value>
+  </const>
+  <const name="RESULT_IS_ALIAS" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="RNRSERVICE_REGISTER" type="TWSAeSetServiceOp">
+    <value>
+      RNRSERVICE_REGISTER
+    </value>
+  </const>
+  <const name="RNRSERVICE_DEREGISTER" type="TWSAeSetServiceOp">
+    <value>
+      RNRSERVICE_DEREGISTER
+    </value>
+  </const>
+  <const name="RNRSERVICE_DELETE" type="TWSAeSetServiceOp">
+    <value>
+      RNRSERVICE_DELETE
+    </value>
+  </const>
+  <enum name="TWSAeSetServiceOp">
+    <element name="RNRSERVICE_REGISTER" />
+    <element name="RNRSERVICE_DEREGISTER" />
+    <element name="RNRSERVICE_DELETE" />
+  </enum>
+  <struct name="TWSANSClassInfoA" packed="true">
+    <field name="lpszName" type="PAnsiChar" visibility="public" />
+    <field name="dwNameSpace" type="Cardinal" visibility="public" />
+    <field name="dwValueType" type="Cardinal" visibility="public" />
+    <field name="dwValueSize" type="Cardinal" visibility="public" />
+    <field name="lpValue" type="Pointer" visibility="public" />
+  </struct>
+  <pointer name="PWSANSClassInfoA" type="TWSANSClassInfoA" indircnt="1" />
+  <struct name="TWSANSClassInfoW" packed="true">
+    <field name="lpszName" type="PWideChar" visibility="public" />
+    <field name="dwNameSpace" type="Cardinal" visibility="public" />
+    <field name="dwValueType" type="Cardinal" visibility="public" />
+    <field name="dwValueSize" type="Cardinal" visibility="public" />
+    <field name="lpValue" type="Pointer" visibility="public" />
+  </struct>
+  <pointer name="PWSANSClassInfoW" type="TWSANSClassInfoW" indircnt="1" />
+  <struct name="WSANSClassInfo" alias="TWSANSClassInfoA" namespace="WinSock2" packed="true">
+    <field name="lpszName" type="PAnsiChar" visibility="public" />
+    <field name="dwNameSpace" type="Cardinal" visibility="public" />
+    <field name="dwValueType" type="Cardinal" visibility="public" />
+    <field name="dwValueSize" type="Cardinal" visibility="public" />
+    <field name="lpValue" type="Pointer" visibility="public" />
+  </struct>
+  <struct name="TWSANSClassInfo" alias="TWSANSClassInfoA" namespace="WinSock2" packed="true">
+    <field name="lpszName" type="PAnsiChar" visibility="public" />
+    <field name="dwNameSpace" type="Cardinal" visibility="public" />
+    <field name="dwValueType" type="Cardinal" visibility="public" />
+    <field name="dwValueSize" type="Cardinal" visibility="public" />
+    <field name="lpValue" type="Pointer" visibility="public" />
+  </struct>
+  <pointer name="PWSANSClassInfo" alias="PWSANSClassInfoA" namespace="WinSock2" type="TWSANSClassInfoA" indircnt="1" />
+  <pointer name="LPWSANSClassInfo" alias="PWSANSClassInfoA" namespace="WinSock2" type="TWSANSClassInfoA" indircnt="1" />
+  <struct name="TWSAServiceClassInfoA" packed="true">
+    <field name="lpServiceClassId" type="PGUID" visibility="public" />
+    <field name="lpszServiceClassName" type="PAnsiChar" visibility="public" />
+    <field name="dwCount" type="Cardinal" visibility="public" />
+    <field name="lpClassInfos" type="PWSANSClassInfoA" visibility="public" />
+  </struct>
+  <pointer name="PWSAServiceClassInfoA" type="TWSAServiceClassInfoA" indircnt="1" />
+  <pointer name="LPWSAServiceClassInfoA" alias="PWSAServiceClassInfoA" namespace="WinSock2" type="TWSAServiceClassInfoA" indircnt="1" />
+  <struct name="TWSAServiceClassInfoW" packed="true">
+    <field name="lpServiceClassId" type="PGUID" visibility="public" />
+    <field name="lpszServiceClassName" type="PWideChar" visibility="public" />
+    <field name="dwCount" type="Cardinal" visibility="public" />
+    <field name="lpClassInfos" type="PWSANSClassInfoW" visibility="public" />
+  </struct>
+  <pointer name="PWSAServiceClassInfoW" type="TWSAServiceClassInfoW" indircnt="1" />
+  <pointer name="LPWSAServiceClassInfoW" alias="PWSAServiceClassInfoW" namespace="WinSock2" type="TWSAServiceClassInfoW" indircnt="1" />
+  <struct name="WSAServiceClassInfo" alias="TWSAServiceClassInfoA" namespace="WinSock2" packed="true">
+    <field name="lpServiceClassId" type="PGUID" visibility="public" />
+    <field name="lpszServiceClassName" type="PAnsiChar" visibility="public" />
+    <field name="dwCount" type="Cardinal" visibility="public" />
+    <field name="lpClassInfos" type="PWSANSClassInfoA" visibility="public" />
+  </struct>
+  <struct name="TWSAServiceClassInfo" alias="TWSAServiceClassInfoA" namespace="WinSock2" packed="true">
+    <field name="lpServiceClassId" type="PGUID" visibility="public" />
+    <field name="lpszServiceClassName" type="PAnsiChar" visibility="public" />
+    <field name="dwCount" type="Cardinal" visibility="public" />
+    <field name="lpClassInfos" type="PWSANSClassInfoA" visibility="public" />
+  </struct>
+  <pointer name="PWSAServiceClassInfo" alias="PWSAServiceClassInfoA" namespace="WinSock2" type="TWSAServiceClassInfoA" indircnt="1" />
+  <pointer name="LPWSAServiceClassInfo" alias="PWSAServiceClassInfoA" namespace="WinSock2" type="TWSAServiceClassInfoA" indircnt="1" />
+  <struct name="TWSANameSpace_InfoA" packed="true">
+    <field name="NSProviderId" type="TGUID" visibility="public" />
+    <field name="dwNameSpace" type="Cardinal" visibility="public" />
+    <field name="FActive" type="Cardinal" visibility="public" />
+    <field name="dwVersion" type="Cardinal" visibility="public" />
+    <field name="lpszIdentifier" type="PAnsiChar" visibility="public" />
+  </struct>
+  <pointer name="PWSANameSpace_InfoA" type="TWSANameSpace_InfoA" indircnt="1" />
+  <pointer name="LPWSANameSpace_InfoA" alias="PWSANameSpace_InfoA" namespace="WinSock2" type="TWSANameSpace_InfoA" indircnt="1" />
+  <struct name="TWSANameSpace_InfoW" packed="true">
+    <field name="NSProviderId" type="TGUID" visibility="public" />
+    <field name="dwNameSpace" type="Cardinal" visibility="public" />
+    <field name="FActive" type="Cardinal" visibility="public" />
+    <field name="dwVersion" type="Cardinal" visibility="public" />
+    <field name="lpszIdentifier" type="PWideChar" visibility="public" />
+  </struct>
+  <pointer name="PWSANameSpace_InfoW" type="TWSANameSpace_InfoW" indircnt="1" />
+  <pointer name="LPWSANameSpace_InfoW" alias="PWSANameSpace_InfoW" namespace="WinSock2" type="TWSANameSpace_InfoW" indircnt="1" />
+  <struct name="WSANameSpace_Info" alias="TWSANameSpace_InfoA" namespace="WinSock2" packed="true">
+    <field name="NSProviderId" type="TGUID" visibility="public" />
+    <field name="dwNameSpace" type="Cardinal" visibility="public" />
+    <field name="FActive" type="Cardinal" visibility="public" />
+    <field name="dwVersion" type="Cardinal" visibility="public" />
+    <field name="lpszIdentifier" type="PAnsiChar" visibility="public" />
+  </struct>
+  <struct name="TWSANameSpace_Info" alias="TWSANameSpace_InfoA" namespace="WinSock2" packed="true">
+    <field name="NSProviderId" type="TGUID" visibility="public" />
+    <field name="dwNameSpace" type="Cardinal" visibility="public" />
+    <field name="FActive" type="Cardinal" visibility="public" />
+    <field name="dwVersion" type="Cardinal" visibility="public" />
+    <field name="lpszIdentifier" type="PAnsiChar" visibility="public" />
+  </struct>
+  <pointer name="PWSANameSpace_Info" alias="PWSANameSpace_InfoA" namespace="WinSock2" type="TWSANameSpace_InfoA" indircnt="1" />
+  <pointer name="LPWSANameSpace_Info" alias="PWSANameSpace_InfoA" namespace="WinSock2" type="TWSANameSpace_InfoA" indircnt="1" />
+  <struct name="ip_mreq" packed="true">
+    <field name="imr_multiaddr" type="TInAddr" visibility="public" />
+    <field name="imr_interface" type="TInAddr" visibility="public" />
+  </struct>
+  <const name="SIO_GET_INTERFACE_LIST" type="Integer">
+    <value>
+      $4004747F
+    </value>
+  </const>
+  <const name="SIO_GET_INTERFACE_LIST_EX" type="Integer">
+    <value>
+      $4004747E
+    </value>
+  </const>
+  <const name="IP_OPTIONS" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="IP_HDRINCL" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="IP_TOS" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="IP_TTL" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="IP_MULTICAST_IF" type="Integer">
+    <value>
+      $9
+    </value>
+  </const>
+  <const name="IP_MULTICAST_TTL" type="Integer">
+    <value>
+      $A
+    </value>
+  </const>
+  <const name="IP_MULTICAST_LOOP" type="Integer">
+    <value>
+      $B
+    </value>
+  </const>
+  <const name="IP_ADD_MEMBERSHIP" type="Integer">
+    <value>
+      $C
+    </value>
+  </const>
+  <const name="IP_DROP_MEMBERSHIP" type="Integer">
+    <value>
+      $D
+    </value>
+  </const>
+  <const name="IP_DONTFRAGMENT" type="Integer">
+    <value>
+      $E
+    </value>
+  </const>
+  <const name="IP_DEFAULT_MULTICAST_TTL" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="IP_DEFAULT_MULTICAST_LOOP" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="IP_MAX_MEMBERSHIPS" type="Integer">
+    <value>
+      $14
+    </value>
+  </const>
+  <const name="UDP_NOCHECKSUM" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="TCP_EXPEDITED_1122" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <struct name="IN_ADDR6" packed="true">
+    <field name="s6_addr" visibility="public">
+      <array name="s6_addr" low="0" high="15">
+        <element type="Byte" />
+      </array>
+    </field>
+  </struct>
+  <struct name="TIn6Addr" alias="IN_ADDR6" namespace="WinSock2" packed="true">
+    <field name="s6_addr" visibility="public">
+      <array name="s6_addr" low="0" high="15">
+        <element type="Byte" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PIn6Addr" type="IN_ADDR6" indircnt="1" />
+  <struct name="IN6_ADDR" alias="IN_ADDR6" namespace="WinSock2" packed="true">
+    <field name="s6_addr" visibility="public">
+      <array name="s6_addr" low="0" high="15">
+        <element type="Byte" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PIN6_ADDR" type="IN_ADDR6" indircnt="1" />
+  <pointer name="LPIN6_ADDR" type="IN_ADDR6" indircnt="1" />
+  <struct name="SOCKADDR_IN6_OLD" packed="true">
+    <field name="sin6_family" type="Smallint" visibility="public" />
+    <field name="sin6_port" type="Word" visibility="public" />
+    <field name="sin6_flowinfo" type="Cardinal" visibility="public" />
+    <field name="sin6_addr" type="IN_ADDR6" visibility="public" />
+  </struct>
+  <struct name="SOCKADDR_IN6" packed="true">
+    <field name="sin6_family" type="Smallint" visibility="public" />
+    <field name="sin6_port" type="Word" visibility="public" />
+    <field name="sin6_flowinfo" type="Cardinal" visibility="public" />
+    <field name="sin6_addr" type="IN_ADDR6" visibility="public" />
+    <field name="sin6_scope_id" type="Cardinal" visibility="public" />
+  </struct>
+  <struct name="TSockAddrIn6" alias="SOCKADDR_IN6" namespace="WinSock2" packed="true">
+    <field name="sin6_family" type="Smallint" visibility="public" />
+    <field name="sin6_port" type="Word" visibility="public" />
+    <field name="sin6_flowinfo" type="Cardinal" visibility="public" />
+    <field name="sin6_addr" type="IN_ADDR6" visibility="public" />
+    <field name="sin6_scope_id" type="Cardinal" visibility="public" />
+  </struct>
+  <pointer name="PSockAddrIn6" type="SOCKADDR_IN6" indircnt="1" />
+  <pointer name="PSOCKADDR_IN6" type="SOCKADDR_IN6" indircnt="1" />
+  <pointer name="LPSOCKADDR_IN6" type="SOCKADDR_IN6" indircnt="1" />
+  <struct name="sockaddr_gen" packed="true">
+    <field name="Address" type="TSockAddrIn" visibility="public" />
+  </struct>
+  <struct name="INTERFACE_INFO" packed="true">
+    <field name="iiFlags" type="Cardinal" visibility="public" />
+    <field name="iiAddress" type="sockaddr_gen" visibility="public" />
+    <field name="iiBroadcastAddress" type="sockaddr_gen" visibility="public" />
+    <field name="iiNetmask" type="sockaddr_gen" visibility="public" />
+  </struct>
+  <struct name="TINTERFACE_INFO" alias="INTERFACE_INFO" namespace="WinSock2" packed="true">
+    <field name="iiFlags" type="Cardinal" visibility="public" />
+    <field name="iiAddress" type="sockaddr_gen" visibility="public" />
+    <field name="iiBroadcastAddress" type="sockaddr_gen" visibility="public" />
+    <field name="iiNetmask" type="sockaddr_gen" visibility="public" />
+  </struct>
+  <pointer name="LPINTERFACE_INFO" type="INTERFACE_INFO" indircnt="1" />
+  <struct name="INTERFACE_INFO_EX" packed="true">
+    <field name="iiFlags" type="Cardinal" visibility="public" />
+    <field name="iiAddress" type="SOCKET_ADDRESS" visibility="public" />
+    <field name="iiBroadcastAddress" type="SOCKET_ADDRESS" visibility="public" />
+    <field name="iiNetmask" type="SOCKET_ADDRESS" visibility="public" />
+  </struct>
+  <struct name="TINTERFACE_INFO_EX" alias="INTERFACE_INFO_EX" namespace="WinSock2" packed="true">
+    <field name="iiFlags" type="Cardinal" visibility="public" />
+    <field name="iiAddress" type="SOCKET_ADDRESS" visibility="public" />
+    <field name="iiBroadcastAddress" type="SOCKET_ADDRESS" visibility="public" />
+    <field name="iiNetmask" type="SOCKET_ADDRESS" visibility="public" />
+  </struct>
+  <pointer name="LPINTERFACE_INFO_EX" type="INTERFACE_INFO_EX" indircnt="1" />
+  <const name="IFF_UP" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="IFF_BROADCAST" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="IFF_LOOPBACK" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="IFF_POINTTOPOINT" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="IFF_MULTICAST" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <struct name="SOCKADDR_IPX" packed="true">
+    <field name="sa_family" type="Word" visibility="public" />
+    <field name="sa_netnum" visibility="public">
+      <array name="sa_netnum" low="0" high="3">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="sa_nodenum" visibility="public">
+      <array name="sa_nodenum" low="0" high="5">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="sa_socket" type="Word" visibility="public" />
+  </struct>
+  <struct name="TSOCKADDR_IPX" alias="SOCKADDR_IPX" namespace="WinSock2" packed="true">
+    <field name="sa_family" type="Word" visibility="public" />
+    <field name="sa_netnum" visibility="public">
+      <array name="sa_netnum" low="0" high="3">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="sa_nodenum" visibility="public">
+      <array name="sa_nodenum" low="0" high="5">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="sa_socket" type="Word" visibility="public" />
+  </struct>
+  <pointer name="PSOCKADDR_IPX" type="SOCKADDR_IPX" indircnt="1" />
+  <pointer name="LPSOCKADDR_IPX" type="SOCKADDR_IPX" indircnt="1" />
+  <const name="NSPROTO_IPX" type="Integer">
+    <value>
+      $3E8
+    </value>
+  </const>
+  <const name="NSPROTO_SPX" type="Integer">
+    <value>
+      $4E8
+    </value>
+  </const>
+  <const name="NSPROTO_SPXII" type="Integer">
+    <value>
+      $4E9
+    </value>
+  </const>
+  <const name="IPX_PTYPE" type="Integer">
+    <value>
+      $4000
+    </value>
+  </const>
+  <const name="IPX_FILTERPTYPE" type="Integer">
+    <value>
+      $4001
+    </value>
+  </const>
+  <const name="IPX_STOPFILTERPTYPE" type="Integer">
+    <value>
+      $4003
+    </value>
+  </const>
+  <const name="IPX_DSTYPE" type="Integer">
+    <value>
+      $4002
+    </value>
+  </const>
+  <const name="IPX_EXTENDED_ADDRESS" type="Integer">
+    <value>
+      $4004
+    </value>
+  </const>
+  <const name="IPX_RECVHDR" type="Integer">
+    <value>
+      $4005
+    </value>
+  </const>
+  <const name="IPX_MAXSIZE" type="Integer">
+    <value>
+      $4006
+    </value>
+  </const>
+  <const name="IPX_ADDRESS" type="Integer">
+    <value>
+      $4007
+    </value>
+  </const>
+  <struct name="IPX_ADDRESS_DATA" packed="true">
+    <field name="adapternum" type="Integer" visibility="public" />
+    <field name="netnum" visibility="public">
+      <array name="netnum" low="0" high="3">
+        <element type="Byte" />
+      </array>
+    </field>
+    <field name="nodenum" visibility="public">
+      <array name="nodenum" low="0" high="5">
+        <element type="Byte" />
+      </array>
+    </field>
+    <field name="wan" type="Boolean" visibility="public" />
+    <field name="status" type="Boolean" visibility="public" />
+    <field name="maxpkt" type="Integer" visibility="public" />
+    <field name="linkspeed" type="Cardinal" visibility="public" />
+  </struct>
+  <pointer name="PIPX_ADDRESS_DATA" type="IPX_ADDRESS_DATA" indircnt="1" />
+  <const name="IPX_GETNETINFO" type="Integer">
+    <value>
+      $4008
+    </value>
+  </const>
+  <struct name="IPX_NETNUM_DATA" packed="true">
+    <field name="netnum" visibility="public">
+      <array name="netnum" low="0" high="3">
+        <element type="Byte" />
+      </array>
+    </field>
+    <field name="hopcount" type="Word" visibility="public" />
+    <field name="netdelay" type="Word" visibility="public" />
+    <field name="cardnum" type="Integer" visibility="public" />
+    <field name="router" visibility="public">
+      <array name="router" low="0" high="5">
+        <element type="Byte" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PIPX_NETNUM_DATA" type="IPX_NETNUM_DATA" indircnt="1" />
+  <const name="IPX_GETNETINFO_NORIP" type="Integer">
+    <value>
+      $4009
+    </value>
+  </const>
+  <const name="IPX_SPXGETCONNECTIONSTATUS" type="Integer">
+    <value>
+      $400B
+    </value>
+  </const>
+  <struct name="IPX_SPXCONNSTATUS_DATA" packed="true">
+    <field name="ConnectionState" type="Byte" visibility="public" />
+    <field name="WatchDogActive" type="Byte" visibility="public" />
+    <field name="LocalConnectionId" type="Word" visibility="public" />
+    <field name="RemoteConnectionId" type="Word" visibility="public" />
+    <field name="LocalSequenceNumber" type="Word" visibility="public" />
+    <field name="LocalAckNumber" type="Word" visibility="public" />
+    <field name="LocalAllocNumber" type="Word" visibility="public" />
+    <field name="RemoteAckNumber" type="Word" visibility="public" />
+    <field name="RemoteAllocNumber" type="Word" visibility="public" />
+    <field name="LocalSocket" type="Word" visibility="public" />
+    <field name="ImmediateAddress" visibility="public">
+      <array name="ImmediateAddress" low="0" high="5">
+        <element type="Byte" />
+      </array>
+    </field>
+    <field name="RemoteNetwork" visibility="public">
+      <array name="RemoteNetwork" low="0" high="3">
+        <element type="Byte" />
+      </array>
+    </field>
+    <field name="RemoteNode" visibility="public">
+      <array name="RemoteNode" low="0" high="5">
+        <element type="Byte" />
+      </array>
+    </field>
+    <field name="RemoteSocket" type="Word" visibility="public" />
+    <field name="RetransmissionCount" type="Word" visibility="public" />
+    <field name="EstimatedRoundTripDelay" type="Word" visibility="public" />
+    <field name="RetransmittedPackets" type="Word" visibility="public" />
+    <field name="SuppressedPacket" type="Word" visibility="public" />
+  </struct>
+  <pointer name="PIPX_SPXCONNSTATUS_DATA" type="IPX_SPXCONNSTATUS_DATA" indircnt="1" />
+  <const name="IPX_ADDRESS_NOTIFY" type="Integer">
+    <value>
+      $400C
+    </value>
+  </const>
+  <const name="IPX_MAX_ADAPTER_NUM" type="Integer">
+    <value>
+      $400D
+    </value>
+  </const>
+  <const name="IPX_RERIPNETNUMBER" type="Integer">
+    <value>
+      $400E
+    </value>
+  </const>
+  <const name="IPX_RECEIVE_BROADCAST" type="Integer">
+    <value>
+      $400F
+    </value>
+  </const>
+  <const name="IPX_IMMEDIATESPXACK" type="Integer">
+    <value>
+      $4010
+    </value>
+  </const>
+  <const name="NETBIOS_NAME_LENGTH" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <struct name="SOCKADDR_NB" packed="true">
+    <field name="snb_family" type="Smallint" visibility="public" />
+    <field name="snb_type" type="Word" visibility="public" />
+    <field name="snb_name" visibility="public">
+      <array name="snb_name" low="0" high="15">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <struct name="TSockAddr_NB" alias="SOCKADDR_NB" namespace="WinSock2" packed="true">
+    <field name="snb_family" type="Smallint" visibility="public" />
+    <field name="snb_type" type="Word" visibility="public" />
+    <field name="snb_name" visibility="public">
+      <array name="snb_name" low="0" high="15">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PSOCKADDR_NB" type="SOCKADDR_NB" indircnt="1" />
+  <pointer name="LPSOCKADDR_NB" type="PSOCKADDR_NB" indircnt="1" />
+  <const name="NETBIOS_UNIQUE_NAME" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="NETBIOS_GROUP_NAME" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="NETBIOS_TYPE_QUICK_UNIQUE" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="NETBIOS_TYPE_QUICK_GROUP" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <function name="accept" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" paramflags="const" />
+      <parameter name="Addr" type="TSockAddrIn" paramflags="var" />
+      <parameter name="addrlen" type="Integer" paramflags="var" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="bind" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" paramflags="const" />
+      <parameter name="Addr" type="PSockAddr" paramflags="const" />
+      <parameter name="namelen" type="Integer" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="closesocket" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="connect" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" paramflags="const" />
+      <parameter name="name" type="PSockAddr" paramflags="const" />
+      <parameter name="namelen" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="ioctlsocket" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" paramflags="const" />
+      <parameter name="Cmd" type="Cardinal" paramflags="const" />
+      <parameter name="arg" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="getpeername" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" paramflags="const" />
+      <parameter name="name" type="TSockAddrIn" paramflags="var" />
+      <parameter name="namelen" type="Integer" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="getsockname" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" paramflags="const" />
+      <parameter name="name" type="TSockAddrIn" paramflags="var" />
+      <parameter name="namelen" type="Integer" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="getsockopt" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" paramflags="const" />
+      <parameter name="level" type="Integer" paramflags="const" />
+      <parameter name="optname" type="Integer" paramflags="const" />
+      <parameter name="optval" type="PAnsiChar" />
+      <parameter name="optlen" type="Integer" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="htonl" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="hostlong" type="Cardinal" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="htons" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="hostshort" type="Word" />
+      <retval type="Word" />
+    </parameters>
+  </function>
+  <function name="inet_addr" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="cp" type="PAnsiChar" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="inet_ntoa" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="inaddr" type="TInAddr" />
+      <retval type="PAnsiChar" />
+    </parameters>
+  </function>
+  <function name="listen" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="backlog" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="ntohl" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="netlong" type="Cardinal" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="ntohs" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="netshort" type="Word" />
+      <retval type="Word" />
+    </parameters>
+  </function>
+  <function name="recv" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="Buf" paramflags="var" />
+      <parameter name="Len" type="Integer" />
+      <parameter name="flags" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="recvfrom" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="Buf" paramflags="var" />
+      <parameter name="Len" type="Integer" />
+      <parameter name="flags" type="Integer" />
+      <parameter name="from" type="TSockAddrIn" paramflags="var" />
+      <parameter name="fromlen" type="Integer" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="select" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="nfds" type="Integer" />
+      <parameter name="readfds" type="PFDSet" />
+      <parameter name="writefds" type="PFDSet" />
+      <parameter name="exceptfds" type="PFDSet" />
+      <parameter name="timeout" type="PTimeVal" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="send" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="Buf" paramflags="var" />
+      <parameter name="Len" type="Integer" />
+      <parameter name="flags" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="sendto" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="Buf" paramflags="var" />
+      <parameter name="Len" type="Integer" />
+      <parameter name="flags" type="Integer" />
+      <parameter name="addrto" type="TSockAddrIn" paramflags="var" />
+      <parameter name="tolen" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="setsockopt" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="level" type="Integer" />
+      <parameter name="optname" type="Integer" />
+      <parameter name="optval" type="PAnsiChar" />
+      <parameter name="optlen" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="shutdown" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="how" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="Socket" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="af" type="Integer" paramflags="const" />
+      <parameter name="struct" type="Integer" paramflags="const" />
+      <parameter name="protocol" type="Integer" paramflags="const" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="gethostbyaddr" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="Addr" type="Pointer" />
+      <parameter name="Len" type="Integer" />
+      <parameter name="struct" type="Integer" />
+      <retval type="PHostEnt" />
+    </parameters>
+  </function>
+  <function name="gethostbyname" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="name" type="PAnsiChar" />
+      <retval type="PHostEnt" />
+    </parameters>
+  </function>
+  <function name="gethostname" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="name" type="PAnsiChar" />
+      <parameter name="Len" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="getservbyport" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="Port" type="Integer" />
+      <parameter name="proto" type="PAnsiChar" />
+      <retval type="PServEnt" />
+    </parameters>
+  </function>
+  <function name="getservbyname" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="name" type="PAnsiChar" paramflags="const" />
+      <parameter name="proto" type="PAnsiChar" paramflags="const" />
+      <retval type="PServEnt" />
+    </parameters>
+  </function>
+  <function name="getprotobynumber" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="proto" type="Integer" paramflags="const" />
+      <retval type="PProtoEnt" />
+    </parameters>
+  </function>
+  <function name="getprotobyname" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="name" type="PAnsiChar" paramflags="const" />
+      <retval type="PProtoEnt" />
+    </parameters>
+  </function>
+  <function name="WSAStartup" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="wVersionRequired" type="Word" />
+      <parameter name="WSData" type="TWSAData" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSACleanup" visibility="public" callconv="stdcall">
+    <parameters>
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <procedure name="WSASetLastError" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="iError" type="Integer" />
+    </parameters>
+  </procedure>
+  <function name="WSAGetLastError" visibility="public" callconv="stdcall">
+    <parameters>
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAIsBlocking" visibility="public" callconv="stdcall">
+    <parameters>
+      <retval type="LongBool" />
+    </parameters>
+  </function>
+  <function name="WSAUnhookBlockingHook" visibility="public" callconv="stdcall">
+    <parameters>
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSASetBlockingHook" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpBlockFunc" type="Pointer" />
+      <retval type="Pointer" />
+    </parameters>
+  </function>
+  <function name="WSACancelBlockingCall" visibility="public" callconv="stdcall">
+    <parameters>
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAAsyncGetServByName" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="HWindow" type="HWND" />
+      <parameter name="wMsg" type="Cardinal" />
+      <parameter name="name" type="PAnsiChar" />
+      <parameter name="proto" type="PAnsiChar" />
+      <parameter name="Buf" type="PAnsiChar" />
+      <parameter name="BufLen" type="Integer" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSAAsyncGetServByPort" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="HWindow" type="HWND" />
+      <parameter name="wMsg" type="Cardinal" />
+      <parameter name="Port" type="Cardinal" />
+      <parameter name="proto" type="PAnsiChar" />
+      <parameter name="Buf" type="PAnsiChar" />
+      <parameter name="BufLen" type="Integer" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSAAsyncGetProtoByName" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="HWindow" type="HWND" />
+      <parameter name="wMsg" type="Cardinal" />
+      <parameter name="name" type="PAnsiChar" />
+      <parameter name="Buf" type="PAnsiChar" />
+      <parameter name="BufLen" type="Integer" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSAAsyncGetProtoByNumber" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="HWindow" type="HWND" />
+      <parameter name="wMsg" type="Cardinal" />
+      <parameter name="number" type="Integer" />
+      <parameter name="Buf" type="PAnsiChar" />
+      <parameter name="BufLen" type="Integer" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSAAsyncGetHostByName" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="HWindow" type="HWND" />
+      <parameter name="wMsg" type="Cardinal" />
+      <parameter name="name" type="PAnsiChar" />
+      <parameter name="Buf" type="PAnsiChar" />
+      <parameter name="BufLen" type="Integer" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSAAsyncGetHostByAddr" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="HWindow" type="HWND" />
+      <parameter name="wMsg" type="Cardinal" />
+      <parameter name="Addr" type="PAnsiChar" />
+      <parameter name="Len" type="Integer" />
+      <parameter name="struct" type="Integer" />
+      <parameter name="Buf" type="PAnsiChar" />
+      <parameter name="BufLen" type="Integer" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSACancelAsyncRequest" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="hAsyncTaskHandle" type="Cardinal" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAAsyncSelect" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="HWindow" type="HWND" />
+      <parameter name="wMsg" type="Cardinal" />
+      <parameter name="lEvent" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="__WSAFDIsSet" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="FDSet" type="TFDSet" paramflags="var" />
+      <retval type="LongBool" />
+    </parameters>
+  </function>
+  <function name="WSAAccept" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="Addr" type="TSockAddrIn" />
+      <parameter name="addrlen" type="PInteger" />
+      <parameter name="lpfnCondition" type="LPCONDITIONPROC" />
+      <parameter name="dwCallbackData" type="Cardinal" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSACloseEvent" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="hEvent" type="Cardinal" />
+      <retval type="WordBool" />
+    </parameters>
+  </function>
+  <function name="WSAConnect" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="name" type="PSockAddr" paramflags="const" />
+      <parameter name="namelen" type="Integer" />
+      <parameter name="lpCallerData" type="PWSABUF" />
+      <parameter name="lpCalleeData" type="PWSABUF" />
+      <parameter name="lpSQOS" type="PQOS" />
+      <parameter name="lpGQOS" type="PQOS" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSACreateEvent" visibility="public" callconv="stdcall">
+    <parameters>
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSADuplicateSocketA" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="dwProcessId" type="Cardinal" />
+      <parameter name="lpProtocolInfo" type="PWSAProtocol_InfoA" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSADuplicateSocketW" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="dwProcessId" type="Cardinal" />
+      <parameter name="lpProtocolInfo" type="PWSAProtocol_InfoW" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAEnumNetworkEvents" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" paramflags="const" />
+      <parameter name="hEventObject" type="Cardinal" paramflags="const" />
+      <parameter name="lpNetworkEvents" type="PWSANetworkEvents" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAEnumProtocolsA" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpiProtocols" type="PInteger" />
+      <parameter name="lpProtocolBuffer" type="PWSAProtocol_InfoA" />
+      <parameter name="lpdwBufferLength" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAEnumProtocolsW" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpiProtocols" type="PInteger" />
+      <parameter name="lpProtocolBuffer" type="PWSAProtocol_InfoW" />
+      <parameter name="lpdwBufferLength" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAEventSelect" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="hEventObject" type="Cardinal" />
+      <parameter name="lNetworkEvents" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAGetOverlappedResult" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="lpOverlapped" type="PWSAOverlapped" />
+      <parameter name="lpcbTransfer" type="PDWORD" />
+      <parameter name="fWait" type="LongBool" />
+      <parameter name="lpdwFlags" type="Cardinal" paramflags="var" />
+      <retval type="WordBool" />
+    </parameters>
+  </function>
+  <function name="WSAGetQosByName" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="lpQOSName" type="PWSABUF" />
+      <parameter name="LPQOS" type="PQOS" />
+      <retval type="WordBool" />
+    </parameters>
+  </function>
+  <function name="WSAhtonl" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="hostlong" type="Cardinal" />
+      <parameter name="lpnetlong" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAhtons" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="hostshort" type="Word" />
+      <parameter name="lpnetshort" type="Word" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAIoctl" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="dwIoControlCode" type="Cardinal" />
+      <parameter name="lpvInBuffer" type="Pointer" />
+      <parameter name="cbInBuffer" type="Cardinal" />
+      <parameter name="lpvOutBuffer" type="Pointer" />
+      <parameter name="cbOutBuffer" type="Cardinal" />
+      <parameter name="lpcbBytesReturned" type="PDWORD" />
+      <parameter name="lpOverlapped" type="PWSAOverlapped" />
+      <parameter name="lpCompletionRoutine" type="LPWSAOVERLAPPED_COMPLETION_ROUTINE" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAJoinLeaf" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="name" type="PSockAddr" />
+      <parameter name="namelen" type="Integer" />
+      <parameter name="lpCallerData" type="PWSABUF" />
+      <parameter name="lpCalleeData" type="PWSABUF" />
+      <parameter name="lpSQOS" type="PQOS" />
+      <parameter name="lpGQOS" type="PQOS" />
+      <parameter name="dwFlags" type="Cardinal" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSANtohl" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="netlong" type="Cardinal" />
+      <parameter name="lphostlong" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSANtohs" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="netshort" type="Word" />
+      <parameter name="lphostshort" type="Word" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSARecv" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="lpBuffers" type="PWSABUF" />
+      <parameter name="dwBufferCount" type="Cardinal" />
+      <parameter name="lpNumberOfBytesRecvd" type="Cardinal" paramflags="var" />
+      <parameter name="lpFlags" type="Cardinal" paramflags="var" />
+      <parameter name="lpOverlapped" type="PWSAOverlapped" />
+      <parameter name="lpCompletionRoutine" type="LPWSAOVERLAPPED_COMPLETION_ROUTINE" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSARecvDisconnect" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="lpInboundDisconnectData" type="PWSABUF" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSARecvFrom" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="lpBuffers" type="PWSABUF" />
+      <parameter name="dwBufferCount" type="Cardinal" />
+      <parameter name="lpNumberOfBytesRecvd" type="Cardinal" paramflags="var" />
+      <parameter name="lpFlags" type="Cardinal" paramflags="var" />
+      <parameter name="lpFrom" type="PSockAddr" />
+      <parameter name="lpFromlen" type="PInteger" />
+      <parameter name="lpOverlapped" type="PWSAOverlapped" />
+      <parameter name="lpCompletionRoutine" type="LPWSAOVERLAPPED_COMPLETION_ROUTINE" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAResetEvent" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="hEvent" type="Cardinal" />
+      <retval type="WordBool" />
+    </parameters>
+  </function>
+  <function name="WSASend" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="lpBuffers" type="PWSABUF" />
+      <parameter name="dwBufferCount" type="Cardinal" />
+      <parameter name="lpNumberOfBytesSent" type="Cardinal" paramflags="var" />
+      <parameter name="dwFlags" type="Cardinal" />
+      <parameter name="lpOverlapped" type="PWSAOverlapped" />
+      <parameter name="lpCompletionRoutine" type="LPWSAOVERLAPPED_COMPLETION_ROUTINE" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSASendDisconnect" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="lpOutboundDisconnectData" type="PWSABUF" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSASendTo" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="lpBuffers" type="PWSABUF" />
+      <parameter name="dwBufferCount" type="Cardinal" />
+      <parameter name="lpNumberOfBytesSent" type="Cardinal" paramflags="var" />
+      <parameter name="dwFlags" type="Cardinal" />
+      <parameter name="lpTo" type="PSockAddr" />
+      <parameter name="iTolen" type="Integer" />
+      <parameter name="lpOverlapped" type="PWSAOverlapped" />
+      <parameter name="lpCompletionRoutine" type="LPWSAOVERLAPPED_COMPLETION_ROUTINE" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSASetEvent" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="hEvent" type="Cardinal" />
+      <retval type="WordBool" />
+    </parameters>
+  </function>
+  <function name="WSASocketA" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="af" type="Integer" />
+      <parameter name="iType" type="Integer" />
+      <parameter name="protocol" type="Integer" />
+      <parameter name="lpProtocolInfo" type="PWSAProtocol_InfoA" />
+      <parameter name="g" type="Cardinal" />
+      <parameter name="dwFlags" type="Cardinal" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSASocketW" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="af" type="Integer" />
+      <parameter name="iType" type="Integer" />
+      <parameter name="protocol" type="Integer" />
+      <parameter name="lpProtocolInfo" type="PWSAProtocol_InfoW" />
+      <parameter name="g" type="Cardinal" />
+      <parameter name="dwFlags" type="Cardinal" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSAWaitForMultipleEvents" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="cEvents" type="Cardinal" />
+      <parameter name="lphEvents" type="PWSAEVENT" />
+      <parameter name="fWaitAll" type="LongBool" />
+      <parameter name="dwTimeout" type="Cardinal" />
+      <parameter name="fAlertable" type="LongBool" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSAAddressToStringA" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpsaAddress" type="PSockAddr" />
+      <parameter name="dwAddressLength" type="Cardinal" paramflags="const" />
+      <parameter name="lpProtocolInfo" type="PWSAProtocol_InfoA" paramflags="const" />
+      <parameter name="lpszAddressString" type="PAnsiChar" paramflags="const" />
+      <parameter name="lpdwAddressStringLength" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAAddressToStringW" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpsaAddress" type="PSockAddr" />
+      <parameter name="dwAddressLength" type="Cardinal" paramflags="const" />
+      <parameter name="lpProtocolInfo" type="PWSAProtocol_InfoW" paramflags="const" />
+      <parameter name="lpszAddressString" type="PWideChar" paramflags="const" />
+      <parameter name="lpdwAddressStringLength" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAStringToAddressA" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="AddressString" type="PAnsiChar" paramflags="const" />
+      <parameter name="AddressFamily" type="Integer" paramflags="const" />
+      <parameter name="lpProtocolInfo" type="PWSAProtocol_InfoA" paramflags="const" />
+      <parameter name="lpAddress" type="TSockAddrIn" paramflags="var" />
+      <parameter name="lpAddressLength" type="Integer" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAStringToAddressW" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="AddressString" type="PWideChar" paramflags="const" />
+      <parameter name="AddressFamily" type="Integer" paramflags="const" />
+      <parameter name="lpProtocolInfo" type="PWSAProtocol_InfoA" paramflags="const" />
+      <parameter name="lpAddress" type="TSockAddrIn" paramflags="var" />
+      <parameter name="lpAddressLength" type="Integer" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSALookupServiceBeginA" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="qsRestrictions" type="TWSAQuerySetA" paramflags="var" />
+      <parameter name="dwControlFlags" type="Cardinal" paramflags="const" />
+      <parameter name="hLookup" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSALookupServiceBeginW" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="qsRestrictions" type="TWSAQuerySetW" paramflags="var" />
+      <parameter name="dwControlFlags" type="Cardinal" paramflags="const" />
+      <parameter name="hLookup" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSALookupServiceNextA" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="hLookup" type="Cardinal" paramflags="const" />
+      <parameter name="dwControlFlags" type="Cardinal" paramflags="const" />
+      <parameter name="dwBufferLength" type="Cardinal" paramflags="var" />
+      <parameter name="lpqsResults" type="PWSAQuerySetA" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSALookupServiceNextW" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="hLookup" type="Cardinal" paramflags="const" />
+      <parameter name="dwControlFlags" type="Cardinal" paramflags="const" />
+      <parameter name="dwBufferLength" type="Cardinal" paramflags="var" />
+      <parameter name="lpqsResults" type="PWSAQuerySetW" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSALookupServiceEnd" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="hLookup" type="Cardinal" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAInstallServiceClassA" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpServiceClassInfo" type="PWSAServiceClassInfoA" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAInstallServiceClassW" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpServiceClassInfo" type="PWSAServiceClassInfoW" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSARemoveServiceClass" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpServiceClassId" type="PGUID" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAGetServiceClassInfoA" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpProviderId" type="PGUID" paramflags="const" />
+      <parameter name="lpServiceClassId" type="PGUID" paramflags="const" />
+      <parameter name="lpdwBufSize" type="Cardinal" paramflags="var" />
+      <parameter name="lpServiceClassInfo" type="PWSAServiceClassInfoA" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAGetServiceClassInfoW" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpProviderId" type="PGUID" paramflags="const" />
+      <parameter name="lpServiceClassId" type="PGUID" paramflags="const" />
+      <parameter name="lpdwBufSize" type="Cardinal" paramflags="var" />
+      <parameter name="lpServiceClassInfo" type="PWSAServiceClassInfoW" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAEnumNameSpaceProvidersA" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpdwBufferLength" type="Cardinal" paramflags="var" />
+      <parameter name="lpnspBuffer" type="PWSANameSpace_InfoA" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAEnumNameSpaceProvidersW" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpdwBufferLength" type="Cardinal" paramflags="var" />
+      <parameter name="lpnspBuffer" type="PWSANameSpace_InfoW" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAGetServiceClassNameByClassIdA" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpServiceClassId" type="PGUID" paramflags="const" />
+      <parameter name="lpszServiceClassName" type="PAnsiChar" />
+      <parameter name="lpdwBufferLength" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAGetServiceClassNameByClassIdW" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpServiceClassId" type="PGUID" paramflags="const" />
+      <parameter name="lpszServiceClassName" type="PWideChar" />
+      <parameter name="lpdwBufferLength" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSASetServiceA" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpqsRegInfo" type="PWSAQuerySetA" paramflags="const" />
+      <parameter name="essoperation" type="TWSAeSetServiceOp" paramflags="const" />
+      <parameter name="dwControlFlags" type="Cardinal" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSASetServiceW" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpqsRegInfo" type="PWSAQuerySetW" paramflags="const" />
+      <parameter name="essoperation" type="TWSAeSetServiceOp" paramflags="const" />
+      <parameter name="dwControlFlags" type="Cardinal" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSADuplicateSocket" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="s" type="Cardinal" />
+      <parameter name="dwProcessId" type="Cardinal" />
+      <parameter name="lpProtocolInfo" type="PWSAProtocol_InfoA" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAEnumProtocols" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpiProtocols" type="PInteger" />
+      <parameter name="lpProtocolBuffer" type="PWSAProtocol_InfoA" />
+      <parameter name="lpdwBufferLength" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSASocket" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="af" type="Integer" />
+      <parameter name="iType" type="Integer" />
+      <parameter name="protocol" type="Integer" />
+      <parameter name="lpProtocolInfo" type="PWSAProtocol_InfoA" />
+      <parameter name="g" type="Cardinal" />
+      <parameter name="dwFlags" type="Cardinal" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <function name="WSAAddressToString" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpsaAddress" type="PSockAddr" />
+      <parameter name="dwAddressLength" type="Cardinal" paramflags="const" />
+      <parameter name="lpProtocolInfo" type="PWSAProtocol_InfoA" paramflags="const" />
+      <parameter name="lpszAddressString" type="PAnsiChar" paramflags="const" />
+      <parameter name="lpdwAddressStringLength" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAStringToAddress" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="AddressString" type="PAnsiChar" paramflags="const" />
+      <parameter name="AddressFamily" type="Integer" paramflags="const" />
+      <parameter name="lpProtocolInfo" type="PWSAProtocol_InfoA" paramflags="const" />
+      <parameter name="lpAddress" type="TSockAddrIn" paramflags="var" />
+      <parameter name="lpAddressLength" type="Integer" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSALookupServiceBegin" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="qsRestrictions" type="TWSAQuerySetA" paramflags="var" />
+      <parameter name="dwControlFlags" type="Cardinal" paramflags="const" />
+      <parameter name="hLookup" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSALookupServiceNext" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="hLookup" type="Cardinal" paramflags="const" />
+      <parameter name="dwControlFlags" type="Cardinal" paramflags="const" />
+      <parameter name="dwBufferLength" type="Cardinal" paramflags="var" />
+      <parameter name="lpqsResults" type="PWSAQuerySetA" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAInstallServiceClass" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpServiceClassInfo" type="PWSAServiceClassInfoA" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAGetServiceClassInfo" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpProviderId" type="PGUID" paramflags="const" />
+      <parameter name="lpServiceClassId" type="PGUID" paramflags="const" />
+      <parameter name="lpdwBufSize" type="Cardinal" paramflags="var" />
+      <parameter name="lpServiceClassInfo" type="PWSAServiceClassInfoA" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAEnumNameSpaceProviders" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpdwBufferLength" type="Cardinal" paramflags="var" />
+      <parameter name="lpnspBuffer" type="PWSANameSpace_InfoA" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAGetServiceClassNameByClassId" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpServiceClassId" type="PGUID" paramflags="const" />
+      <parameter name="lpszServiceClassName" type="PAnsiChar" />
+      <parameter name="lpdwBufferLength" type="Cardinal" paramflags="var" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSASetService" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpqsRegInfo" type="PWSAQuerySetA" paramflags="const" />
+      <parameter name="essoperation" type="TWSAeSetServiceOp" paramflags="const" />
+      <parameter name="dwControlFlags" type="Cardinal" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAProviderConfigChange" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="lpNotificationHandle" type="Cardinal" paramflags="var" />
+      <parameter name="lpOverlapped" type="PWSAOverlapped" />
+      <parameter name="lpCompletionRoutine" type="LPWSAOVERLAPPED_COMPLETION_ROUTINE" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAMakeSyncReply" visibility="public">
+    <parameters>
+      <parameter name="BufLen" type="Word" />
+      <parameter name="Error" type="Word" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAMakeSelectReply" visibility="public">
+    <parameters>
+      <parameter name="Event" type="Word" />
+      <parameter name="Error" type="Word" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="WSAGetAsyncBuflen" visibility="public">
+    <parameters>
+      <parameter name="Param" type="Integer" />
+      <retval type="Word" />
+    </parameters>
+  </function>
+  <function name="WSAGetAsyncError" visibility="public">
+    <parameters>
+      <parameter name="Param" type="Integer" />
+      <retval type="Word" />
+    </parameters>
+  </function>
+  <function name="WSAGetSelectEvent" visibility="public">
+    <parameters>
+      <parameter name="Param" type="Integer" />
+      <retval type="Word" />
+    </parameters>
+  </function>
+  <function name="WSAGetSelectError" visibility="public">
+    <parameters>
+      <parameter name="Param" type="Integer" />
+      <retval type="Word" />
+    </parameters>
+  </function>
+  <procedure name="FD_CLR" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" />
+      <parameter name="FDSet" type="TFDSet" paramflags="var" />
+    </parameters>
+  </procedure>
+  <function name="FD_ISSET" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" />
+      <parameter name="FDSet" type="TFDSet" paramflags="var" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <procedure name="FD_SET" visibility="public">
+    <parameters>
+      <parameter name="Socket" type="Cardinal" />
+      <parameter name="FDSet" type="TFDSet" paramflags="var" />
+    </parameters>
+  </procedure>
+  <procedure name="FD_ZERO" visibility="public">
+    <parameters>
+      <parameter name="FDSet" type="TFDSet" paramflags="var" />
+    </parameters>
+  </procedure>
+  <procedure name="SET_NETBIOS_SOCKADDR" visibility="public">
+    <parameters>
+      <parameter name="snb" type="PSOCKADDR_NB" />
+      <parameter name="SnbType" type="Word" paramflags="const" />
+      <parameter name="Name" type="PAnsiChar" paramflags="const" />
+      <parameter name="Port" type="Char" paramflags="const" />
+    </parameters>
+  </procedure>
+</namespace>

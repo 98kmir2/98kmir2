@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="ClientThread">
+  <const name="READ_PACKET_LEN" type="Integer">
+    <value>
+      $8000
+    </value>
+  </const>
+  <const name="READ_BUFFER_LEN" type="Integer">
+    <value>
+      $20000
+    </value>
+  </const>
+  <const name="SEND_BUFFER_LEN" type="Integer">
+    <value>
+      $80000
+    </value>
+  </const>
+  <const name="TEMP_BUFFER_LEN" type="Integer">
+    <value>
+      $10000
+    </value>
+  </const>
+  <const name="SND_SOCKET_BUFFER_LEN" type="Integer">
+    <value>
+      $10000
+    </value>
+  </const>
+  <const name="REV_SOCKET_BUFFER_LEN" type="Integer">
+    <value>
+      $10000
+    </value>
+  </const>
+  <pointer name="PCRecvObj" type="_tagCRecvObj" indircnt="1" />
+  <struct name="_tagCRecvObj">
+    <field name="Socket" type="Cardinal" visibility="public" />
+    <field name="RecvPos" type="Cardinal" visibility="public" />
+    <field name="RecvLen" type="Cardinal" visibility="public" />
+    <field name="RecvBuffer" type="PAnsiChar" visibility="public" />
+    <field name="Buffer" visibility="public">
+      <array name="Buffer" low="0" high="131135">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <struct name="TCRecvObj" alias="_tagCRecvObj" namespace="ClientThread">
+    <field name="Socket" type="Cardinal" visibility="public" />
+    <field name="RecvPos" type="Cardinal" visibility="public" />
+    <field name="RecvLen" type="Cardinal" visibility="public" />
+    <field name="RecvBuffer" type="PAnsiChar" visibility="public" />
+    <field name="Buffer" visibility="public">
+      <array name="Buffer" low="0" high="131135">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PCSendObj" type="_tagCSendObj" indircnt="1" />
+  <struct name="_tagCSendObj">
+    <field name="InBufLen" type="Cardinal" visibility="public" />
+    <field name="DestBuffer" type="PAnsiChar" visibility="public" />
+    <field name="BaseBuffer" type="PAnsiChar" visibility="public" />
+    <field name="Buffer" visibility="public">
+      <array name="Buffer" low="0" high="524351">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <struct name="TCSendObj" alias="_tagCSendObj" namespace="ClientThread">
+    <field name="InBufLen" type="Cardinal" visibility="public" />
+    <field name="DestBuffer" type="PAnsiChar" visibility="public" />
+    <field name="BaseBuffer" type="PAnsiChar" visibility="public" />
+    <field name="Buffer" visibility="public">
+      <array name="Buffer" low="0" high="524351">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <class name="TClientThread">
+    <ancestor name="TBaseThread" namespace="ThreadPool">
+      <methodref name="GetPriority" visibility="private" />
+      <methodref name="SetPriority" visibility="private" />
+      <methodref name="InitThread" visibility="private" />
+      <methodref name="CleanupThread" visibility="private" />
+      <propertyref name="Terminated" visibility="protected" />
+      <methodref name="Run" visibility="public" />
+      <methodref name="CloseThread" visibility="public" />
+      <propertyref name="Exited" visibility="public" />
+      <propertyref name="Handle" visibility="public" />
+      <propertyref name="Priority" visibility="public" />
+      <propertyref name="Suspended" visibility="public" />
+      <methodref name="Start" visibility="public" />
+      <methodref name="Suspend" visibility="public" />
+      <methodref name="Terminate" visibility="public" />
+      <methodref name="Stop" visibility="public" />
+      <methodref name="AfterConstruction" visibility="public" />
+      <propertyref name="ThreadType" visibility="public" />
+      <methodref name="Create" visibility="public" />
+      <methodref name="Create" visibility="public" />
+      <methodref name="Destroy" visibility="public" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="FActive" type="LongBool" visibility="private" />
+      <field name="FSocket" type="Cardinal" visibility="private" />
+      <field name="FLock" type="_RTL_CRITICAL_SECTION" visibility="private" />
+      <field name="FSendObj" type="_tagCSendObj" visibility="private" />
+      <field name="FWSAEvent" type="Cardinal" visibility="private" />
+      <field name="FRecvObj" type="_tagCRecvObj" visibility="private" />
+      <field name="FOnReadEvent" type="TOnReadEvent" visibility="private" />
+      <field name="FSendBuf" visibility="private">
+        <array name="FSendBuf" low="0" high="65599">
+          <element type="Char" />
+        </array>
+      </field>
+      <field name="FRecvBuf" visibility="private">
+        <array name="FRecvBuf" low="0" high="65599">
+          <element type="Char" />
+        </array>
+      </field>
+      <field name="FErrorCode" type="Integer" visibility="private" />
+      <field name="FID" type="Integer" visibility="private" />
+      <field name="FServerPort" type="Integer" visibility="private" />
+      <field name="FServerIP" type="string" visibility="private" />
+      <field name="FEvent" type="Cardinal" visibility="private" />
+      <field name="FOnCloseEvent" type="TOnClientEvent" visibility="private" />
+      <field name="FOnConnectEvent" type="TOnConnectEvent" visibility="private" />
+      <field name="FInWork" type="LongBool" visibility="private" />
+      <field name="FWaitTimeOut" type="Cardinal" visibility="private" />
+      <field name="FDisconnectReConnect" type="LongBool" visibility="private" />
+      <field name="FIsClose" type="LongBool" visibility="private" />
+      <function name="InitClientSocket" visibility="private">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="CleanupClientSocket" visibility="private">
+      </procedure>
+      <procedure name="SetClientID" visibility="private">
+        <parameters>
+          <parameter name="Value" type="Integer" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetServerIP" visibility="private">
+        <parameters>
+          <parameter name="Value" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetServerPort" visibility="private">
+        <parameters>
+          <parameter name="Value" type="Integer" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetActive" visibility="private">
+        <parameters>
+          <parameter name="Value" type="LongBool" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetDisconnectConnect" visibility="private">
+        <parameters>
+          <parameter name="Value" type="LongBool" paramflags="const" />
+        </parameters>
+      </procedure>
+      <function name="SafeSend" visibility="protected">
+        <parameters>
+          <parameter name="Buffer" type="PAnsiChar" paramflags="const" />
+          <parameter name="BufLen" type="Cardinal" paramflags="const" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetEvents" visibility="protected">
+        <parameters>
+          <parameter name="LPNetEvent" type="PWSANetworkEvents" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="ReadEvent" visibility="protected">
+        <parameters>
+          <parameter name="LPNetEvent" type="PWSANetworkEvents" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="ReadData" visibility="protected">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="WriteEvent" visibility="protected">
+        <parameters>
+          <parameter name="LPNetEvent" type="PWSANetworkEvents" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="ConnectEvent" visibility="protected">
+        <parameters>
+          <parameter name="LPNetEvent" type="PWSANetworkEvents" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="CloseEvent" visibility="protected">
+        <parameters>
+          <parameter name="LPNetEvent" type="PWSANetworkEvents" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="HandleError" visibility="protected">
+      </procedure>
+      <procedure name="Run" visibility="public" procflags="override">
+      </procedure>
+      <procedure name="DoActive" visibility="protected">
+        <parameters>
+          <parameter name="Active" type="LongBool" paramflags="const" />
+        </parameters>
+      </procedure>
+      <field name="m_nPos" type="Integer" visibility="public" />
+      <field name="m_pszSendBuf" type="PAnsiChar" visibility="public" />
+      <field name="m_pszRecvBuf" type="PAnsiChar" visibility="public" />
+      <field name="m_dwSendBytes" type="Cardinal" visibility="public" />
+      <field name="m_dwRecvBytes" type="Cardinal" visibility="public" />
+      <field name="m_tSockThreadStutas" type="TSockThreadStutas" visibility="public" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <procedure name="LockBuffer" visibility="public">
+      </procedure>
+      <procedure name="UnLockBuffer" visibility="public">
+      </procedure>
+      <procedure name="ReaderDone" visibility="public">
+        <parameters>
+          <parameter name="IOLen" type="Cardinal" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SendBuffer" visibility="public">
+        <parameters>
+          <parameter name="Buffer" type="PAnsiChar" paramflags="const" />
+          <parameter name="BufLen" type="Cardinal" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SendText" visibility="public">
+        <parameters>
+          <parameter name="Text" type="string" paramflags="const" />
+          <parameter name="Len" type="Cardinal" paramflags="const" />
+        </parameters>
+      </procedure>
+      <event name="OnReadEvent" visibility="public" read="FOnReadEvent" write="FOnReadEvent" type="TOnReadEvent" />
+      <event name="OnConnectEvent" visibility="public" read="FOnConnectEvent" write="FOnConnectEvent" type="TOnConnectEvent" />
+      <event name="OnCloseEvent" visibility="public" read="FOnCloseEvent" write="FOnCloseEvent" type="TOnClientEvent" />
+      <property name="Active" visibility="public" read="FActive" write="SetActive" type="LongBool" />
+      <property name="ServerIP" visibility="public" read="FServerIP" write="SetServerIP" type="string" />
+      <property name="ServerPort" visibility="public" read="FServerPort" write="SetServerPort" type="Integer" />
+      <property name="ID" visibility="public" read="FID" write="SetClientID" type="Integer" />
+      <property name="DisconnectReConnect" visibility="public" read="FDisconnectReConnect" write="SetDisconnectConnect" type="LongBool" />
+    </members>
+  </class>
+</namespace>

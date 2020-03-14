@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="Misc">
+  <function name="EncodeString" visibility="public">
+    <parameters>
+      <parameter name="Str" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="DecodeString" visibility="public">
+    <parameters>
+      <parameter name="Str" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="EncodeBuf" visibility="public">
+    <parameters>
+      <parameter name="Buf" type="Integer" />
+      <parameter name="Len" type="Integer" />
+      <parameter name="DstBuf" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="DecodeBuf" visibility="public">
+    <parameters>
+      <parameter name="Buf" type="Integer" />
+      <parameter name="Len" type="Integer" />
+      <parameter name="DstBuf" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <procedure name="CloseIPConnect" visibility="public">
+    <parameters>
+      <parameter name="nRemoteIP" type="Integer" paramflags="const" />
+    </parameters>
+  </procedure>
+  <function name="KickUser" visibility="public" procflags="overload">
+    <parameters>
+      <parameter name="nRemoteIP" type="Integer" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <procedure name="KickUser" visibility="public" procflags="overload">
+    <parameters>
+      <parameter name="UserObj" type="TSessionObj" paramflags="const" />
+    </parameters>
+  </procedure>
+  <function name="ReverseIP" visibility="public">
+    <parameters>
+      <parameter name="dwIP" type="Cardinal" />
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+</namespace>

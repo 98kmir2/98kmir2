@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="Punishment">
+  <variable name="g_PunishList" type="TStringList" />
+</namespace>

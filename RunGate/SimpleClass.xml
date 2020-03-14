@@ -1,0 +1,1111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="SimpleClass">
+  <const name="DEFAULT_LIST_SIZE" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <pointer name="T" alias="Pointer" namespace="System" type="Pointer" indircnt="1" />
+  <type name="BOOL" type="LongBool" />
+  <class name="EQueue">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <pointer name="PQueueNode" type="_QueueNode" indircnt="1" />
+  <struct name="_QueueNode">
+    <field name="Data" type="Pointer" visibility="public" />
+    <field name="Def" type="Integer" visibility="public" />
+    <field name="NextNode" type="PQueueNode" visibility="public" />
+    <field name="PrevNode" type="PQueueNode" visibility="public" />
+  </struct>
+  <struct name="TQueueNode" alias="_QueueNode" namespace="SimpleClass">
+    <field name="Data" type="Pointer" visibility="public" />
+    <field name="Def" type="Integer" visibility="public" />
+    <field name="NextNode" type="PQueueNode" visibility="public" />
+    <field name="PrevNode" type="PQueueNode" visibility="public" />
+  </struct>
+  <class name="TQueue">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FRealHeader" type="PQueueNode" visibility="private" />
+      <field name="FHeader" type="PQueueNode" visibility="private" />
+      <field name="FTail" type="PQueueNode" visibility="private" />
+      <field name="FInUseSize" type="Integer" visibility="private" />
+      <field name="FMaxSize" type="Integer" visibility="private" />
+      <field name="FOnFreeEvent" type="TOnFreeEvent" visibility="private" />
+      <function name="GetItem" visibility="private">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <function name="GetIfIsEmpty" visibility="private">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <property name="InUseSize" visibility="public" read="FInUseSize" type="Integer" />
+      <property name="MaxSize" visibility="public" read="FMaxSize" type="Integer" />
+      <property name="IsEmpty" visibility="public" read="GetIfIsEmpty" type="Boolean" />
+      <property name="Item" visibility="public" read="GetItem" type="Pointer" />
+      <event name="OnFreeEvent" visibility="public" read="FOnFreeEvent" write="FOnFreeEvent" type="TOnFreeEvent" />
+      <function name="Push" visibility="public">
+        <parameters>
+          <parameter name="Data" type="Pointer" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Peek" visibility="public">
+        <parameters>
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <function name="Pop" visibility="public">
+        <parameters>
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <function name="Last" visibility="public">
+        <parameters>
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="MaxSize" type="Integer" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <class name="EStack">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <pointer name="PStackNode" type="_tagStackNode" indircnt="1" />
+  <struct name="_tagStackNode">
+    <field name="Data" type="Pointer" visibility="public" />
+  </struct>
+  <struct name="TStackNode" alias="_tagStackNode" namespace="SimpleClass">
+    <field name="Data" type="Pointer" visibility="public" />
+  </struct>
+  <class name="TStack">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FMaxSize" type="Integer" visibility="private" />
+      <field name="FInUseSize" type="Integer" visibility="private" />
+      <field name="FHeader" type="PStackNode" visibility="private" />
+      <field name="PUseNode" type="PStackNode" visibility="private" />
+      <function name="GetItem" visibility="private">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <function name="GetIfIsEmpty" visibility="private">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <property name="InUseSize" visibility="public" read="FInUseSize" type="Integer" />
+      <property name="MaxSize" visibility="public" read="FMaxSize" type="Integer" />
+      <property name="IsEmpty" visibility="public" read="GetIfIsEmpty" type="Boolean" />
+      <property name="Item" visibility="public" read="GetItem" type="Pointer" />
+      <function name="Push" visibility="public">
+        <parameters>
+          <parameter name="Data" type="Pointer" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="Peek" visibility="public">
+        <parameters>
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <function name="Pop" visibility="public">
+        <parameters>
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <function name="Last" visibility="public">
+        <parameters>
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="MaxSize" type="Integer" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <pointer name="Iterator" type="_tagIterator" indircnt="1" />
+  <struct name="_tagIterator">
+    <field name="Value" type="Pointer" visibility="public" />
+    <field name="Next" type="Iterator" visibility="public" />
+    <field name="Prior" type="Iterator" visibility="public" />
+    <field name="Def" type="Integer" visibility="public" />
+  </struct>
+  <struct name="TIterator" alias="_tagIterator" namespace="SimpleClass">
+    <field name="Value" type="Pointer" visibility="public" />
+    <field name="Next" type="Iterator" visibility="public" />
+    <field name="Prior" type="Iterator" visibility="public" />
+    <field name="Def" type="Integer" visibility="public" />
+  </struct>
+  <pointer name="PIterator" alias="Iterator" namespace="SimpleClass" type="_tagIterator" indircnt="1" />
+  <class name="EList">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <class name="TList">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <function name="GetSize" visibility="private">
+        <parameters>
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <field name="FEnd" type="Iterator" visibility="protected" />
+      <field name="FBegin" type="Iterator" visibility="protected" />
+      <field name="FMax_size" type="Cardinal" visibility="protected" />
+      <field name="FMemManager" type="TFixedMemoryPool" visibility="protected" />
+      <function name="GetEmpty" visibility="protected">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <property name="max_size" visibility="public" read="FMax_size" type="Cardinal" />
+      <property name="size" visibility="public" read="GetSize" type="Cardinal" />
+      <property name="empty" visibility="public" read="GetEmpty" type="Boolean" />
+      <property name="Ibegin" visibility="public" read="FBegin" type="Iterator" />
+      <property name="Iend" visibility="public" read="FEnd" type="Iterator" />
+      <property name="Irbegin" visibility="public" read="FEnd" type="Iterator" />
+      <property name="Irend" visibility="public" read="FBegin" type="Iterator" />
+      <function name="push_front" visibility="public">
+        <parameters>
+          <parameter name="Value" type="Pointer" paramflags="const" />
+          <retval type="Iterator" />
+        </parameters>
+      </function>
+      <function name="push_back" visibility="public">
+        <parameters>
+          <parameter name="Value" type="Pointer" paramflags="const" />
+          <retval type="Iterator" />
+        </parameters>
+      </function>
+      <function name="find" visibility="public">
+        <parameters>
+          <parameter name="Value" type="Pointer" paramflags="const" />
+          <retval type="Iterator" />
+        </parameters>
+      </function>
+      <function name="insert" visibility="public" procflags="overload">
+        <parameters>
+          <parameter name="Position" type="Iterator" />
+          <parameter name="Value" type="Pointer" paramflags="const" />
+          <retval type="Iterator" />
+        </parameters>
+      </function>
+      <function name="insert" visibility="public" procflags="overload">
+        <parameters>
+          <parameter name="Position" type="Iterator" />
+          <parameter name="first" type="Iterator" paramflags="const" />
+          <parameter name="Last" type="Iterator" paramflags="const" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="erase" visibility="public">
+        <parameters>
+          <parameter name="Position" type="Iterator" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="Clear" visibility="public">
+      </procedure>
+      <procedure name="assignN" visibility="public">
+        <parameters>
+          <parameter name="first" type="Iterator" paramflags="const" />
+          <parameter name="Last" type="Iterator" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="assign" visibility="public">
+        <parameters>
+          <parameter name="List" type="TList" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="DefaultSize" type="Cardinal">
+            <value>
+              $80
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <const name="MaxListSize" type="Integer">
+    <value>
+      $7FFFFFF
+    </value>
+  </const>
+  <pointer name="PTList" type="TTList" indircnt="1" />
+  <array name="TTList" low="0" high="134217726">
+    <element type="Pointer" />
+  </array>
+  <const name="lnAdded" type="TListNotification">
+    <value>
+      lnAdded
+    </value>
+  </const>
+  <const name="lnExtracted" type="TListNotification">
+    <value>
+      lnExtracted
+    </value>
+  </const>
+  <const name="lnerased" type="TListNotification">
+    <value>
+      lnerased
+    </value>
+  </const>
+  <enum name="TListNotification">
+    <element name="lnAdded" />
+    <element name="lnExtracted" />
+    <element name="lnerased" />
+  </enum>
+  <const name="laCopy" type="TListAssignOp">
+    <value>
+      laCopy
+    </value>
+  </const>
+  <const name="laAnd" type="TListAssignOp">
+    <value>
+      laAnd
+    </value>
+  </const>
+  <const name="laOr" type="TListAssignOp">
+    <value>
+      laOr
+    </value>
+  </const>
+  <const name="laXor" type="TListAssignOp">
+    <value>
+      laXor
+    </value>
+  </const>
+  <const name="laSrcUnique" type="TListAssignOp">
+    <value>
+      laSrcUnique
+    </value>
+  </const>
+  <const name="laDestUnique" type="TListAssignOp">
+    <value>
+      laDestUnique
+    </value>
+  </const>
+  <enum name="TListAssignOp">
+    <element name="laCopy" />
+    <element name="laAnd" />
+    <element name="laOr" />
+    <element name="laXor" />
+    <element name="laSrcUnique" />
+    <element name="laDestUnique" />
+  </enum>
+  <class name="EVectorError">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <class name="TVector">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FList" type="PTList" visibility="private" />
+      <field name="FCount" type="Cardinal" visibility="private" />
+      <field name="FCapacity" type="Cardinal" visibility="private" />
+      <function name="Get" visibility="protected">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <procedure name="Grow" visibility="protected">
+      </procedure>
+      <procedure name="Put" visibility="protected">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <parameter name="Item" type="Pointer" />
+        </parameters>
+      </procedure>
+      <procedure name="SetCapacity" visibility="protected">
+        <parameters>
+          <parameter name="NewCapacity" type="Cardinal" />
+        </parameters>
+      </procedure>
+      <procedure name="SetCount" visibility="protected">
+        <parameters>
+          <parameter name="NewCount" type="Cardinal" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="DefaultSize" type="Cardinal">
+            <value>
+              $80
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <function name="push_back" visibility="public">
+        <parameters>
+          <parameter name="Value" type="Pointer" />
+          <retval type="Cardinal" />
+        </parameters>
+      </function>
+      <procedure name="Clear" visibility="public">
+      </procedure>
+      <procedure name="erase" visibility="public">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="Error" visibility="public" procflags="class overload virtual">
+        <parameters>
+          <parameter name="Msg" type="string" paramflags="const" />
+          <parameter name="Data" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="Error" visibility="public" procflags="class overload">
+        <parameters>
+          <parameter name="Msg" type="PResStringRec" />
+          <parameter name="Data" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="Exchange" visibility="public">
+        <parameters>
+          <parameter name="Index1" type="Integer" />
+          <parameter name="Index2" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="Expand" visibility="public">
+        <parameters>
+          <retval type="TVector" />
+        </parameters>
+      </function>
+      <function name="Extract" visibility="public">
+        <parameters>
+          <parameter name="Item" type="Pointer" />
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <function name="Ibegin" visibility="public">
+        <parameters>
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <function name="Iend" visibility="public">
+        <parameters>
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <function name="IndexOf" visibility="public">
+        <parameters>
+          <parameter name="Item" type="Pointer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="insert" visibility="public">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <parameter name="Item" type="Pointer" />
+        </parameters>
+      </procedure>
+      <procedure name="Move" visibility="public">
+        <parameters>
+          <parameter name="CurIndex" type="Integer" />
+          <parameter name="NewIndex" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="Remove" visibility="public">
+        <parameters>
+          <parameter name="Item" type="Pointer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="Pack" visibility="public">
+      </procedure>
+      <procedure name="Sort" visibility="public">
+        <parameters>
+          <parameter name="Compare" type="TListSortCompare" />
+        </parameters>
+      </procedure>
+      <procedure name="assign" visibility="public">
+        <parameters>
+          <parameter name="ListA" type="TVector" />
+          <parameter name="AOperator" type="TListAssignOp">
+            <value>
+              laCopy
+            </value>
+          </parameter>
+          <parameter name="ListB" type="TVector">
+            <value>
+              nil
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <property name="Capacity" visibility="public" read="FCapacity" write="SetCapacity" type="Cardinal" />
+      <property name="Count" visibility="public" read="FCount" write="SetCount" type="Cardinal" />
+      <property name="Items" visibility="public" read="Get" write="Put" type="Pointer" />
+      <property name="List" visibility="public" read="FList" type="PTList" />
+    </members>
+  </class>
+  <class name="EStrToInt">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <function name="StrToIntEx" visibility="public" procflags="overload">
+    <parameters>
+      <parameter name="str" type="PAnsiChar" paramflags="const" />
+      <parameter name="Len" type="Integer" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="StrToIntEx" visibility="public" procflags="overload">
+    <parameters>
+      <parameter name="str" type="PAnsiChar" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="IntToStrEx" visibility="public">
+    <parameters>
+      <parameter name="Value" type="Integer" />
+      <parameter name="Buf" type="PAnsiChar" paramflags="const" />
+      <retval type="PAnsiChar" />
+    </parameters>
+  </function>
+  <function name="IntToStrLEx" visibility="public">
+    <parameters>
+      <parameter name="Value" type="Integer" />
+      <parameter name="Buf" type="PAnsiChar" paramflags="const" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+</namespace>

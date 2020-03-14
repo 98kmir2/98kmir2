@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015/08/02 17:11:08.581.groupproj,d:\Documents\RAD Studio\Projects\ProjectGroup1.groupproj=D:\work\LegendOfMir2\LegendOfMir2_server.groupproj</Transaction>
+  </Transactions>
+	<Default.Personality>
+		<Projects ActiveProject="M2Server.exe"/>
+	</Default.Personality>
+</BorlandProject>

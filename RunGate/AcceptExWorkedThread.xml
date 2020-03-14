@@ -1,0 +1,1066 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="AcceptExWorkedThread">
+  <variable name="MAX_GAME_USER" type="Integer" visibility="public" />
+  <variable name="MAX_LOGIN_USER" type="Integer" visibility="public" />
+  <variable name="USER_ARRAY_COUNT" type="Integer" visibility="public" />
+  <const name="SOCKET_READ" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="SOCKET_SEND" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="SOCKET_ACCEPT" type="Integer">
+    <value>
+      $3
+    </value>
+  </const>
+  <const name="RECV_BUFFER_LEN" type="Integer">
+    <value>
+      $8000
+    </value>
+  </const>
+  <const name="RECV_PACKET_LEN" type="Integer">
+    <value>
+      $1000
+    </value>
+  </const>
+  <const name="TEMP_ENCODE_LEN" type="Integer">
+    <value>
+      $10000
+    </value>
+  </const>
+  <const name="BIND_MAX_COUNT" type="Integer">
+    <value>
+      $64
+    </value>
+  </const>
+  <const name="MAX_WORK_THREAD" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="MAX_SERVER_COUNT" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="LOGIN_BUFFER_LEN" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <const name="ACCEPTEX_POST_COUNT" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <pointer name="PServerInfo" type="_tagServerInfo" indircnt="1" />
+  <struct name="_tagServerInfo">
+    <field name="nSocket" type="Cardinal" visibility="public" />
+    <field name="pClient" type="TClientThread" visibility="public" />
+    <field name="nPort" type="Integer" visibility="public" />
+  </struct>
+  <struct name="TServerInfo" alias="_tagServerInfo" namespace="AcceptExWorkedThread">
+    <field name="nSocket" type="Cardinal" visibility="public" />
+    <field name="pClient" type="TClientThread" visibility="public" />
+    <field name="nPort" type="Integer" visibility="public" />
+  </struct>
+  <pointer name="PLoginObj" type="_tagLoginObj" indircnt="1" />
+  <struct name="_tagLoginObj">
+    <field name="tCommObj" type="_tagIOCPCommObj" visibility="public" />
+    <field name="pszBuffer" visibility="public">
+      <array name="pszBuffer" low="0" high="191">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <struct name="TLoginObj" alias="_tagLoginObj" namespace="AcceptExWorkedThread">
+    <field name="tCommObj" type="_tagIOCPCommObj" visibility="public" />
+    <field name="pszBuffer" visibility="public">
+      <array name="pszBuffer" low="0" high="191">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PRecvObj" type="_tagRecvObj" indircnt="1" />
+  <struct name="_tagRecvObj">
+    <field name="tCommObj" type="_tagIOCPCommObj" visibility="public" />
+    <field name="tUserData" type="TObject" visibility="public" />
+    <field name="dwRecvPos" type="Cardinal" visibility="public" />
+    <field name="pszBuffer" visibility="public">
+      <array name="pszBuffer" low="0" high="32831">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <struct name="TRecvObj" alias="_tagRecvObj" namespace="AcceptExWorkedThread">
+    <field name="tCommObj" type="_tagIOCPCommObj" visibility="public" />
+    <field name="tUserData" type="TObject" visibility="public" />
+    <field name="dwRecvPos" type="Cardinal" visibility="public" />
+    <field name="pszBuffer" visibility="public">
+      <array name="pszBuffer" low="0" high="32831">
+        <element type="Char" />
+      </array>
+    </field>
+  </struct>
+  <pointer name="PUserOBJ" type="_tagUserObj" indircnt="1" />
+  <pointer name="pTUserOBJ" alias="PUserOBJ" namespace="AcceptExWorkedThread" type="_tagUserObj" indircnt="1" />
+  <struct name="_tagUserObj">
+    <field name="tData" type="TObject" visibility="public" />
+    <field name="GameServ" type="TClientThread" visibility="public" />
+    <field name="_SendObj" type="PIOCPCommObj" visibility="public" />
+    <field name="_RecvObj" type="PIOCPCommObj" visibility="public" />
+    <field name="Reader" type="TIOCPReader" visibility="public" />
+    <field name="Writer" type="TIOCPWriter" visibility="public" />
+    <field name="UserManager" type="TUserManager" visibility="public" />
+    <field name="dwUID" type="Cardinal" visibility="public" />
+    <field name="nIPLen" type="Integer" visibility="public" />
+    <field name="nIPAddr" type="Integer" visibility="public" />
+    <field name="pszIPAddr" visibility="public">
+      <array name="pszIPAddr" low="0" high="23">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="Port" type="Integer" visibility="public" />
+  </struct>
+  <struct name="TUserObj" alias="_tagUserObj" namespace="AcceptExWorkedThread">
+    <field name="tData" type="TObject" visibility="public" />
+    <field name="GameServ" type="TClientThread" visibility="public" />
+    <field name="_SendObj" type="PIOCPCommObj" visibility="public" />
+    <field name="_RecvObj" type="PIOCPCommObj" visibility="public" />
+    <field name="Reader" type="TIOCPReader" visibility="public" />
+    <field name="Writer" type="TIOCPWriter" visibility="public" />
+    <field name="UserManager" type="TUserManager" visibility="public" />
+    <field name="dwUID" type="Cardinal" visibility="public" />
+    <field name="nIPLen" type="Integer" visibility="public" />
+    <field name="nIPAddr" type="Integer" visibility="public" />
+    <field name="pszIPAddr" visibility="public">
+      <array name="pszIPAddr" low="0" high="23">
+        <element type="Char" />
+      </array>
+    </field>
+    <field name="Port" type="Integer" visibility="public" />
+  </struct>
+  <class name="TUserManager">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FUserList" type="TFixedMemoryPool" visibility="private" />
+      <field name="FOnUserLeave" type="TOnUserLeave" visibility="private" />
+      <field name="FOnUserEnter" type="TOnUserEnter" visibility="private" />
+      <field name="FReader" type="TIOCPReader" visibility="private" />
+      <field name="FWriter" type="TIOCPWriter" visibility="private" />
+      <procedure name="_DeleteUser" visibility="protected">
+        <parameters>
+          <parameter name="UserOBJ" type="PUserOBJ" paramflags="const" />
+        </parameters>
+      </procedure>
+      <event name="OnUserLeave" visibility="public" read="FOnUserLeave" write="FOnUserLeave" type="TOnUserLeave" />
+      <event name="OnUserEnter" visibility="public" read="FOnUserEnter" write="FOnUserEnter" type="TOnUserEnter" />
+      <function name="AddUser" visibility="public">
+        <parameters>
+          <parameter name="SendObj" type="PIOCPCommObj" paramflags="const" />
+          <parameter name="CIP" type="PAnsiChar" paramflags="const" />
+          <parameter name="NIP" type="Integer" paramflags="const" />
+          <parameter name="CPort" type="Integer" paramflags="const" />
+          <retval type="PUserOBJ" />
+        </parameters>
+      </function>
+      <procedure name="DeleteUser" visibility="public">
+        <parameters>
+          <parameter name="UserOBJ" type="PUserOBJ" paramflags="const" />
+        </parameters>
+      </procedure>
+      <function name="IsAvailayUser" visibility="public">
+        <parameters>
+          <parameter name="UserOBJ" type="PUserOBJ" paramflags="const" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="MaxUser" type="Integer" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <class name="EAcceptExSocket">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <class name="TIOCPAccepter">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FAcceptExFunc" type="LPFN_ACCEPTEX" visibility="private" />
+      <field name="FGetAcceptExSockaddrsFunc" type="LPFN_GETACCEPTEXSOCKADDRS" visibility="private" />
+      <field name="FUserManager" type="TUserManager" visibility="private" />
+      <field name="FRecvSocket" type="TIOCPReader" visibility="private" />
+      <field name="FSendSocket" type="TIOCPWriter" visibility="private" />
+      <field name="FRecvLen" type="Integer" visibility="private" />
+      <field name="FThreadCount" type="Integer" visibility="private" />
+      <field name="FCompPort" type="Cardinal" visibility="private" />
+      <field name="FAddrAddLen" type="Cardinal" visibility="private" />
+      <field name="FMaxLoginUser" type="Integer" visibility="private" />
+      <field name="FAcceptExPool" type="TMemPool" visibility="private" />
+      <field name="FOnInitCompPortFinished" type="TOnCompPortEvent" visibility="private" />
+      <field name="FOnCleanupCompPortEnd" type="TOnCompPortEvent" visibility="private" />
+      <field name="FActive" type="LongBool" visibility="private" />
+      <field name="FServerCount" type="Integer" visibility="private" />
+      <procedure name="InitAcceptEx" visibility="private">
+        <parameters>
+          <parameter name="Port" type="Integer" />
+          <parameter name="Index" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="cleanupAcceptEx" visibility="private">
+        <parameters>
+          <parameter name="Socket" type="Cardinal" />
+        </parameters>
+      </procedure>
+      <procedure name="SetThreadCount" visibility="private">
+        <parameters>
+          <parameter name="Value" type="Integer" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetRecvSocket" visibility="private">
+        <parameters>
+          <parameter name="Value" type="TIOCPReader" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetSendSocket" visibility="private">
+        <parameters>
+          <parameter name="Value" type="TIOCPWriter" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="SetActive" visibility="private">
+        <parameters>
+          <parameter name="Value" type="LongBool" paramflags="const" />
+        </parameters>
+      </procedure>
+      <function name="GetServerInfo" visibility="private">
+        <parameters>
+          <retval type="PServerInfo" />
+        </parameters>
+      </function>
+      <function name="GetInUseBlock" visibility="private">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="GetMaxInUseBlock" visibility="private">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="HandleException" visibility="protected">
+        <parameters>
+          <parameter name="PTRMsgError" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+      <field name="FServerInfoList" visibility="public">
+        <array name="FServerInfoList" low="0" high="31">
+          <element type="_tagServerInfo" />
+        </array>
+      </field>
+      <property name="UserManager" visibility="public" read="FUserManager" type="TUserManager" />
+      <property name="ServerInfo" visibility="public" read="GetServerInfo" type="PServerInfo" />
+      <property name="ServerCount" visibility="public" read="FServerCount" type="Integer" />
+      <property name="InUseBlock" visibility="public" read="GetInUseBlock" type="Integer" />
+      <property name="MaxInUseBlock" visibility="public" read="GetMaxInUseBlock" type="Integer" />
+      <property name="ThreadCount" visibility="public" read="FThreadCount" write="SetThreadCount" type="Integer" />
+      <property name="SendSocket" visibility="public" read="FSendSocket" write="SetSendSocket" type="TIOCPWriter" />
+      <property name="RecvSocket" visibility="public" read="FRecvSocket" write="SetRecvSocket" type="TIOCPReader" />
+      <event name="OnInitCompPortFinished" visibility="public" read="FOnInitCompPortFinished" write="FOnInitCompPortFinished" type="TOnCompPortEvent" />
+      <event name="OnCleanupComPortEnd" visibility="public" read="FOnCleanupCompPortEnd" write="FOnCleanupCompPortEnd" type="TOnCompPortEvent" />
+      <property name="CompPort" visibility="public" read="FCompPort" type="Cardinal" />
+      <procedure name="PostAcceptEx" visibility="public">
+        <parameters>
+          <parameter name="ListenSocket" type="Cardinal" />
+          <parameter name="LoginObj" type="PLoginObj">
+            <value>
+              nil
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <procedure name="HandleAcceptFinished" visibility="public">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" paramflags="const" />
+          <parameter name="IOKey" type="Cardinal" />
+        </parameters>
+      </procedure>
+      <procedure name="FreeAcceptEx" visibility="public">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" paramflags="const" />
+          <parameter name="ListenSocket" type="Cardinal" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="PollAcceptExSocket" visibility="public">
+        <parameters>
+          <parameter name="WakeTime" type="Cardinal" paramflags="var" />
+        </parameters>
+      </procedure>
+      <property name="Active" visibility="public" read="FActive" write="SetActive" type="LongBool" />
+      <procedure name="CloseWorkerThread" visibility="public">
+      </procedure>
+      <procedure name="InitServer" visibility="public">
+        <parameters>
+          <parameter name="Port" type="Integer" />
+          <parameter name="Client" type="TClientThread" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="MaxLogin" type="Integer" />
+          <parameter name="UserManager" type="TUserManager" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <class name="EIOCPReader">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <class name="TIOCPReader">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FUserManager" type="TUserManager" visibility="private" />
+      <field name="FSendSocket" type="TIOCPWriter" visibility="private" />
+      <field name="FRecvPool" type="TMemPool" visibility="private" />
+      <field name="FMaxUser" type="Integer" visibility="private" />
+      <field name="FOnReadEvent" type="TOnReadEvent" visibility="private" />
+      <procedure name="InitRecvSocket" visibility="private">
+      </procedure>
+      <procedure name="CleanupRecvSocket" visibility="private">
+      </procedure>
+      <function name="GetCurrentUser" visibility="private">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <property name="CurrentUser" visibility="public" read="GetCurrentUser" type="Integer" />
+      <event name="OnReadEvent" visibility="public" read="FOnReadEvent" write="FOnReadEvent" type="TOnReadEvent" />
+      <function name="AddLoginUser" visibility="public">
+        <parameters>
+          <parameter name="IOCPData" type="PLoginObj" paramflags="const" />
+          <parameter name="ReaderOBJ" type="PRecvObj" paramflags="var" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="DeleteLoginUser" visibility="public">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" />
+        </parameters>
+      </procedure>
+      <function name="PostIORecv" visibility="public">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="PollRecvSocket" visibility="public">
+        <parameters>
+          <parameter name="WakeTime" type="Cardinal" paramflags="var" />
+        </parameters>
+      </procedure>
+      <function name="ReadDone" visibility="public">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" paramflags="const" />
+          <parameter name="IOLen" type="Cardinal" paramflags="const" />
+          <retval type="LongBool" />
+        </parameters>
+      </function>
+      <function name="HandleReadData" visibility="public">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" paramflags="const" />
+          <parameter name="IOLen" type="Cardinal" paramflags="const" />
+          <retval type="LongBool" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="MaxUser" type="Integer" />
+          <parameter name="SendSocket" type="TIOCPWriter" />
+          <parameter name="UserManager" type="TUserManager" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <class name="EIOCPWriter">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <class name="TIOCPWriter">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FSendQueue" type="TSendQueue" visibility="private" />
+      <field name="FUserManager" type="TUserManager" visibility="private" />
+      <field name="FMaxUser" type="Integer" visibility="private" />
+      <field name="FOnBroadCastEvent" type="TOnBroadCastEvent" visibility="private" />
+      <procedure name="InitSendSocket" visibility="private">
+      </procedure>
+      <procedure name="cleanupSendSocket" visibility="private">
+      </procedure>
+      <function name="GetCurrentUser" visibility="private">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="HandleSendFinished" visibility="protected">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="DeleteLoginUser" visibility="protected">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" />
+        </parameters>
+      </procedure>
+      <function name="AddLoginUser" visibility="protected">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" />
+          <parameter name="WriterOBJ" type="PIOCPCommObj" paramflags="var" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <property name="SendQueue" visibility="public" read="FSendQueue" type="TSendQueue" />
+      <property name="CurrentUser" visibility="public" read="GetCurrentUser" type="Integer" />
+      <event name="OnBroadcastEvent" visibility="public" read="FOnBroadCastEvent" write="FOnBroadCastEvent" type="TOnBroadCastEvent" />
+      <procedure name="PostAllUserSend" visibility="public">
+        <parameters>
+          <parameter name="Buffer" type="PAnsiChar" paramflags="const" />
+          <parameter name="BufLen" type="Cardinal" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="BroadUserMsg" visibility="public">
+        <parameters>
+          <parameter name="wParam" type="Integer" />
+          <parameter name="lParam" type="Integer" />
+          <parameter name="OnBroadcastEvent" type="TOnBroadCastEvent" />
+        </parameters>
+      </procedure>
+      <function name="SendData" visibility="public">
+        <parameters>
+          <parameter name="WriterOBJ" type="PIOCPCommObj" paramflags="const" />
+          <parameter name="Buffer" type="PAnsiChar" paramflags="const" />
+          <parameter name="size" type="Cardinal" paramflags="const" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="DeleteSocket" visibility="public">
+        <parameters>
+          <parameter name="WriterOBJ" type="PIOCPCommObj" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="PollSendSocket" visibility="public">
+        <parameters>
+          <parameter name="WakeTime" type="Cardinal" paramflags="var" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="MaxUser" type="Integer" />
+          <parameter name="UserManager" type="TUserManager" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <class name="TAcceptExWorkedThread">
+    <ancestor name="TBaseThread" namespace="ThreadPool">
+      <methodref name="GetPriority" visibility="private" />
+      <methodref name="SetPriority" visibility="private" />
+      <methodref name="InitThread" visibility="private" />
+      <methodref name="CleanupThread" visibility="private" />
+      <propertyref name="Terminated" visibility="protected" />
+      <methodref name="Run" visibility="public" />
+      <methodref name="CloseThread" visibility="public" />
+      <propertyref name="Exited" visibility="public" />
+      <propertyref name="Handle" visibility="public" />
+      <propertyref name="Priority" visibility="public" />
+      <propertyref name="Suspended" visibility="public" />
+      <methodref name="Start" visibility="public" />
+      <methodref name="Suspend" visibility="public" />
+      <methodref name="Terminate" visibility="public" />
+      <methodref name="Stop" visibility="public" />
+      <methodref name="AfterConstruction" visibility="public" />
+      <propertyref name="ThreadType" visibility="public" />
+      <methodref name="Create" visibility="public" />
+      <methodref name="Create" visibility="public" />
+      <methodref name="Destroy" visibility="public" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="FIOCPPort" type="Cardinal" visibility="private" />
+      <field name="FSendSocket" type="TIOCPWriter" visibility="private" />
+      <field name="FRecvSocket" type="TIOCPReader" visibility="private" />
+      <field name="FAcceptExSocket" type="TIOCPAccepter" visibility="private" />
+      <field name="FABuffer" type="PAnsiChar" visibility="private" />
+      <field name="FBBuffer" type="PAnsiChar" visibility="private" />
+      <field name="FThread_A_Buffer" visibility="private">
+        <array name="FThread_A_Buffer" low="0" high="65663">
+          <element type="Char" />
+        </array>
+      </field>
+      <field name="FThread_B_Buffer" visibility="private">
+        <array name="FThread_B_Buffer" low="0" high="65663">
+          <element type="Char" />
+        </array>
+      </field>
+      <procedure name="HandleExcept" visibility="private">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" paramflags="const" />
+          <parameter name="Str" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="Run" visibility="public" procflags="override">
+      </procedure>
+      <function name="HandleRecvEvent" visibility="protected">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" paramflags="const" />
+          <parameter name="IOLength" type="Cardinal" paramflags="const" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="HandleSendEvent" visibility="protected">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" paramflags="const" />
+          <parameter name="IOLength" type="Cardinal" paramflags="const" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="HandleAllError" visibility="protected">
+        <parameters>
+          <parameter name="IOCPData" type="PIOCPCommObj" paramflags="const" />
+          <parameter name="IOKey" type="Cardinal" paramflags="const" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="SendSocket" type="TIOCPWriter" />
+          <parameter name="RecvSocket" type="TIOCPReader" />
+          <parameter name="AcceptExSocket" type="TIOCPAccepter" />
+          <parameter name="IOCPPort" type="Cardinal" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+</namespace>

@@ -1,0 +1,1144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="ThreadPool">
+  <const name="WT_EXECUTEDEFAULT" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="WT_EXECUTEINIOTHREAD" type="Integer">
+    <value>
+      $1
+    </value>
+  </const>
+  <const name="WT_EXECUTEINUITHREAD" type="Integer">
+    <value>
+      $2
+    </value>
+  </const>
+  <const name="WT_EXECUTEINWAITTHREAD" type="Integer">
+    <value>
+      $4
+    </value>
+  </const>
+  <const name="WT_EXECUTEONLYONCE" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="WT_EXECUTEINTIMERTHREAD" type="Integer">
+    <value>
+      $20
+    </value>
+  </const>
+  <const name="WT_EXECUTELONGFUNCTION" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="WT_EXECUTEINPERSISTENTIOTHREAD" type="Integer">
+    <value>
+      $40
+    </value>
+  </const>
+  <const name="WT_EXECUTEINPERSISTENTTHREAD" type="Integer">
+    <value>
+      $80
+    </value>
+  </const>
+  <const name="WT_EXECUTEINLONGTHREAD" type="Integer">
+    <value>
+      $10
+    </value>
+  </const>
+  <const name="WT_EXECUTEDELETEWAIT" type="Integer">
+    <value>
+      $8
+    </value>
+  </const>
+  <const name="MAX_THREAD_COUNT" type="Integer">
+    <value>
+      $6
+    </value>
+  </const>
+  <const name="MAX_THREAD_MAX" type="Integer">
+    <value>
+      $100
+    </value>
+  </const>
+  <const name="THREAD_EXIT_RESULT" type="Integer">
+    <value>
+      $0
+    </value>
+  </const>
+  <const name="THREAD_WAIT_TIME" type="Integer">
+    <value>
+      $AFC8
+    </value>
+  </const>
+  <const name="THREAD_TIME_OUT" type="Integer">
+    <value>
+      $AFC8
+    </value>
+  </const>
+  <const name="MAX_QUEUE_WORK_COUNT" type="Integer">
+    <value>
+      $400
+    </value>
+  </const>
+  <pointer name="LPTHREAD_START_ROUTINE" type="THREAD_START_ROUTINE" indircnt="1" />
+  <function name="QueueUserWorkItem" visibility="public" callconv="stdcall">
+    <parameters>
+      <parameter name="pfnCallback" type="LPTHREAD_START_ROUTINE" />
+      <parameter name="pvContext" type="Pointer" />
+      <parameter name="dwFlags" type="Cardinal" />
+      <retval type="LongBool" />
+    </parameters>
+  </function>
+  <interface name="IThreadRun">
+    <function name="APCRun" visibility="public" procflags="abstract virtual">
+      <parameters>
+        <retval type="Cardinal" />
+      </parameters>
+    </function>
+  </interface>
+  <interface name="IPoolThread">
+    <function name="InitThread" visibility="public" procflags="abstract virtual">
+      <parameters>
+        <parameter name="pvContext" type="Pointer" paramflags="var" />
+        <retval type="Boolean" />
+      </parameters>
+    </function>
+    <function name="PoolThreadRun" visibility="public" procflags="abstract virtual">
+      <parameters>
+        <parameter name="Data" type="Pointer" />
+        <retval type="Cardinal" />
+      </parameters>
+    </function>
+    <procedure name="Close" visibility="public" procflags="abstract virtual">
+    </procedure>
+    <procedure name="CleanupThread" visibility="public" procflags="abstract virtual">
+      <parameters>
+        <parameter name="pvContext" type="Pointer" paramflags="var" />
+      </parameters>
+    </procedure>
+  </interface>
+  <interface name="IBaseThread">
+    <devnotes>
+      ///
+    </devnotes>
+    <procedure name="CloseThread" visibility="public" procflags="abstract virtual">
+    </procedure>
+    <procedure name="BaseThreadRun" visibility="public" procflags="abstract virtual">
+      <parameters>
+        <parameter name="Terminated" type="LongBool" paramflags="var" />
+      </parameters>
+    </procedure>
+  </interface>
+  <pointer name="PAPCThreadData" type="_apcThreadData" indircnt="1" />
+  <struct name="_apcThreadData">
+    <field name="Pool" type="TAPCThreadPool" visibility="public" />
+    <field name="RunInterface" type="IThreadRun" visibility="public" />
+    <field name="InUse" type="LongBool" visibility="public" />
+  </struct>
+  <struct name="TAPCThreadData" alias="_apcThreadData" namespace="ThreadPool">
+    <field name="Pool" type="TAPCThreadPool" visibility="public" />
+    <field name="RunInterface" type="IThreadRun" visibility="public" />
+    <field name="InUse" type="LongBool" visibility="public" />
+  </struct>
+  <class name="TAPCThreadPool">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FWorkQueue" type="TWorkQueue" visibility="private" />
+      <field name="FInWorkCount" type="Integer" visibility="private" />
+      <field name="FWorkCount" type="Integer" visibility="private" />
+      <field name="FMaxWork" type="Integer" visibility="private" />
+      <procedure name="InitThread" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="ThreadData" type="PAPCThreadData" />
+        </parameters>
+      </procedure>
+      <procedure name="CleaunpThread" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="ThreadData" type="PAPCThreadData" />
+        </parameters>
+      </procedure>
+      <property name="WorkCount" visibility="public" read="FWorkCount" type="Integer" />
+      <property name="InWorkCount" visibility="public" read="FInWorkCount" type="Integer" />
+      <function name="AddWork" visibility="public">
+        <parameters>
+          <parameter name="WorkThread" type="IThreadRun" />
+          <parameter name="flags" type="Cardinal">
+            <value>
+              $1
+            </value>
+          </parameter>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="MaxWork" type="Integer" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <classref name="TThreadClass" ref="TPoolThread" />
+  <class name="TWorkQueue">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FWorkQueue" type="TQueue" visibility="private" />
+      <field name="FWorkLock" type="_RTL_CRITICAL_SECTION" visibility="private" />
+      <field name="FOnFree" type="TOnFreeEvent" visibility="private" />
+      <function name="GetIsEmpty" visibility="private">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetQueueWorkCount" visibility="private">
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <event name="OnFree" visibility="public" read="FOnFree" write="FOnFree" type="TOnFreeEvent" />
+      <function name="AddWork" visibility="public">
+        <parameters>
+          <parameter name="AParam" type="Pointer" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetWork" visibility="public">
+        <parameters>
+          <retval type="Pointer" />
+        </parameters>
+      </function>
+      <property name="IsEmpty" visibility="public" read="GetIsEmpty" type="Boolean" />
+      <property name="InQueueWork" visibility="public" read="GetQueueWorkCount" type="Integer" />
+      <procedure name="Lock" visibility="public">
+      </procedure>
+      <procedure name="UnLock" visibility="public">
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="MaxSize" type="Integer">
+            <value>
+              $400
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <class name="EThreadPool">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <class name="TThreadPool">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FThreadList" visibility="private">
+        <array name="FThreadList" low="0" high="255">
+          <element type="TPoolThread" />
+        </array>
+      </field>
+      <field name="FWorkQueue" type="TWorkQueue" visibility="private" />
+      <field name="FThreadClass" type="TThreadClass" visibility="private" />
+      <field name="FCeativeThread" type="Boolean" visibility="private" />
+      <field name="FRunCount" type="Integer" visibility="private" />
+      <field name="FMaxWork" type="Integer" visibility="private" />
+      <field name="FThreadCount" type="Integer" visibility="private" />
+      <field name="ThreadLock" type="_RTL_CRITICAL_SECTION" visibility="private" />
+      <procedure name="OnThreadBegin" visibility="private">
+        <parameters>
+          <parameter name="PoolThread" type="TPoolThread" />
+        </parameters>
+      </procedure>
+      <procedure name="OnThreadEnd" visibility="private">
+        <parameters>
+          <parameter name="PoolThread" type="TPoolThread" />
+          <parameter name="ContinueDoWork" type="Boolean" paramflags="var" />
+        </parameters>
+      </procedure>
+      <function name="GetThreadItem" visibility="private">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <retval type="TPoolThread" />
+        </parameters>
+      </function>
+      <procedure name="InitPool" visibility="private">
+        <parameters>
+          <parameter name="MaxThread" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="FindThread" visibility="private">
+        <parameters>
+          <parameter name="Thread" type="TPoolThread" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="CreateNewThread" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="ID" type="Integer" />
+          <retval type="TPoolThread" />
+        </parameters>
+      </function>
+      <procedure name="EnterQuery" visibility="public">
+      </procedure>
+      <property name="ThreadItems" visibility="public" read="GetThreadItem" type="TPoolThread" />
+      <procedure name="ExitQuery" visibility="public">
+      </procedure>
+      <property name="WorkQueue" visibility="public" read="FWorkQueue" type="TWorkQueue" />
+      <property name="RunThreadCount" visibility="public" read="FRunCount" type="Integer" />
+      <property name="ThreadCount" visibility="public" read="FThreadCount" type="Integer" />
+      <property name="MaxWork" visibility="public" read="FMaxWork" type="Integer" />
+      <function name="DeleteMandatory" visibility="public">
+        <parameters>
+          <parameter name="Thread" type="TPoolThread" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="StopAllThread" visibility="public">
+      </procedure>
+      <procedure name="ClearAllThread" visibility="public">
+      </procedure>
+      <function name="AddWork" visibility="public">
+        <parameters>
+          <parameter name="AParam" type="Pointer" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="SetManageThread" visibility="public">
+        <parameters>
+          <parameter name="ThreadClass" type="TThreadClass" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="ThreadCount" type="Integer">
+            <value>
+              $6
+            </value>
+          </parameter>
+          <parameter name="MaxWork" type="Integer">
+            <value>
+              $400
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="ThreadClass" type="TThreadClass" />
+          <parameter name="ThreadCount" type="Integer">
+            <value>
+              $6
+            </value>
+          </parameter>
+          <parameter name="MaxWork" type="Integer">
+            <value>
+              $400
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="PoolThreadInterface" type="IPoolThread" />
+          <parameter name="ThreadCount" type="Integer">
+            <value>
+              $6
+            </value>
+          </parameter>
+          <parameter name="MaxWork" type="Integer">
+            <value>
+              $400
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <class name="EPoolThread">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <class name="TPoolThread">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FEnd" type="Boolean" visibility="private" />
+      <field name="FPoolEvent" type="Cardinal" visibility="private" />
+      <field name="FThread" type="Cardinal" visibility="private" />
+      <field name="FThreadID" type="Cardinal" visibility="private" />
+      <field name="FInWork" type="LongBool" visibility="private" />
+      <field name="FOnWorkEnd" type="TOnPoolEndEvent" visibility="private" />
+      <field name="FOnWorkBegin" type="TOnPoolEvent" visibility="private" />
+      <field name="FOnOutWorkEnd" type="TOnThreadEvnet" visibility="private" />
+      <field name="FOnOutWorkBegin" type="TOnThreadEvnet" visibility="private" />
+      <field name="FData" type="Pointer" visibility="private" />
+      <procedure name="DoRun" visibility="private">
+      </procedure>
+      <field name="FClose" type="LongBool" visibility="protected" />
+      <function name="InitThread" visibility="public" procflags="virtual">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="CleanupThread" visibility="public" procflags="virtual">
+      </procedure>
+      <procedure name="Run" visibility="public" procflags="abstract virtual">
+        <parameters>
+          <parameter name="Data" type="Pointer" />
+        </parameters>
+      </procedure>
+      <procedure name="Close" visibility="public" procflags="abstract virtual">
+      </procedure>
+      <event name="OnWorkEnd" visibility="public" read="FOnOutWorkEnd" write="FOnOutWorkEnd" type="TOnThreadEvnet" />
+      <event name="OnWorkBegin" visibility="public" read="FOnOutWorkBegin" write="FOnOutWorkBegin" type="TOnThreadEvnet" />
+      <property name="InWork" visibility="public" read="FInWork" type="LongBool" />
+      <procedure name="Start" visibility="public">
+      </procedure>
+      <procedure name="Stop" visibility="public">
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <class name="TInterfacePoolThread">
+    <ancestor name="TPoolThread" namespace="ThreadPool">
+      <methodref name="DoRun" visibility="private" />
+      <methodref name="InitThread" visibility="public" />
+      <methodref name="CleanupThread" visibility="public" />
+      <methodref name="Run" visibility="public" />
+      <methodref name="Close" visibility="public" />
+      <eventref name="OnWorkEnd" visibility="public" />
+      <eventref name="OnWorkBegin" visibility="public" />
+      <propertyref name="InWork" visibility="public" />
+      <methodref name="Start" visibility="public" />
+      <methodref name="Stop" visibility="public" />
+      <methodref name="Create" visibility="public" />
+      <methodref name="Destroy" visibility="public" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="pvContext" type="Pointer" visibility="private" />
+      <field name="FInterfacePoolThread" type="IPoolThread" visibility="private" />
+      <function name="InitThread" visibility="public" procflags="override">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="CleanupThread" visibility="public" procflags="override">
+      </procedure>
+      <procedure name="Run" visibility="public" procflags="override">
+        <parameters>
+          <parameter name="Data" type="Pointer" />
+        </parameters>
+      </procedure>
+      <procedure name="Close" visibility="public" procflags="override">
+      </procedure>
+      <constructor name="CreateThread" visibility="public">
+        <parameters>
+          <parameter name="InterfaceThread" type="IPoolThread" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <const name="bpIdle" type="TBThreadPriority">
+    <value>
+      bpIdle
+    </value>
+  </const>
+  <const name="bpLowest" type="TBThreadPriority">
+    <value>
+      bpLowest
+    </value>
+  </const>
+  <const name="bpLower" type="TBThreadPriority">
+    <value>
+      bpLower
+    </value>
+  </const>
+  <const name="bpNormal" type="TBThreadPriority">
+    <value>
+      bpNormal
+    </value>
+  </const>
+  <const name="bpHigher" type="TBThreadPriority">
+    <value>
+      bpHigher
+    </value>
+  </const>
+  <const name="bpHighest" type="TBThreadPriority">
+    <value>
+      bpHighest
+    </value>
+  </const>
+  <const name="bpTimeCritical" type="TBThreadPriority">
+    <value>
+      bpTimeCritical
+    </value>
+  </const>
+  <enum name="TBThreadPriority">
+    <devnotes>
+      ///
+    </devnotes>
+    <element name="bpIdle" />
+    <element name="bpLowest" />
+    <element name="bpLower" />
+    <element name="bpNormal" />
+    <element name="bpHigher" />
+    <element name="bpHighest" />
+    <element name="bpTimeCritical" />
+  </enum>
+  <class name="EBaseThread">
+    <ancestor name="Exception" namespace="SysUtils">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="CreateFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateRes" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmt" visibility="public">
+      </methodref>
+      <methodref name="CreateHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <methodref name="CreateResFmtHelp" visibility="public">
+      </methodref>
+      <propertyref name="HelpContext" visibility="public">
+      </propertyref>
+      <propertyref name="Message" visibility="public">
+      </propertyref>
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+  </class>
+  <class name="TBaseThread">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="FThread" type="Cardinal" visibility="private" />
+      <field name="FThreadID" type="Cardinal" visibility="private" />
+      <field name="FTerminated" type="LongBool" visibility="private" />
+      <field name="FStart" type="Boolean" visibility="private" />
+      <field name="FInterfaceThread" type="IBaseThread" visibility="private" />
+      <field name="FIsExit" type="LongBool" visibility="private" />
+      <field name="FSuspended" type="Boolean" visibility="private" />
+      <function name="GetPriority" visibility="private">
+        <parameters>
+          <retval type="TBThreadPriority">
+            <devnotes>
+              ///
+            </devnotes>
+          </retval>
+        </parameters>
+      </function>
+      <procedure name="SetPriority" visibility="private">
+        <parameters>
+          <parameter name="Value" type="TBThreadPriority" paramflags="const" />
+        </parameters>
+      </procedure>
+      <procedure name="InitThread" visibility="private">
+      </procedure>
+      <procedure name="CleanupThread" visibility="private">
+      </procedure>
+      <field name="FThreadType" type="string" visibility="protected" />
+      <property name="Terminated" visibility="protected" read="FTerminated" type="LongBool" />
+      <procedure name="Run" visibility="public" procflags="virtual">
+      </procedure>
+      <procedure name="CloseThread" visibility="public" procflags="virtual">
+      </procedure>
+      <property name="Exited" visibility="public" read="FIsExit" type="LongBool" />
+      <property name="Handle" visibility="public" read="FThread" type="Cardinal" />
+      <property name="Priority" visibility="public" read="GetPriority" write="SetPriority" type="TBThreadPriority" />
+      <property name="Suspended" visibility="public" read="FSuspended" type="Boolean" />
+      <procedure name="Start" visibility="public">
+      </procedure>
+      <procedure name="Suspend" visibility="public">
+      </procedure>
+      <procedure name="Terminate" visibility="public">
+      </procedure>
+      <procedure name="Stop" visibility="public" procflags="virtual">
+      </procedure>
+      <procedure name="AfterConstruction" visibility="public" procflags="override">
+      </procedure>
+      <property name="ThreadType" visibility="public" read="FThreadType" type="string" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="Start" type="Boolean">
+            <value>
+              True
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="InterfaceThread" type="IBaseThread" />
+          <parameter name="Start" type="Boolean">
+            <value>
+              True
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <procedure name="WaitFor" visibility="public">
+    <parameters>
+      <parameter name="hThread" type="Cardinal" paramflags="var" />
+      <parameter name="WaitTime" type="Cardinal" />
+    </parameters>
+  </procedure>
+</namespace>

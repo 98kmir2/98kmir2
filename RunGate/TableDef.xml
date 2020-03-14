@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="TableDef">
+  <array name="TMagDelayList" low="0" high="127">
+    <element type="Integer" />
+  </array>
+  <variable name="MAIGIC_DELAY_ARRAY" visibility="public" />
+  <variable name="MAIGIC_ATTACK_ARRAY" visibility="public" />
+  <variable name="MAIGIC_DELAY_TIME_LIST_DEF" type="TMagDelayList" />
+  <variable name="MAIGIC_DELAY_TIME_LIST" type="TMagDelayList" visibility="public" />
+  <variable name="MAIGIC_NAME_LIST" visibility="public">
+    <array low="0" high="127" generated="true">
+      <element type="string" />
+    </array>
+  </variable>
+</namespace>

@@ -1,0 +1,81 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{33cce2b0-41b7-4056-893b-be9e8a053c9d}</ProjectGuid>
+    <MainSource>SelGate.dpr</MainSource>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+    <DCC_DependencyCheckOutputName>D:\MirserverBlue\SelGate\SelGate.exe</DCC_DependencyCheckOutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_DebugInformation>False</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_ExeOutput>F:\MirServer\SelGate</DCC_ExeOutput>
+    <DCC_DcuOutput>.\Dcu</DCC_DcuOutput>
+    <DCC_ObjOutput>.\Dcu</DCC_ObjOutput>
+    <DCC_HppOutput>.\Dcu</DCC_HppOutput>
+    <DCC_UnitSearchPath>..\Common;..\Components\DCPcrypt;..\Components\DCPcrypt\Ciphers;..\Components\DCPcrypt\Hashes;..\Components\FastMM4</DCC_UnitSearchPath>
+    <DCC_ResourcePath>..\Common;..\Components\DCPcrypt;..\Components\DCPcrypt\Ciphers;..\Components\DCPcrypt\Hashes;..\Components\FastMM4</DCC_ResourcePath>
+    <DCC_ObjPath>..\Common;..\Components\DCPcrypt;..\Components\DCPcrypt\Ciphers;..\Components\DCPcrypt\Hashes;..\Components\FastMM4</DCC_ObjPath>
+    <DCC_IncludePath>..\Common;..\Components\DCPcrypt;..\Components\DCPcrypt\Ciphers;..\Components\DCPcrypt\Hashes;..\Components\FastMM4</DCC_IncludePath>
+    <DCC_Define>RELEASE</DCC_Define>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_ExeOutput>D:\MirserverBlue\SelGate</DCC_ExeOutput>
+    <DCC_DcuOutput>.\Dcu</DCC_DcuOutput>
+    <DCC_ObjOutput>.\Dcu</DCC_ObjOutput>
+    <DCC_HppOutput>.\Dcu</DCC_HppOutput>
+    <DCC_UnitSearchPath>..\Common;..\Components\FastMM4</DCC_UnitSearchPath>
+    <DCC_ResourcePath>..\Common;..\Components\FastMM4</DCC_ResourcePath>
+    <DCC_ObjPath>..\Common;..\Components\FastMM4</DCC_ObjPath>
+    <DCC_IncludePath>..\Common;..\Components\FastMM4</DCC_IncludePath>
+    <DCC_Define>DEBUG</DCC_Define>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality</Borland.Personality>
+    <Borland.ProjectType>VCLApplication</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject><Delphi.Personality><Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><VersionInfo><VersionInfo Name="IncludeVerInfo">True</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">2052</VersionInfo><VersionInfo Name="CodePage">936</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName">BlueM2</VersionInfoKeys><VersionInfoKeys Name="FileDescription">角色网关</VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName">SelGate.exe</VersionInfoKeys><VersionInfoKeys Name="LegalCopyright">版权所有(C) BlueSoft. 2006-2008</VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks">角色网关</VersionInfoKeys><VersionInfoKeys Name="OriginalFilename">SelGate.exe</VersionInfoKeys><VersionInfoKeys Name="ProductName">角色网关</VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Source><Source Name="MainSource">SelGate.dpr</Source></Source></Delphi.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Delphi.Targets" />
+  <ItemGroup>
+    <DelphiCompile Include="SelGate.dpr">
+      <MainSource>MainSource</MainSource>
+    </DelphiCompile>
+    <DCCReference Include="..\Common\Grobal2.pas" />
+    <DCCReference Include="..\Common\HUtil32.pas" />
+    <DCCReference Include="..\Common\MD5.pas" />
+    <DCCReference Include="..\Common\SDK.pas" />
+    <DCCReference Include="AcceptExWorkedThread.pas" />
+    <DCCReference Include="AppMain.pas">
+      <Form>FormMain</Form>
+    </DCCReference>
+    <DCCReference Include="ClientSession.pas" />
+    <DCCReference Include="ClientThread.pas" />
+    <DCCReference Include="ConfigManager.pas" />
+    <DCCReference Include="FixedMemoryPool.pas" />
+    <DCCReference Include="FuncForComm.pas" />
+    <DCCReference Include="GeneralConfig.pas">
+      <Form>frmGeneralConfig</Form>
+    </DCCReference>
+    <DCCReference Include="IOCPManager.pas" />
+    <DCCReference Include="IOCPTypeDef.pas" />
+    <DCCReference Include="IPAddrFilter.pas" />
+    <DCCReference Include="LogManager.pas" />
+    <DCCReference Include="MemPool.pas" />
+    <DCCReference Include="Misc.pas" />
+    <DCCReference Include="PacketRuleConfig.pas">
+      <Form>frmPacketRule</Form>
+    </DCCReference>
+    <DCCReference Include="Protocol.pas" />
+    <DCCReference Include="SendQueue.pas" />
+    <DCCReference Include="SHSocket.pas" />
+    <DCCReference Include="SimpleClass.pas" />
+    <DCCReference Include="SyncObj.pas" />
+    <DCCReference Include="ThreadPool.pas" />
+    <DCCReference Include="WinSock2.pas" />
+  </ItemGroup>
+</Project>

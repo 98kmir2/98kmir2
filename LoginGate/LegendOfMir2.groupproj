@@ -1,0 +1,58 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{51057239-a814-4249-8f9b-c898d1f9e7de}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup />
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject xmlns=""><Default.Personality></Default.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="mir2">
+    <MSBuild Projects="MirClient\mir2.dproj" Targets="" />
+  </Target>
+  <Target Name="mir2:Clean">
+    <MSBuild Projects="MirClient\mir2.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="mir2:Make">
+    <MSBuild Projects="MirClient\mir2.dproj" Targets="Make" />
+  </Target>
+  <Target Name="LoginTool">
+    <MSBuild Projects="LoginTool\LoginTool.dproj" Targets="" />
+  </Target>
+  <Target Name="LoginTool:Clean">
+    <MSBuild Projects="LoginTool\LoginTool.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="LoginTool:Make">
+    <MSBuild Projects="LoginTool\LoginTool.dproj" Targets="Make" />
+  </Target>
+  <Target Name="RunGate">
+    <MSBuild Projects="RunGate\RunGate.dproj" Targets="" />
+  </Target>
+  <Target Name="RunGate:Clean">
+    <MSBuild Projects="RunGate\RunGate.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="RunGate:Make">
+    <MSBuild Projects="RunGate\RunGate.dproj" Targets="Make" />
+  </Target>
+  <Target Name="mir2_test">
+    <MSBuild Projects="MirClient\mir2_test.dproj" Targets="" />
+  </Target>
+  <Target Name="mir2_test:Clean">
+    <MSBuild Projects="MirClient\mir2_test.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="mir2_test:Make">
+    <MSBuild Projects="MirClient\mir2_test.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="mir2;LoginTool;RunGate;mir2_test" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="mir2:Clean;LoginTool:Clean;RunGate:Clean;mir2_test:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="mir2:Make;LoginTool:Make;RunGate:Make;mir2_test:Make" />
+  </Target>
+</Project>

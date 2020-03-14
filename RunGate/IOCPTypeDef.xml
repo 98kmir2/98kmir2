@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="IOCPTypeDef">
+  <pointer name="PIOCPCommObj" type="_tagIOCPCommObj" indircnt="1" />
+  <struct name="_tagIOCPCommObj">
+    <field name="PTRIOKey" type="_OVERLAPPED" visibility="public" />
+    <field name="Socket" type="Cardinal" visibility="public" />
+    <field name="WorkType" type="Cardinal" visibility="public" />
+    <field name="PostTime" type="Cardinal" visibility="public" />
+    <field name="WBuf" type="WSABUF" visibility="public" />
+    <field name="AddObject" type="Pointer" visibility="public" />
+    <field name="MemIndex" type="Cardinal" visibility="public" />
+    <field name="ABuffer" type="PAnsiChar" visibility="public" />
+    <field name="BBuffer" type="PAnsiChar" visibility="public" />
+  </struct>
+  <struct name="TIOCPCommObj" alias="_tagIOCPCommObj" namespace="IOCPTypeDef">
+    <field name="PTRIOKey" type="_OVERLAPPED" visibility="public" />
+    <field name="Socket" type="Cardinal" visibility="public" />
+    <field name="WorkType" type="Cardinal" visibility="public" />
+    <field name="PostTime" type="Cardinal" visibility="public" />
+    <field name="WBuf" type="WSABUF" visibility="public" />
+    <field name="AddObject" type="Pointer" visibility="public" />
+    <field name="MemIndex" type="Cardinal" visibility="public" />
+    <field name="ABuffer" type="PAnsiChar" visibility="public" />
+    <field name="BBuffer" type="PAnsiChar" visibility="public" />
+  </struct>
+  <function name="PostIOCPRecv" visibility="public">
+    <parameters>
+      <parameter name="PIOCPData" type="PIOCPCommObj" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="PostIOCPSend" visibility="public">
+    <parameters>
+      <parameter name="PIOCPData" type="PIOCPCommObj" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+</namespace>

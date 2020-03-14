@@ -1,0 +1,86 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{02d5f99f-4d46-468d-aec2-a44ad41ea764}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="DBServer\DBServer.dproj" />
+    <Projects Include="GameCenter\GameCenter.dproj" />
+    <Projects Include="LogDataServer\LogDataServer.dproj" />
+    <Projects Include="LoginSrv\LoginSrv.dproj" />
+    <Projects Include="M2Server_Hero\M2Server.dproj" />
+    <Projects Include="mSystemModule_Hero\mSystemModule.dproj">
+      <Dependencies>M2Server_Hero\M2Server.dproj</Dependencies>
+    </Projects>
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject xmlns=""><Default.Personality></Default.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="M2Server">
+    <MSBuild Projects="M2Server_Hero\M2Server.dproj" Targets="" />
+  </Target>
+  <Target Name="M2Server:Clean">
+    <MSBuild Projects="M2Server_Hero\M2Server.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="M2Server:Make">
+    <MSBuild Projects="M2Server_Hero\M2Server.dproj" Targets="Make" />
+  </Target>
+  <Target Name="mSystemModule" DependsOnTargets="M2Server">
+    <MSBuild Projects="mSystemModule_Hero\mSystemModule.dproj" Targets="" />
+  </Target>
+  <Target Name="mSystemModule:Clean" DependsOnTargets="M2Server:Clean">
+    <MSBuild Projects="mSystemModule_Hero\mSystemModule.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="mSystemModule:Make" DependsOnTargets="M2Server:Make">
+    <MSBuild Projects="mSystemModule_Hero\mSystemModule.dproj" Targets="Make" />
+  </Target>
+  <Target Name="LogDataServer">
+    <MSBuild Projects="LogDataServer\LogDataServer.dproj" Targets="" />
+  </Target>
+  <Target Name="LogDataServer:Clean">
+    <MSBuild Projects="LogDataServer\LogDataServer.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="LogDataServer:Make">
+    <MSBuild Projects="LogDataServer\LogDataServer.dproj" Targets="Make" />
+  </Target>
+  <Target Name="LoginSrv">
+    <MSBuild Projects="LoginSrv\LoginSrv.dproj" Targets="" />
+  </Target>
+  <Target Name="LoginSrv:Clean">
+    <MSBuild Projects="LoginSrv\LoginSrv.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="LoginSrv:Make">
+    <MSBuild Projects="LoginSrv\LoginSrv.dproj" Targets="Make" />
+  </Target>
+  <Target Name="GameCenter">
+    <MSBuild Projects="GameCenter\GameCenter.dproj" Targets="" />
+  </Target>
+  <Target Name="GameCenter:Clean">
+    <MSBuild Projects="GameCenter\GameCenter.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="GameCenter:Make">
+    <MSBuild Projects="GameCenter\GameCenter.dproj" Targets="Make" />
+  </Target>
+  <Target Name="DBServer">
+    <MSBuild Projects="DBServer\DBServer.dproj" Targets="" />
+  </Target>
+  <Target Name="DBServer:Clean">
+    <MSBuild Projects="DBServer\DBServer.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="DBServer:Make">
+    <MSBuild Projects="DBServer\DBServer.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="M2Server;mSystemModule;LogDataServer;LoginSrv;GameCenter;DBServer" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="M2Server:Clean;mSystemModule:Clean;LogDataServer:Clean;LoginSrv:Clean;GameCenter:Clean;DBServer:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="M2Server:Make;mSystemModule:Make;LogDataServer:Make;LoginSrv:Make;GameCenter:Make;DBServer:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

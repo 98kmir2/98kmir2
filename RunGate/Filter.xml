@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="Filter">
+  <struct name="THWIDCnt">
+    <field name="HWID" type="MD5Digest" visibility="public" />
+    <field name="Count" type="Integer" visibility="public" />
+  </struct>
+  <pointer name="pTHWIDCnt" type="THWIDCnt" indircnt="1" />
+  <class name="THWIDFilter">
+    <ancestor name="TSyncObj" namespace="SyncObj">
+      <methodref name="Create" visibility="public" />
+      <methodref name="Destroy" visibility="public" />
+      <methodref name="Lock" visibility="public" />
+      <methodref name="Unlock" visibility="public" />
+      <ancestor name="TObject" namespace="System">
+        <methodref name="Create" visibility="public">
+        </methodref>
+        <methodref name="Free" visibility="public">
+        </methodref>
+        <methodref name="InitInstance" visibility="public">
+        </methodref>
+        <methodref name="CleanupInstance" visibility="public">
+        </methodref>
+        <methodref name="ClassType" visibility="public">
+        </methodref>
+        <methodref name="ClassName" visibility="public">
+        </methodref>
+        <methodref name="ClassNameIs" visibility="public">
+        </methodref>
+        <methodref name="ClassParent" visibility="public">
+        </methodref>
+        <methodref name="ClassInfo" visibility="public">
+        </methodref>
+        <methodref name="InstanceSize" visibility="public">
+        </methodref>
+        <methodref name="InheritsFrom" visibility="public">
+        </methodref>
+        <methodref name="MethodAddress" visibility="public">
+        </methodref>
+        <methodref name="MethodName" visibility="public">
+        </methodref>
+        <methodref name="FieldAddress" visibility="public">
+        </methodref>
+        <methodref name="GetInterface" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceEntry" visibility="public">
+        </methodref>
+        <methodref name="GetInterfaceTable" visibility="public">
+        </methodref>
+        <methodref name="SafeCallException" visibility="public">
+        </methodref>
+        <methodref name="AfterConstruction" visibility="public">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public">
+        </methodref>
+        <methodref name="Dispatch" visibility="public">
+        </methodref>
+        <methodref name="DefaultHandler" visibility="public">
+        </methodref>
+        <methodref name="NewInstance" visibility="public">
+        </methodref>
+        <methodref name="FreeInstance" visibility="public">
+        </methodref>
+        <methodref name="Destroy" visibility="public">
+        </methodref>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="m_xCurList" type="TList" visibility="public" />
+      <field name="m_xDenyList" type="TList" visibility="public" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <function name="IsFilter" visibility="public" procflags="overload">
+        <parameters>
+          <parameter name="HWID" type="MD5Digest" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="IsFilter" visibility="public" procflags="overload">
+        <parameters>
+          <parameter name="HWID" type="MD5Digest" />
+          <parameter name="fOverClientCount" type="Boolean" paramflags="var" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <function name="GetItemCount" visibility="public">
+        <parameters>
+          <parameter name="HWID" type="MD5Digest" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="DecHWIDCount" visibility="public">
+        <parameters>
+          <parameter name="HWID" type="MD5Digest" />
+        </parameters>
+      </procedure>
+      <procedure name="ClearHWIDCount" visibility="public">
+      </procedure>
+      <function name="AddDeny" visibility="public">
+        <parameters>
+          <parameter name="HWID" type="MD5Digest" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="DelDeny" visibility="public">
+        <parameters>
+          <parameter name="HWID" type="MD5Digest" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="ClearDeny" visibility="public">
+      </procedure>
+      <procedure name="LoadDenyList" visibility="public">
+      </procedure>
+      <procedure name="SaveDenyList" visibility="public">
+      </procedure>
+    </members>
+  </class>
+  <variable name="g_HWIDFilter" type="THWIDFilter" />
+  <variable name="g_ConnectOfIPLock" type="_RTL_CRITICAL_SECTION" />
+  <variable name="g_ConnectOfIPList" type="TList" />
+  <variable name="g_BlockIPList" type="TStringList" />
+  <variable name="g_TempBlockIPList" type="TStringList" />
+  <variable name="g_BlockIPAreaList" type="TStringList" />
+  <procedure name="LoadBlockIPList" visibility="public">
+  </procedure>
+  <procedure name="SaveBlockIPList" visibility="public">
+  </procedure>
+  <procedure name="AddToBlockIPList" visibility="public" procflags="overload">
+    <parameters>
+      <parameter name="szIP" type="string" />
+    </parameters>
+  </procedure>
+  <procedure name="AddToBlockIPList" visibility="public" procflags="overload">
+    <parameters>
+      <parameter name="nIP" type="Integer" />
+    </parameters>
+  </procedure>
+  <procedure name="AddToTempBlockIPList" visibility="public" procflags="overload">
+    <parameters>
+      <parameter name="szIP" type="string" />
+    </parameters>
+  </procedure>
+  <procedure name="AddToTempBlockIPList" visibility="public" procflags="overload">
+    <parameters>
+      <parameter name="nIP" type="Integer" />
+    </parameters>
+  </procedure>
+  <function name="IsBlockIP" visibility="public">
+    <parameters>
+      <parameter name="nRemoteIP" type="Integer" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="OverConnectOfIP" visibility="public">
+    <parameters>
+      <parameter name="Addr" type="Integer" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <procedure name="DeleteConnectOfIP" visibility="public">
+    <parameters>
+      <parameter name="Addr" type="Integer" />
+    </parameters>
+  </procedure>
+  <procedure name="ClearConnectOfIP" visibility="public">
+  </procedure>
+  <procedure name="LoadBlockIPAreaList" visibility="public">
+  </procedure>
+  <procedure name="SaveBlockIPAreaList" visibility="public">
+  </procedure>
+  <function name="IsBlockIPArea" visibility="public">
+    <parameters>
+      <parameter name="nRemoteIP" type="Integer" paramflags="const" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+</namespace>

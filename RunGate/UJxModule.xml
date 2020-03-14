@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="UJxModule">
+  <const name="max_packetsize" type="Integer">
+    <value>
+      $400
+    </value>
+  </const>
+  <const name="JXSIGNATURE" type="Integer">
+    <value>
+      $5441584A
+    </value>
+  </const>
+  <const name="PACKETSIG" type="Integer">
+    <value>
+      $33333333
+    </value>
+  </const>
+  <struct name="TJX_PACKET">
+    <field name="signature" type="Cardinal" visibility="public" />
+    <field name="totoallen" type="Integer" visibility="public" />
+    <field name="curOffset" type="Integer" visibility="public" />
+    <field name="curLen" type="Integer" visibility="public" />
+    <field name="Crc" type="Cardinal" visibility="public" />
+  </struct>
+  <pointer name="PJX_PACKET" type="TJX_PACKET" indircnt="1" />
+  <struct name="TJX_HEADER">
+    <field name="jx_sign" type="Integer" visibility="public" />
+    <field name="file_len" type="Integer" visibility="public" />
+    <field name="file_crc" type="Cardinal" visibility="public" />
+    <field name="srv_offset" type="Integer" visibility="public" />
+    <field name="srv_len" type="Integer" visibility="public" />
+    <field name="clt_offset" type="Integer" visibility="public" />
+    <field name="clt_len" type="Integer" visibility="public" />
+  </struct>
+  <pointer name="PJX_HEADER" type="TJX_HEADER" indircnt="1" />
+  <struct name="TVtable">
+    <field name="pfn_GetVersion" type="PFNGETVERSION" visibility="public" />
+  </struct>
+  <pointer name="PVtalbe" type="TVtable" indircnt="1" />
+  <class name="TJxMoudle">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="szFileName" type="string" visibility="public" />
+      <field name="mClient" type="TMemoryStream" visibility="public" />
+      <field name="mServer" type="TMemoryStream" visibility="public" />
+      <field name="hModule" type="Cardinal" visibility="public" />
+      <field name="m_vtable" type="PVtalbe" visibility="public" />
+      <field name="m_Ready" type="Boolean" visibility="public" />
+      <field name="m_MaxSize" type="Integer" visibility="public" />
+      <field name="m_BlockCount" type="Integer" visibility="public" />
+      <function name="GetSendData" visibility="public">
+        <parameters>
+          <parameter name="p" type="Pointer" />
+          <parameter name="offset" type="Integer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="isReady" visibility="public">
+        <parameters>
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="sName" type="string" />
+        </parameters>
+      </constructor>
+      <function name="GetVtable" visibility="public">
+        <parameters>
+          <retval type="PVtalbe" />
+        </parameters>
+      </function>
+      <function name="memLoadLibrary" visibility="public">
+        <parameters>
+          <parameter name="pLib" type="Pointer" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+    </members>
+  </class>
+  <class name="TJXManager">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="InitInstance" visibility="public">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public">
+      </methodref>
+      <methodref name="ClassName" visibility="public">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public">
+      </methodref>
+      <methodref name="ClassParent" visibility="public">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public">
+      </methodref>
+      <methodref name="MethodName" visibility="public">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public">
+      </methodref>
+      <methodref name="Dispatch" visibility="public">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public">
+      </methodref>
+      <methodref name="NewInstance" visibility="public">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public">
+      </methodref>
+      <methodref name="Destroy" visibility="public">
+      </methodref>
+    </ancestor>
+    <members>
+      <field name="curModule" type="TJxMoudle" visibility="public" />
+      <field name="m_lastmd5" type="string" visibility="public" />
+      <procedure name="LoadJx" visibility="public">
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+  <variable name="g_pJXMgr" type="TJXManager" />
+</namespace>
