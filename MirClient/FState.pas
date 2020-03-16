@@ -33586,7 +33586,7 @@ begin
      Dispose(pTclientGoods(MerchandiseGood[I]));
   MerchandiseGood.Clear;
 
-  for I := 0 to  MerChandiseItem.Count do
+  for I := 0 to  MerChandiseItem.Count - 1 do
     Dispose(pTClientItem(MerChandiseItem[I]));
   MerChandiseItem.Clear;
 end;
